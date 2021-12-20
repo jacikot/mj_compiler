@@ -49,17 +49,19 @@ import java_cup.runtime.Symbol;
 "else"      { return new_symbol(sym.ELSE, yytext());}
 "const"     { return new_symbol(sym.CONST, yytext());}
 "if"        { return new_symbol(sym.IF, yytext());}
-"switch"    { return new_symbol(sym.SWITCH, yytext());}
 "do"        { return new_symbol(sym.DO, yytext());}
 "while"     { return new_symbol(sym.WHILE, yytext());}
 "new"       { return new_symbol(sym.NEW, yytext());}
-"read"      { return new_symbol(sym.READ, yytext());}
-"extends"   { return new_symbol(sym.EXTND, yytext());}
-"continue"  { return new_symbol(sym.CONT, yytext());}
-"case"      { return new_symbol(sym.CASE, yytext());}
 "print" 	{ return new_symbol(sym.PRINT, yytext()); }
+"read"      { return new_symbol(sym.READ, yytext());}
 "return" 	{ return new_symbol(sym.RETURN, yytext()); }
 "void" 		{ return new_symbol(sym.VOID, yytext()); }
+"extends"   { return new_symbol(sym.EXTND, yytext());}
+"continue"  { return new_symbol(sym.CONT, yytext());}
+"this"      { return new_symbol(sym.THIS, yytext());}
+"super"      { return new_symbol(sym.SUPER, yytext());}
+"goto"      { return new_symbol(sym.GOTO, yytext());}
+"record"      { return new_symbol(sym.RECORD, yytext());}
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "-" 		{ return new_symbol(sym.MINUS, yytext()); }
 "*" 		{ return new_symbol(sym.MUL, yytext()); }
@@ -73,14 +75,13 @@ import java_cup.runtime.Symbol;
 "<=" 		{ return new_symbol(sym.LEE, yytext()); }
 "&&" 		{ return new_symbol(sym.AND, yytext()); }
 "||" 		{ return new_symbol(sym.OR, yytext()); }
+"=" 		{ return new_symbol(sym.EQUAL, yytext()); }
 "++" 		{ return new_symbol(sym.INC, yytext()); }
 "--" 		{ return new_symbol(sym.DEC, yytext()); }
-"." 		{ return new_symbol(sym.DOT, yytext()); }
-"?" 		{ return new_symbol(sym.QUEST, yytext()); }
-":" 		{ return new_symbol(sym.COLUMN, yytext()); }
-"=" 		{ return new_symbol(sym.EQUAL, yytext()); }
 ";" 		{ return new_symbol(sym.SEMI, yytext()); }
+":" 		{ return new_symbol(sym.COLUMN, yytext()); }
 "," 		{ return new_symbol(sym.COMMA, yytext()); }
+"." 		{ return new_symbol(sym.DOT, yytext()); }
 "(" 		{ return new_symbol(sym.LPAREN, yytext()); }
 ")" 		{ return new_symbol(sym.RPAREN, yytext()); }
 "{" 		{ return new_symbol(sym.LBRACE, yytext()); }

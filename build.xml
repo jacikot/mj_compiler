@@ -3,8 +3,8 @@
 
 	<target name="delete">
 		<delete>
-			<fileset dir="src/code">
-				<exclude name="sym.java"/>
+			<fileset dir="src/compiler/pp1">
+				<exclude name="sym_old.java"/>
 				<exclude name="util/Log4JUtils.java"/>
 				<exclude name="Yylex.java"/>
 				<exclude name="RuleVisitor.java"/>
@@ -21,7 +21,7 @@
 	<target name="lexerGen" depends="delete">
 		<java jar="lib/JFlex.jar" fork="true">
 	    	<arg value="-d"/>
-	    	<arg value="./src/code"/>
+	    	<arg value="./src/compiler/pp1"/>
 	    	<arg value="spec/mjlexer.lex"/>
 		</java>
 	</target>
@@ -29,9 +29,9 @@
 	<target name="parserGen" depends="delete">
 		<java jar="lib/cup_v10k.jar" fork="true">
 			<arg value="-destdir"/>
-			<arg value="./src/code"/>
+			<arg value="./src/compiler/pp1"/>
 			<arg value="-ast"/>
-			<arg value="code.ast"/>
+			<arg value="src.compiler.pp1.ast"/>
 			<arg value="-parser"/>
 			<arg value="MJParser"/>
 			<arg value="-dump_states"/>
@@ -40,13 +40,13 @@
 		</java>
 	</target>
 
-<!--	<target name="repackage" depends="parserGen">-->
-<!--		&lt;!&ndash; Replaces all of the references to the old package name in files in the "src" directory &ndash;&gt;-->
-<!--		<replace dir="src" value="rs.ac.bg.etf.pp1.ast" token="src.rs.ac.bg.etf.pp1.ast" summary="true"/>-->
-<!--	</target>-->
+	<target name="repackage" depends="parserGen">
+		<!-- Replaces all of the references to the old package name in files in the "src" directory -->
+		<replace dir="src" value="compiler.pp1.ast" token="src.compiler.pp1.ast" summary="true"/>
+	</target>
 	
 	<target name="compile" depends="lexerGen">
-		<javac srcdir="src/code" includeantruntime="false">
+		<javac srcdir="src/compiler/pp1" includeantruntime="false">
 			<classpath>
 				<pathelement path="lib/JFlex.jar"/>
 				<pathelement path="lib/cup_v10k.jar"/>

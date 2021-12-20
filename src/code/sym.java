@@ -9,24 +9,18 @@ public class sym {
     public static final int ELSE=5;
     public static final int CONST=6;
     public static final int IF=7;
-    public static final int SWITCH=8;
-    public static final int DO=9;
-    public static final int WHILE=10;
-    public static final int NEW=11;
-    public static final int PRINT=12;
-    public static final int READ=13;
-    public static final int EXTND=14;
-    public static final int CONT=15;
-    public static final int CASE=16;
-    public static final int RETURN=17;
-
-    //id
-    public static final int IDENT=18;
-
-    //const
-    public static final int NUMBER=19;
-    public static final int CHAR=20;
-    public static final int BOOL=21;
+    public static final int DO=8;
+    public static final int WHILE=9;
+    public static final int NEW=10;
+    public static final int PRINT=11;
+    public static final int READ=12;
+    public static final int EXTND=13;
+    public static final int CONT=14;
+    public static final int RETURN=15;
+    public static final int THIS=16;
+    public static final int SUPER=17;
+    public static final int GOTO=18;
+    public static final int RECORD=19;
 
     // Operators
     public static final int PLUS = 22;
@@ -54,13 +48,18 @@ public class sym {
     public static final int RBRACE = 44;
     public static final int LBRACK = 45;
     public static final int RBRACK = 46;
-    public static final int QUEST = 47;
-    public static final int COLUMN = 48;
+    public static final int COLUMN = 47;
 
-    public static final int EOF = 49;
-    public static final int VOID = 50;
+    public static final int EOF = 48;
+    public static final int VOID = 49;
 
+    //id
+    public static final int IDENT=50;
 
+    //const
+    public static final int NUMBER=51;
+    public static final int CHAR=52;
+    public static final int BOOL=53;
 
 
 }

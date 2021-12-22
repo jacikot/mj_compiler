@@ -95,7 +95,7 @@ import java_cup.runtime.Symbol;
 
 //vrednost tokena je int
 
-("true"|"false") {return new_symbol (sym.BOOL, Boolean.parseBoolean(yytext())); }
+("true"|"false") {return new_symbol (sym.BOOL, (Boolean.parseBoolean(yytext()))?1:0); }
 [0-9]+  { return new_symbol(sym.NUMBER, Integer.parseInt(yytext())); }
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
 "'"[\x20-\x7E]"'" {return new_symbol (sym.CHAR, yytext()); }

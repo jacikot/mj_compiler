@@ -1,0 +1,266 @@
+
+
+package compiler.pp1;
+/* import sekcija sve sto nam treba za parser klasu */
+/* od ovoga nastaju klase parser i action */
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+
+//ovo se generise pozivom parsera
+import compiler.pp1.ast.*;
+
+//kod parsera
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+
+
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     //ne mozemo da nsatavimo parsiranje
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+
+  //prijava greske kad moze da se oporavi od greske
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+
+  //ako oporavak nije moguc
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+//string builder koristimo za gresku
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message);
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left); //left - sadrzi broj linije
+        log.error(msg.toString());
+    }
+
+
+:}
+
+//resetovanje dohvatanja svakog tokena od lexera
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null)
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+terminal PROG, LBRACE, RBRACE;
+terminal CONST,SEMI, COMMA, COLUMN, EQUAL, LBRACK, RBRACK, RECORD;
+terminal CLASS, EXTND, LPAREN, RPAREN, DOT;
+terminal VOID, NEW;
+terminal Integer NUMBER, BOOL;
+terminal String IDENT, CHAR;
+terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
+terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
+terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC;
+
+nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
+nonterminal Type, ConstDeclList, ConstLit, VarDeclList;
+nonterminal ExtendsDecl, InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
+nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
+nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
+nonterminal Cond, CondTerm, CondFact, Relop, Label;
+nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
+
+Program ::= (Program) PROG IDENT DeclList LBRACE MethodDeclList RBRACE;
+
+DeclList ::= (DeclListConst) DeclList ConstDecl
+            |
+            (DeclListVar) DeclList VarDecl
+            |
+            (DeclListClass) DeclList ClassDecl
+            |
+            (DeclListRecord) DeclList RecordDecl
+            |
+            (DeclListEmpty) /* epsilon */
+            ;
+ConstDecl ::= (DeclConst) CONST Type:varsType ConstDeclList:decls SEMI;
+
+ConstDeclList ::= (ConstDeclMultiple) ConstDeclList COMMA IDENT:varName EQUAL ConstLit:varValue
+                |
+                (ConstDeclSingle) IDENT:varName EQUAL ConstLit:varValue
+                ;
+ConstLit ::=(ConstLitNum) NUMBER:value
+            |
+            (ConstLitBool) BOOL:value
+            |
+            (ConstLitChar) CHAR:value
+            ;
+Type ::= (Type) IDENT:typeName;
+
+VarDecl ::= (VarDecl) Type:varsType VarDeclList:decls SEMI;
+
+VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA IDENT:varName ArrayBracks
+                |
+                (VarDeclSingle) IDENT:varName ArrayBracks
+                ;
+ArrayBracks ::= (Bracks) LBRACK RBRACK
+                |
+                (BracksEmpty) /* epsilon */
+                ;
+ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE;
+
+ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base
+                |
+                (ExtendsDeclEmpty)/* epsilon */
+                ;
+InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var
+                |
+                (InnerVarDeclsEmpty) /* epsilon */
+                ;
+InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE
+                    |
+                    (InnerMethodBlockNoConstr) LBRACE MethodDeclList:methods RBRACE
+                    |
+                    (InnerMethodBlockEmpty) /* epsilon */
+                    ;
+RecordDecl ::= (RecordDecl) RECORD IDENT:recordName LBRACE InnerVarDeclList:vars RBRACE;
+ConstructorDecl ::= (ConstructorDecl) IDENT LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE;
+
+MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList
+				|
+				(MethodDeclsEmpty) /* epsilon */
+				;
+MethodDecl ::= (MethodDeclPar) RetType IDENT:methodName LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+                |
+                (MethodDeclNoPar) RetType IDENT:methodName LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+                ;
+RetType ::= (RetTypeType) Type
+        |
+        (RetTypeVoid) VOID
+        ;
+FormParList ::= (FormParsMultiple) FormParList COMMA Type:type IDENT:parName ArrayBracks
+                |
+                (FormParsSingle) Type:type IDENT:parName ArrayBracks
+                ;
+StatementList ::= (StatementsList) StatementList:statements Statement
+				|
+				(StatementsEmpty) /* epsilon */
+				;
+Statement ::= (StatementSingle) SingleStatement:statement
+            |
+            (StatementSingleLabel) Label:label COLUMN SingleStatement:statement
+            |
+            (StatementMultiple) Statements
+            ;
+Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
+SingleStatement ::= (StatementMatched) Matched:statement
+		   |
+		   (StatementUnmatched) Unmatched:statement
+		   ;
+Unmatched ::= (UnmatchedIf) IF LPAREN Cond RPAREN Statement
+		 	|
+		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
+		 	;
+Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            |
+            (MatchedDesign) DesignStatement:statement SEMI
+            |
+            (MatchedDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
+            |
+            (MatchedBreak) BREAK SEMI
+            |
+            (MatchedContinue) CONT SEMI
+            |
+            (MatchedReturn) RETURN Expr:retValue SEMI
+            |
+            (MatchedRead) READ LPAREN Designator:dst RPAREN SEMI
+            |
+            (MatchedPrintSize) PRINT LPAREN Expr:src COMMA NUMBER:size RPAREN SEMI
+            |
+            (MatchedPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
+            |
+            (MatchedGoto) GOTO Label:dst SEMI
+            ;
+IfElseBlock ::= (IfElseBlockSingle) Matched
+            |
+            (IfElseBlockMultiple) Statements
+            ;
+DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
+Designator ::= (DesignatorAccess) Designator AccessDsgn:access
+              |
+              (DesignatorFirst) IDENT:dsgnName
+              ;
+AccessDsgn ::= (AccessDsgnField) DOT IDENT:field
+              |
+              (AccessDsgnArray) LBRACK Expr:index RBRACK
+              ;
+DsgnOp ::= (DsgnOpAssign) Assignop Expr
+            |
+            (DsgnOpCallPars) LPAREN ActPars:params RPAREN
+            |
+            (DsgnOpCallEmpty) LPAREN RPAREN
+            |
+            (DsgnOpInc) INC
+            |
+            (DsgnOpDec) DEC
+            ;
+Assignop ::= (Assignop) EQUAL;
+
+ActPars ::= (ActParsMultiple) ActPars:params COMMA Expr:param
+                |
+                (ActParsSingle) Expr:param
+                ;
+Cond ::= (CondMultiple) Cond:conds OR CondTerm:cond
+        |
+        (CondSingle) CondTerm:cond
+        ;
+CondTerm ::= (CondTermMultiple) CondTerm:conds AND CondFact:cond
+            |
+            (CondTermSingle) CondFact:cond
+            ;
+CondFact ::= (CondFactMultiple) Expr:op1 Relop Expr:op2
+            |
+            (CondFactSingle) Expr:operand
+            ;
+Relop ::= (RelopEqu) EQU
+        | (RelopNeq) NEQ
+        | (RelopGrt) GRT
+        | (RelopGre) GRE
+        | (RelopLes) LES
+        | (RelopLee) LEE ;
+Addop ::= (AddopPlus) PLUS
+        | (AddopMinus) MINUS;
+Mulop ::= (MulopMul) MUL
+        | (MulopDiv) DIV
+        | (MulopMod) MOD;
+Expr ::= (ExprMultiple) Expr:operands Addop Term:operand
+        |
+        (ExprSingle) Term:operand
+        |
+        (ExprSingleMinus) MINUS Term:operand
+        ;
+Term ::= (TermMultiple) Term:operands Mulop Factor:operand
+        |
+        (TermSingle) Factor:operand
+        ;
+Factor ::= (FactorDsgn) Designator:operand
+        |
+        (FactorDsgnCall) Designator:fun LPAREN ActPars:params RPAREN
+        |
+        (FactorNumber) NUMBER:operand
+        |
+        (FactorChar) CHAR:operand
+        |
+        (FactorBool) BOOL:operand
+        |
+        (FactorObject) NEW Type:objType
+        |
+        (FactorArray) NEW Type:arrType LBRACK Expr:size RBRACK
+        |
+        (FactorBlock) LPAREN Expr:operand RPAREN
+        ;
+Label ::= (Label) IDENT:labelName;
+
+
+
+
+
+

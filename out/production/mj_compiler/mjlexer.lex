@@ -1,5 +1,5 @@
 
-package code;
+package compiler.pp1;
 
 import java_cup.runtime.Symbol;
 
@@ -45,7 +45,6 @@ import java_cup.runtime.Symbol;
 "program"   { return new_symbol(sym.PROG, yytext());}
 "break"     { return new_symbol(sym.BREAK, yytext());}
 "class"     { return new_symbol(sym.CLASS, yytext());}
-"enum"      { return new_symbol(sym.ENUM, yytext());}
 "else"      { return new_symbol(sym.ELSE, yytext());}
 "const"     { return new_symbol(sym.CONST, yytext());}
 "if"        { return new_symbol(sym.IF, yytext());}
@@ -58,8 +57,6 @@ import java_cup.runtime.Symbol;
 "void" 		{ return new_symbol(sym.VOID, yytext()); }
 "extends"   { return new_symbol(sym.EXTND, yytext());}
 "continue"  { return new_symbol(sym.CONT, yytext());}
-"this"      { return new_symbol(sym.THIS, yytext());}
-"super"      { return new_symbol(sym.SUPER, yytext());}
 "goto"      { return new_symbol(sym.GOTO, yytext());}
 "record"      { return new_symbol(sym.RECORD, yytext());}
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
@@ -98,7 +95,7 @@ import java_cup.runtime.Symbol;
 
 //vrednost tokena je int
 
-("true"|"false") {return new_symbol (sym.BOOL, Boolean.parseBoolean(yytext())); }
+("true"|"false") {return new_symbol (sym.BOOL, (Boolean.parseBoolean(yytext()))?1:0); }
 [0-9]+  { return new_symbol(sym.NUMBER, Integer.parseInt(yytext())); }
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
 "'"[\x20-\x7E]"'" {return new_symbol (sym.CHAR, yytext()); }

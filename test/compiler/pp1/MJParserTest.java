@@ -6,12 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
+import compiler.pp1.ast.Program;
 import compiler.pp1.util.Log4JUtils;
 import java_cup.runtime.Symbol;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-
+import compiler.pp1.ast.Program;
 
 
 public class MJParserTest {
@@ -36,7 +37,7 @@ public class MJParserTest {
             MJParser p = new MJParser(lexer);
             Symbol s = p.parse();  //pocetak parsiranja
 
-            Program prog = (Program)(s.value);
+            Program prog = (Program) (s.value);
             // ispis sintaksnog stabla
             log.info(prog.toString(""));
             log.info("===================================");
@@ -45,8 +46,8 @@ public class MJParserTest {
             RuleVisitor v = new RuleVisitor();
             prog.traverseBottomUp(v);
 
-            log.info(" Print count calls = " + v.printCallCount);
-
+//            log.info(" Print count calls = " + v.printCallCount);
+//
             log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
 
         }

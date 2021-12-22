@@ -55,20 +55,19 @@ terminal PROG, LBRACE, RBRACE;
 terminal CONST,SEMI, COMMA, COLUMN, EQUAL, LBRACK, RBRACK, RECORD;
 terminal CLASS, EXTND, LPAREN, RPAREN, DOT;
 terminal VOID, NEW;
-terminal Integer NUMBER;
+terminal Integer NUMBER, BOOL;
 terminal String IDENT, CHAR;
-terminal Boolean BOOL;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
 terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC;
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
-nonterminal Type, ConstDeclList, ConstLit, VarDeclList, ArrayBrackets;
+nonterminal Type, ConstDeclList, ConstLit, VarDeclList;
 nonterminal ExtendsDecl, InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
-nonterminal Mulop, Addop, Factor, Term, ArrayBracks;
+nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
 
 Program ::= (Program) PROG IDENT DeclList LBRACE MethodDeclList RBRACE;
 
@@ -98,9 +97,9 @@ Type ::= (Type) IDENT:typeName;
 
 VarDecl ::= (VarDecl) Type:varsType VarDeclList:decls SEMI;
 
-VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA IDENT:varName ArrayBrackets
+VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA IDENT:varName ArrayBracks
                 |
-                (VarDeclSingle) IDENT:varName ArrayBrackets
+                (VarDeclSingle) IDENT:varName ArrayBracks
                 ;
 ArrayBracks ::= (Bracks) LBRACK RBRACK
                 |
@@ -108,7 +107,7 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK
                 ;
 ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE;
 
-ExtendsDecl ::= (ExtendsDecl) EXTND Type:base
+ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base
                 |
                 (ExtendsDeclEmpty)/* epsilon */
                 ;
@@ -116,7 +115,7 @@ InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var
                 |
                 (InnerVarDeclsEmpty) /* epsilon */
                 ;
-InnerMethodBlock ::= (InnerMethodBlock) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE
+InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE
                     |
                     (InnerMethodBlockNoConstr) LBRACE MethodDeclList:methods RBRACE
                     |
@@ -129,8 +128,11 @@ MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList
 				|
 				(MethodDeclsEmpty) /* epsilon */
 				;
-MethodDecl ::= (MethodDecl) RetType IDENT:methodName LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE;
-RetType ::= (RetType) Type
+MethodDecl ::= (MethodDeclPar) RetType IDENT:methodName LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+                |
+                (MethodDeclNoPar) RetType IDENT:methodName LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+                ;
+RetType ::= (RetTypeType) Type
         |
         (RetTypeVoid) VOID
         ;
@@ -138,7 +140,7 @@ FormParList ::= (FormParsMultiple) FormParList COMMA Type:type IDENT:parName Arr
                 |
                 (FormParsSingle) Type:type IDENT:parName ArrayBracks
                 ;
-StatementList ::= (Statements) StatementList:statements Statement
+StatementList ::= (StatementsList) StatementList:statements Statement
 				|
 				(StatementsEmpty) /* epsilon */
 				;
@@ -155,9 +157,9 @@ SingleStatement ::= (StatementMatched) Matched:statement
 		   ;
 Unmatched ::= (UnmatchedIf) IF LPAREN Cond RPAREN Statement
 		 	|
-		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN Matched:ifStmt ELSE Unmatched:elseStmt
+		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
 		 	;
-Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN Matched:ifStmt ELSE Matched:elseStmt
+Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
             |
             (MatchedDesign) DesignStatement:statement SEMI
             |
@@ -176,6 +178,10 @@ Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN Matched:ifStmt ELSE Matched:el
             (MatchedPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
             |
             (MatchedGoto) GOTO Label:dst SEMI
+            ;
+IfElseBlock ::= (IfElseBlockSingle) Matched
+            |
+            (IfElseBlockMultiple) Statements
             ;
 DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
 Designator ::= (DesignatorAccess) Designator AccessDsgn:access

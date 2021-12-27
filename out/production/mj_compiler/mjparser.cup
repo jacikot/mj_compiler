@@ -61,6 +61,7 @@ terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
 terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC;
 
+
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
 nonterminal Type, ConstDeclList, ConstLit, VarDeclList;
 nonterminal ExtendsDecl, InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
@@ -68,12 +69,13 @@ nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
+nonterminal VarDeclGlobal, VarDeclCheck, Xx;
 
 Program ::= (Program) PROG IDENT DeclList LBRACE MethodDeclList RBRACE;
 
 DeclList ::= (DeclListConst) DeclList ConstDecl
             |
-            (DeclListVar) DeclList VarDecl
+            (DeclListVar) DeclList VarDeclGlobal
             |
             (DeclListClass) DeclList ClassDecl
             |
@@ -81,9 +83,16 @@ DeclList ::= (DeclListConst) DeclList ConstDecl
             |
             (DeclListEmpty) /* epsilon */
             ;
-ConstDecl ::= (DeclConst) CONST Type:varsType ConstDeclList:decls SEMI;
+ConstDecl ::= (DeclConst) CONST Type:varsType ConstDeclList:decls SEMI
+               |
+               (ConstDeclError) CONST error SEMI:l
+               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
+               ;
 
 ConstDeclList ::= (ConstDeclMultiple) ConstDeclList COMMA IDENT:varName EQUAL ConstLit:varValue
+                |
+                (ConstDeclMultipleError) error COMMA:l IDENT:varName EQUAL ConstLit:varValue
+                {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null);  :}
                 |
                 (ConstDeclSingle) IDENT:varName EQUAL ConstLit:varValue
                 ;
@@ -95,11 +104,21 @@ ConstLit ::=(ConstLitNum) NUMBER:value
             ;
 Type ::= (Type) IDENT:typeName;
 
+VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI
+                |
+                (VarDeclGlobalError) error SEMI:l
+                {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
+                ;
 VarDecl ::= (VarDecl) Type:varsType VarDeclList:decls SEMI;
 
-VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA IDENT:varName ArrayBracks
+VarDeclList ::= (VarDeclMultiple) VarDeclCheck IDENT:varName ArrayBracks
                 |
                 (VarDeclSingle) IDENT:varName ArrayBracks
+                ;
+VarDeclCheck ::= (VarDeclCorrect) VarDeclList COMMA
+                |
+                (VarDeclError) error COMMA:l
+                {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null);  :}
                 ;
 ArrayBracks ::= (Bracks) LBRACK RBRACK
                 |
@@ -108,6 +127,8 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK
 ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE;
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base
+                |
+                (ExtendsDeclError) error
                 |
                 (ExtendsDeclEmpty)/* epsilon */
                 ;
@@ -138,7 +159,11 @@ RetType ::= (RetTypeType) Type
         ;
 FormParList ::= (FormParsMultiple) FormParList COMMA Type:type IDENT:parName ArrayBracks
                 |
+                (FormParsError) FormParList COMMA error
+                |
                 (FormParsSingle) Type:type IDENT:parName ArrayBracks
+                |
+                (FormParsSingleError) error
                 ;
 StatementList ::= (StatementsList) StatementList:statements Statement
 				|
@@ -156,10 +181,16 @@ SingleStatement ::= (StatementMatched) Matched:statement
 		   (StatementUnmatched) Unmatched:statement
 		   ;
 Unmatched ::= (UnmatchedIf) IF LPAREN Cond RPAREN Statement
+            |
+            (UnmatchedIfError) IF LPAREN error RPAREN Statement
 		 	|
 		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
+		 	|
+		 	(UnmatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
 		 	;
 Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            |
+            (MatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
             |
             (MatchedDesign) DesignStatement:statement SEMI
             |
@@ -179,6 +210,7 @@ Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElse
             |
             (MatchedGoto) GOTO Label:dst SEMI
             ;
+
 IfElseBlock ::= (IfElseBlockSingle) Matched
             |
             (IfElseBlockMultiple) Statements
@@ -192,7 +224,10 @@ AccessDsgn ::= (AccessDsgnField) DOT IDENT:field
               |
               (AccessDsgnArray) LBRACK Expr:index RBRACK
               ;
+
 DsgnOp ::= (DsgnOpAssign) Assignop Expr
+            |
+            (DsgnOpAssignError) Assignop:r error
             |
             (DsgnOpCallPars) LPAREN ActPars:params RPAREN
             |

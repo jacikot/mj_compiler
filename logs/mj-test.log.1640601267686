@@ -1,0 +1,61 @@
+INFO  11:34:02,542 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program.mj
+INFO  11:34:02,667 - #2 program
+INFO  11:34:02,668 - #22 p
+INFO  11:34:02,669 - #3 {
+INFO  11:34:02,671 - #18 void
+INFO  11:34:02,671 - #22 f
+INFO  11:34:02,673 - #15 (
+INFO  11:34:02,673 - #16 )
+INFO  11:34:02,673 - #3 {
+INFO  11:34:02,675 - #22 x
+INFO  11:34:02,676 - #9 =
+INFO  11:34:02,677 - #22 arg
+INFO  11:34:02,678 - #6 ;
+INFO  11:34:02,680 - #4 }
+INFO  11:34:02,682 - #4 }
+INFO  11:34:02,690 - Program(
+ p
+  DeclListEmpty(
+  ) [DeclListEmpty]
+  MethodDecls(
+    MethodDeclNoPar(
+      RetTypeVoid(
+      ) [RetTypeVoid]
+     f
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsEmpty(
+        ) [StatementsEmpty]
+        StatementSingle(
+          StatementMatched(
+            MatchedDesign(
+              DesignStmt(
+                DesignatorFirst(
+                 x
+                ) [DesignatorFirst]
+                DsgnOpAssign(
+                  Assignop(
+                  ) [Assignop]
+                  ExprSingle(
+                    TermSingle(
+                      FactorDsgn(
+                        DesignatorFirst(
+                         arg
+                        ) [DesignatorFirst]
+                      ) [FactorDsgn]
+                    ) [TermSingle]
+                  ) [ExprSingle]
+                ) [DsgnOpAssign]
+              ) [DesignStmt]
+            ) [MatchedDesign]
+          ) [StatementMatched]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]
+INFO  11:34:02,690 - ===================================
+INFO  11:34:02,699 -  Deklarisanih promenljivih ima = 0

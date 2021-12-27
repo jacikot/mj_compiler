@@ -1,0 +1,1552 @@
+INFO  14:14:04,147 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program.mj
+INFO  14:14:04,213 - #2 program
+INFO  14:14:04,213 - #22 p
+INFO  14:14:04,213 - #5 const
+INFO  14:14:04,214 - #22 int
+INFO  14:14:04,214 - #22 size
+INFO  14:14:04,215 - #9 =
+INFO  14:14:04,215 - #20 10
+INFO  14:14:04,215 - #6 ;
+INFO  14:14:04,216 - #13 class
+INFO  14:14:04,216 - #22 Table
+INFO  14:14:04,216 - #3 {
+INFO  14:14:04,217 - #22 int
+INFO  14:14:04,218 - #22 pos
+INFO  14:14:04,218 - #10 [
+INFO  14:14:04,218 - #11 ]
+INFO  14:14:04,218 - #7 ,
+INFO  14:14:04,220 - #22 neg
+INFO  14:14:04,220 - #10 [
+INFO  14:14:04,220 - #11 ]
+INFO  14:14:04,220 - #6 ;
+INFO  14:14:04,220 - #3 {
+INFO  14:14:04,221 - #18 void
+INFO  14:14:04,223 - #22 putp
+INFO  14:14:04,224 - #15 (
+INFO  14:14:04,224 - #22 int
+INFO  14:14:04,224 - #22 a
+INFO  14:14:04,224 - #7 ,
+INFO  14:14:04,225 - #22 int
+INFO  14:14:04,225 - #22 idx
+INFO  14:14:04,225 - #16 )
+INFO  14:14:04,225 - #3 {
+INFO  14:14:04,225 - #22 this
+INFO  14:14:04,226 - #17 .
+INFO  14:14:04,227 - #22 pos
+INFO  14:14:04,227 - #10 [
+INFO  14:14:04,227 - #22 idx
+INFO  14:14:04,227 - #11 ]
+INFO  14:14:04,227 - #9 =
+INFO  14:14:04,227 - #22 a
+INFO  14:14:04,229 - #6 ;
+INFO  14:14:04,229 - #4 }
+INFO  14:14:04,230 - #18 void
+INFO  14:14:04,230 - #22 putn
+INFO  14:14:04,230 - #15 (
+INFO  14:14:04,230 - #22 int
+INFO  14:14:04,230 - #22 a
+INFO  14:14:04,230 - #7 ,
+INFO  14:14:04,230 - #22 int
+INFO  14:14:04,231 - #22 idx
+INFO  14:14:04,231 - #16 )
+INFO  14:14:04,231 - #3 {
+INFO  14:14:04,231 - #22 this
+INFO  14:14:04,231 - #17 .
+INFO  14:14:04,231 - #22 neg
+INFO  14:14:04,231 - #10 [
+INFO  14:14:04,231 - #22 idx
+INFO  14:14:04,231 - #11 ]
+INFO  14:14:04,231 - #9 =
+INFO  14:14:04,231 - #22 a
+INFO  14:14:04,232 - #6 ;
+INFO  14:14:04,232 - #4 }
+INFO  14:14:04,232 - #22 int
+INFO  14:14:04,232 - #22 getp
+INFO  14:14:04,232 - #15 (
+INFO  14:14:04,232 - #22 int
+INFO  14:14:04,232 - #22 idx
+INFO  14:14:04,232 - #16 )
+INFO  14:14:04,232 - #3 {
+INFO  14:14:04,232 - #31 return
+INFO  14:14:04,233 - #22 pos
+INFO  14:14:04,233 - #10 [
+INFO  14:14:04,233 - #22 idx
+INFO  14:14:04,233 - #11 ]
+INFO  14:14:04,233 - #6 ;
+INFO  14:14:04,233 - #4 }
+INFO  14:14:04,233 - #22 int
+INFO  14:14:04,233 - #22 getn
+INFO  14:14:04,233 - #15 (
+INFO  14:14:04,233 - #22 int
+INFO  14:14:04,233 - #22 idx
+INFO  14:14:04,234 - #16 )
+INFO  14:14:04,234 - #3 {
+INFO  14:14:04,234 - #31 return
+INFO  14:14:04,234 - #22 neg
+INFO  14:14:04,234 - #10 [
+INFO  14:14:04,234 - #22 idx
+INFO  14:14:04,234 - #11 ]
+INFO  14:14:04,234 - #6 ;
+INFO  14:14:04,234 - #4 }
+INFO  14:14:04,234 - #4 }
+INFO  14:14:04,235 - #4 }
+INFO  14:14:04,235 - #12 record
+INFO  14:14:04,236 - #22 Board
+INFO  14:14:04,236 - #3 {
+INFO  14:14:04,236 - #22 int
+INFO  14:14:04,237 - #22 rows
+INFO  14:14:04,237 - #7 ,
+INFO  14:14:04,237 - #22 columns
+INFO  14:14:04,237 - #6 ;
+INFO  14:14:04,237 - #4 }
+INFO  14:14:04,237 - #22 Table
+INFO  14:14:04,238 - #22 val
+INFO  14:14:04,238 - #6 ;
+INFO  14:14:04,238 - #22 Board
+INFO  14:14:04,238 - #22 board
+INFO  14:14:04,238 - #6 ;
+INFO  14:14:04,239 - #3 {
+INFO  14:14:04,239 - #18 void
+INFO  14:14:04,239 - #22 f
+INFO  14:14:04,239 - #15 (
+INFO  14:14:04,239 - #22 char
+INFO  14:14:04,239 - #22 ch
+INFO  14:14:04,239 - #7 ,
+INFO  14:14:04,239 - #22 int
+INFO  14:14:04,239 - #22 a
+INFO  14:14:04,239 - #7 ,
+INFO  14:14:04,239 - #22 int
+INFO  14:14:04,239 - #22 arg
+INFO  14:14:04,240 - #7 ,
+INFO  14:14:04,240 - #18 void
+ERROR 14:14:04,240 - 
+Sintaksna greska na liniji 18
+INFO  14:14:04,240 - #22 jana
+INFO  14:14:04,240 - #16 )
+INFO  14:14:04,240 - #22 int
+INFO  14:14:04,241 - #22 x
+INFO  14:14:04,241 - #6 ;
+INFO  14:14:04,241 - #3 {
+INFO  14:14:04,241 - #22 x
+INFO  14:14:04,241 - #9 =
+INFO  14:14:04,241 - #22 arg
+INFO  14:14:04,241 - #6 ;
+INFO  14:14:04,241 - #4 }
+INFO  14:14:04,242 - #18 void
+INFO  14:14:04,242 - #22 main
+INFO  14:14:04,242 - #15 (
+INFO  14:14:04,242 - #16 )
+INFO  14:14:04,242 - #22 int
+INFO  14:14:04,242 - #22 x
+INFO  14:14:04,242 - #7 ,
+INFO  14:14:04,242 - #22 i
+INFO  14:14:04,242 - #6 ;
+INFO  14:14:04,242 - #22 char
+INFO  14:14:04,242 - #22 c
+INFO  14:14:04,242 - #6 ;
+INFO  14:14:04,242 - #3 {
+INFO  14:14:04,242 - #22 val
+INFO  14:14:04,242 - #9 =
+INFO  14:14:04,243 - #19 new
+INFO  14:14:04,243 - #22 Table
+INFO  14:14:04,243 - #6 ;
+INFO  14:14:04,243 - #22 val
+INFO  14:14:04,243 - #17 .
+INFO  14:14:04,243 - #22 pos
+INFO  14:14:04,243 - #9 =
+INFO  14:14:04,243 - #19 new
+INFO  14:14:04,243 - #22 int
+INFO  14:14:04,243 - #10 [
+INFO  14:14:04,243 - #22 size
+INFO  14:14:04,243 - #11 ]
+INFO  14:14:04,243 - #6 ;
+INFO  14:14:04,243 - #22 val
+INFO  14:14:04,244 - #17 .
+INFO  14:14:04,244 - #22 neg
+INFO  14:14:04,244 - #9 =
+INFO  14:14:04,248 - #19 new
+INFO  14:14:04,248 - #22 int
+INFO  14:14:04,248 - #10 [
+INFO  14:14:04,248 - #22 size
+INFO  14:14:04,248 - #11 ]
+INFO  14:14:04,249 - #6 ;
+INFO  14:14:04,249 - #32 read
+INFO  14:14:04,249 - #15 (
+INFO  14:14:04,249 - #22 x
+INFO  14:14:04,249 - #16 )
+INFO  14:14:04,249 - #6 ;
+INFO  14:14:04,249 - #24 if
+INFO  14:14:04,249 - #15 (
+INFO  14:14:04,249 - #22 x
+INFO  14:14:04,249 - #36 >
+INFO  14:14:04,249 - #20 5
+INFO  14:14:04,251 - #16 )
+INFO  14:14:04,251 - #3 {
+INFO  14:14:04,251 - #26 goto
+INFO  14:14:04,251 - #22 skip
+INFO  14:14:04,252 - #6 ;
+INFO  14:14:04,252 - #4 }
+INFO  14:14:04,252 - #22 i
+INFO  14:14:04,253 - #9 =
+INFO  14:14:04,253 - #20 0
+INFO  14:14:04,253 - #6 ;
+INFO  14:14:04,253 - #27 do
+INFO  14:14:04,253 - #3 {
+INFO  14:14:04,253 - #22 val
+INFO  14:14:04,253 - #17 .
+INFO  14:14:04,253 - #22 putp
+INFO  14:14:04,253 - #15 (
+INFO  14:14:04,253 - #20 0
+INFO  14:14:04,253 - #7 ,
+INFO  14:14:04,254 - #22 i
+INFO  14:14:04,254 - #16 )
+INFO  14:14:04,254 - #6 ;
+INFO  14:14:04,254 - #22 val
+INFO  14:14:04,254 - #17 .
+INFO  14:14:04,254 - #22 putn
+INFO  14:14:04,254 - #15 (
+INFO  14:14:04,254 - #20 0
+INFO  14:14:04,254 - #7 ,
+INFO  14:14:04,254 - #22 i
+INFO  14:14:04,254 - #16 )
+INFO  14:14:04,254 - #6 ;
+INFO  14:14:04,254 - #22 i
+INFO  14:14:04,255 - #47 ++
+INFO  14:14:04,255 - #6 ;
+INFO  14:14:04,256 - #4 }
+INFO  14:14:04,256 - #28 while
+INFO  14:14:04,256 - #15 (
+INFO  14:14:04,256 - #22 i
+INFO  14:14:04,256 - #38 <
+INFO  14:14:04,256 - #22 size
+INFO  14:14:04,257 - #16 )
+INFO  14:14:04,257 - #6 ;
+INFO  14:14:04,257 - #22 skip
+INFO  14:14:04,257 - #8 :
+INFO  14:14:04,257 - #22 f
+INFO  14:14:04,257 - #15 (
+INFO  14:14:04,257 - #22 c
+INFO  14:14:04,257 - #7 ,
+INFO  14:14:04,257 - #22 x
+INFO  14:14:04,257 - #7 ,
+INFO  14:14:04,257 - #22 i
+INFO  14:14:04,257 - #16 )
+INFO  14:14:04,257 - #6 ;
+INFO  14:14:04,257 - #22 board
+INFO  14:14:04,258 - #9 =
+INFO  14:14:04,258 - #19 new
+INFO  14:14:04,258 - #22 Board
+INFO  14:14:04,258 - #6 ;
+INFO  14:14:04,258 - #32 read
+INFO  14:14:04,258 - #15 (
+INFO  14:14:04,258 - #22 board
+INFO  14:14:04,258 - #17 .
+INFO  14:14:04,258 - #22 rows
+INFO  14:14:04,258 - #16 )
+INFO  14:14:04,258 - #6 ;
+INFO  14:14:04,258 - #22 x
+INFO  14:14:04,258 - #9 =
+INFO  14:14:04,258 - #22 board
+INFO  14:14:04,258 - #17 .
+INFO  14:14:04,258 - #22 rows
+INFO  14:14:04,258 - #6 ;
+INFO  14:14:04,259 - #27 do
+INFO  14:14:04,259 - #3 {
+INFO  14:14:04,259 - #24 if
+INFO  14:14:04,259 - #15 (
+INFO  14:14:04,259 - #22 x
+INFO  14:14:04,259 - #39 <=
+INFO  14:14:04,259 - #20 0
+INFO  14:14:04,260 - #16 )
+INFO  14:14:04,260 - #29 break
+INFO  14:14:04,260 - #6 ;
+INFO  14:14:04,260 - #24 if
+INFO  14:14:04,261 - #15 (
+INFO  14:14:04,261 - #20 0
+INFO  14:14:04,261 - #39 <=
+INFO  14:14:04,261 - #22 x
+INFO  14:14:04,261 - #40 &&
+INFO  14:14:04,261 - #22 x
+INFO  14:14:04,261 - #38 <
+INFO  14:14:04,261 - #22 size
+INFO  14:14:04,261 - #16 )
+INFO  14:14:04,261 - #3 {
+INFO  14:14:04,261 - #22 val
+INFO  14:14:04,261 - #17 .
+INFO  14:14:04,261 - #22 putp
+INFO  14:14:04,262 - #15 (
+INFO  14:14:04,262 - #22 val
+INFO  14:14:04,262 - #17 .
+INFO  14:14:04,262 - #22 getp
+INFO  14:14:04,262 - #15 (
+INFO  14:14:04,262 - #22 x
+INFO  14:14:04,262 - #16 )
+INFO  14:14:04,262 - #45 +
+INFO  14:14:04,262 - #20 1
+INFO  14:14:04,263 - #16 )
+INFO  14:14:04,263 - #6 ;
+INFO  14:14:04,263 - #4 }
+INFO  14:14:04,264 - #25 else
+INFO  14:14:04,264 - #24 if
+INFO  14:14:04,264 - #15 (
+INFO  14:14:04,264 - #46 -
+INFO  14:14:04,264 - #22 size
+INFO  14:14:04,264 - #38 <
+INFO  14:14:04,264 - #22 x
+INFO  14:14:04,264 - #40 &&
+INFO  14:14:04,264 - #22 x
+INFO  14:14:04,264 - #38 <
+INFO  14:14:04,264 - #20 0
+INFO  14:14:04,264 - #16 )
+INFO  14:14:04,264 - #3 {
+INFO  14:14:04,264 - #22 val
+INFO  14:14:04,264 - #17 .
+INFO  14:14:04,264 - #22 putn
+INFO  14:14:04,264 - #15 (
+INFO  14:14:04,264 - #22 val
+INFO  14:14:04,264 - #17 .
+INFO  14:14:04,265 - #22 getn
+INFO  14:14:04,265 - #15 (
+INFO  14:14:04,265 - #46 -
+INFO  14:14:04,265 - #22 x
+INFO  14:14:04,265 - #16 )
+INFO  14:14:04,265 - #45 +
+INFO  14:14:04,265 - #20 1
+INFO  14:14:04,265 - #16 )
+INFO  14:14:04,265 - #6 ;
+INFO  14:14:04,265 - #4 }
+INFO  14:14:04,265 - #32 read
+INFO  14:14:04,265 - #15 (
+INFO  14:14:04,265 - #22 x
+INFO  14:14:04,265 - #16 )
+INFO  14:14:04,266 - #6 ;
+INFO  14:14:04,266 - #4 }
+INFO  14:14:04,266 - #28 while
+INFO  14:14:04,266 - #15 (
+INFO  14:14:04,266 - #21 1
+INFO  14:14:04,266 - #16 )
+INFO  14:14:04,266 - #6 ;
+INFO  14:14:04,266 - #4 }
+INFO  14:14:04,266 - #4 }
+INFO  14:14:04,281 - Program(
+ p
+  DeclListVar(
+    DeclListVar(
+      DeclListRecord(
+        DeclListClass(
+          DeclListConst(
+            DeclListEmpty(
+            ) [DeclListEmpty]
+            DeclConst(
+              Type(
+               int
+              ) [Type]
+              ConstDeclSingle(
+               size
+                ConstLitNum(
+                 10
+                ) [ConstLitNum]
+              ) [ConstDeclSingle]
+            ) [DeclConst]
+          ) [DeclListConst]
+          ClassDecl(
+           Table
+            ExtendsDeclEmpty(
+            ) [ExtendsDeclEmpty]
+            InnerVarDecls(
+              InnerVarDeclsEmpty(
+              ) [InnerVarDeclsEmpty]
+              VarDecl(
+                Type(
+                 int
+                ) [Type]
+                VarDeclMultiple(
+                  VarDeclCorrect(
+                    VarDeclSingle(
+                     pos
+                      Bracks(
+                      ) [Bracks]
+                    ) [VarDeclSingle]
+                  ) [VarDeclCorrect]
+                 neg
+                  Bracks(
+                  ) [Bracks]
+                ) [VarDeclMultiple]
+              ) [VarDecl]
+            ) [InnerVarDecls]
+            InnerMethodBlockNoConstr(
+              MethodDecls(
+                MethodDeclPar(
+                  RetTypeVoid(
+                  ) [RetTypeVoid]
+                 putp
+                  FormParsMultiple(
+                    FormParsSingle(
+                      Type(
+                       int
+                      ) [Type]
+                     a
+                      BracksEmpty(
+                      ) [BracksEmpty]
+                    ) [FormParsSingle]
+                    Type(
+                     int
+                    ) [Type]
+                   idx
+                    BracksEmpty(
+                    ) [BracksEmpty]
+                  ) [FormParsMultiple]
+                  InnerVarDeclsEmpty(
+                  ) [InnerVarDeclsEmpty]
+                  StatementsList(
+                    StatementsEmpty(
+                    ) [StatementsEmpty]
+                    StatementSingle(
+                      StatementMatched(
+                        MatchedDesign(
+                          DesignStmt(
+                            DesignatorAccess(
+                              DesignatorAccess(
+                                DesignatorFirst(
+                                 this
+                                ) [DesignatorFirst]
+                                AccessDsgnField(
+                                 pos
+                                ) [AccessDsgnField]
+                              ) [DesignatorAccess]
+                              AccessDsgnArray(
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorFirst(
+                                       idx
+                                      ) [DesignatorFirst]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [AccessDsgnArray]
+                            ) [DesignatorAccess]
+                            DsgnOpAssign(
+                              Assignop(
+                              ) [Assignop]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    DesignatorFirst(
+                                     a
+                                    ) [DesignatorFirst]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [DsgnOpAssign]
+                          ) [DesignStmt]
+                        ) [MatchedDesign]
+                      ) [StatementMatched]
+                    ) [StatementSingle]
+                  ) [StatementsList]
+                ) [MethodDeclPar]
+                MethodDecls(
+                  MethodDeclPar(
+                    RetTypeVoid(
+                    ) [RetTypeVoid]
+                   putn
+                    FormParsMultiple(
+                      FormParsSingle(
+                        Type(
+                         int
+                        ) [Type]
+                       a
+                        BracksEmpty(
+                        ) [BracksEmpty]
+                      ) [FormParsSingle]
+                      Type(
+                       int
+                      ) [Type]
+                     idx
+                      BracksEmpty(
+                      ) [BracksEmpty]
+                    ) [FormParsMultiple]
+                    InnerVarDeclsEmpty(
+                    ) [InnerVarDeclsEmpty]
+                    StatementsList(
+                      StatementsEmpty(
+                      ) [StatementsEmpty]
+                      StatementSingle(
+                        StatementMatched(
+                          MatchedDesign(
+                            DesignStmt(
+                              DesignatorAccess(
+                                DesignatorAccess(
+                                  DesignatorFirst(
+                                   this
+                                  ) [DesignatorFirst]
+                                  AccessDsgnField(
+                                   neg
+                                  ) [AccessDsgnField]
+                                ) [DesignatorAccess]
+                                AccessDsgnArray(
+                                  ExprSingle(
+                                    TermSingle(
+                                      FactorDsgn(
+                                        DesignatorFirst(
+                                         idx
+                                        ) [DesignatorFirst]
+                                      ) [FactorDsgn]
+                                    ) [TermSingle]
+                                  ) [ExprSingle]
+                                ) [AccessDsgnArray]
+                              ) [DesignatorAccess]
+                              DsgnOpAssign(
+                                Assignop(
+                                ) [Assignop]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorFirst(
+                                       a
+                                      ) [DesignatorFirst]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [DsgnOpAssign]
+                            ) [DesignStmt]
+                          ) [MatchedDesign]
+                        ) [StatementMatched]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                  ) [MethodDeclPar]
+                  MethodDecls(
+                    MethodDeclPar(
+                      RetTypeType(
+                        Type(
+                         int
+                        ) [Type]
+                      ) [RetTypeType]
+                     getp
+                      FormParsSingle(
+                        Type(
+                         int
+                        ) [Type]
+                       idx
+                        BracksEmpty(
+                        ) [BracksEmpty]
+                      ) [FormParsSingle]
+                      InnerVarDeclsEmpty(
+                      ) [InnerVarDeclsEmpty]
+                      StatementsList(
+                        StatementsEmpty(
+                        ) [StatementsEmpty]
+                        StatementSingle(
+                          StatementMatched(
+                            MatchedReturn(
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    DesignatorAccess(
+                                      DesignatorFirst(
+                                       pos
+                                      ) [DesignatorFirst]
+                                      AccessDsgnArray(
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorDsgn(
+                                              DesignatorFirst(
+                                               idx
+                                              ) [DesignatorFirst]
+                                            ) [FactorDsgn]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [AccessDsgnArray]
+                                    ) [DesignatorAccess]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [MatchedReturn]
+                          ) [StatementMatched]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                    ) [MethodDeclPar]
+                    MethodDecls(
+                      MethodDeclPar(
+                        RetTypeType(
+                          Type(
+                           int
+                          ) [Type]
+                        ) [RetTypeType]
+                       getn
+                        FormParsSingle(
+                          Type(
+                           int
+                          ) [Type]
+                         idx
+                          BracksEmpty(
+                          ) [BracksEmpty]
+                        ) [FormParsSingle]
+                        InnerVarDeclsEmpty(
+                        ) [InnerVarDeclsEmpty]
+                        StatementsList(
+                          StatementsEmpty(
+                          ) [StatementsEmpty]
+                          StatementSingle(
+                            StatementMatched(
+                              MatchedReturn(
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorAccess(
+                                        DesignatorFirst(
+                                         neg
+                                        ) [DesignatorFirst]
+                                        AccessDsgnArray(
+                                          ExprSingle(
+                                            TermSingle(
+                                              FactorDsgn(
+                                                DesignatorFirst(
+                                                 idx
+                                                ) [DesignatorFirst]
+                                              ) [FactorDsgn]
+                                            ) [TermSingle]
+                                          ) [ExprSingle]
+                                        ) [AccessDsgnArray]
+                                      ) [DesignatorAccess]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [MatchedReturn]
+                            ) [StatementMatched]
+                          ) [StatementSingle]
+                        ) [StatementsList]
+                      ) [MethodDeclPar]
+                      MethodDeclsEmpty(
+                      ) [MethodDeclsEmpty]
+                    ) [MethodDecls]
+                  ) [MethodDecls]
+                ) [MethodDecls]
+              ) [MethodDecls]
+            ) [InnerMethodBlockNoConstr]
+          ) [ClassDecl]
+        ) [DeclListClass]
+        RecordDecl(
+         Board
+          InnerVarDecls(
+            InnerVarDeclsEmpty(
+            ) [InnerVarDeclsEmpty]
+            VarDecl(
+              Type(
+               int
+              ) [Type]
+              VarDeclMultiple(
+                VarDeclCorrect(
+                  VarDeclSingle(
+                   rows
+                    BracksEmpty(
+                    ) [BracksEmpty]
+                  ) [VarDeclSingle]
+                ) [VarDeclCorrect]
+               columns
+                BracksEmpty(
+                ) [BracksEmpty]
+              ) [VarDeclMultiple]
+            ) [VarDecl]
+          ) [InnerVarDecls]
+        ) [RecordDecl]
+      ) [DeclListRecord]
+      VarDeclGlobalCorrect(
+        Type(
+         Table
+        ) [Type]
+        VarDeclSingle(
+         val
+          BracksEmpty(
+          ) [BracksEmpty]
+        ) [VarDeclSingle]
+      ) [VarDeclGlobalCorrect]
+    ) [DeclListVar]
+    VarDeclGlobalCorrect(
+      Type(
+       Board
+      ) [Type]
+      VarDeclSingle(
+       board
+        BracksEmpty(
+        ) [BracksEmpty]
+      ) [VarDeclSingle]
+    ) [VarDeclGlobalCorrect]
+  ) [DeclListVar]
+  MethodDecls(
+    MethodDeclPar(
+      RetTypeVoid(
+      ) [RetTypeVoid]
+     f
+      FormParsError(
+        FormParsMultiple(
+          FormParsMultiple(
+            FormParsSingle(
+              Type(
+               char
+              ) [Type]
+             ch
+              BracksEmpty(
+              ) [BracksEmpty]
+            ) [FormParsSingle]
+            Type(
+             int
+            ) [Type]
+           a
+            BracksEmpty(
+            ) [BracksEmpty]
+          ) [FormParsMultiple]
+          Type(
+           int
+          ) [Type]
+         arg
+          BracksEmpty(
+          ) [BracksEmpty]
+        ) [FormParsMultiple]
+      ) [FormParsError]
+      InnerVarDecls(
+        InnerVarDeclsEmpty(
+        ) [InnerVarDeclsEmpty]
+        VarDecl(
+          Type(
+           int
+          ) [Type]
+          VarDeclSingle(
+           x
+            BracksEmpty(
+            ) [BracksEmpty]
+          ) [VarDeclSingle]
+        ) [VarDecl]
+      ) [InnerVarDecls]
+      StatementsList(
+        StatementsEmpty(
+        ) [StatementsEmpty]
+        StatementSingle(
+          StatementMatched(
+            MatchedDesign(
+              DesignStmt(
+                DesignatorFirst(
+                 x
+                ) [DesignatorFirst]
+                DsgnOpAssign(
+                  Assignop(
+                  ) [Assignop]
+                  ExprSingle(
+                    TermSingle(
+                      FactorDsgn(
+                        DesignatorFirst(
+                         arg
+                        ) [DesignatorFirst]
+                      ) [FactorDsgn]
+                    ) [TermSingle]
+                  ) [ExprSingle]
+                ) [DsgnOpAssign]
+              ) [DesignStmt]
+            ) [MatchedDesign]
+          ) [StatementMatched]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclPar]
+    MethodDecls(
+      MethodDeclNoPar(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+       main
+        InnerVarDecls(
+          InnerVarDecls(
+            InnerVarDeclsEmpty(
+            ) [InnerVarDeclsEmpty]
+            VarDecl(
+              Type(
+               int
+              ) [Type]
+              VarDeclMultiple(
+                VarDeclCorrect(
+                  VarDeclSingle(
+                   x
+                    BracksEmpty(
+                    ) [BracksEmpty]
+                  ) [VarDeclSingle]
+                ) [VarDeclCorrect]
+               i
+                BracksEmpty(
+                ) [BracksEmpty]
+              ) [VarDeclMultiple]
+            ) [VarDecl]
+          ) [InnerVarDecls]
+          VarDecl(
+            Type(
+             char
+            ) [Type]
+            VarDeclSingle(
+             c
+              BracksEmpty(
+              ) [BracksEmpty]
+            ) [VarDeclSingle]
+          ) [VarDecl]
+        ) [InnerVarDecls]
+        StatementsList(
+          StatementsList(
+            StatementsList(
+              StatementsList(
+                StatementsList(
+                  StatementsList(
+                    StatementsList(
+                      StatementsList(
+                        StatementsList(
+                          StatementsList(
+                            StatementsList(
+                              StatementsList(
+                                StatementsEmpty(
+                                ) [StatementsEmpty]
+                                StatementSingle(
+                                  StatementMatched(
+                                    MatchedDesign(
+                                      DesignStmt(
+                                        DesignatorFirst(
+                                         val
+                                        ) [DesignatorFirst]
+                                        DsgnOpAssign(
+                                          Assignop(
+                                          ) [Assignop]
+                                          ExprSingle(
+                                            TermSingle(
+                                              FactorObject(
+                                                Type(
+                                                 Table
+                                                ) [Type]
+                                              ) [FactorObject]
+                                            ) [TermSingle]
+                                          ) [ExprSingle]
+                                        ) [DsgnOpAssign]
+                                      ) [DesignStmt]
+                                    ) [MatchedDesign]
+                                  ) [StatementMatched]
+                                ) [StatementSingle]
+                              ) [StatementsList]
+                              StatementSingle(
+                                StatementMatched(
+                                  MatchedDesign(
+                                    DesignStmt(
+                                      DesignatorAccess(
+                                        DesignatorFirst(
+                                         val
+                                        ) [DesignatorFirst]
+                                        AccessDsgnField(
+                                         pos
+                                        ) [AccessDsgnField]
+                                      ) [DesignatorAccess]
+                                      DsgnOpAssign(
+                                        Assignop(
+                                        ) [Assignop]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorArray(
+                                              Type(
+                                               int
+                                              ) [Type]
+                                              ExprSingle(
+                                                TermSingle(
+                                                  FactorDsgn(
+                                                    DesignatorFirst(
+                                                     size
+                                                    ) [DesignatorFirst]
+                                                  ) [FactorDsgn]
+                                                ) [TermSingle]
+                                              ) [ExprSingle]
+                                            ) [FactorArray]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [DsgnOpAssign]
+                                    ) [DesignStmt]
+                                  ) [MatchedDesign]
+                                ) [StatementMatched]
+                              ) [StatementSingle]
+                            ) [StatementsList]
+                            StatementSingle(
+                              StatementMatched(
+                                MatchedDesign(
+                                  DesignStmt(
+                                    DesignatorAccess(
+                                      DesignatorFirst(
+                                       val
+                                      ) [DesignatorFirst]
+                                      AccessDsgnField(
+                                       neg
+                                      ) [AccessDsgnField]
+                                    ) [DesignatorAccess]
+                                    DsgnOpAssign(
+                                      Assignop(
+                                      ) [Assignop]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorArray(
+                                            Type(
+                                             int
+                                            ) [Type]
+                                            ExprSingle(
+                                              TermSingle(
+                                                FactorDsgn(
+                                                  DesignatorFirst(
+                                                   size
+                                                  ) [DesignatorFirst]
+                                                ) [FactorDsgn]
+                                              ) [TermSingle]
+                                            ) [ExprSingle]
+                                          ) [FactorArray]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [DsgnOpAssign]
+                                  ) [DesignStmt]
+                                ) [MatchedDesign]
+                              ) [StatementMatched]
+                            ) [StatementSingle]
+                          ) [StatementsList]
+                          StatementSingle(
+                            StatementMatched(
+                              MatchedRead(
+                                DesignatorFirst(
+                                 x
+                                ) [DesignatorFirst]
+                              ) [MatchedRead]
+                            ) [StatementMatched]
+                          ) [StatementSingle]
+                        ) [StatementsList]
+                        StatementSingle(
+                          StatementUnmatched(
+                            UnmatchedIf(
+                              CondSingle(
+                                CondTermSingle(
+                                  CondFactMultiple(
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorDsgn(
+                                          DesignatorFirst(
+                                           x
+                                          ) [DesignatorFirst]
+                                        ) [FactorDsgn]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                    RelopGrt(
+                                    ) [RelopGrt]
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorNumber(
+                                         5
+                                        ) [FactorNumber]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                  ) [CondFactMultiple]
+                                ) [CondTermSingle]
+                              ) [CondSingle]
+                              StatementMultiple(
+                                StatementsBlock(
+                                  StatementsList(
+                                    StatementsEmpty(
+                                    ) [StatementsEmpty]
+                                    StatementSingle(
+                                      StatementMatched(
+                                        MatchedGoto(
+                                          Label(
+                                           skip
+                                          ) [Label]
+                                        ) [MatchedGoto]
+                                      ) [StatementMatched]
+                                    ) [StatementSingle]
+                                  ) [StatementsList]
+                                ) [StatementsBlock]
+                              ) [StatementMultiple]
+                            ) [UnmatchedIf]
+                          ) [StatementUnmatched]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                      StatementSingle(
+                        StatementMatched(
+                          MatchedDesign(
+                            DesignStmt(
+                              DesignatorFirst(
+                               i
+                              ) [DesignatorFirst]
+                              DsgnOpAssign(
+                                Assignop(
+                                ) [Assignop]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorNumber(
+                                     0
+                                    ) [FactorNumber]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [DsgnOpAssign]
+                            ) [DesignStmt]
+                          ) [MatchedDesign]
+                        ) [StatementMatched]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                    StatementSingle(
+                      StatementMatched(
+                        MatchedDoWhile(
+                          StatementMultiple(
+                            StatementsBlock(
+                              StatementsList(
+                                StatementsList(
+                                  StatementsList(
+                                    StatementsEmpty(
+                                    ) [StatementsEmpty]
+                                    StatementSingle(
+                                      StatementMatched(
+                                        MatchedDesign(
+                                          DesignStmt(
+                                            DesignatorAccess(
+                                              DesignatorFirst(
+                                               val
+                                              ) [DesignatorFirst]
+                                              AccessDsgnField(
+                                               putp
+                                              ) [AccessDsgnField]
+                                            ) [DesignatorAccess]
+                                            DsgnOpCallPars(
+                                              ActParsMultiple(
+                                                ActParsSingle(
+                                                  ExprSingle(
+                                                    TermSingle(
+                                                      FactorNumber(
+                                                       0
+                                                      ) [FactorNumber]
+                                                    ) [TermSingle]
+                                                  ) [ExprSingle]
+                                                ) [ActParsSingle]
+                                                ExprSingle(
+                                                  TermSingle(
+                                                    FactorDsgn(
+                                                      DesignatorFirst(
+                                                       i
+                                                      ) [DesignatorFirst]
+                                                    ) [FactorDsgn]
+                                                  ) [TermSingle]
+                                                ) [ExprSingle]
+                                              ) [ActParsMultiple]
+                                            ) [DsgnOpCallPars]
+                                          ) [DesignStmt]
+                                        ) [MatchedDesign]
+                                      ) [StatementMatched]
+                                    ) [StatementSingle]
+                                  ) [StatementsList]
+                                  StatementSingle(
+                                    StatementMatched(
+                                      MatchedDesign(
+                                        DesignStmt(
+                                          DesignatorAccess(
+                                            DesignatorFirst(
+                                             val
+                                            ) [DesignatorFirst]
+                                            AccessDsgnField(
+                                             putn
+                                            ) [AccessDsgnField]
+                                          ) [DesignatorAccess]
+                                          DsgnOpCallPars(
+                                            ActParsMultiple(
+                                              ActParsSingle(
+                                                ExprSingle(
+                                                  TermSingle(
+                                                    FactorNumber(
+                                                     0
+                                                    ) [FactorNumber]
+                                                  ) [TermSingle]
+                                                ) [ExprSingle]
+                                              ) [ActParsSingle]
+                                              ExprSingle(
+                                                TermSingle(
+                                                  FactorDsgn(
+                                                    DesignatorFirst(
+                                                     i
+                                                    ) [DesignatorFirst]
+                                                  ) [FactorDsgn]
+                                                ) [TermSingle]
+                                              ) [ExprSingle]
+                                            ) [ActParsMultiple]
+                                          ) [DsgnOpCallPars]
+                                        ) [DesignStmt]
+                                      ) [MatchedDesign]
+                                    ) [StatementMatched]
+                                  ) [StatementSingle]
+                                ) [StatementsList]
+                                StatementSingle(
+                                  StatementMatched(
+                                    MatchedDesign(
+                                      DesignStmt(
+                                        DesignatorFirst(
+                                         i
+                                        ) [DesignatorFirst]
+                                        DsgnOpInc(
+                                        ) [DsgnOpInc]
+                                      ) [DesignStmt]
+                                    ) [MatchedDesign]
+                                  ) [StatementMatched]
+                                ) [StatementSingle]
+                              ) [StatementsList]
+                            ) [StatementsBlock]
+                          ) [StatementMultiple]
+                          CondSingle(
+                            CondTermSingle(
+                              CondFactMultiple(
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorFirst(
+                                       i
+                                      ) [DesignatorFirst]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                                RelopLes(
+                                ) [RelopLes]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorFirst(
+                                       size
+                                      ) [DesignatorFirst]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [CondFactMultiple]
+                            ) [CondTermSingle]
+                          ) [CondSingle]
+                        ) [MatchedDoWhile]
+                      ) [StatementMatched]
+                    ) [StatementSingle]
+                  ) [StatementsList]
+                  StatementSingleLabel(
+                    Label(
+                     skip
+                    ) [Label]
+                    StatementMatched(
+                      MatchedDesign(
+                        DesignStmt(
+                          DesignatorFirst(
+                           f
+                          ) [DesignatorFirst]
+                          DsgnOpCallPars(
+                            ActParsMultiple(
+                              ActParsMultiple(
+                                ActParsSingle(
+                                  ExprSingle(
+                                    TermSingle(
+                                      FactorDsgn(
+                                        DesignatorFirst(
+                                         c
+                                        ) [DesignatorFirst]
+                                      ) [FactorDsgn]
+                                    ) [TermSingle]
+                                  ) [ExprSingle]
+                                ) [ActParsSingle]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      DesignatorFirst(
+                                       x
+                                      ) [DesignatorFirst]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [ActParsMultiple]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    DesignatorFirst(
+                                     i
+                                    ) [DesignatorFirst]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [ActParsMultiple]
+                          ) [DsgnOpCallPars]
+                        ) [DesignStmt]
+                      ) [MatchedDesign]
+                    ) [StatementMatched]
+                  ) [StatementSingleLabel]
+                ) [StatementsList]
+                StatementSingle(
+                  StatementMatched(
+                    MatchedDesign(
+                      DesignStmt(
+                        DesignatorFirst(
+                         board
+                        ) [DesignatorFirst]
+                        DsgnOpAssign(
+                          Assignop(
+                          ) [Assignop]
+                          ExprSingle(
+                            TermSingle(
+                              FactorObject(
+                                Type(
+                                 Board
+                                ) [Type]
+                              ) [FactorObject]
+                            ) [TermSingle]
+                          ) [ExprSingle]
+                        ) [DsgnOpAssign]
+                      ) [DesignStmt]
+                    ) [MatchedDesign]
+                  ) [StatementMatched]
+                ) [StatementSingle]
+              ) [StatementsList]
+              StatementSingle(
+                StatementMatched(
+                  MatchedRead(
+                    DesignatorAccess(
+                      DesignatorFirst(
+                       board
+                      ) [DesignatorFirst]
+                      AccessDsgnField(
+                       rows
+                      ) [AccessDsgnField]
+                    ) [DesignatorAccess]
+                  ) [MatchedRead]
+                ) [StatementMatched]
+              ) [StatementSingle]
+            ) [StatementsList]
+            StatementSingle(
+              StatementMatched(
+                MatchedDesign(
+                  DesignStmt(
+                    DesignatorFirst(
+                     x
+                    ) [DesignatorFirst]
+                    DsgnOpAssign(
+                      Assignop(
+                      ) [Assignop]
+                      ExprSingle(
+                        TermSingle(
+                          FactorDsgn(
+                            DesignatorAccess(
+                              DesignatorFirst(
+                               board
+                              ) [DesignatorFirst]
+                              AccessDsgnField(
+                               rows
+                              ) [AccessDsgnField]
+                            ) [DesignatorAccess]
+                          ) [FactorDsgn]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                    ) [DsgnOpAssign]
+                  ) [DesignStmt]
+                ) [MatchedDesign]
+              ) [StatementMatched]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StatementMatched(
+              MatchedDoWhile(
+                StatementMultiple(
+                  StatementsBlock(
+                    StatementsList(
+                      StatementsList(
+                        StatementsList(
+                          StatementsEmpty(
+                          ) [StatementsEmpty]
+                          StatementSingle(
+                            StatementUnmatched(
+                              UnmatchedIf(
+                                CondSingle(
+                                  CondTermSingle(
+                                    CondFactMultiple(
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorDsgn(
+                                            DesignatorFirst(
+                                             x
+                                            ) [DesignatorFirst]
+                                          ) [FactorDsgn]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                      RelopLee(
+                                      ) [RelopLee]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorNumber(
+                                           0
+                                          ) [FactorNumber]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [CondFactMultiple]
+                                  ) [CondTermSingle]
+                                ) [CondSingle]
+                                StatementSingle(
+                                  StatementMatched(
+                                    MatchedBreak(
+                                    ) [MatchedBreak]
+                                  ) [StatementMatched]
+                                ) [StatementSingle]
+                              ) [UnmatchedIf]
+                            ) [StatementUnmatched]
+                          ) [StatementSingle]
+                        ) [StatementsList]
+                        StatementSingle(
+                          StatementUnmatched(
+                            UnmatchedIfElse(
+                              CondSingle(
+                                CondTermMultiple(
+                                  CondTermSingle(
+                                    CondFactMultiple(
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorNumber(
+                                           0
+                                          ) [FactorNumber]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                      RelopLee(
+                                      ) [RelopLee]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorDsgn(
+                                            DesignatorFirst(
+                                             x
+                                            ) [DesignatorFirst]
+                                          ) [FactorDsgn]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [CondFactMultiple]
+                                  ) [CondTermSingle]
+                                  CondFactMultiple(
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorDsgn(
+                                          DesignatorFirst(
+                                           x
+                                          ) [DesignatorFirst]
+                                        ) [FactorDsgn]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                    RelopLes(
+                                    ) [RelopLes]
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorDsgn(
+                                          DesignatorFirst(
+                                           size
+                                          ) [DesignatorFirst]
+                                        ) [FactorDsgn]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                  ) [CondFactMultiple]
+                                ) [CondTermMultiple]
+                              ) [CondSingle]
+                              IfElseBlockMultiple(
+                                StatementsBlock(
+                                  StatementsList(
+                                    StatementsEmpty(
+                                    ) [StatementsEmpty]
+                                    StatementSingle(
+                                      StatementMatched(
+                                        MatchedDesign(
+                                          DesignStmt(
+                                            DesignatorAccess(
+                                              DesignatorFirst(
+                                               val
+                                              ) [DesignatorFirst]
+                                              AccessDsgnField(
+                                               putp
+                                              ) [AccessDsgnField]
+                                            ) [DesignatorAccess]
+                                            DsgnOpCallPars(
+                                              ActParsSingle(
+                                                ExprMultiple(
+                                                  ExprSingle(
+                                                    TermSingle(
+                                                      FactorDsgnCall(
+                                                        DesignatorAccess(
+                                                          DesignatorFirst(
+                                                           val
+                                                          ) [DesignatorFirst]
+                                                          AccessDsgnField(
+                                                           getp
+                                                          ) [AccessDsgnField]
+                                                        ) [DesignatorAccess]
+                                                        ActParsSingle(
+                                                          ExprSingle(
+                                                            TermSingle(
+                                                              FactorDsgn(
+                                                                DesignatorFirst(
+                                                                 x
+                                                                ) [DesignatorFirst]
+                                                              ) [FactorDsgn]
+                                                            ) [TermSingle]
+                                                          ) [ExprSingle]
+                                                        ) [ActParsSingle]
+                                                      ) [FactorDsgnCall]
+                                                    ) [TermSingle]
+                                                  ) [ExprSingle]
+                                                  AddopPlus(
+                                                  ) [AddopPlus]
+                                                  TermSingle(
+                                                    FactorNumber(
+                                                     1
+                                                    ) [FactorNumber]
+                                                  ) [TermSingle]
+                                                ) [ExprMultiple]
+                                              ) [ActParsSingle]
+                                            ) [DsgnOpCallPars]
+                                          ) [DesignStmt]
+                                        ) [MatchedDesign]
+                                      ) [StatementMatched]
+                                    ) [StatementSingle]
+                                  ) [StatementsList]
+                                ) [StatementsBlock]
+                              ) [IfElseBlockMultiple]
+                              UnmatchedIf(
+                                CondSingle(
+                                  CondTermMultiple(
+                                    CondTermSingle(
+                                      CondFactMultiple(
+                                        ExprSingleMinus(
+                                          TermSingle(
+                                            FactorDsgn(
+                                              DesignatorFirst(
+                                               size
+                                              ) [DesignatorFirst]
+                                            ) [FactorDsgn]
+                                          ) [TermSingle]
+                                        ) [ExprSingleMinus]
+                                        RelopLes(
+                                        ) [RelopLes]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorDsgn(
+                                              DesignatorFirst(
+                                               x
+                                              ) [DesignatorFirst]
+                                            ) [FactorDsgn]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [CondFactMultiple]
+                                    ) [CondTermSingle]
+                                    CondFactMultiple(
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorDsgn(
+                                            DesignatorFirst(
+                                             x
+                                            ) [DesignatorFirst]
+                                          ) [FactorDsgn]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                      RelopLes(
+                                      ) [RelopLes]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorNumber(
+                                           0
+                                          ) [FactorNumber]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [CondFactMultiple]
+                                  ) [CondTermMultiple]
+                                ) [CondSingle]
+                                StatementMultiple(
+                                  StatementsBlock(
+                                    StatementsList(
+                                      StatementsEmpty(
+                                      ) [StatementsEmpty]
+                                      StatementSingle(
+                                        StatementMatched(
+                                          MatchedDesign(
+                                            DesignStmt(
+                                              DesignatorAccess(
+                                                DesignatorFirst(
+                                                 val
+                                                ) [DesignatorFirst]
+                                                AccessDsgnField(
+                                                 putn
+                                                ) [AccessDsgnField]
+                                              ) [DesignatorAccess]
+                                              DsgnOpCallPars(
+                                                ActParsSingle(
+                                                  ExprMultiple(
+                                                    ExprSingle(
+                                                      TermSingle(
+                                                        FactorDsgnCall(
+                                                          DesignatorAccess(
+                                                            DesignatorFirst(
+                                                             val
+                                                            ) [DesignatorFirst]
+                                                            AccessDsgnField(
+                                                             getn
+                                                            ) [AccessDsgnField]
+                                                          ) [DesignatorAccess]
+                                                          ActParsSingle(
+                                                            ExprSingleMinus(
+                                                              TermSingle(
+                                                                FactorDsgn(
+                                                                  DesignatorFirst(
+                                                                   x
+                                                                  ) [DesignatorFirst]
+                                                                ) [FactorDsgn]
+                                                              ) [TermSingle]
+                                                            ) [ExprSingleMinus]
+                                                          ) [ActParsSingle]
+                                                        ) [FactorDsgnCall]
+                                                      ) [TermSingle]
+                                                    ) [ExprSingle]
+                                                    AddopPlus(
+                                                    ) [AddopPlus]
+                                                    TermSingle(
+                                                      FactorNumber(
+                                                       1
+                                                      ) [FactorNumber]
+                                                    ) [TermSingle]
+                                                  ) [ExprMultiple]
+                                                ) [ActParsSingle]
+                                              ) [DsgnOpCallPars]
+                                            ) [DesignStmt]
+                                          ) [MatchedDesign]
+                                        ) [StatementMatched]
+                                      ) [StatementSingle]
+                                    ) [StatementsList]
+                                  ) [StatementsBlock]
+                                ) [StatementMultiple]
+                              ) [UnmatchedIf]
+                            ) [UnmatchedIfElse]
+                          ) [StatementUnmatched]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                      StatementSingle(
+                        StatementMatched(
+                          MatchedRead(
+                            DesignatorFirst(
+                             x
+                            ) [DesignatorFirst]
+                          ) [MatchedRead]
+                        ) [StatementMatched]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                  ) [StatementsBlock]
+                ) [StatementMultiple]
+                CondSingle(
+                  CondTermSingle(
+                    CondFactSingle(
+                      ExprSingle(
+                        TermSingle(
+                          FactorBool(
+                           1
+                          ) [FactorBool]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                    ) [CondFactSingle]
+                  ) [CondTermSingle]
+                ) [CondSingle]
+              ) [MatchedDoWhile]
+            ) [StatementMatched]
+          ) [StatementSingle]
+        ) [StatementsList]
+      ) [MethodDeclNoPar]
+      MethodDeclsEmpty(
+      ) [MethodDeclsEmpty]
+    ) [MethodDecls]
+  ) [MethodDecls]
+) [Program]
+INFO  14:14:04,284 - ===================================
+INFO  14:14:04,291 -  Deklarisanih promenljivih ima = 10

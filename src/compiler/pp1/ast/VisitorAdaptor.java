@@ -1,13 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2021 12:56:4
+// 27/11/2021 15:24:34
 
 
 package compiler.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
+    public void visit(VarDeclGlobal VarDeclGlobal) { }
     public void visit(Unmatched Unmatched) { }
+    public void visit(Xx Xx) { }
     public void visit(Mulop Mulop) { }
     public void visit(MethodDecl MethodDecl) { }
     public void visit(FormParList FormParList) { }
@@ -26,6 +28,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DeclList DeclList) { }
     public void visit(Designator Designator) { }
     public void visit(Term Term) { }
+    public void visit(VarDeclCheck VarDeclCheck) { }
     public void visit(RetType RetType) { }
     public void visit(Statements Statements) { }
     public void visit(ConstDeclList ConstDeclList) { }
@@ -81,6 +84,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DsgnOpInc DsgnOpInc) { visit(); }
     public void visit(DsgnOpCallEmpty DsgnOpCallEmpty) { visit(); }
     public void visit(DsgnOpCallPars DsgnOpCallPars) { visit(); }
+    public void visit(DsgnOpAssignError DsgnOpAssignError) { visit(); }
     public void visit(DsgnOpAssign DsgnOpAssign) { visit(); }
     public void visit(AccessDsgnArray AccessDsgnArray) { visit(); }
     public void visit(AccessDsgnField AccessDsgnField) { visit(); }
@@ -98,8 +102,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MatchedBreak MatchedBreak) { visit(); }
     public void visit(MatchedDoWhile MatchedDoWhile) { visit(); }
     public void visit(MatchedDesign MatchedDesign) { visit(); }
+    public void visit(MatchedIfElseError MatchedIfElseError) { visit(); }
     public void visit(MatchedIfElse MatchedIfElse) { visit(); }
+    public void visit(UnmatchedIfElseError UnmatchedIfElseError) { visit(); }
     public void visit(UnmatchedIfElse UnmatchedIfElse) { visit(); }
+    public void visit(UnmatchedIfError UnmatchedIfError) { visit(); }
     public void visit(UnmatchedIf UnmatchedIf) { visit(); }
     public void visit(StatementUnmatched StatementUnmatched) { visit(); }
     public void visit(StatementMatched StatementMatched) { visit(); }
@@ -109,7 +116,9 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(StatementSingle StatementSingle) { visit(); }
     public void visit(StatementsEmpty StatementsEmpty) { visit(); }
     public void visit(StatementsList StatementsList) { visit(); }
+    public void visit(FormParsSingleError FormParsSingleError) { visit(); }
     public void visit(FormParsSingle FormParsSingle) { visit(); }
+    public void visit(FormParsError FormParsError) { visit(); }
     public void visit(FormParsMultiple FormParsMultiple) { visit(); }
     public void visit(RetTypeVoid RetTypeVoid) { visit(); }
     public void visit(RetTypeType RetTypeType) { visit(); }
@@ -125,19 +134,26 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty) { visit(); }
     public void visit(InnerVarDecls InnerVarDecls) { visit(); }
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty) { visit(); }
+    public void visit(ExtendsDeclError ExtendsDeclError) { visit(); }
     public void visit(ExtendsDeclType ExtendsDeclType) { visit(); }
     public void visit(ClassDecl ClassDecl) { visit(); }
     public void visit(BracksEmpty BracksEmpty) { visit(); }
     public void visit(Bracks Bracks) { visit(); }
+    public void visit(VarDeclError VarDeclError) { visit(); }
+    public void visit(VarDeclCorrect VarDeclCorrect) { visit(); }
     public void visit(VarDeclSingle VarDeclSingle) { visit(); }
     public void visit(VarDeclMultiple VarDeclMultiple) { visit(); }
     public void visit(VarDecl VarDecl) { visit(); }
+    public void visit(VarDeclGlobalError VarDeclGlobalError) { visit(); }
+    public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect) { visit(); }
     public void visit(Type Type) { visit(); }
     public void visit(ConstLitChar ConstLitChar) { visit(); }
     public void visit(ConstLitBool ConstLitBool) { visit(); }
     public void visit(ConstLitNum ConstLitNum) { visit(); }
     public void visit(ConstDeclSingle ConstDeclSingle) { visit(); }
+    public void visit(ConstDeclMultipleError ConstDeclMultipleError) { visit(); }
     public void visit(ConstDeclMultiple ConstDeclMultiple) { visit(); }
+    public void visit(ConstDeclError ConstDeclError) { visit(); }
     public void visit(DeclConst DeclConst) { visit(); }
     public void visit(DeclListEmpty DeclListEmpty) { visit(); }
     public void visit(DeclListRecord DeclListRecord) { visit(); }

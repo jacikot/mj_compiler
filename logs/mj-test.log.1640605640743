@@ -1,0 +1,52 @@
+INFO  12:38:36,737 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program.mj
+INFO  12:38:36,798 - #2 program
+INFO  12:38:36,798 - #22 p
+INFO  12:38:36,798 - #3 {
+INFO  12:38:36,799 - #18 void
+INFO  12:38:36,799 - #22 f
+INFO  12:38:36,800 - #15 (
+INFO  12:38:36,800 - #16 )
+INFO  12:38:36,800 - #3 {
+INFO  12:38:36,801 - #22 x
+INFO  12:38:36,802 - #9 =
+INFO  12:38:36,802 - #22 arg
+INFO  12:38:36,803 - #22 arg
+ERROR 12:38:36,803 - 
+Sintaksna greska na liniji 6
+INFO  12:38:36,804 - #6 ;
+INFO  12:38:36,804 - #4 }
+INFO  12:38:36,804 - #4 }
+ERROR 12:38:36,807 - Izvrsen oporavak do , u liniji 6
+INFO  12:38:36,812 - Program(
+ p
+  DeclListEmpty(
+  ) [DeclListEmpty]
+  MethodDecls(
+    MethodDeclNoPar(
+      RetTypeVoid(
+      ) [RetTypeVoid]
+     f
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsEmpty(
+        ) [StatementsEmpty]
+        StatementSingle(
+          StatementMatched(
+            MatchedDesign(
+              DesignStmtError(
+                DesignatorFirst(
+                 x
+                ) [DesignatorFirst]
+              ) [DesignStmtError]
+            ) [MatchedDesign]
+          ) [StatementMatched]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]
+INFO  12:38:36,814 - ===================================
+INFO  12:38:36,816 -  Deklarisanih promenljivih ima = 0

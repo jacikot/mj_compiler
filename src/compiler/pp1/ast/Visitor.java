@@ -1,13 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2021 12:56:4
+// 27/11/2021 15:24:34
 
 
 package compiler.pp1.ast;
 
 public interface Visitor { 
 
+    public void visit(VarDeclGlobal VarDeclGlobal);
     public void visit(Unmatched Unmatched);
+    public void visit(Xx Xx);
     public void visit(Mulop Mulop);
     public void visit(MethodDecl MethodDecl);
     public void visit(FormParList FormParList);
@@ -26,6 +28,7 @@ public interface Visitor {
     public void visit(DeclList DeclList);
     public void visit(Designator Designator);
     public void visit(Term Term);
+    public void visit(VarDeclCheck VarDeclCheck);
     public void visit(RetType RetType);
     public void visit(Statements Statements);
     public void visit(ConstDeclList ConstDeclList);
@@ -81,6 +84,7 @@ public interface Visitor {
     public void visit(DsgnOpInc DsgnOpInc);
     public void visit(DsgnOpCallEmpty DsgnOpCallEmpty);
     public void visit(DsgnOpCallPars DsgnOpCallPars);
+    public void visit(DsgnOpAssignError DsgnOpAssignError);
     public void visit(DsgnOpAssign DsgnOpAssign);
     public void visit(AccessDsgnArray AccessDsgnArray);
     public void visit(AccessDsgnField AccessDsgnField);
@@ -98,8 +102,11 @@ public interface Visitor {
     public void visit(MatchedBreak MatchedBreak);
     public void visit(MatchedDoWhile MatchedDoWhile);
     public void visit(MatchedDesign MatchedDesign);
+    public void visit(MatchedIfElseError MatchedIfElseError);
     public void visit(MatchedIfElse MatchedIfElse);
+    public void visit(UnmatchedIfElseError UnmatchedIfElseError);
     public void visit(UnmatchedIfElse UnmatchedIfElse);
+    public void visit(UnmatchedIfError UnmatchedIfError);
     public void visit(UnmatchedIf UnmatchedIf);
     public void visit(StatementUnmatched StatementUnmatched);
     public void visit(StatementMatched StatementMatched);
@@ -109,7 +116,9 @@ public interface Visitor {
     public void visit(StatementSingle StatementSingle);
     public void visit(StatementsEmpty StatementsEmpty);
     public void visit(StatementsList StatementsList);
+    public void visit(FormParsSingleError FormParsSingleError);
     public void visit(FormParsSingle FormParsSingle);
+    public void visit(FormParsError FormParsError);
     public void visit(FormParsMultiple FormParsMultiple);
     public void visit(RetTypeVoid RetTypeVoid);
     public void visit(RetTypeType RetTypeType);
@@ -125,19 +134,26 @@ public interface Visitor {
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty);
     public void visit(InnerVarDecls InnerVarDecls);
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty);
+    public void visit(ExtendsDeclError ExtendsDeclError);
     public void visit(ExtendsDeclType ExtendsDeclType);
     public void visit(ClassDecl ClassDecl);
     public void visit(BracksEmpty BracksEmpty);
     public void visit(Bracks Bracks);
+    public void visit(VarDeclError VarDeclError);
+    public void visit(VarDeclCorrect VarDeclCorrect);
     public void visit(VarDeclSingle VarDeclSingle);
     public void visit(VarDeclMultiple VarDeclMultiple);
     public void visit(VarDecl VarDecl);
+    public void visit(VarDeclGlobalError VarDeclGlobalError);
+    public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect);
     public void visit(Type Type);
     public void visit(ConstLitChar ConstLitChar);
     public void visit(ConstLitBool ConstLitBool);
     public void visit(ConstLitNum ConstLitNum);
     public void visit(ConstDeclSingle ConstDeclSingle);
+    public void visit(ConstDeclMultipleError ConstDeclMultipleError);
     public void visit(ConstDeclMultiple ConstDeclMultiple);
+    public void visit(ConstDeclError ConstDeclError);
     public void visit(DeclConst DeclConst);
     public void visit(DeclListEmpty DeclListEmpty);
     public void visit(DeclListRecord DeclListRecord);

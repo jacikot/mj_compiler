@@ -1,30 +1,30 @@
 // generated with ast extension for cup
 // version 0.8
-// 22/11/2021 12:56:4
+// 27/11/2021 15:24:34
 
 
 package compiler.pp1.ast;
 
 public class VarDeclMultiple extends VarDeclList {
 
-    private VarDeclList VarDeclList;
+    private VarDeclCheck VarDeclCheck;
     private String varName;
     private ArrayBracks ArrayBracks;
 
-    public VarDeclMultiple (VarDeclList VarDeclList, String varName, ArrayBracks ArrayBracks) {
-        this.VarDeclList=VarDeclList;
-        if(VarDeclList!=null) VarDeclList.setParent(this);
+    public VarDeclMultiple (VarDeclCheck VarDeclCheck, String varName, ArrayBracks ArrayBracks) {
+        this.VarDeclCheck=VarDeclCheck;
+        if(VarDeclCheck!=null) VarDeclCheck.setParent(this);
         this.varName=varName;
         this.ArrayBracks=ArrayBracks;
         if(ArrayBracks!=null) ArrayBracks.setParent(this);
     }
 
-    public VarDeclList getVarDeclList() {
-        return VarDeclList;
+    public VarDeclCheck getVarDeclCheck() {
+        return VarDeclCheck;
     }
 
-    public void setVarDeclList(VarDeclList VarDeclList) {
-        this.VarDeclList=VarDeclList;
+    public void setVarDeclCheck(VarDeclCheck VarDeclCheck) {
+        this.VarDeclCheck=VarDeclCheck;
     }
 
     public String getVarName() {
@@ -48,18 +48,18 @@ public class VarDeclMultiple extends VarDeclList {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(VarDeclList!=null) VarDeclList.accept(visitor);
+        if(VarDeclCheck!=null) VarDeclCheck.accept(visitor);
         if(ArrayBracks!=null) ArrayBracks.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(VarDeclList!=null) VarDeclList.traverseTopDown(visitor);
+        if(VarDeclCheck!=null) VarDeclCheck.traverseTopDown(visitor);
         if(ArrayBracks!=null) ArrayBracks.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(VarDeclList!=null) VarDeclList.traverseBottomUp(visitor);
+        if(VarDeclCheck!=null) VarDeclCheck.traverseBottomUp(visitor);
         if(ArrayBracks!=null) ArrayBracks.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -69,8 +69,8 @@ public class VarDeclMultiple extends VarDeclList {
         buffer.append(tab);
         buffer.append("VarDeclMultiple(\n");
 
-        if(VarDeclList!=null)
-            buffer.append(VarDeclList.toString("  "+tab));
+        if(VarDeclCheck!=null)
+            buffer.append(VarDeclCheck.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

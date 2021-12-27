@@ -1,0 +1,74 @@
+INFO  11:35:10,498 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program.mj
+INFO  11:35:10,561 - #2 program
+INFO  11:35:10,562 - #22 p
+INFO  11:35:10,562 - #3 {
+INFO  11:35:10,563 - #18 void
+INFO  11:35:10,563 - #22 f
+INFO  11:35:10,564 - #15 (
+INFO  11:35:10,564 - #16 )
+INFO  11:35:10,564 - #3 {
+INFO  11:35:10,565 - #22 x
+INFO  11:35:10,566 - #9 =
+INFO  11:35:10,566 - #22 arg
+INFO  11:35:10,567 - #45 +
+INFO  11:35:10,568 - #22 arg
+INFO  11:35:10,570 - #6 ;
+INFO  11:35:10,571 - #4 }
+INFO  11:35:10,572 - #4 }
+INFO  11:35:10,579 - Program(
+ p
+  DeclListEmpty(
+  ) [DeclListEmpty]
+  MethodDecls(
+    MethodDeclNoPar(
+      RetTypeVoid(
+      ) [RetTypeVoid]
+     f
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsEmpty(
+        ) [StatementsEmpty]
+        StatementSingle(
+          StatementMatched(
+            MatchedDesign(
+              DesignStmt(
+                DesignatorFirst(
+                 x
+                ) [DesignatorFirst]
+                DsgnOpAssign(
+                  Assignop(
+                  ) [Assignop]
+                  ExprMultiple(
+                    ExprSingle(
+                      TermSingle(
+                        FactorDsgn(
+                          DesignatorFirst(
+                           arg
+                          ) [DesignatorFirst]
+                        ) [FactorDsgn]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                    AddopPlus(
+                    ) [AddopPlus]
+                    TermSingle(
+                      FactorDsgn(
+                        DesignatorFirst(
+                         arg
+                        ) [DesignatorFirst]
+                      ) [FactorDsgn]
+                    ) [TermSingle]
+                  ) [ExprMultiple]
+                ) [DsgnOpAssign]
+              ) [DesignStmt]
+            ) [MatchedDesign]
+          ) [StatementMatched]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]
+INFO  11:35:10,579 - ===================================
+INFO  11:35:10,585 -  Deklarisanih promenljivih ima = 0

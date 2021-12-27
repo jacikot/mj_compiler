@@ -109,6 +109,7 @@ nonterminal IfElseBlock IfElseBlock;
 nonterminal VarDeclGlobal VarDeclGlobal;
 nonterminal VarDeclCheck VarDeclCheck;
 nonterminal Xx Xx;
+nonterminal VarDeclListNoC VarDeclListNoC;
 
 Program ::= (Program) PROG IDENT:I1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, D2, M3); RESULT.setLine(I1left); :};
 
@@ -148,7 +149,12 @@ VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI {:
                 (VarDeclGlobalError) error SEMI:l
                 {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :} {: RESULT=new VarDeclGlobalError(); :}
                 ;
-VarDecl ::= (VarDecl) Type:varsType VarDeclList:decls SEMI {: RESULT=new VarDecl(varsType, decls); RESULT.setLine(varsTypeleft); :};
+VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI {: RESULT=new VarDecl(varsType, decls); RESULT.setLine(varsTypeleft); :};
+
+VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC:V1 COMMA IDENT:varName ArrayBracks:A2 {: RESULT=new VarDeclMultipleNoC(V1, varName, A2); RESULT.setLine(V1left); :}
+                |
+                (VarDeclSingleNoC) IDENT:varName ArrayBracks:A1 {: RESULT=new VarDeclSingleNoC(varName, A1); RESULT.setLine(varNameleft); :}
+                ;
 
 VarDeclList ::= (VarDeclMultiple) VarDeclCheck:V1 IDENT:varName ArrayBracks:A2 {: RESULT=new VarDeclMultiple(V1, varName, A2); RESULT.setLine(V1left); :}
                 |
@@ -163,7 +169,12 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK {: RESULT=new Bracks(); :}
                 |
                 (BracksEmpty) {: RESULT=new BracksEmpty(); :} /* epsilon */
                 ;
-ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl:E1 LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE {: RESULT=new ClassDecl(className, E1, vars, methods); RESULT.setLine(classNameleft); :};
+ClassDecl ::= (ClassDeclMethods) CLASS IDENT:className ExtendsDecl:E1 LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE {: RESULT=new ClassDeclMethods(className, E1, vars, methods); RESULT.setLine(classNameleft); :}
+            |
+            (ClassDeclNoMethods) CLASS IDENT:className ExtendsDecl:E1 LBRACE InnerVarDeclList:vars RBRACE {: RESULT=new ClassDeclNoMethods(className, E1, vars); RESULT.setLine(classNameleft); :}
+            |
+            (ClassDeclError) CLASS IDENT:className ExtendsDecl:E1 LBRACE error InnerMethodBlock:methods RBRACE {: RESULT=new ClassDeclError(className, E1, methods); RESULT.setLine(classNameleft); :}
+            ;
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base {: RESULT=new ExtendsDeclType(base); RESULT.setLine(baseleft); :}
                 |
@@ -178,8 +189,6 @@ InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var {: RES
 InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE {: RESULT=new InnerMethodBlockAll(constructor, methods); RESULT.setLine(constructorleft); :}
                     |
                     (InnerMethodBlockNoConstr) LBRACE MethodDeclList:methods RBRACE {: RESULT=new InnerMethodBlockNoConstr(methods); RESULT.setLine(methodsleft); :}
-                    |
-                    (InnerMethodBlockEmpty) {: RESULT=new InnerMethodBlockEmpty(); :} /* epsilon */
                     ;
 RecordDecl ::= (RecordDecl) RECORD IDENT:recordName LBRACE InnerVarDeclList:vars RBRACE {: RESULT=new RecordDecl(recordName, vars); RESULT.setLine(recordNameleft); :};
 ConstructorDecl ::= (ConstructorDecl) IDENT:I1 LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new ConstructorDecl(I1, vars, statements); RESULT.setLine(I1left); :};

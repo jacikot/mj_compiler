@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/11/2021 15:24:34
+// 27/11/2021 15:53:21
 
 
 package compiler.pp1.ast;
 
 public interface Visitor { 
 
+    public void visit(VarDeclListNoC VarDeclListNoC);
     public void visit(VarDeclGlobal VarDeclGlobal);
     public void visit(Unmatched Unmatched);
     public void visit(Xx Xx);
@@ -41,6 +42,7 @@ public interface Visitor {
     public void visit(Cond Cond);
     public void visit(ActPars ActPars);
     public void visit(Statement Statement);
+    public void visit(ClassDecl ClassDecl);
     public void visit(ConstDecl ConstDecl);
     public void visit(CondFact CondFact);
     public void visit(MethodDeclList MethodDeclList);
@@ -128,7 +130,6 @@ public interface Visitor {
     public void visit(MethodDecls MethodDecls);
     public void visit(ConstructorDecl ConstructorDecl);
     public void visit(RecordDecl RecordDecl);
-    public void visit(InnerMethodBlockEmpty InnerMethodBlockEmpty);
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr);
     public void visit(InnerMethodBlockAll InnerMethodBlockAll);
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty);
@@ -136,13 +137,17 @@ public interface Visitor {
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty);
     public void visit(ExtendsDeclError ExtendsDeclError);
     public void visit(ExtendsDeclType ExtendsDeclType);
-    public void visit(ClassDecl ClassDecl);
+    public void visit(ClassDeclError ClassDeclError);
+    public void visit(ClassDeclNoMethods ClassDeclNoMethods);
+    public void visit(ClassDeclMethods ClassDeclMethods);
     public void visit(BracksEmpty BracksEmpty);
     public void visit(Bracks Bracks);
     public void visit(VarDeclError VarDeclError);
     public void visit(VarDeclCorrect VarDeclCorrect);
     public void visit(VarDeclSingle VarDeclSingle);
     public void visit(VarDeclMultiple VarDeclMultiple);
+    public void visit(VarDeclSingleNoC VarDeclSingleNoC);
+    public void visit(VarDeclMultipleNoC VarDeclMultipleNoC);
     public void visit(VarDecl VarDecl);
     public void visit(VarDeclGlobalError VarDeclGlobalError);
     public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect);

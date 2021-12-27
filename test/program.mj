@@ -1,6 +1,6 @@
 program p
 const int size = 10;
-class Table extend A{
+class Table{
     int pos[], neg[];
     {
          void putp (int a, int idx) { this.pos[idx] = a; }

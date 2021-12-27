@@ -19,6 +19,14 @@ public class RuleVisitor extends VisitorAdaptor {
         varDeclCount++;
     }
 
+    public void visit(VarDeclMultipleNoC vardecl){
+        varDeclCount++;
+    }
+
+    public void visit(VarDeclSingleNoC vardecl){
+        varDeclCount++;
+    }
+
 //    public void visit(VarDeclGlobalCorrect vardecl){
 //        varDeclCount++;
 //    }

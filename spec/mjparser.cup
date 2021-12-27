@@ -69,7 +69,7 @@ nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
-nonterminal VarDeclGlobal, VarDeclCheck, Xx;
+nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC;
 
 Program ::= (Program) PROG IDENT DeclList LBRACE MethodDeclList RBRACE;
 
@@ -109,7 +109,12 @@ VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI
                 (VarDeclGlobalError) error SEMI:l
                 {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
                 ;
-VarDecl ::= (VarDecl) Type:varsType VarDeclList:decls SEMI;
+VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI;
+
+VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC COMMA IDENT:varName ArrayBracks
+                |
+                (VarDeclSingleNoC) IDENT:varName ArrayBracks
+                ;
 
 VarDeclList ::= (VarDeclMultiple) VarDeclCheck IDENT:varName ArrayBracks
                 |
@@ -124,7 +129,12 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK
                 |
                 (BracksEmpty) /* epsilon */
                 ;
-ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE;
+ClassDecl ::= (ClassDeclMethods) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE
+            |
+            (ClassDeclNoMethods) CLASS IDENT:className ExtendsDecl LBRACE InnerVarDeclList:vars RBRACE
+            |
+            (ClassDeclError) CLASS IDENT:className ExtendsDecl LBRACE error InnerMethodBlock:methods RBRACE
+            ;
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base
                 |
@@ -139,8 +149,6 @@ InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var
 InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE
                     |
                     (InnerMethodBlockNoConstr) LBRACE MethodDeclList:methods RBRACE
-                    |
-                    (InnerMethodBlockEmpty) /* epsilon */
                     ;
 RecordDecl ::= (RecordDecl) RECORD IDENT:recordName LBRACE InnerVarDeclList:vars RBRACE;
 ConstructorDecl ::= (ConstructorDecl) IDENT LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE;

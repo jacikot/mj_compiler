@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/11/2021 15:24:34
+// 27/11/2021 15:53:21
 
 
 package compiler.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
+    public void visit(VarDeclListNoC VarDeclListNoC) { }
     public void visit(VarDeclGlobal VarDeclGlobal) { }
     public void visit(Unmatched Unmatched) { }
     public void visit(Xx Xx) { }
@@ -41,6 +42,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Cond Cond) { }
     public void visit(ActPars ActPars) { }
     public void visit(Statement Statement) { }
+    public void visit(ClassDecl ClassDecl) { }
     public void visit(ConstDecl ConstDecl) { }
     public void visit(CondFact CondFact) { }
     public void visit(MethodDeclList MethodDeclList) { }
@@ -128,7 +130,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDecls MethodDecls) { visit(); }
     public void visit(ConstructorDecl ConstructorDecl) { visit(); }
     public void visit(RecordDecl RecordDecl) { visit(); }
-    public void visit(InnerMethodBlockEmpty InnerMethodBlockEmpty) { visit(); }
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr) { visit(); }
     public void visit(InnerMethodBlockAll InnerMethodBlockAll) { visit(); }
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty) { visit(); }
@@ -136,13 +137,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty) { visit(); }
     public void visit(ExtendsDeclError ExtendsDeclError) { visit(); }
     public void visit(ExtendsDeclType ExtendsDeclType) { visit(); }
-    public void visit(ClassDecl ClassDecl) { visit(); }
+    public void visit(ClassDeclError ClassDeclError) { visit(); }
+    public void visit(ClassDeclNoMethods ClassDeclNoMethods) { visit(); }
+    public void visit(ClassDeclMethods ClassDeclMethods) { visit(); }
     public void visit(BracksEmpty BracksEmpty) { visit(); }
     public void visit(Bracks Bracks) { visit(); }
     public void visit(VarDeclError VarDeclError) { visit(); }
     public void visit(VarDeclCorrect VarDeclCorrect) { visit(); }
     public void visit(VarDeclSingle VarDeclSingle) { visit(); }
     public void visit(VarDeclMultiple VarDeclMultiple) { visit(); }
+    public void visit(VarDeclSingleNoC VarDeclSingleNoC) { visit(); }
+    public void visit(VarDeclMultipleNoC VarDeclMultipleNoC) { visit(); }
     public void visit(VarDecl VarDecl) { visit(); }
     public void visit(VarDeclGlobalError VarDeclGlobalError) { visit(); }
     public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect) { visit(); }

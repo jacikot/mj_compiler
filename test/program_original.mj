@@ -2,6 +2,13 @@ program p
 const int size = 10, jaab a, xx=5;
 const char variable='p';
 const bool xyz=false;
-JANA xyza, jana[, jana2[];
-const JANA aaaa=0, bbb=0;
+int xyza, jana[, jana2[];
+record B{
+
+}
+record A{
+    int mama;
+    A jana2;
+}
+A aa;
 {}

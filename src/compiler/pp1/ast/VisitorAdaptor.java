@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 19:56:22
+// 31/11/2021 22:38:36
 
 
 package compiler.pp1.ast;
@@ -34,6 +34,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(VarDeclCheck VarDeclCheck) { }
     public void visit(RetType RetType) { }
     public void visit(Statements Statements) { }
+    public void visit(VarDeclElemNoC VarDeclElemNoC) { }
     public void visit(ConstDeclList ConstDeclList) { }
     public void visit(ActParsList ActParsList) { }
     public void visit(InnerVarDeclList InnerVarDeclList) { }
@@ -132,6 +133,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDeclsEmpty MethodDeclsEmpty) { visit(); }
     public void visit(MethodDecls MethodDecls) { visit(); }
     public void visit(ConstructorDecl ConstructorDecl) { visit(); }
+    public void visit(RecordName RecordName) { visit(); }
     public void visit(RecordDecl RecordDecl) { visit(); }
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr) { visit(); }
     public void visit(InnerMethodBlockAll InnerMethodBlockAll) { visit(); }
@@ -151,6 +153,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(VarDeclError VarDeclError) { visit(); }
     public void visit(VarDeclElemSingle VarDeclElemSingle) { visit(); }
     public void visit(VarDeclElemArray VarDeclElemArray) { visit(); }
+    public void visit(VarDeclElemSingleNoC VarDeclElemSingleNoC) { visit(); }
+    public void visit(VarDeclElemArrayNoC VarDeclElemArrayNoC) { visit(); }
     public void visit(VarDeclSingle VarDeclSingle) { visit(); }
     public void visit(VarDeclMultiple VarDeclMultiple) { visit(); }
     public void visit(VarDeclSingleNoC VarDeclSingleNoC) { visit(); }

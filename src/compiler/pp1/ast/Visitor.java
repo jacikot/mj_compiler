@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 19:56:22
+// 31/11/2021 22:38:36
 
 
 package compiler.pp1.ast;
@@ -34,6 +34,7 @@ public interface Visitor {
     public void visit(VarDeclCheck VarDeclCheck);
     public void visit(RetType RetType);
     public void visit(Statements Statements);
+    public void visit(VarDeclElemNoC VarDeclElemNoC);
     public void visit(ConstDeclList ConstDeclList);
     public void visit(ActParsList ActParsList);
     public void visit(InnerVarDeclList InnerVarDeclList);
@@ -132,6 +133,7 @@ public interface Visitor {
     public void visit(MethodDeclsEmpty MethodDeclsEmpty);
     public void visit(MethodDecls MethodDecls);
     public void visit(ConstructorDecl ConstructorDecl);
+    public void visit(RecordName RecordName);
     public void visit(RecordDecl RecordDecl);
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr);
     public void visit(InnerMethodBlockAll InnerMethodBlockAll);
@@ -151,6 +153,8 @@ public interface Visitor {
     public void visit(VarDeclError VarDeclError);
     public void visit(VarDeclElemSingle VarDeclElemSingle);
     public void visit(VarDeclElemArray VarDeclElemArray);
+    public void visit(VarDeclElemSingleNoC VarDeclElemSingleNoC);
+    public void visit(VarDeclElemArrayNoC VarDeclElemArrayNoC);
     public void visit(VarDeclSingle VarDeclSingle);
     public void visit(VarDeclMultiple VarDeclMultiple);
     public void visit(VarDeclSingleNoC VarDeclSingleNoC);

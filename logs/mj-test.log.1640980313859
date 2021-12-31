@@ -1,0 +1,187 @@
+INFO  20:50:05,844 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  20:50:05,925 - #2 program
+INFO  20:50:05,926 - #22 p
+INFO  20:50:05,926 - #5 const
+INFO  20:50:05,928 - #22 int
+INFO  20:50:05,928 - #22 size
+INFO  20:50:05,929 - #9 =
+INFO  20:50:05,929 - #20 10
+INFO  20:50:05,929 - #7 ,
+INFO  20:50:05,929 - #22 jaab
+INFO  20:50:05,929 - #22 a
+ERROR 20:50:05,929 - 
+Sintaksna greska na liniji 2
+INFO  20:50:05,929 - #7 ,
+INFO  20:50:05,929 - #22 xx
+INFO  20:50:05,929 - #9 =
+INFO  20:50:05,930 - #20 5
+INFO  20:50:05,931 - #6 ;
+INFO  20:50:05,931 - #5 const
+INFO  20:50:05,931 - #22 char
+INFO  20:50:05,932 - #22 variable
+INFO  20:50:05,932 - #9 =
+INFO  20:50:05,932 - #23 'p'
+INFO  20:50:05,934 - #6 ;
+INFO  20:50:05,934 - #5 const
+INFO  20:50:05,934 - #22 bool
+INFO  20:50:05,934 - #22 xyz
+INFO  20:50:05,934 - #9 =
+INFO  20:50:05,934 - #21 0
+INFO  20:50:05,934 - #6 ;
+INFO  20:50:05,934 - #22 JANA
+INFO  20:50:05,935 - #22 xyza
+INFO  20:50:05,935 - #7 ,
+INFO  20:50:05,935 - #22 jana
+INFO  20:50:05,935 - #10 [
+INFO  20:50:05,935 - #7 ,
+ERROR 20:50:05,935 - 
+Sintaksna greska na liniji 5
+INFO  20:50:05,935 - #22 jana2
+INFO  20:50:05,935 - #10 [
+INFO  20:50:05,935 - #11 ]
+INFO  20:50:05,936 - #6 ;
+INFO  20:50:05,937 - #5 const
+INFO  20:50:05,937 - #22 JANA
+INFO  20:50:05,937 - #22 aaaa
+INFO  20:50:05,937 - #9 =
+INFO  20:50:05,937 - #20 0
+INFO  20:50:05,937 - #7 ,
+INFO  20:50:05,937 - #22 bbb
+INFO  20:50:05,937 - #9 =
+INFO  20:50:05,937 - #20 0
+INFO  20:50:05,937 - #6 ;
+INFO  20:50:05,938 - #12 record
+INFO  20:50:05,938 - #22 A
+INFO  20:50:05,938 - #3 {
+INFO  20:50:05,939 - #4 }
+INFO  20:50:05,939 - #3 {
+INFO  20:50:05,940 - #4 }
+INFO  20:50:05,947 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListRecord(
+    DeclListConst(
+      DeclListVar(
+        DeclListConst(
+          DeclListConst(
+            DeclListConst(
+              DeclListEmpty(
+              ) [DeclListEmpty]
+              DeclConst(
+                Type(
+                 int
+                ) [Type]
+                ConstDeclMultiple(
+                  ConstDeclMultiple(
+                    ConstDeclSingle(
+                      ConstDeclElemCorrect(
+                       size
+                        ConstLitNum(
+                         10
+                        ) [ConstLitNum]
+                      ) [ConstDeclElemCorrect]
+                    ) [ConstDeclSingle]
+                    ConstDeclElemError(
+                    ) [ConstDeclElemError]
+                  ) [ConstDeclMultiple]
+                  ConstDeclElemCorrect(
+                   xx
+                    ConstLitNum(
+                     5
+                    ) [ConstLitNum]
+                  ) [ConstDeclElemCorrect]
+                ) [ConstDeclMultiple]
+              ) [DeclConst]
+            ) [DeclListConst]
+            DeclConst(
+              Type(
+               char
+              ) [Type]
+              ConstDeclSingle(
+                ConstDeclElemCorrect(
+                 variable
+                  ConstLitChar(
+                   'p'
+                  ) [ConstLitChar]
+                ) [ConstDeclElemCorrect]
+              ) [ConstDeclSingle]
+            ) [DeclConst]
+          ) [DeclListConst]
+          DeclConst(
+            Type(
+             bool
+            ) [Type]
+            ConstDeclSingle(
+              ConstDeclElemCorrect(
+               xyz
+                ConstLitBool(
+                 0
+                ) [ConstLitBool]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclSingle]
+          ) [DeclConst]
+        ) [DeclListConst]
+        VarDeclGlobalCorrect(
+          Type(
+           JANA
+          ) [Type]
+          VarDeclMultiple(
+            VarDeclMultiple(
+              VarDeclSingle(
+                VarDeclElemSingle(
+                 xyza
+                ) [VarDeclElemSingle]
+              ) [VarDeclSingle]
+              VarDeclError(
+              ) [VarDeclError]
+            ) [VarDeclMultiple]
+            VarDeclElemArray(
+             jana2
+            ) [VarDeclElemArray]
+          ) [VarDeclMultiple]
+        ) [VarDeclGlobalCorrect]
+      ) [DeclListVar]
+      DeclConst(
+        Type(
+         JANA
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             aaaa
+              ConstLitNum(
+               0
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+          ConstDeclElemCorrect(
+           bbb
+            ConstLitNum(
+             0
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    RecordDecl(
+      RecordName(
+       A
+      ) [RecordName]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+    ) [RecordDecl]
+  ) [DeclListRecord]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  20:50:05,955 - Pronadjen simbol: p na liniji 1
+INFO  20:50:05,956 - Pronadjen simbol: size na liniji 2
+ERROR 20:50:05,956 - Izvrsen oporavak od greske. 
+INFO  20:50:05,956 - Pronadjen simbol: xx na liniji 2
+INFO  20:50:05,956 - Pronadjen simbol: variable na liniji 3
+INFO  20:50:05,956 - Pronadjen simbol: xyz na liniji 4
+ERROR 20:50:05,958 - Nije pronadjen tip JANA u tabeli simbola! 
+ERROR 20:50:05,958 - Izvrsen oporavak od greske. 
+ERROR 20:50:05,958 - Nije pronadjen tip JANA u tabeli simbola! 
+INFO  20:50:05,959 - Pronadjen simbol: A na liniji 8

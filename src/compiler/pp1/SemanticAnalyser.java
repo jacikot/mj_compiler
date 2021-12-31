@@ -9,6 +9,7 @@ import rs.etf.pp1.symboltable.concepts.Struct;
 
 public class SemanticAnalyser extends VisitorAdaptor {
 
+    static final int RECORD_TYPE=1,CLASS_TYPE=0;
     int printCallCount = 0;
     int varDeclCount = 0;
     int varDeclCountArray = 0;
@@ -16,6 +17,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     boolean errorDetected = false;
     int nVars;
     Type currentType=null;
+    Obj currentTypeDefinition=null;
     MJParser parser;
 
     Logger log = Logger.getLogger(getClass());
@@ -63,17 +65,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(Type type) {
-        Obj typeNode = Tab.find(type.getTypeName());
-        if(typeNode == Tab.noObj){
+        type.obj = Tab.find(type.getTypeName());
+        if(type.obj == Tab.noObj){
             report_error("Nije pronadjen tip " + type.getTypeName() + " u tabeli simbola! ", null);
-            type.struct = Tab.noType;
         }else{
-            if(Obj.Type == typeNode.getKind()){
-                type.struct = typeNode.getType();
+            if(Obj.Type == type.obj.getKind()){
                 currentType=type;
             }else{
                 report_error("Greska: Ime " + type.getTypeName() + " ne predstavlja tip!", type);
-                type.struct = Tab.noType;
+                type.obj = Tab.noObj;
             }
         }
     }
@@ -85,8 +85,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            if(elem.getConstLit().obj.getType().assignableTo(currentType.struct)){
-                Obj node=Tab.insert(Obj.Con,elem.getVarName(),currentType.struct);
+            if(elem.getConstLit().obj.getType().assignableTo(currentType.obj.getType())){
+                Obj node=Tab.insert(Obj.Con,elem.getVarName(),currentType.obj.getType());
                 report_info("Pronadjen simbol: "+elem.getVarName(),elem);
                 node.setAdr(elem.getConstLit().obj.getFpPos());
                 constDeclCount++;
@@ -122,6 +122,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(VarDeclGlobalCorrect b) {
         currentType=null;
     }
+
+    @Override
+    public void visit(VarDecl b) {
+        currentType=null;
+    }
+
     @Override
     public void visit(VarDeclElemArray elem) {
         if(currentType==null) return; //vec je greska ispisana
@@ -130,7 +136,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            Struct arrayType=new Struct(Struct.Array,currentType.struct);
+            Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
             Obj node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCountArray++;
@@ -145,12 +151,67 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            Obj node=Tab.insert(Obj.Var,elem.getVarName(),currentType.struct);
+            Obj node=Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCount++;
         }
     }
 
+    @Override
+    public void visit(VarDeclElemArrayNoC elem) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(currentType.obj.getType().equals(currentTypeDefinition.getType())){
+            report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
+            return;
+        }
+        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
+        }
+        else{
+            Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
+            Obj node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            varDeclCountArray++;
+        }
+    }
+
+    @Override
+    public void visit(VarDeclElemSingleNoC elem) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(currentType.obj.getType().equals(currentTypeDefinition.getType())){
+            report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
+            return;
+        }
+        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
+        }
+        else{
+            Obj node=Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            varDeclCount++;
+        }
+    }
+
+    @Override
+    public void visit(RecordName name) {
+        if(!Tab.find(name.getRecordName()).equals(Tab.noObj)){
+            report_error("Simbol: Ime " + name.getRecordName() + " je vec deklarisan!", name);
+        }
+        Struct struct=new Struct(Struct.Class);
+        name.obj= Tab.insert(Obj.Type,name.getRecordName(), struct);
+        currentTypeDefinition=name.obj;
+        name.obj.setFpPos(RECORD_TYPE);
+        report_info("Pronadjen simbol: "+name.getRecordName(),name);
+        Tab.openScope();
+    }
+
+    @Override
+    public void visit(RecordDecl record) {
+        Tab.chainLocalSymbols(record.getRecordName().obj.getType());
+        Tab.closeScope();
+    }
     @Override
     public void visit(ConstDeclError b) {
         report_error("Izvrsen oporavak od greske. ",b);

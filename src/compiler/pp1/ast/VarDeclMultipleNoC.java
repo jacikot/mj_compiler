@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 19:56:22
+// 31/11/2021 22:38:35
 
 
 package compiler.pp1.ast;
@@ -8,15 +8,13 @@ package compiler.pp1.ast;
 public class VarDeclMultipleNoC extends VarDeclListNoC {
 
     private VarDeclListNoC VarDeclListNoC;
-    private String varName;
-    private ArrayBracks ArrayBracks;
+    private VarDeclElemNoC VarDeclElemNoC;
 
-    public VarDeclMultipleNoC (VarDeclListNoC VarDeclListNoC, String varName, ArrayBracks ArrayBracks) {
+    public VarDeclMultipleNoC (VarDeclListNoC VarDeclListNoC, VarDeclElemNoC VarDeclElemNoC) {
         this.VarDeclListNoC=VarDeclListNoC;
         if(VarDeclListNoC!=null) VarDeclListNoC.setParent(this);
-        this.varName=varName;
-        this.ArrayBracks=ArrayBracks;
-        if(ArrayBracks!=null) ArrayBracks.setParent(this);
+        this.VarDeclElemNoC=VarDeclElemNoC;
+        if(VarDeclElemNoC!=null) VarDeclElemNoC.setParent(this);
     }
 
     public VarDeclListNoC getVarDeclListNoC() {
@@ -27,20 +25,12 @@ public class VarDeclMultipleNoC extends VarDeclListNoC {
         this.VarDeclListNoC=VarDeclListNoC;
     }
 
-    public String getVarName() {
-        return varName;
+    public VarDeclElemNoC getVarDeclElemNoC() {
+        return VarDeclElemNoC;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
-    }
-
-    public ArrayBracks getArrayBracks() {
-        return ArrayBracks;
-    }
-
-    public void setArrayBracks(ArrayBracks ArrayBracks) {
-        this.ArrayBracks=ArrayBracks;
+    public void setVarDeclElemNoC(VarDeclElemNoC VarDeclElemNoC) {
+        this.VarDeclElemNoC=VarDeclElemNoC;
     }
 
     public void accept(Visitor visitor) {
@@ -49,18 +39,18 @@ public class VarDeclMultipleNoC extends VarDeclListNoC {
 
     public void childrenAccept(Visitor visitor) {
         if(VarDeclListNoC!=null) VarDeclListNoC.accept(visitor);
-        if(ArrayBracks!=null) ArrayBracks.accept(visitor);
+        if(VarDeclElemNoC!=null) VarDeclElemNoC.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(VarDeclListNoC!=null) VarDeclListNoC.traverseTopDown(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseTopDown(visitor);
+        if(VarDeclElemNoC!=null) VarDeclElemNoC.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(VarDeclListNoC!=null) VarDeclListNoC.traverseBottomUp(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseBottomUp(visitor);
+        if(VarDeclElemNoC!=null) VarDeclElemNoC.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -75,11 +65,8 @@ public class VarDeclMultipleNoC extends VarDeclListNoC {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+varName);
-        buffer.append("\n");
-
-        if(ArrayBracks!=null)
-            buffer.append(ArrayBracks.toString("  "+tab));
+        if(VarDeclElemNoC!=null)
+            buffer.append(VarDeclElemNoC.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

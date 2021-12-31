@@ -76,9 +76,8 @@ nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, Ds
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type;
-nonterminal ConstDeclElem, VarDeclElem;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -120,17 +119,22 @@ VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI
                 (VarDeclGlobalError) error SEMI:l
                 ;
 VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI;
+
 ClassVarDecl ::= (VarDeclsCorrect) Type:varsType VarDeclListNoC:decls;
 
-VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC COMMA IDENT:varName ArrayBracks
+VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC VarDeclElemNoC
                 |
-                (VarDeclSingleNoC) IDENT:varName ArrayBracks
+                (VarDeclSingleNoC) VarDeclElemNoC
                 ;
 
 VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA VarDeclElem
                 |
                 (VarDeclSingle) VarDeclElem
                 ;
+VarDeclElemNoC ::= (VarDeclElemArrayNoC) IDENT:varName LBRACK RBRACK
+                   |
+                   (VarDeclElemSingleNoC) IDENT:varName
+                   ;
 VarDeclElem ::= (VarDeclElemArray) IDENT:varName LBRACK RBRACK
                 |
                 (VarDeclElemSingle) IDENT:varName
@@ -167,7 +171,8 @@ InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor Me
                     |
                     (InnerMethodBlockNoConstr) LBRACE MethodDeclList:methods RBRACE
                     ;
-RecordDecl ::= (RecordDecl) RECORD IDENT:recordName LBRACE InnerVarDeclList:vars RBRACE;
+RecordDecl ::= (RecordDecl) RECORD RecordName LBRACE InnerVarDeclList:vars RBRACE;
+RecordName ::= (RecordName) IDENT:recordName;
 ConstructorDecl ::= (ConstructorDecl) IDENT LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE;
 
 MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList

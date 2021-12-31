@@ -42,16 +42,18 @@ public class MJSemanticAnalysisTest {
 
             // ispis sintaksnog stabla
             log.info(prog.toString(""));
-            log.info("===================================");
+            System.out.println("=====================SEMANTICKA OBRADA=========================");
 
             // ispis prepoznatih programskih konstrukcija
             SemanticAnalyser v = new SemanticAnalyser();
             v.init();
             prog.traverseBottomUp(v);
+            System.out.println("=====================SINTAKSNA ANALIZA=========================");
 
 //            log.info(" Print count calls = " + v.printCallCount);
 //
-            log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
+            System.out.println(v.constDeclCount +" constants");
+
             Tab.dump();
         }
         finally {

@@ -1,36 +1,35 @@
-INFO  18:48:01,166 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
-INFO  18:48:01,290 - #2 program
-INFO  18:48:01,290 - #22 p
-INFO  18:48:01,290 - #5 const
-INFO  18:48:01,292 - #22 int
-INFO  18:48:01,293 - #22 size
-INFO  18:48:01,293 - #9 =
-INFO  18:48:01,293 - #20 10
-INFO  18:48:01,294 - #7 ,
-INFO  18:48:01,294 - #22 jaab
-INFO  18:48:01,294 - #22 a
-ERROR 18:48:01,294 - 
+INFO  18:15:24,205 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  18:15:24,292 - #2 program
+INFO  18:15:24,292 - #22 p
+INFO  18:15:24,293 - #5 const
+INFO  18:15:24,294 - #22 int
+INFO  18:15:24,294 - #22 size
+INFO  18:15:24,295 - #9 =
+INFO  18:15:24,295 - #20 10
+INFO  18:15:24,295 - #7 ,
+INFO  18:15:24,295 - #22 aa
+INFO  18:15:24,296 - #7 ,
+ERROR 18:15:24,296 - 
 Sintaksna greska na liniji 2
-INFO  18:48:01,295 - #7 ,
-INFO  18:48:01,295 - #22 xx
-INFO  18:48:01,295 - #9 =
-INFO  18:48:01,296 - #20 5
-INFO  18:48:01,297 - #6 ;
-INFO  18:48:01,297 - #5 const
-INFO  18:48:01,298 - #22 char
-INFO  18:48:01,298 - #22 variable
-INFO  18:48:01,298 - #9 =
-INFO  18:48:01,298 - #23 'p'
-INFO  18:48:01,300 - #6 ;
-INFO  18:48:01,300 - #5 const
-INFO  18:48:01,300 - #22 bool
-INFO  18:48:01,300 - #22 xyz
-INFO  18:48:01,300 - #9 =
-INFO  18:48:01,300 - #21 0
-INFO  18:48:01,300 - #6 ;
-INFO  18:48:01,301 - #3 {
-INFO  18:48:01,301 - #4 }
-INFO  18:48:01,306 - Program(
+INFO  18:15:24,296 - #22 xx
+INFO  18:15:24,296 - #9 =
+INFO  18:15:24,296 - #20 5
+INFO  18:15:24,298 - #6 ;
+INFO  18:15:24,298 - #5 const
+INFO  18:15:24,298 - #22 char
+INFO  18:15:24,298 - #22 variable
+INFO  18:15:24,298 - #9 =
+INFO  18:15:24,298 - #23 'p'
+INFO  18:15:24,298 - #6 ;
+INFO  18:15:24,299 - #5 const
+INFO  18:15:24,299 - #22 bool
+INFO  18:15:24,299 - #22 xyz
+INFO  18:15:24,299 - #9 =
+INFO  18:15:24,299 - #21 0
+INFO  18:15:24,299 - #6 ;
+INFO  18:15:24,299 - #3 {
+INFO  18:15:24,299 - #4 }
+INFO  18:15:24,304 - Program(
   ProgramName(
    p
   ) [ProgramName]
@@ -96,9 +95,6 @@ INFO  18:48:01,306 - Program(
   MethodDeclsEmpty(
   ) [MethodDeclsEmpty]
 ) [Program]
-INFO  18:48:01,315 - Pronadjen simbol: p na liniji 1
-INFO  18:48:01,315 - Pronadjen simbol: size na liniji 2
-INFO  18:48:01,315 - Izvrsen oporavak od greske. 
-INFO  18:48:01,315 - Pronadjen simbol: xx na liniji 2
-INFO  18:48:01,315 - Pronadjen simbol: variable na liniji 3
-INFO  18:48:01,315 - Pronadjen simbol: xyz na liniji 4
+INFO  18:15:24,304 - ===================================
+INFO  18:15:24,310 - Izvrsen oporavak od greske. 
+INFO  18:15:24,315 -  Deklarisanih promenljivih ima = 0

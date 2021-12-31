@@ -1,0 +1,74 @@
+INFO  18:31:23,199 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  18:31:23,278 - #2 program
+INFO  18:31:23,278 - #22 p
+INFO  18:31:23,278 - #5 const
+INFO  18:31:23,280 - #22 int
+INFO  18:31:23,280 - #22 size
+INFO  18:31:23,281 - #9 =
+INFO  18:31:23,281 - #20 10
+INFO  18:31:23,281 - #7 ,
+INFO  18:31:23,281 - #22 xx
+INFO  18:31:23,281 - #9 =
+INFO  18:31:23,281 - #20 5
+INFO  18:31:23,281 - #5 const
+ERROR 18:31:23,281 - 
+Sintaksna greska na liniji 3
+INFO  18:31:23,281 - #22 char
+INFO  18:31:23,281 - #22 variable
+INFO  18:31:23,282 - #9 =
+INFO  18:31:23,282 - #23 'p'
+INFO  18:31:23,282 - #6 ;
+INFO  18:31:23,282 - #5 const
+INFO  18:31:23,282 - #22 bool
+INFO  18:31:23,283 - #22 xyz
+INFO  18:31:23,284 - #9 =
+INFO  18:31:23,284 - #21 0
+INFO  18:31:23,284 - #6 ;
+INFO  18:31:23,284 - #3 {
+INFO  18:31:23,285 - #4 }
+INFO  18:31:23,290 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListEmpty(
+      ) [DeclListEmpty]
+      DeclConst(
+        Type(
+         int
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             size
+              ConstLitNum(
+               10
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+          ConstDeclElemError(
+          ) [ConstDeclElemError]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       bool
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         xyz
+          ConstLitBool(
+           0
+          ) [ConstLitBool]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  18:31:23,290 - ===================================
+INFO  18:31:23,299 - Izvrsen oporavak od greske. 
+INFO  18:31:23,303 -  Deklarisanih promenljivih ima = 0

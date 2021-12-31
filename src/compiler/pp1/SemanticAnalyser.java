@@ -11,11 +11,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     int printCallCount = 0;
     int varDeclCount = 0;
+    int constDeclCount=0;
     boolean errorDetected = false;
     int nVars;
     Type currentType=null;
+    MJParser parser;
 
     Logger log = Logger.getLogger(getClass());
+
 
     public void init(){
         Tab.init();
@@ -61,6 +64,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(ProgramName name) {
         name.obj= Tab.insert(Obj.Prog,name.getName(), Tab.noType);
+        report_info("Pronadjen simbol: "+name.getName(),name);
         Tab.openScope();
     }
 
@@ -97,7 +101,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
         else{
             if(elem.getConstLit().obj.getType().assignableTo(currentType.struct)){
                 Obj node=Tab.insert(Obj.Con,elem.getVarName(),currentType.struct);
+                report_info("Pronadjen simbol: "+elem.getVarName(),elem);
                 node.setAdr(elem.getConstLit().obj.getFpPos());
+                constDeclCount++;
             }
             else{
                 report_error("Greska na liniji "+ elem.getLine()+" : nekompatibilni tipovi pri dodeli vrednosti.", null);
@@ -125,5 +131,16 @@ public class SemanticAnalyser extends VisitorAdaptor {
         b.obj=Tab.find("char");
         b.obj.setFpPos(b.getValue().charAt(1));
     }
+
+    @Override
+    public void visit(ConstDeclError b) {
+        report_info("Izvrsen oporavak od greske. ",b);
+    }
+    @Override
+    public void visit(ConstDeclElemError b) {
+        report_info("Izvrsen oporavak od greske. ",b);
+    }
+
+
 
 }

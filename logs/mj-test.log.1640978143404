@@ -1,58 +1,58 @@
-INFO  20:15:43,415 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
-INFO  20:15:43,496 - #2 program
-INFO  20:15:43,496 - #22 p
-INFO  20:15:43,497 - #5 const
-INFO  20:15:43,499 - #22 int
-INFO  20:15:43,499 - #22 size
-INFO  20:15:43,500 - #9 =
-INFO  20:15:43,500 - #20 10
-INFO  20:15:43,500 - #7 ,
-INFO  20:15:43,500 - #22 jaab
-INFO  20:15:43,500 - #22 a
-ERROR 20:15:43,500 - 
+INFO  20:11:35,038 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  20:11:35,116 - #2 program
+INFO  20:11:35,116 - #22 p
+INFO  20:11:35,117 - #5 const
+INFO  20:11:35,119 - #22 int
+INFO  20:11:35,119 - #22 size
+INFO  20:11:35,119 - #9 =
+INFO  20:11:35,120 - #20 10
+INFO  20:11:35,120 - #7 ,
+INFO  20:11:35,120 - #22 jaab
+INFO  20:11:35,120 - #22 a
+ERROR 20:11:35,120 - 
 Sintaksna greska na liniji 2
-INFO  20:15:43,500 - #7 ,
-INFO  20:15:43,500 - #22 xx
-INFO  20:15:43,500 - #9 =
-INFO  20:15:43,501 - #20 5
-INFO  20:15:43,502 - #6 ;
-INFO  20:15:43,502 - #5 const
-INFO  20:15:43,503 - #22 char
-INFO  20:15:43,503 - #22 variable
-INFO  20:15:43,503 - #9 =
-INFO  20:15:43,503 - #23 'p'
-INFO  20:15:43,503 - #6 ;
-INFO  20:15:43,504 - #5 const
-INFO  20:15:43,504 - #22 bool
-INFO  20:15:43,504 - #22 xyz
-INFO  20:15:43,504 - #9 =
-INFO  20:15:43,504 - #21 0
-INFO  20:15:43,504 - #6 ;
-INFO  20:15:43,504 - #22 JANA
-INFO  20:15:43,504 - #22 xyza
-INFO  20:15:43,504 - #7 ,
-INFO  20:15:43,504 - #22 jana
-INFO  20:15:43,504 - #10 [
-INFO  20:15:43,505 - #7 ,
-ERROR 20:15:43,505 - 
+INFO  20:11:35,120 - #7 ,
+INFO  20:11:35,121 - #22 xx
+INFO  20:11:35,121 - #9 =
+INFO  20:11:35,121 - #20 5
+INFO  20:11:35,122 - #6 ;
+INFO  20:11:35,122 - #5 const
+INFO  20:11:35,123 - #22 char
+INFO  20:11:35,123 - #22 variable
+INFO  20:11:35,123 - #9 =
+INFO  20:11:35,123 - #23 'p'
+INFO  20:11:35,125 - #6 ;
+INFO  20:11:35,125 - #5 const
+INFO  20:11:35,125 - #22 bool
+INFO  20:11:35,125 - #22 xyz
+INFO  20:11:35,125 - #9 =
+INFO  20:11:35,125 - #21 0
+INFO  20:11:35,125 - #6 ;
+INFO  20:11:35,126 - #22 JANA
+INFO  20:11:35,126 - #22 xyza
+INFO  20:11:35,126 - #7 ,
+INFO  20:11:35,126 - #22 jana
+INFO  20:11:35,126 - #10 [
+INFO  20:11:35,126 - #7 ,
+ERROR 20:11:35,126 - 
 Sintaksna greska na liniji 5
-INFO  20:15:43,505 - #22 jana2
-INFO  20:15:43,505 - #10 [
-INFO  20:15:43,505 - #11 ]
-INFO  20:15:43,506 - #6 ;
-INFO  20:15:43,506 - #5 const
-INFO  20:15:43,506 - #22 JANA
-INFO  20:15:43,506 - #22 aaaa
-INFO  20:15:43,506 - #9 =
-INFO  20:15:43,506 - #20 0
-INFO  20:15:43,506 - #7 ,
-INFO  20:15:43,507 - #22 bbb
-INFO  20:15:43,507 - #9 =
-INFO  20:15:43,507 - #20 0
-INFO  20:15:43,507 - #6 ;
-INFO  20:15:43,507 - #3 {
-INFO  20:15:43,507 - #4 }
-INFO  20:15:43,513 - Program(
+INFO  20:11:35,126 - #22 jana2
+INFO  20:11:35,126 - #10 [
+INFO  20:11:35,126 - #11 ]
+INFO  20:11:35,128 - #6 ;
+INFO  20:11:35,128 - #5 const
+INFO  20:11:35,128 - #22 JANA
+INFO  20:11:35,128 - #22 aaaa
+INFO  20:11:35,128 - #9 =
+INFO  20:11:35,128 - #20 0
+INFO  20:11:35,129 - #7 ,
+INFO  20:11:35,129 - #22 bbb
+INFO  20:11:35,129 - #9 =
+INFO  20:11:35,129 - #20 0
+INFO  20:11:35,129 - #6 ;
+INFO  20:11:35,129 - #3 {
+INFO  20:11:35,129 - #4 }
+INFO  20:11:35,135 - Program(
   ProgramName(
    p
   ) [ProgramName]
@@ -162,12 +162,12 @@ INFO  20:15:43,513 - Program(
   MethodDeclsEmpty(
   ) [MethodDeclsEmpty]
 ) [Program]
-INFO  20:15:43,521 - Pronadjen simbol: p na liniji 1
-INFO  20:15:43,521 - Pronadjen simbol: size na liniji 2
-ERROR 20:15:43,521 - Izvrsen oporavak od greske. 
-INFO  20:15:43,521 - Pronadjen simbol: xx na liniji 2
-INFO  20:15:43,521 - Pronadjen simbol: variable na liniji 3
-INFO  20:15:43,521 - Pronadjen simbol: xyz na liniji 4
-ERROR 20:15:43,523 - Nije pronadjen tip JANA u tabeli simbola! 
-ERROR 20:15:43,523 - Izvrsen oporavak od greske. 
-ERROR 20:15:43,523 - Nije pronadjen tip JANA u tabeli simbola! 
+INFO  20:11:35,144 - Pronadjen simbol: p na liniji 1
+INFO  20:11:35,144 - Pronadjen simbol: size na liniji 2
+ERROR 20:11:35,144 - Izvrsen oporavak od greske. 
+INFO  20:11:35,144 - Pronadjen simbol: xx na liniji 2
+INFO  20:11:35,145 - Pronadjen simbol: variable na liniji 3
+INFO  20:11:35,145 - Pronadjen simbol: xyz na liniji 4
+ERROR 20:11:35,147 - Nije pronadjen tip JANA u tabeli simbola! 
+ERROR 20:11:35,147 - Izvrsen oporavak od greske. 
+ERROR 20:11:35,147 - Nije pronadjen tip JANA u tabeli simbola! 

@@ -57,6 +57,10 @@ public class MJSemanticAnalysisTest {
             System.out.println(v.varDeclCountArray +" global arrays");
 
             Tab.dump();
+            if(!v.errorDetected&&!p.errorDetected)
+                System.out.println("=====================USPESNO=========================");
+            else
+                System.out.println("=====================NEUSPESNO=========================");
         }
         finally {
             if (br != null) try { br.close(); } catch (IOException e1) { log.error(e1.getMessage(), e1); }

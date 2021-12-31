@@ -1,0 +1,138 @@
+INFO  19:47:24,362 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  19:47:24,451 - #2 program
+INFO  19:47:24,451 - #22 p
+INFO  19:47:24,451 - #5 const
+INFO  19:47:24,453 - #22 int
+INFO  19:47:24,453 - #22 size
+INFO  19:47:24,454 - #9 =
+INFO  19:47:24,454 - #20 10
+INFO  19:47:24,455 - #7 ,
+INFO  19:47:24,455 - #22 jaab
+INFO  19:47:24,455 - #22 a
+ERROR 19:47:24,455 - 
+Sintaksna greska na liniji 2
+INFO  19:47:24,455 - #7 ,
+INFO  19:47:24,455 - #22 xx
+INFO  19:47:24,455 - #9 =
+INFO  19:47:24,456 - #20 5
+INFO  19:47:24,457 - #6 ;
+INFO  19:47:24,457 - #5 const
+INFO  19:47:24,458 - #22 char
+INFO  19:47:24,458 - #22 variable
+INFO  19:47:24,458 - #9 =
+INFO  19:47:24,458 - #23 'p'
+INFO  19:47:24,460 - #6 ;
+INFO  19:47:24,460 - #5 const
+INFO  19:47:24,461 - #22 bool
+INFO  19:47:24,461 - #22 xyz
+INFO  19:47:24,461 - #9 =
+INFO  19:47:24,461 - #21 0
+INFO  19:47:24,461 - #6 ;
+INFO  19:47:24,461 - #22 bool
+INFO  19:47:24,461 - #22 xyza
+INFO  19:47:24,461 - #10 [
+INFO  19:47:24,461 - #7 ,
+ERROR 19:47:24,461 - 
+Sintaksna greska na liniji 5
+INFO  19:47:24,461 - #22 jana
+INFO  19:47:24,462 - #7 ,
+INFO  19:47:24,462 - #22 jana2
+INFO  19:47:24,463 - #6 ;
+INFO  19:47:24,463 - #3 {
+INFO  19:47:24,463 - #4 }
+INFO  19:47:24,470 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListVar(
+    DeclListConst(
+      DeclListConst(
+        DeclListConst(
+          DeclListEmpty(
+          ) [DeclListEmpty]
+          DeclConst(
+            Type(
+             int
+            ) [Type]
+            ConstDeclMultiple(
+              ConstDeclMultiple(
+                ConstDeclSingle(
+                  ConstDeclElemCorrect(
+                   size
+                    ConstLitNum(
+                     10
+                    ) [ConstLitNum]
+                  ) [ConstDeclElemCorrect]
+                ) [ConstDeclSingle]
+                ConstDeclElemError(
+                ) [ConstDeclElemError]
+              ) [ConstDeclMultiple]
+              ConstDeclElemCorrect(
+               xx
+                ConstLitNum(
+                 5
+                ) [ConstLitNum]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclMultiple]
+          ) [DeclConst]
+        ) [DeclListConst]
+        DeclConst(
+          Type(
+           char
+          ) [Type]
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             variable
+              ConstLitChar(
+               'p'
+              ) [ConstLitChar]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+        ) [DeclConst]
+      ) [DeclListConst]
+      DeclConst(
+        Type(
+         bool
+        ) [Type]
+        ConstDeclSingle(
+          ConstDeclElemCorrect(
+           xyz
+            ConstLitBool(
+             0
+            ) [ConstLitBool]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclSingle]
+      ) [DeclConst]
+    ) [DeclListConst]
+    VarDeclGlobalCorrect(
+      Type(
+       bool
+      ) [Type]
+      VarDeclMultiple(
+        VarDeclCorrect(
+          VarDeclMultiple(
+            VarDeclError(
+            ) [VarDeclError]
+            VarDeclElemSingle(
+             jana
+            ) [VarDeclElemSingle]
+          ) [VarDeclMultiple]
+        ) [VarDeclCorrect]
+        VarDeclElemSingle(
+         jana2
+        ) [VarDeclElemSingle]
+      ) [VarDeclMultiple]
+    ) [VarDeclGlobalCorrect]
+  ) [DeclListVar]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  19:47:24,478 - Pronadjen simbol: p na liniji 1
+INFO  19:47:24,478 - Pronadjen simbol: size na liniji 2
+INFO  19:47:24,479 - Izvrsen oporavak od greske. 
+INFO  19:47:24,479 - Pronadjen simbol: xx na liniji 2
+INFO  19:47:24,479 - Pronadjen simbol: variable na liniji 3
+INFO  19:47:24,479 - Pronadjen simbol: xyz na liniji 4
+INFO  19:47:24,479 - Izvrsen oporavak od greske. 
+INFO  19:47:24,479 - Pronadjen simbol: jana na liniji 5
+INFO  19:47:24,479 - Pronadjen simbol: jana2 na liniji 5

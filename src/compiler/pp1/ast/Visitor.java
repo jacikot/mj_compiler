@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 17:55:52
+// 31/11/2021 19:56:22
 
 
 package compiler.pp1.ast;
@@ -14,6 +14,7 @@ public interface Visitor {
     public void visit(Mulop Mulop);
     public void visit(MethodDecl MethodDecl);
     public void visit(FormParList FormParList);
+    public void visit(VarDeclElem VarDeclElem);
     public void visit(Matched Matched);
     public void visit(Relop Relop);
     public void visit(DesignStatement DesignStatement);
@@ -148,7 +149,8 @@ public interface Visitor {
     public void visit(BracksEmpty BracksEmpty);
     public void visit(Bracks Bracks);
     public void visit(VarDeclError VarDeclError);
-    public void visit(VarDeclCorrect VarDeclCorrect);
+    public void visit(VarDeclElemSingle VarDeclElemSingle);
+    public void visit(VarDeclElemArray VarDeclElemArray);
     public void visit(VarDeclSingle VarDeclSingle);
     public void visit(VarDeclMultiple VarDeclMultiple);
     public void visit(VarDeclSingleNoC VarDeclSingleNoC);

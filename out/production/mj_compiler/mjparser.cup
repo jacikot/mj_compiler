@@ -78,7 +78,7 @@ nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type;
-nonterminal ConstDeclElem;
+nonterminal ConstDeclElem, VarDeclElem;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -118,7 +118,6 @@ Type ::= (Type) IDENT:typeName;
 VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI
                 |
                 (VarDeclGlobalError) error SEMI:l
-                {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
                 ;
 VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI;
 ClassVarDecl ::= (VarDeclsCorrect) Type:varsType VarDeclListNoC:decls;
@@ -128,14 +127,15 @@ VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC COMMA IDENT:varName Array
                 (VarDeclSingleNoC) IDENT:varName ArrayBracks
                 ;
 
-VarDeclList ::= (VarDeclMultiple) VarDeclCheck IDENT:varName ArrayBracks
+VarDeclList ::= (VarDeclMultiple) VarDeclList COMMA VarDeclElem
                 |
-                (VarDeclSingle) IDENT:varName ArrayBracks
+                (VarDeclSingle) VarDeclElem
                 ;
-VarDeclCheck ::= (VarDeclCorrect) VarDeclList COMMA
+VarDeclElem ::= (VarDeclElemArray) IDENT:varName LBRACK RBRACK
                 |
-                (VarDeclError) error COMMA:l
-                {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null);  :}
+                (VarDeclElemSingle) IDENT:varName
+                |
+                (VarDeclError) error
                 ;
 ArrayBracks ::= (Bracks) LBRACK RBRACK
                 |

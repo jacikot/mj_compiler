@@ -1,0 +1,140 @@
+INFO  19:30:15,432 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  19:30:15,514 - #2 program
+INFO  19:30:15,515 - #22 p
+INFO  19:30:15,515 - #5 const
+INFO  19:30:15,517 - #22 int
+INFO  19:30:15,517 - #22 size
+INFO  19:30:15,518 - #9 =
+INFO  19:30:15,518 - #20 10
+INFO  19:30:15,518 - #7 ,
+INFO  19:30:15,518 - #22 jaab
+INFO  19:30:15,518 - #22 a
+ERROR 19:30:15,519 - 
+Sintaksna greska na liniji 2
+INFO  19:30:15,519 - #7 ,
+INFO  19:30:15,519 - #22 xx
+INFO  19:30:15,519 - #9 =
+INFO  19:30:15,519 - #20 5
+INFO  19:30:15,520 - #6 ;
+INFO  19:30:15,521 - #5 const
+INFO  19:30:15,521 - #22 char
+INFO  19:30:15,521 - #22 variable
+INFO  19:30:15,521 - #9 =
+INFO  19:30:15,521 - #23 'p'
+INFO  19:30:15,522 - #6 ;
+INFO  19:30:15,522 - #5 const
+INFO  19:30:15,522 - #22 bool
+INFO  19:30:15,522 - #22 xyz
+INFO  19:30:15,522 - #9 =
+INFO  19:30:15,522 - #21 0
+INFO  19:30:15,522 - #6 ;
+INFO  19:30:15,522 - #22 int
+INFO  19:30:15,523 - #22 xyza
+INFO  19:30:15,523 - #7 ,
+INFO  19:30:15,523 - #22 jana
+INFO  19:30:15,523 - #7 ,
+INFO  19:30:15,523 - #22 jana2
+INFO  19:30:15,523 - #6 ;
+INFO  19:30:15,523 - #3 {
+INFO  19:30:15,524 - #4 }
+INFO  19:30:15,531 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListVar(
+    DeclListConst(
+      DeclListConst(
+        DeclListConst(
+          DeclListEmpty(
+          ) [DeclListEmpty]
+          DeclConst(
+            Type(
+             int
+            ) [Type]
+            ConstDeclMultiple(
+              ConstDeclMultiple(
+                ConstDeclSingle(
+                  ConstDeclElemCorrect(
+                   size
+                    ConstLitNum(
+                     10
+                    ) [ConstLitNum]
+                  ) [ConstDeclElemCorrect]
+                ) [ConstDeclSingle]
+                ConstDeclElemError(
+                ) [ConstDeclElemError]
+              ) [ConstDeclMultiple]
+              ConstDeclElemCorrect(
+               xx
+                ConstLitNum(
+                 5
+                ) [ConstLitNum]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclMultiple]
+          ) [DeclConst]
+        ) [DeclListConst]
+        DeclConst(
+          Type(
+           char
+          ) [Type]
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             variable
+              ConstLitChar(
+               'p'
+              ) [ConstLitChar]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+        ) [DeclConst]
+      ) [DeclListConst]
+      DeclConst(
+        Type(
+         bool
+        ) [Type]
+        ConstDeclSingle(
+          ConstDeclElemCorrect(
+           xyz
+            ConstLitBool(
+             0
+            ) [ConstLitBool]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclSingle]
+      ) [DeclConst]
+    ) [DeclListConst]
+    VarDeclGlobalCorrect(
+      Type(
+       int
+      ) [Type]
+      VarDeclMultiple(
+        VarDeclCorrect(
+          VarDeclMultiple(
+            VarDeclCorrect(
+              VarDeclSingle(
+                VarDeclElemSingle(
+                 xyza
+                ) [VarDeclElemSingle]
+              ) [VarDeclSingle]
+            ) [VarDeclCorrect]
+            VarDeclElemSingle(
+             jana
+            ) [VarDeclElemSingle]
+          ) [VarDeclMultiple]
+        ) [VarDeclCorrect]
+        VarDeclElemSingle(
+         jana2
+        ) [VarDeclElemSingle]
+      ) [VarDeclMultiple]
+    ) [VarDeclGlobalCorrect]
+  ) [DeclListVar]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  19:30:15,539 - Pronadjen simbol: p na liniji 1
+INFO  19:30:15,539 - Pronadjen simbol: size na liniji 2
+INFO  19:30:15,539 - Izvrsen oporavak od greske. 
+INFO  19:30:15,539 - Pronadjen simbol: xx na liniji 2
+INFO  19:30:15,539 - Pronadjen simbol: variable na liniji 3
+INFO  19:30:15,539 - Pronadjen simbol: xyz na liniji 4
+INFO  19:30:15,540 - Pronadjen simbol: xyza na liniji 5
+INFO  19:30:15,540 - Pronadjen simbol: jana na liniji 5
+INFO  19:30:15,540 - Pronadjen simbol: jana2 na liniji 5

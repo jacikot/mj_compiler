@@ -1,11 +1,11 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 17:55:52
+// 31/11/2021 19:56:22
 
 
 package compiler.pp1.ast;
 
-public class VarDeclError extends VarDeclCheck {
+public class VarDeclError extends VarDeclElem {
 
     public VarDeclError () {
     }

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 17:55:52
+// 31/11/2021 19:56:22
 
 
 package compiler.pp1.ast;
@@ -14,6 +14,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Mulop Mulop) { }
     public void visit(MethodDecl MethodDecl) { }
     public void visit(FormParList FormParList) { }
+    public void visit(VarDeclElem VarDeclElem) { }
     public void visit(Matched Matched) { }
     public void visit(Relop Relop) { }
     public void visit(DesignStatement DesignStatement) { }
@@ -148,7 +149,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(BracksEmpty BracksEmpty) { visit(); }
     public void visit(Bracks Bracks) { visit(); }
     public void visit(VarDeclError VarDeclError) { visit(); }
-    public void visit(VarDeclCorrect VarDeclCorrect) { visit(); }
+    public void visit(VarDeclElemSingle VarDeclElemSingle) { visit(); }
+    public void visit(VarDeclElemArray VarDeclElemArray) { visit(); }
     public void visit(VarDeclSingle VarDeclSingle) { visit(); }
     public void visit(VarDeclMultiple VarDeclMultiple) { visit(); }
     public void visit(VarDeclSingleNoC VarDeclSingleNoC) { visit(); }

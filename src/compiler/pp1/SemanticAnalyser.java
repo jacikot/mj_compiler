@@ -11,6 +11,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     int printCallCount = 0;
     int varDeclCount = 0;
+    int varDeclCountArray = 0;
     int constDeclCount=0;
     boolean errorDetected = false;
     int nVars;
@@ -45,21 +46,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
         log.info(msg.toString());
     }
 
-    public void visit(VarDeclMultiple vardecl){
-        varDeclCount++;
-    }
-
-    public void visit(VarDeclSingle vardecl){
-        varDeclCount++;
-    }
-
-    public void visit(VarDeclMultipleNoC vardecl){
-        varDeclCount++;
-    }
-
-    public void visit(VarDeclSingleNoC vardecl){
-        varDeclCount++;
-    }
 
     @Override
     public void visit(ProgramName name) {
@@ -94,7 +80,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     public void visit(ConstDeclElemCorrect elem){
         if(currentType==null) return; //vec je greska ispisana
-        if(Tab.find(elem.getVarName())!=Tab.noObj){
+        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
@@ -113,7 +99,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
     @Override
-    public void visit(ConstDecl b) {
+    public void visit(DeclConst b) {
         currentType=null;
     }
     @Override
@@ -133,12 +119,55 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
     @Override
+    public void visit(VarDeclGlobalCorrect b) {
+        currentType=null;
+    }
+    @Override
+    public void visit(VarDeclElemArray elem) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
+        }
+        else{
+            Struct arrayType=new Struct(Struct.Array,currentType.struct);
+            Obj node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            varDeclCountArray++;
+        }
+    }
+
+    @Override
+    public void visit(VarDeclElemSingle elem) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
+        }
+        else{
+            Obj node=Tab.insert(Obj.Var,elem.getVarName(),currentType.struct);
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            varDeclCount++;
+        }
+    }
+
+    @Override
     public void visit(ConstDeclError b) {
-        report_info("Izvrsen oporavak od greske. ",b);
+        report_error("Izvrsen oporavak od greske. ",b);
     }
     @Override
     public void visit(ConstDeclElemError b) {
-        report_info("Izvrsen oporavak od greske. ",b);
+        report_error("Izvrsen oporavak od greske. ",b);
+    }
+
+    @Override
+    public void visit(VarDeclGlobalError b) {
+        report_error("Izvrsen oporavak od greske. ",b);
+    }
+
+    @Override
+    public void visit(VarDeclError b) {
+        report_error("Izvrsen oporavak od greske. ",b);
     }
 
 

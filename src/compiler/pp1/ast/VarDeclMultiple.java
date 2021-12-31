@@ -1,46 +1,36 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 17:55:52
+// 31/11/2021 19:56:22
 
 
 package compiler.pp1.ast;
 
 public class VarDeclMultiple extends VarDeclList {
 
-    private VarDeclCheck VarDeclCheck;
-    private String varName;
-    private ArrayBracks ArrayBracks;
+    private VarDeclList VarDeclList;
+    private VarDeclElem VarDeclElem;
 
-    public VarDeclMultiple (VarDeclCheck VarDeclCheck, String varName, ArrayBracks ArrayBracks) {
-        this.VarDeclCheck=VarDeclCheck;
-        if(VarDeclCheck!=null) VarDeclCheck.setParent(this);
-        this.varName=varName;
-        this.ArrayBracks=ArrayBracks;
-        if(ArrayBracks!=null) ArrayBracks.setParent(this);
+    public VarDeclMultiple (VarDeclList VarDeclList, VarDeclElem VarDeclElem) {
+        this.VarDeclList=VarDeclList;
+        if(VarDeclList!=null) VarDeclList.setParent(this);
+        this.VarDeclElem=VarDeclElem;
+        if(VarDeclElem!=null) VarDeclElem.setParent(this);
     }
 
-    public VarDeclCheck getVarDeclCheck() {
-        return VarDeclCheck;
+    public VarDeclList getVarDeclList() {
+        return VarDeclList;
     }
 
-    public void setVarDeclCheck(VarDeclCheck VarDeclCheck) {
-        this.VarDeclCheck=VarDeclCheck;
+    public void setVarDeclList(VarDeclList VarDeclList) {
+        this.VarDeclList=VarDeclList;
     }
 
-    public String getVarName() {
-        return varName;
+    public VarDeclElem getVarDeclElem() {
+        return VarDeclElem;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
-    }
-
-    public ArrayBracks getArrayBracks() {
-        return ArrayBracks;
-    }
-
-    public void setArrayBracks(ArrayBracks ArrayBracks) {
-        this.ArrayBracks=ArrayBracks;
+    public void setVarDeclElem(VarDeclElem VarDeclElem) {
+        this.VarDeclElem=VarDeclElem;
     }
 
     public void accept(Visitor visitor) {
@@ -48,19 +38,19 @@ public class VarDeclMultiple extends VarDeclList {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(VarDeclCheck!=null) VarDeclCheck.accept(visitor);
-        if(ArrayBracks!=null) ArrayBracks.accept(visitor);
+        if(VarDeclList!=null) VarDeclList.accept(visitor);
+        if(VarDeclElem!=null) VarDeclElem.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(VarDeclCheck!=null) VarDeclCheck.traverseTopDown(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseTopDown(visitor);
+        if(VarDeclList!=null) VarDeclList.traverseTopDown(visitor);
+        if(VarDeclElem!=null) VarDeclElem.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(VarDeclCheck!=null) VarDeclCheck.traverseBottomUp(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseBottomUp(visitor);
+        if(VarDeclList!=null) VarDeclList.traverseBottomUp(visitor);
+        if(VarDeclElem!=null) VarDeclElem.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -69,17 +59,14 @@ public class VarDeclMultiple extends VarDeclList {
         buffer.append(tab);
         buffer.append("VarDeclMultiple(\n");
 
-        if(VarDeclCheck!=null)
-            buffer.append(VarDeclCheck.toString("  "+tab));
+        if(VarDeclList!=null)
+            buffer.append(VarDeclList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+varName);
-        buffer.append("\n");
-
-        if(ArrayBracks!=null)
-            buffer.append(ArrayBracks.toString("  "+tab));
+        if(VarDeclElem!=null)
+            buffer.append(VarDeclElem.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

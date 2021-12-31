@@ -52,7 +52,9 @@ public class MJSemanticAnalysisTest {
 
 //            log.info(" Print count calls = " + v.printCallCount);
 //
-            System.out.println(v.constDeclCount +" constants");
+            System.out.println(v.constDeclCount +" global constants");
+            System.out.println(v.varDeclCount+" global variables");
+            System.out.println(v.varDeclCountArray +" global arrays");
 
             Tab.dump();
         }

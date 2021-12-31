@@ -13,6 +13,7 @@ import compiler.pp1.ast.*;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
+	boolean errorDetected;
 
 
     // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
@@ -34,6 +35,7 @@ parser code {:
 
 //string builder koristimo za gresku
     public void report_error(String message, Object info) {
+        errorDetected = true;
     	StringBuilder msg = new StringBuilder(message);
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left); //left - sadrzi broj linije
@@ -41,6 +43,10 @@ parser code {:
     }
 
 
+:}
+
+init with {:
+	errorDetected = false;
 :}
 
 //resetovanje dohvatanja svakog tokena od lexera
@@ -69,9 +75,13 @@ nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
-nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassVarDeclList, ClassVarDecl;
+nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName;
 
-Program ::= (Program) PROG IDENT DeclList LBRACE MethodDeclList RBRACE;
+
+Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
+
+ProgramName::= (ProgramName) IDENT:name;
 
 DeclList ::= (DeclListConst) DeclList ConstDecl
             |
@@ -130,7 +140,7 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK
                 |
                 (BracksEmpty) /* epsilon */
                 ;
-ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE ClassVarDeclList:vars RBRACE;
+ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl LBRACE ClassDeclList:vars RBRACE;
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base
                 |
@@ -142,15 +152,15 @@ InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var
                 |
                 (InnerVarDeclsEmpty) /* epsilon */
                 ;
-ClassVarDeclList ::= (ClassVarDecls) ClassVarDecl:var SEMI ClassVarDeclList:varList
+ClassDeclList ::= (ClassVarDecls) ClassVarDecl:var SEMI ClassDeclList:varList
                 |
-                (ClassVarDeclsError) error SEMI ClassVarDeclList:varList
+                (ClassVarDeclsError) error SEMI ClassDeclList:varList
                 |
-                (ClassVarDeclsMethods) InnerMethodBlock:methods
+                (ClassDeclsMethods) InnerMethodBlock:methods
                 |
-                (ClassVarDeclsMethodsError) error InnerMethodBlock:methods
+                (ClassDeclsMethodsError) error InnerMethodBlock:methods
                 |
-                (ClassVarDeclsEmpty) /* epsilon */
+                (ClassDeclsEmpty) /* epsilon */
                 ;
 InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE
                     |

@@ -1,7 +1,7 @@
 program p
 const int size = 10;
 class Table{
-    int pos[], neg[]
+    int pos[], neg[];
     {
              void putp (int a, int idx) { this.pos[idx] = a; }
              void putn (int a, int idx) { this.neg[idx] = a; }

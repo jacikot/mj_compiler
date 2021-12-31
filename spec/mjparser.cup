@@ -76,7 +76,7 @@ nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, Ds
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
-nonterminal ProgramName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName;
 
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;

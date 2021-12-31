@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/11/2021 15:53:21
+// 31/11/2021 13:25:58
 
 
 package compiler.pp1.ast;
@@ -20,6 +20,7 @@ public interface Visitor {
     public void visit(ConstLit ConstLit);
     public void visit(DsgnOp DsgnOp);
     public void visit(StatementList StatementList);
+    public void visit(ClassVarDecl ClassVarDecl);
     public void visit(Addop Addop);
     public void visit(IfElseBlock IfElseBlock);
     public void visit(Factor Factor);
@@ -41,8 +42,8 @@ public interface Visitor {
     public void visit(Expr Expr);
     public void visit(Cond Cond);
     public void visit(ActPars ActPars);
+    public void visit(ClassDeclList ClassDeclList);
     public void visit(Statement Statement);
-    public void visit(ClassDecl ClassDecl);
     public void visit(ConstDecl ConstDecl);
     public void visit(CondFact CondFact);
     public void visit(MethodDeclList MethodDeclList);
@@ -132,14 +133,17 @@ public interface Visitor {
     public void visit(RecordDecl RecordDecl);
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr);
     public void visit(InnerMethodBlockAll InnerMethodBlockAll);
+    public void visit(ClassDeclsEmpty ClassDeclsEmpty);
+    public void visit(ClassDeclsMethodsError ClassDeclsMethodsError);
+    public void visit(ClassDeclsMethods ClassDeclsMethods);
+    public void visit(ClassVarDeclsError ClassVarDeclsError);
+    public void visit(ClassVarDecls ClassVarDecls);
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty);
     public void visit(InnerVarDecls InnerVarDecls);
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty);
     public void visit(ExtendsDeclError ExtendsDeclError);
     public void visit(ExtendsDeclType ExtendsDeclType);
-    public void visit(ClassDeclError ClassDeclError);
-    public void visit(ClassDeclNoMethods ClassDeclNoMethods);
-    public void visit(ClassDeclMethods ClassDeclMethods);
+    public void visit(ClassDecl ClassDecl);
     public void visit(BracksEmpty BracksEmpty);
     public void visit(Bracks Bracks);
     public void visit(VarDeclError VarDeclError);
@@ -148,6 +152,7 @@ public interface Visitor {
     public void visit(VarDeclMultiple VarDeclMultiple);
     public void visit(VarDeclSingleNoC VarDeclSingleNoC);
     public void visit(VarDeclMultipleNoC VarDeclMultipleNoC);
+    public void visit(VarDeclsCorrect VarDeclsCorrect);
     public void visit(VarDecl VarDecl);
     public void visit(VarDeclGlobalError VarDeclGlobalError);
     public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect);
@@ -165,6 +170,7 @@ public interface Visitor {
     public void visit(DeclListClass DeclListClass);
     public void visit(DeclListVar DeclListVar);
     public void visit(DeclListConst DeclListConst);
+    public void visit(ProgramName ProgramName);
     public void visit(Program Program);
 
 }

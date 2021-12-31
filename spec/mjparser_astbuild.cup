@@ -13,6 +13,7 @@ import compiler.pp1.ast.*;
 parser code {:
 
 	Logger log = Logger.getLogger(getClass());
+	boolean errorDetected;
 
 
     // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
@@ -34,6 +35,7 @@ parser code {:
 
 //string builder koristimo za gresku
     public void report_error(String message, Object info) {
+        errorDetected = true;
     	StringBuilder msg = new StringBuilder(message);
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left); //left - sadrzi broj linije
@@ -41,6 +43,10 @@ parser code {:
     }
 
 
+:}
+
+init with {:
+	errorDetected = false;
 :}
 
 //resetovanje dohvatanja svakog tokena od lexera
@@ -110,8 +116,14 @@ nonterminal VarDeclGlobal VarDeclGlobal;
 nonterminal VarDeclCheck VarDeclCheck;
 nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
+nonterminal ClassDeclList ClassDeclList;
+nonterminal ClassVarDecl ClassVarDecl;
+nonterminal ProgramName ProgramName;
 
-Program ::= (Program) PROG IDENT:I1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, D2, M3); RESULT.setLine(I1left); :};
+
+Program ::= (Program) PROG ProgramName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
+
+ProgramName::= (ProgramName) IDENT:name {: RESULT=new ProgramName(name); RESULT.setLine(nameleft); :};
 
 DeclList ::= (DeclListConst) DeclList:D1 ConstDecl:C2 {: RESULT=new DeclListConst(D1, C2); RESULT.setLine(D1left); :}
             |
@@ -150,6 +162,7 @@ VarDeclGlobal ::= (VarDeclGlobalCorrect) Type:varsType VarDeclList:decls SEMI {:
                 {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :} {: RESULT=new VarDeclGlobalError(); :}
                 ;
 VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI {: RESULT=new VarDecl(varsType, decls); RESULT.setLine(varsTypeleft); :};
+ClassVarDecl ::= (VarDeclsCorrect) Type:varsType VarDeclListNoC:decls {: RESULT=new VarDeclsCorrect(varsType, decls); RESULT.setLine(varsTypeleft); :};
 
 VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC:V1 COMMA IDENT:varName ArrayBracks:A2 {: RESULT=new VarDeclMultipleNoC(V1, varName, A2); RESULT.setLine(V1left); :}
                 |
@@ -169,12 +182,7 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK {: RESULT=new Bracks(); :}
                 |
                 (BracksEmpty) {: RESULT=new BracksEmpty(); :} /* epsilon */
                 ;
-ClassDecl ::= (ClassDeclMethods) CLASS IDENT:className ExtendsDecl:E1 LBRACE InnerVarDeclList:vars InnerMethodBlock:methods RBRACE {: RESULT=new ClassDeclMethods(className, E1, vars, methods); RESULT.setLine(classNameleft); :}
-            |
-            (ClassDeclNoMethods) CLASS IDENT:className ExtendsDecl:E1 LBRACE InnerVarDeclList:vars RBRACE {: RESULT=new ClassDeclNoMethods(className, E1, vars); RESULT.setLine(classNameleft); :}
-            |
-            (ClassDeclError) CLASS IDENT:className ExtendsDecl:E1 LBRACE error InnerMethodBlock:methods RBRACE {: RESULT=new ClassDeclError(className, E1, methods); RESULT.setLine(classNameleft); :}
-            ;
+ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl:E1 LBRACE ClassDeclList:vars RBRACE {: RESULT=new ClassDecl(className, E1, vars); RESULT.setLine(classNameleft); :};
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base {: RESULT=new ExtendsDeclType(base); RESULT.setLine(baseleft); :}
                 |
@@ -185,6 +193,16 @@ ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base {: RESULT=new ExtendsDeclType(
 InnerVarDeclList ::= (InnerVarDecls) InnerVarDeclList:varList VarDecl:var {: RESULT=new InnerVarDecls(varList, var); RESULT.setLine(varListleft); :}
                 |
                 (InnerVarDeclsEmpty) {: RESULT=new InnerVarDeclsEmpty(); :} /* epsilon */
+                ;
+ClassDeclList ::= (ClassVarDecls) ClassVarDecl:var SEMI ClassDeclList:varList {: RESULT=new ClassVarDecls(var, varList); RESULT.setLine(varleft); :}
+                |
+                (ClassVarDeclsError) error SEMI ClassDeclList:varList {: RESULT=new ClassVarDeclsError(varList); RESULT.setLine(varListleft); :}
+                |
+                (ClassDeclsMethods) InnerMethodBlock:methods {: RESULT=new ClassDeclsMethods(methods); RESULT.setLine(methodsleft); :}
+                |
+                (ClassDeclsMethodsError) error InnerMethodBlock:methods {: RESULT=new ClassDeclsMethodsError(methods); RESULT.setLine(methodsleft); :}
+                |
+                (ClassDeclsEmpty) {: RESULT=new ClassDeclsEmpty(); :} /* epsilon */
                 ;
 InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor MethodDeclList:methods RBRACE {: RESULT=new InnerMethodBlockAll(constructor, methods); RESULT.setLine(constructorleft); :}
                     |

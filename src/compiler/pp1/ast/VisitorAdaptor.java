@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 27/11/2021 15:53:21
+// 31/11/2021 13:25:58
 
 
 package compiler.pp1.ast;
@@ -20,6 +20,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ConstLit ConstLit) { }
     public void visit(DsgnOp DsgnOp) { }
     public void visit(StatementList StatementList) { }
+    public void visit(ClassVarDecl ClassVarDecl) { }
     public void visit(Addop Addop) { }
     public void visit(IfElseBlock IfElseBlock) { }
     public void visit(Factor Factor) { }
@@ -41,8 +42,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Expr Expr) { }
     public void visit(Cond Cond) { }
     public void visit(ActPars ActPars) { }
+    public void visit(ClassDeclList ClassDeclList) { }
     public void visit(Statement Statement) { }
-    public void visit(ClassDecl ClassDecl) { }
     public void visit(ConstDecl ConstDecl) { }
     public void visit(CondFact CondFact) { }
     public void visit(MethodDeclList MethodDeclList) { }
@@ -132,14 +133,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(RecordDecl RecordDecl) { visit(); }
     public void visit(InnerMethodBlockNoConstr InnerMethodBlockNoConstr) { visit(); }
     public void visit(InnerMethodBlockAll InnerMethodBlockAll) { visit(); }
+    public void visit(ClassDeclsEmpty ClassDeclsEmpty) { visit(); }
+    public void visit(ClassDeclsMethodsError ClassDeclsMethodsError) { visit(); }
+    public void visit(ClassDeclsMethods ClassDeclsMethods) { visit(); }
+    public void visit(ClassVarDeclsError ClassVarDeclsError) { visit(); }
+    public void visit(ClassVarDecls ClassVarDecls) { visit(); }
     public void visit(InnerVarDeclsEmpty InnerVarDeclsEmpty) { visit(); }
     public void visit(InnerVarDecls InnerVarDecls) { visit(); }
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty) { visit(); }
     public void visit(ExtendsDeclError ExtendsDeclError) { visit(); }
     public void visit(ExtendsDeclType ExtendsDeclType) { visit(); }
-    public void visit(ClassDeclError ClassDeclError) { visit(); }
-    public void visit(ClassDeclNoMethods ClassDeclNoMethods) { visit(); }
-    public void visit(ClassDeclMethods ClassDeclMethods) { visit(); }
+    public void visit(ClassDecl ClassDecl) { visit(); }
     public void visit(BracksEmpty BracksEmpty) { visit(); }
     public void visit(Bracks Bracks) { visit(); }
     public void visit(VarDeclError VarDeclError) { visit(); }
@@ -148,6 +152,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(VarDeclMultiple VarDeclMultiple) { visit(); }
     public void visit(VarDeclSingleNoC VarDeclSingleNoC) { visit(); }
     public void visit(VarDeclMultipleNoC VarDeclMultipleNoC) { visit(); }
+    public void visit(VarDeclsCorrect VarDeclsCorrect) { visit(); }
     public void visit(VarDecl VarDecl) { visit(); }
     public void visit(VarDeclGlobalError VarDeclGlobalError) { visit(); }
     public void visit(VarDeclGlobalCorrect VarDeclGlobalCorrect) { visit(); }
@@ -165,6 +170,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DeclListClass DeclListClass) { visit(); }
     public void visit(DeclListVar DeclListVar) { visit(); }
     public void visit(DeclListConst DeclListConst) { visit(); }
+    public void visit(ProgramName ProgramName) { visit(); }
     public void visit(Program Program) { visit(); }
 
 

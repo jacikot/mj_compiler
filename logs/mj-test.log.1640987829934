@@ -1,0 +1,227 @@
+INFO  22:57:03,125 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  22:57:03,237 - #2 program
+INFO  22:57:03,237 - #22 p
+INFO  22:57:03,237 - #5 const
+INFO  22:57:03,239 - #22 int
+INFO  22:57:03,239 - #22 size
+INFO  22:57:03,241 - #9 =
+INFO  22:57:03,242 - #20 10
+INFO  22:57:03,242 - #7 ,
+INFO  22:57:03,242 - #22 jaab
+INFO  22:57:03,242 - #9 =
+INFO  22:57:03,243 - #20 0
+INFO  22:57:03,243 - #7 ,
+INFO  22:57:03,243 - #22 xx
+INFO  22:57:03,243 - #9 =
+INFO  22:57:03,243 - #20 5
+INFO  22:57:03,243 - #6 ;
+INFO  22:57:03,244 - #5 const
+INFO  22:57:03,245 - #22 char
+INFO  22:57:03,245 - #22 variable
+INFO  22:57:03,245 - #9 =
+INFO  22:57:03,245 - #23 'p'
+INFO  22:57:03,247 - #6 ;
+INFO  22:57:03,247 - #5 const
+INFO  22:57:03,248 - #22 bool
+INFO  22:57:03,248 - #22 xyz
+INFO  22:57:03,248 - #9 =
+INFO  22:57:03,248 - #21 0
+INFO  22:57:03,248 - #6 ;
+INFO  22:57:03,249 - #22 int
+INFO  22:57:03,249 - #22 xyza
+INFO  22:57:03,249 - #7 ,
+INFO  22:57:03,249 - #22 jana2
+INFO  22:57:03,249 - #10 [
+INFO  22:57:03,249 - #11 ]
+INFO  22:57:03,250 - #6 ;
+INFO  22:57:03,250 - #13 class
+INFO  22:57:03,250 - #22 B
+INFO  22:57:03,250 - #3 {
+INFO  22:57:03,253 - #4 }
+INFO  22:57:03,254 - #12 record
+INFO  22:57:03,255 - #22 A
+INFO  22:57:03,256 - #3 {
+INFO  22:57:03,258 - #22 int
+INFO  22:57:03,260 - #22 mama
+INFO  22:57:03,260 - #6 ;
+INFO  22:57:03,261 - #22 bool
+INFO  22:57:03,262 - #22 jana2
+INFO  22:57:03,262 - #6 ;
+INFO  22:57:03,262 - #4 }
+INFO  22:57:03,262 - #22 A
+INFO  22:57:03,264 - #22 aa
+INFO  22:57:03,264 - #6 ;
+INFO  22:57:03,264 - #22 B
+INFO  22:57:03,264 - #22 bb
+INFO  22:57:03,264 - #6 ;
+INFO  22:57:03,264 - #3 {
+INFO  22:57:03,264 - #4 }
+INFO  22:57:03,276 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListVar(
+    DeclListVar(
+      DeclListRecord(
+        DeclListClass(
+          DeclListVar(
+            DeclListConst(
+              DeclListConst(
+                DeclListConst(
+                  DeclListEmpty(
+                  ) [DeclListEmpty]
+                  DeclConst(
+                    Type(
+                     int
+                    ) [Type]
+                    ConstDeclMultiple(
+                      ConstDeclMultiple(
+                        ConstDeclSingle(
+                          ConstDeclElemCorrect(
+                           size
+                            ConstLitNum(
+                             10
+                            ) [ConstLitNum]
+                          ) [ConstDeclElemCorrect]
+                        ) [ConstDeclSingle]
+                        ConstDeclElemCorrect(
+                         jaab
+                          ConstLitNum(
+                           0
+                          ) [ConstLitNum]
+                        ) [ConstDeclElemCorrect]
+                      ) [ConstDeclMultiple]
+                      ConstDeclElemCorrect(
+                       xx
+                        ConstLitNum(
+                         5
+                        ) [ConstLitNum]
+                      ) [ConstDeclElemCorrect]
+                    ) [ConstDeclMultiple]
+                  ) [DeclConst]
+                ) [DeclListConst]
+                DeclConst(
+                  Type(
+                   char
+                  ) [Type]
+                  ConstDeclSingle(
+                    ConstDeclElemCorrect(
+                     variable
+                      ConstLitChar(
+                       'p'
+                      ) [ConstLitChar]
+                    ) [ConstDeclElemCorrect]
+                  ) [ConstDeclSingle]
+                ) [DeclConst]
+              ) [DeclListConst]
+              DeclConst(
+                Type(
+                 bool
+                ) [Type]
+                ConstDeclSingle(
+                  ConstDeclElemCorrect(
+                   xyz
+                    ConstLitBool(
+                     0
+                    ) [ConstLitBool]
+                  ) [ConstDeclElemCorrect]
+                ) [ConstDeclSingle]
+              ) [DeclConst]
+            ) [DeclListConst]
+            VarDeclGlobalCorrect(
+              Type(
+               int
+              ) [Type]
+              VarDeclMultiple(
+                VarDeclSingle(
+                  VarDeclElemSingle(
+                   xyza
+                  ) [VarDeclElemSingle]
+                ) [VarDeclSingle]
+                VarDeclElemArray(
+                 jana2
+                ) [VarDeclElemArray]
+              ) [VarDeclMultiple]
+            ) [VarDeclGlobalCorrect]
+          ) [DeclListVar]
+          ClassDecl(
+            ClassName(
+             B
+            ) [ClassName]
+            ExtendsDeclEmpty(
+            ) [ExtendsDeclEmpty]
+            ClassDeclsEmpty(
+            ) [ClassDeclsEmpty]
+          ) [ClassDecl]
+        ) [DeclListClass]
+        RecordDecl(
+          RecordName(
+           A
+          ) [RecordName]
+          InnerVarDecls(
+            InnerVarDecls(
+              InnerVarDeclsEmpty(
+              ) [InnerVarDeclsEmpty]
+              VarDecl(
+                Type(
+                 int
+                ) [Type]
+                VarDeclSingleNoC(
+                  VarDeclElemSingleNoC(
+                   mama
+                  ) [VarDeclElemSingleNoC]
+                ) [VarDeclSingleNoC]
+              ) [VarDecl]
+            ) [InnerVarDecls]
+            VarDecl(
+              Type(
+               bool
+              ) [Type]
+              VarDeclSingleNoC(
+                VarDeclElemSingleNoC(
+                 jana2
+                ) [VarDeclElemSingleNoC]
+              ) [VarDeclSingleNoC]
+            ) [VarDecl]
+          ) [InnerVarDecls]
+        ) [RecordDecl]
+      ) [DeclListRecord]
+      VarDeclGlobalCorrect(
+        Type(
+         A
+        ) [Type]
+        VarDeclSingle(
+          VarDeclElemSingle(
+           aa
+          ) [VarDeclElemSingle]
+        ) [VarDeclSingle]
+      ) [VarDeclGlobalCorrect]
+    ) [DeclListVar]
+    VarDeclGlobalCorrect(
+      Type(
+       B
+      ) [Type]
+      VarDeclSingle(
+        VarDeclElemSingle(
+         bb
+        ) [VarDeclElemSingle]
+      ) [VarDeclSingle]
+    ) [VarDeclGlobalCorrect]
+  ) [DeclListVar]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  22:57:03,287 - Pronadjen simbol: p na liniji 1
+INFO  22:57:03,288 - Pronadjen simbol: size na liniji 2
+INFO  22:57:03,288 - Pronadjen simbol: jaab na liniji 2
+INFO  22:57:03,288 - Pronadjen simbol: xx na liniji 2
+INFO  22:57:03,288 - Pronadjen simbol: variable na liniji 3
+INFO  22:57:03,288 - Pronadjen simbol: xyz na liniji 4
+INFO  22:57:03,288 - Pronadjen simbol: xyza na liniji 5
+INFO  22:57:03,289 - Pronadjen simbol: jana2 na liniji 5
+INFO  22:57:03,289 - Pronadjen simbol: B na liniji 6
+INFO  22:57:03,289 - Pronadjen simbol: A na liniji 9
+INFO  22:57:03,289 - Pronadjen simbol: mama na liniji 10
+ERROR 22:57:03,294 - Simbol: Ime jana2 je vec deklarisan! na liniji 11
+INFO  22:57:03,294 - Pronadjen simbol: aa na liniji 13
+INFO  22:57:03,294 - Pronadjen simbol: bb na liniji 14

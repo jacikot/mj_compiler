@@ -78,7 +78,6 @@ nonterminal RecordDecl RecordDecl;
 nonterminal MethodDecl MethodDecl;
 nonterminal ConstDeclList ConstDeclList;
 nonterminal VarDeclList VarDeclList;
-nonterminal ExtendsDecl ExtendsDecl;
 nonterminal InnerVarDeclList InnerVarDeclList;
 nonterminal InnerMethodBlock InnerMethodBlock;
 nonterminal ConstructorDecl ConstructorDecl;
@@ -116,7 +115,7 @@ nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
 nonterminal ClassDeclList ClassDeclList;
 nonterminal ClassVarDecl ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type, ClassName, ExtendsDecl;
 nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
@@ -187,7 +186,9 @@ ArrayBracks ::= (Bracks) LBRACK RBRACK {: RESULT=new Bracks(); :}
                 |
                 (BracksEmpty) {: RESULT=new BracksEmpty(); :} /* epsilon */
                 ;
-ClassDecl ::= (ClassDecl) CLASS IDENT:className ExtendsDecl:E1 LBRACE ClassDeclList:vars RBRACE {: RESULT=new ClassDecl(className, E1, vars); RESULT.setLine(classNameleft); :};
+ClassDecl ::= (ClassDecl) CLASS ClassName:C1 ExtendsDecl:E2 LBRACE ClassDeclList:vars RBRACE {: RESULT=new ClassDecl(C1, E2, vars); RESULT.setLine(C1left); :};
+
+ClassName ::= (ClassName)IDENT:name {: RESULT=new ClassName(name); RESULT.setLine(nameleft); :};
 
 ExtendsDecl ::= (ExtendsDeclType) EXTND Type:base {: RESULT=new ExtendsDeclType(base); RESULT.setLine(baseleft); :}
                 |

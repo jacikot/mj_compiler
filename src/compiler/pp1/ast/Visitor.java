@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 22:38:36
+// 31/11/2021 23:6:24
 
 
 package compiler.pp1.ast;
@@ -147,6 +147,7 @@ public interface Visitor {
     public void visit(ExtendsDeclEmpty ExtendsDeclEmpty);
     public void visit(ExtendsDeclError ExtendsDeclError);
     public void visit(ExtendsDeclType ExtendsDeclType);
+    public void visit(ClassName ClassName);
     public void visit(ClassDecl ClassDecl);
     public void visit(BracksEmpty BracksEmpty);
     public void visit(Bracks Bracks);

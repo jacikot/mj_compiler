@@ -1,14 +1,18 @@
 program p
-const int size = 10, jaab a, xx=5;
+const int size = 10, jaab=0, xx=5;
 const char variable='p';
 const bool xyz=false;
-int xyza, jana[, jana2[];
-record B{
+int xyza, jana2[];
+class B{
+    int baseField;
+}
+class D extends B{
 
 }
 record A{
     int mama;
-    A jana2;
+    B jana;
 }
 A aa;
+B bb;
 {}

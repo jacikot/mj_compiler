@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 13:34:7
+// 31/11/2021 17:55:52
 
 
 package compiler.pp1.ast;
@@ -48,6 +48,7 @@ public interface Visitor {
     public void visit(CondFact CondFact);
     public void visit(MethodDeclList MethodDeclList);
     public void visit(InnerMethodBlock InnerMethodBlock);
+    public void visit(ConstDeclElem ConstDeclElem);
     public void visit(SingleStatement SingleStatement);
     public void visit(Label Label);
     public void visit(FactorBlock FactorBlock);
@@ -160,8 +161,9 @@ public interface Visitor {
     public void visit(ConstLitChar ConstLitChar);
     public void visit(ConstLitBool ConstLitBool);
     public void visit(ConstLitNum ConstLitNum);
+    public void visit(ConstDeclElemError ConstDeclElemError);
+    public void visit(ConstDeclElemCorrect ConstDeclElemCorrect);
     public void visit(ConstDeclSingle ConstDeclSingle);
-    public void visit(ConstDeclMultipleError ConstDeclMultipleError);
     public void visit(ConstDeclMultiple ConstDeclMultiple);
     public void visit(ConstDeclError ConstDeclError);
     public void visit(DeclConst DeclConst);

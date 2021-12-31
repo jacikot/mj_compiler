@@ -1,0 +1,91 @@
+INFO  17:48:03,519 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  17:48:03,605 - #2 program
+INFO  17:48:03,605 - #22 p
+INFO  17:48:03,606 - #5 const
+INFO  17:48:03,607 - #22 int
+INFO  17:48:03,607 - #22 size
+INFO  17:48:03,608 - #9 =
+INFO  17:48:03,608 - #20 10
+INFO  17:48:03,608 - #7 ,
+INFO  17:48:03,608 - #22 xx
+INFO  17:48:03,608 - #9 =
+INFO  17:48:03,609 - #20 5
+INFO  17:48:03,609 - #6 ;
+INFO  17:48:03,609 - #5 const
+INFO  17:48:03,609 - #22 char
+INFO  17:48:03,609 - #22 variable
+INFO  17:48:03,609 - #9 =
+INFO  17:48:03,609 - #23 'p'
+INFO  17:48:03,609 - #6 ;
+INFO  17:48:03,610 - #5 const
+INFO  17:48:03,610 - #22 bool
+INFO  17:48:03,610 - #22 xyz
+INFO  17:48:03,612 - #9 =
+INFO  17:48:03,612 - #21 1
+INFO  17:48:03,612 - #6 ;
+INFO  17:48:03,612 - #3 {
+INFO  17:48:03,612 - #4 }
+INFO  17:48:03,617 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListConst(
+        DeclListEmpty(
+        ) [DeclListEmpty]
+        DeclConst(
+          Type(
+           int
+          ) [Type]
+          ConstDeclMultiple(
+            ConstDeclSingle(
+              ConstDeclElemCorrect(
+               size
+                ConstLitNum(
+                 10
+                ) [ConstLitNum]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclSingle]
+            ConstDeclElemCorrect(
+             xx
+              ConstLitNum(
+               5
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclMultiple]
+        ) [DeclConst]
+      ) [DeclListConst]
+      DeclConst(
+        Type(
+         char
+        ) [Type]
+        ConstDeclSingle(
+          ConstDeclElemCorrect(
+           variable
+            ConstLitChar(
+             'p'
+            ) [ConstLitChar]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclSingle]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       bool
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         xyz
+          ConstLitBool(
+           1
+          ) [ConstLitBool]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  17:48:03,618 - ===================================
+INFO  17:48:03,629 -  Deklarisanih promenljivih ima = 0

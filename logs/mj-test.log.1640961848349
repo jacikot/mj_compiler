@@ -1,0 +1,48 @@
+INFO  15:38:08,660 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  15:38:08,739 - #2 program
+INFO  15:38:08,739 - #22 p
+INFO  15:38:08,739 - #5 const
+INFO  15:38:08,741 - #22 int
+INFO  15:38:08,741 - #22 size
+INFO  15:38:08,742 - #9 =
+INFO  15:38:08,742 - #20 10
+INFO  15:38:08,742 - #7 ,
+INFO  15:38:08,742 - #22 xx
+INFO  15:38:08,743 - #9 =
+INFO  15:38:08,743 - #20 5
+INFO  15:38:08,743 - #6 ;
+INFO  15:38:08,743 - #3 {
+INFO  15:38:08,743 - #4 }
+INFO  15:38:08,750 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListEmpty(
+    ) [DeclListEmpty]
+    DeclConst(
+      Type(
+       int
+      ) [Type]
+      ConstDeclMultiple(
+        ConstDeclSingle(
+          ConstDeclElemCorrect(
+           size
+            ConstLitNum(
+             10
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclSingle]
+        ConstDeclElemCorrect(
+         xx
+          ConstLitNum(
+           5
+          ) [ConstLitNum]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclMultiple]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  15:38:08,750 - ===================================

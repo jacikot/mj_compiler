@@ -1,0 +1,71 @@
+INFO  17:45:50,430 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  17:45:50,508 - #2 program
+INFO  17:45:50,508 - #22 p
+INFO  17:45:50,508 - #5 const
+INFO  17:45:50,510 - #22 int
+INFO  17:45:50,510 - #22 size
+INFO  17:45:50,511 - #9 =
+INFO  17:45:50,511 - #20 10
+INFO  17:45:50,511 - #7 ,
+INFO  17:45:50,511 - #22 xx
+INFO  17:45:50,512 - #9 =
+INFO  17:45:50,512 - #20 5
+INFO  17:45:50,512 - #6 ;
+INFO  17:45:50,512 - #5 const
+INFO  17:45:50,512 - #22 char
+INFO  17:45:50,512 - #22 p
+INFO  17:45:50,512 - #9 =
+INFO  17:45:50,512 - #23 'p'
+INFO  17:45:50,512 - #6 ;
+INFO  17:45:50,513 - #3 {
+INFO  17:45:50,513 - #4 }
+INFO  17:45:50,516 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListEmpty(
+      ) [DeclListEmpty]
+      DeclConst(
+        Type(
+         int
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             size
+              ConstLitNum(
+               10
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+          ConstDeclElemCorrect(
+           xx
+            ConstLitNum(
+             5
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       char
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         p
+          ConstLitChar(
+           'p'
+          ) [ConstLitChar]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  17:45:50,518 - ===================================
+ERROR 17:46:22,309 - Simbol: Ime p je vec deklarisan! na liniji 3
+INFO  17:46:22,313 -  Deklarisanih promenljivih ima = 0

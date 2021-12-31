@@ -1,12 +1,5 @@
 program p
-const int size = 10;
-class Table {
-int pos[], neg[];
-{
- void putp (int a, int idx) { this.pos[idx] = a; }
- void putn (int a, int idx) { this.neg[idx] = a; }
- int getp (int idx) { return pos[idx]; }
- int getn (int idx) { return neg[idx]; }
-}
-}
+const int size = 10, xx=5;
+const char variable='p';
+const bool xyz=false;
 {}

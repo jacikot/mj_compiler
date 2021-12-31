@@ -1,0 +1,49 @@
+INFO  15:50:13,010 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  15:50:13,090 - #2 program
+INFO  15:50:13,090 - #22 p
+INFO  15:50:13,091 - #5 const
+INFO  15:50:13,092 - #22 int
+INFO  15:50:13,092 - #22 size
+INFO  15:50:13,093 - #9 =
+INFO  15:50:13,093 - #20 10
+INFO  15:50:13,093 - #7 ,
+INFO  15:50:13,093 - #22 xx
+INFO  15:50:13,094 - #9 =
+INFO  15:50:13,094 - #20 5
+INFO  15:50:13,094 - #6 ;
+INFO  15:50:13,094 - #3 {
+INFO  15:50:13,094 - #4 }
+INFO  15:50:13,100 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListEmpty(
+    ) [DeclListEmpty]
+    DeclConst(
+      Type(
+       int
+      ) [Type]
+      ConstDeclMultiple(
+        ConstDeclSingle(
+          ConstDeclElemCorrect(
+           size
+            ConstLitNum(
+             10
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclSingle]
+        ConstDeclElemCorrect(
+         xx
+          ConstLitNum(
+           5
+          ) [ConstLitNum]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclMultiple]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  15:50:13,101 - ===================================
+INFO  15:51:26,969 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,70 @@
+INFO  17:47:36,882 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  17:47:36,979 - #2 program
+INFO  17:47:36,979 - #22 p
+INFO  17:47:36,979 - #5 const
+INFO  17:47:36,981 - #22 int
+INFO  17:47:36,981 - #22 size
+INFO  17:47:36,982 - #9 =
+INFO  17:47:36,982 - #20 10
+INFO  17:47:36,983 - #7 ,
+INFO  17:47:36,983 - #22 xx
+INFO  17:47:36,983 - #9 =
+INFO  17:47:36,983 - #20 5
+INFO  17:47:36,983 - #6 ;
+INFO  17:47:36,983 - #5 const
+INFO  17:47:36,984 - #22 char
+INFO  17:47:36,984 - #22 variable
+INFO  17:47:36,984 - #9 =
+INFO  17:47:36,984 - #23 'p'
+INFO  17:47:36,984 - #6 ;
+INFO  17:47:36,984 - #3 {
+INFO  17:47:36,984 - #4 }
+INFO  17:47:36,989 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListEmpty(
+      ) [DeclListEmpty]
+      DeclConst(
+        Type(
+         int
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             size
+              ConstLitNum(
+               10
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+          ConstDeclElemCorrect(
+           xx
+            ConstLitNum(
+             5
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       char
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         variable
+          ConstLitChar(
+           'p'
+          ) [ConstLitChar]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  17:47:36,991 - ===================================
+INFO  17:47:37,002 -  Deklarisanih promenljivih ima = 0

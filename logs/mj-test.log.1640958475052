@@ -1,0 +1,46 @@
+INFO  14:45:13,164 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  14:45:13,267 - #2 program
+INFO  14:45:13,267 - #22 p
+INFO  14:45:13,267 - #5 const
+INFO  14:45:13,269 - #22 int
+INFO  14:45:13,270 - #22 size
+INFO  14:45:13,271 - #9 =
+INFO  14:45:13,271 - #20 10
+INFO  14:45:13,271 - #7 ,
+INFO  14:45:13,271 - #22 z
+INFO  14:45:13,272 - #22 z
+ERROR 14:45:13,272 - 
+Sintaksna greska na liniji 2
+INFO  14:45:13,272 - #7 ,
+INFO  14:45:13,272 - #22 xx
+INFO  14:45:13,272 - #9 =
+INFO  14:45:13,273 - #20 5
+INFO  14:45:13,274 - #6 ;
+INFO  14:45:13,274 - #3 {
+INFO  14:45:13,275 - #4 }
+INFO  14:45:13,285 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListEmpty(
+    ) [DeclListEmpty]
+    DeclConst(
+      Type(
+       int
+      ) [Type]
+      ConstDeclMultipleError(
+        ConstDeclElemDerived1(
+         xx
+          ConstLitNum(
+           5
+          ) [ConstLitNum]
+        ) [ConstDeclElemDerived1]
+      ) [ConstDeclMultipleError]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  14:45:13,287 - ===================================
+INFO  14:45:13,296 -  Deklarisanih promenljivih ima = 0

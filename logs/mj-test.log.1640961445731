@@ -1,0 +1,78 @@
+INFO  15:36:51,573 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  15:36:51,697 - #2 program
+INFO  15:36:51,697 - #22 p
+INFO  15:36:51,698 - #5 const
+INFO  15:36:51,699 - #22 int
+INFO  15:36:51,699 - #22 size
+INFO  15:36:51,700 - #9 =
+INFO  15:36:51,700 - #20 10
+INFO  15:36:51,700 - #7 ,
+INFO  15:36:51,701 - #22 z
+INFO  15:36:51,701 - #22 z
+ERROR 15:36:51,701 - 
+Sintaksna greska na liniji 2
+INFO  15:36:51,701 - #7 ,
+INFO  15:36:51,701 - #22 xx
+INFO  15:36:51,701 - #9 =
+INFO  15:36:51,702 - #20 5
+INFO  15:36:51,703 - #6 ;
+INFO  15:36:51,703 - #5 const
+INFO  15:36:51,703 - #22 char
+INFO  15:36:51,703 - #22 p
+INFO  15:36:51,703 - #9 =
+INFO  15:36:51,703 - #23 'p'
+INFO  15:36:51,705 - #6 ;
+INFO  15:36:51,705 - #3 {
+INFO  15:36:51,705 - #4 }
+INFO  15:36:51,716 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListEmpty(
+      ) [DeclListEmpty]
+      DeclConst(
+        Type(
+         int
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclMultiple(
+            ConstDeclSingle(
+              ConstDeclElemCorrect(
+               size
+                ConstLitNum(
+                 10
+                ) [ConstLitNum]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclSingle]
+            ConstDeclElemError(
+            ) [ConstDeclElemError]
+          ) [ConstDeclMultiple]
+          ConstDeclElemCorrect(
+           xx
+            ConstLitNum(
+             5
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       char
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         p
+          ConstLitChar(
+           'p'
+          ) [ConstLitChar]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  15:36:51,716 - ===================================

@@ -69,15 +69,16 @@ terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC;
 
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
-nonterminal Type, ConstDeclList, ConstLit, VarDeclList;
+nonterminal ConstDeclList, VarDeclList;
 nonterminal ExtendsDecl, InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal RetType, FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, ArrayBracks, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type;
+nonterminal ConstDeclElem;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -96,15 +97,15 @@ DeclList ::= (DeclListConst) DeclList ConstDecl
 ConstDecl ::= (DeclConst) CONST Type:varsType ConstDeclList:decls SEMI
                |
                (ConstDeclError) CONST error SEMI:l
-               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
                ;
 
-ConstDeclList ::= (ConstDeclMultiple) ConstDeclList COMMA IDENT:varName EQUAL ConstLit:varValue
+ConstDeclList ::= (ConstDeclMultiple) ConstDeclList COMMA ConstDeclElem
                 |
-                (ConstDeclMultipleError) error COMMA:l IDENT:varName EQUAL ConstLit:varValue
-                {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null);  :}
+                (ConstDeclSingle) ConstDeclElem
+                ;
+ConstDeclElem ::= (ConstDeclElemCorrect) IDENT:varName EQUAL ConstLit:varValue
                 |
-                (ConstDeclSingle) IDENT:varName EQUAL ConstLit:varValue
+                (ConstDeclElemError) error
                 ;
 ConstLit ::=(ConstLitNum) NUMBER:value
             |

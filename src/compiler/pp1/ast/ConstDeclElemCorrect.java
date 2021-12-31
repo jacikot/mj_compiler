@@ -1,16 +1,16 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 13:34:7
+// 31/11/2021 17:55:52
 
 
 package compiler.pp1.ast;
 
-public class ConstDeclMultipleError extends ConstDeclList {
+public class ConstDeclElemCorrect extends ConstDeclElem {
 
     private String varName;
     private ConstLit ConstLit;
 
-    public ConstDeclMultipleError (String varName, ConstLit ConstLit) {
+    public ConstDeclElemCorrect (String varName, ConstLit ConstLit) {
         this.varName=varName;
         this.ConstLit=ConstLit;
         if(ConstLit!=null) ConstLit.setParent(this);
@@ -53,7 +53,7 @@ public class ConstDeclMultipleError extends ConstDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ConstDeclMultipleError(\n");
+        buffer.append("ConstDeclElemCorrect(\n");
 
         buffer.append(" "+tab+varName);
         buffer.append("\n");
@@ -65,7 +65,7 @@ public class ConstDeclMultipleError extends ConstDeclList {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [ConstDeclMultipleError]");
+        buffer.append(") [ConstDeclElemCorrect]");
         return buffer.toString();
     }
 }

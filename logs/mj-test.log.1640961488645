@@ -1,0 +1,69 @@
+INFO  15:37:29,198 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  15:37:29,274 - #2 program
+INFO  15:37:29,274 - #22 p
+INFO  15:37:29,274 - #5 const
+INFO  15:37:29,276 - #22 int
+INFO  15:37:29,276 - #22 size
+INFO  15:37:29,277 - #9 =
+INFO  15:37:29,277 - #20 10
+INFO  15:37:29,277 - #7 ,
+INFO  15:37:29,278 - #22 xx
+INFO  15:37:29,278 - #9 =
+INFO  15:37:29,278 - #20 5
+INFO  15:37:29,278 - #6 ;
+INFO  15:37:29,278 - #5 const
+INFO  15:37:29,278 - #22 char
+INFO  15:37:29,279 - #22 p
+INFO  15:37:29,279 - #9 =
+INFO  15:37:29,279 - #23 'p'
+INFO  15:37:29,279 - #6 ;
+INFO  15:37:29,279 - #3 {
+INFO  15:37:29,279 - #4 }
+INFO  15:37:29,285 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListConst(
+      DeclListEmpty(
+      ) [DeclListEmpty]
+      DeclConst(
+        Type(
+         int
+        ) [Type]
+        ConstDeclMultiple(
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             size
+              ConstLitNum(
+               10
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+          ConstDeclElemCorrect(
+           xx
+            ConstLitNum(
+             5
+            ) [ConstLitNum]
+          ) [ConstDeclElemCorrect]
+        ) [ConstDeclMultiple]
+      ) [DeclConst]
+    ) [DeclListConst]
+    DeclConst(
+      Type(
+       char
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         p
+          ConstLitChar(
+           'p'
+          ) [ConstLitChar]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  15:37:29,286 - ===================================

@@ -76,9 +76,7 @@ nonterminal VarDecl VarDecl;
 nonterminal ClassDecl ClassDecl;
 nonterminal RecordDecl RecordDecl;
 nonterminal MethodDecl MethodDecl;
-nonterminal Type Type;
 nonterminal ConstDeclList ConstDeclList;
-nonterminal ConstLit ConstLit;
 nonterminal VarDeclList VarDeclList;
 nonterminal ExtendsDecl ExtendsDecl;
 nonterminal InnerVarDeclList InnerVarDeclList;
@@ -118,8 +116,9 @@ nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
 nonterminal ClassDeclList ClassDeclList;
 nonterminal ClassVarDecl ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName;
-
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type;
+nonterminal ConstDeclElem ConstDeclElem;
 
 Program ::= (Program) PROG ProgramName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
 
@@ -137,16 +136,16 @@ DeclList ::= (DeclListConst) DeclList:D1 ConstDecl:C2 {: RESULT=new DeclListCons
             ;
 ConstDecl ::= (DeclConst) CONST Type:varsType ConstDeclList:decls SEMI {: RESULT=new DeclConst(varsType, decls); RESULT.setLine(varsTypeleft); :}
                |
-               (ConstDeclError) CONST error SEMI:l
-               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :} {: RESULT=new ConstDeclError(); :}
+               (ConstDeclError) CONST error SEMI:l {: RESULT=new ConstDeclError(); :}
                ;
 
-ConstDeclList ::= (ConstDeclMultiple) ConstDeclList:C1 COMMA IDENT:varName EQUAL ConstLit:varValue {: RESULT=new ConstDeclMultiple(C1, varName, varValue); RESULT.setLine(C1left); :}
+ConstDeclList ::= (ConstDeclMultiple) ConstDeclList:C1 COMMA ConstDeclElem:C2 {: RESULT=new ConstDeclMultiple(C1, C2); RESULT.setLine(C1left); :}
                 |
-                (ConstDeclMultipleError) error COMMA:l IDENT:varName EQUAL ConstLit:varValue
-                {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null);  :} {: RESULT=new ConstDeclMultipleError(varName, varValue); RESULT.setLine(varNameleft); :}
+                (ConstDeclSingle) ConstDeclElem:C1 {: RESULT=new ConstDeclSingle(C1); RESULT.setLine(C1left); :}
+                ;
+ConstDeclElem ::= (ConstDeclElemCorrect) IDENT:varName EQUAL ConstLit:varValue {: RESULT=new ConstDeclElemCorrect(varName, varValue); RESULT.setLine(varNameleft); :}
                 |
-                (ConstDeclSingle) IDENT:varName EQUAL ConstLit:varValue {: RESULT=new ConstDeclSingle(varName, varValue); RESULT.setLine(varNameleft); :}
+                (ConstDeclElemError) error {: RESULT=new ConstDeclElemError(); :}
                 ;
 ConstLit ::=(ConstLitNum) NUMBER:value {: RESULT=new ConstLitNum(value); RESULT.setLine(valueleft); :}
             |

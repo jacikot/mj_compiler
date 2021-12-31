@@ -12,7 +12,6 @@ import java_cup.runtime.Symbol;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import compiler.pp1.ast.Program;
 import rs.etf.pp1.symboltable.Tab;
 
 
@@ -40,13 +39,14 @@ public class MJSemanticAnalysisTest {
 
             Program prog = (Program) (s.value);
 
-            Tab.init();
+
             // ispis sintaksnog stabla
             log.info(prog.toString(""));
             log.info("===================================");
 
             // ispis prepoznatih programskih konstrukcija
-            RuleVisitor v = new RuleVisitor();
+            SemanticAnalyser v = new SemanticAnalyser();
+            v.init();
             prog.traverseBottomUp(v);
 
 //            log.info(" Print count calls = " + v.printCallCount);

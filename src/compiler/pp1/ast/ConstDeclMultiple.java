@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 13:34:7
+// 31/11/2021 17:55:52
 
 
 package compiler.pp1.ast;
@@ -8,15 +8,13 @@ package compiler.pp1.ast;
 public class ConstDeclMultiple extends ConstDeclList {
 
     private ConstDeclList ConstDeclList;
-    private String varName;
-    private ConstLit ConstLit;
+    private ConstDeclElem ConstDeclElem;
 
-    public ConstDeclMultiple (ConstDeclList ConstDeclList, String varName, ConstLit ConstLit) {
+    public ConstDeclMultiple (ConstDeclList ConstDeclList, ConstDeclElem ConstDeclElem) {
         this.ConstDeclList=ConstDeclList;
         if(ConstDeclList!=null) ConstDeclList.setParent(this);
-        this.varName=varName;
-        this.ConstLit=ConstLit;
-        if(ConstLit!=null) ConstLit.setParent(this);
+        this.ConstDeclElem=ConstDeclElem;
+        if(ConstDeclElem!=null) ConstDeclElem.setParent(this);
     }
 
     public ConstDeclList getConstDeclList() {
@@ -27,20 +25,12 @@ public class ConstDeclMultiple extends ConstDeclList {
         this.ConstDeclList=ConstDeclList;
     }
 
-    public String getVarName() {
-        return varName;
+    public ConstDeclElem getConstDeclElem() {
+        return ConstDeclElem;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
-    }
-
-    public ConstLit getConstLit() {
-        return ConstLit;
-    }
-
-    public void setConstLit(ConstLit ConstLit) {
-        this.ConstLit=ConstLit;
+    public void setConstDeclElem(ConstDeclElem ConstDeclElem) {
+        this.ConstDeclElem=ConstDeclElem;
     }
 
     public void accept(Visitor visitor) {
@@ -49,18 +39,18 @@ public class ConstDeclMultiple extends ConstDeclList {
 
     public void childrenAccept(Visitor visitor) {
         if(ConstDeclList!=null) ConstDeclList.accept(visitor);
-        if(ConstLit!=null) ConstLit.accept(visitor);
+        if(ConstDeclElem!=null) ConstDeclElem.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(ConstDeclList!=null) ConstDeclList.traverseTopDown(visitor);
-        if(ConstLit!=null) ConstLit.traverseTopDown(visitor);
+        if(ConstDeclElem!=null) ConstDeclElem.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(ConstDeclList!=null) ConstDeclList.traverseBottomUp(visitor);
-        if(ConstLit!=null) ConstLit.traverseBottomUp(visitor);
+        if(ConstDeclElem!=null) ConstDeclElem.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -75,11 +65,8 @@ public class ConstDeclMultiple extends ConstDeclList {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+varName);
-        buffer.append("\n");
-
-        if(ConstLit!=null)
-            buffer.append(ConstLit.toString("  "+tab));
+        if(ConstDeclElem!=null)
+            buffer.append(ConstDeclElem.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

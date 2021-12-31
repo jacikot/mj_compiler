@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 13:34:7
+// 31/11/2021 17:55:52
 
 
 package compiler.pp1.ast;
@@ -48,6 +48,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondFact CondFact) { }
     public void visit(MethodDeclList MethodDeclList) { }
     public void visit(InnerMethodBlock InnerMethodBlock) { }
+    public void visit(ConstDeclElem ConstDeclElem) { }
     public void visit(SingleStatement SingleStatement) { }
     public void visit(Label Label) { visit(); }
     public void visit(FactorBlock FactorBlock) { visit(); }
@@ -160,8 +161,9 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ConstLitChar ConstLitChar) { visit(); }
     public void visit(ConstLitBool ConstLitBool) { visit(); }
     public void visit(ConstLitNum ConstLitNum) { visit(); }
+    public void visit(ConstDeclElemError ConstDeclElemError) { visit(); }
+    public void visit(ConstDeclElemCorrect ConstDeclElemCorrect) { visit(); }
     public void visit(ConstDeclSingle ConstDeclSingle) { visit(); }
-    public void visit(ConstDeclMultipleError ConstDeclMultipleError) { visit(); }
     public void visit(ConstDeclMultiple ConstDeclMultiple) { visit(); }
     public void visit(ConstDeclError ConstDeclError) { visit(); }
     public void visit(DeclConst DeclConst) { visit(); }

@@ -12,7 +12,6 @@ import java_cup.runtime.Symbol;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import compiler.pp1.ast.Program;
 
 
 public class MJParserTest {
@@ -43,7 +42,7 @@ public class MJParserTest {
             log.info("===================================");
 
             // ispis prepoznatih programskih konstrukcija
-            RuleVisitor v = new RuleVisitor();
+            SemanticAnalyser v = new SemanticAnalyser();
             prog.traverseBottomUp(v);
 
 //            log.info(" Print count calls = " + v.printCallCount);

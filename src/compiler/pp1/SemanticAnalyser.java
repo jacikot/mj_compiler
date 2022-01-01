@@ -202,6 +202,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(RecordName name) {
         if(!Tab.find(name.getRecordName()).equals(Tab.noObj)){
             report_error("Simbol: Ime " + name.getRecordName() + " je vec deklarisan!", name);
+            name.obj=Tab.noObj;
+            Tab.openScope();
+            return;
         }
         Struct struct=new Struct(Struct.Class);
         name.obj= Tab.insert(Obj.Type,name.getRecordName(), struct);
@@ -215,6 +218,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(ClassName name) {
         if(!Tab.find(name.getName()).equals(Tab.noObj)){
             report_error("Simbol: Ime " + name.getName() + " je vec deklarisan!", name);
+            name.obj=Tab.noObj;
+            Tab.openScope();
+            return;
         }
         Struct struct=new Struct(Struct.Class);
         name.obj= Tab.insert(Obj.Type,name.getName(), struct);
@@ -226,6 +232,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(ConstructorName name) {
+        if(currentTypeDefinition==null||!name.getName().equals(currentTypeDefinition.getName())){
+            report_error("Simbol: Ime " + name.getName() + " nije validno ime konstruktora! ", name);
+            Tab.openScope();
+            name.obj=Tab.noObj;
+            return;
+        }
         name.obj= Tab.insert(Obj.Meth,"__"+name.getName(), Tab.noType);
         name.obj.setFpPos(CONSTRUCTOR_TYPE);
         report_info("Pronadjen simbol: "+name.getName(),name);
@@ -237,6 +249,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(ConstructorDecl decl) {
+        if(decl.getConstructorName().obj.equals(Tab.noObj)){
+            Tab.closeScope();
+            return;
+        }
         Tab.chainLocalSymbols(decl.getConstructorName().obj);
         Tab.closeScope();
         methodDeclActive=false;
@@ -244,7 +260,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(ClassDecl d) {
-        Tab.chainLocalSymbols(d.getClassName().obj.getType());
+        if(!d.getClassName().obj.equals(Tab.noObj))Tab.chainLocalSymbols(d.getClassName().obj.getType());
         Tab.closeScope();
         currentTypeDefinition=null;
     }
@@ -294,7 +310,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(RecordDecl record) {
-        Tab.chainLocalSymbols(record.getRecordName().obj.getType());
+        if(!record.getRecordName().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(record.getRecordName().obj.getType());
         Tab.closeScope();
         currentTypeDefinition=null;
     }
@@ -317,6 +333,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             else{
                 report_error("Simbol: Ime " + name.getMethodName() + " je vec deklarisan!", name);
+                name.obj=Tab.noObj;
+                Tab.openScope();
             }
 
         }
@@ -431,7 +449,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(MethodDeclChecker m) {
         m.obj=m.getMethodName().obj;
-        if(overriding!=null){
+        if(overriding!=null && !m.obj.equals(Tab.noObj)){
             if(!m.getRetType().obj.getType().compatibleWith(overriding.getType())){
                 report_error("Tip metode " + m.getMethodName().getMethodName() + " nije kompatibilan sa povratnim tipom base metode!", m);
             }
@@ -444,7 +462,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         currentType=null;
         methodDeclActive=false;
         overriding=null;
-        Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
+        if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         Tab.closeScope();
     }
 
@@ -454,7 +472,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         currentType=null;
         methodDeclActive=false;
         overriding=null;
-        Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
+        if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         Tab.closeScope();
     }
 

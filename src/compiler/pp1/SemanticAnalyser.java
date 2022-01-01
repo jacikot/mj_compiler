@@ -16,6 +16,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
     int varDeclCount = 0;
     int varDeclCountArray = 0;
     int constDeclCount=0;
+    int classDeclCount=0;
+    int recordDeclCount=0;
+    int methodDeclCountGlobal=0;
+    int mainCount=0;
     boolean errorDetected = false;
     boolean methodDeclActive=false;
     Obj overriding=null;
@@ -206,6 +210,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             Tab.openScope();
             return;
         }
+        recordDeclCount++;
         Struct struct=new Struct(Struct.Class);
         name.obj= Tab.insert(Obj.Type,name.getRecordName(), struct);
         currentTypeDefinition=name.obj;
@@ -222,6 +227,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             Tab.openScope();
             return;
         }
+        classDeclCount++;
         Struct struct=new Struct(Struct.Class);
         name.obj= Tab.insert(Obj.Type,name.getName(), struct);
         currentTypeDefinition=name.obj;
@@ -348,6 +354,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 o.setFpPos(paramsCounter++);
                 thisElem=o;
             }
+            else methodDeclCountGlobal++;
             report_info("Pronadjen simbol: "+name.getMethodName(),name);
             methodDeclActive=true;
         }
@@ -453,6 +460,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
             if(!m.getRetType().obj.getType().compatibleWith(overriding.getType())){
                 report_error("Tip metode " + m.getMethodName().getMethodName() + " nije kompatibilan sa povratnim tipom base metode!", m);
             }
+        }
+        if(m.getMethodName().getMethodName().equals("main") && m.getRetType().obj.getName().equals("void")){
+            mainCount++;
         }
     }
 

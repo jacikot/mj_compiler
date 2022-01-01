@@ -55,12 +55,20 @@ public class MJSemanticAnalysisTest {
             System.out.println(v.constDeclCount +" global constants");
             System.out.println(v.varDeclCount+" global variables");
             System.out.println(v.varDeclCountArray +" global arrays");
-
+            System.out.println(v.methodDeclCountGlobal +" global methods");
+            System.out.println(v.classDeclCount +" inner classes");
+            System.out.println(v.recordDeclCount +" records");
+            System.out.println(v.mainCount +" main method");
             Tab.dump();
-            if(!v.errorDetected&&!p.errorDetected)
+            if(!v.errorDetected&&!p.errorDetected&&v.mainCount>0)
                 System.out.println("=====================USPESNO=========================");
-            else
-                System.out.println("=====================NEUSPESNO=========================");
+            else{
+                System.err.println("=====================NEUSPESNO=========================");
+                if(p.errorDetected) System.err.println("Detektovane su sintaksne greske!");
+                if(v.errorDetected) System.err.println("Detektovane su semanticke greske!");
+                if(v.mainCount==0) System.err.println("Ne postoji metoda main!");
+            }
+
         }
         finally {
             if (br != null) try { br.close(); } catch (IOException e1) { log.error(e1.getMessage(), e1); }

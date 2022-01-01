@@ -7,7 +7,7 @@ import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
 import rs.etf.pp1.symboltable.concepts.Struct;
 
-import java.util.Collection;
+import java.util.*;
 
 public class SemanticAnalyser extends VisitorAdaptor {
 
@@ -473,6 +473,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
         methodDeclActive=false;
         overriding=null;
         if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
+        for(List<StmtGoto> unresolved:labelsSearched.values()){
+            for(StmtGoto stmt:unresolved){
+                report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
+            }
+        }
+        labelsSearched.clear();
         Tab.closeScope();
     }
 
@@ -483,6 +489,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
         methodDeclActive=false;
         overriding=null;
         if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
+        for(List<StmtGoto> unresolved:labelsSearched.values()){
+            for(StmtGoto stmt:unresolved){
+                report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
+            }
+        }
+        labelsSearched.clear();
         Tab.closeScope();
     }
 
@@ -507,20 +519,31 @@ public class SemanticAnalyser extends VisitorAdaptor {
         Struct struct=new Struct(Struct.Class);
         Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
         report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
+        if(labelsSearched.containsKey(label.getLabel().getLabelName())){
+            for(StmtGoto stmt:labelsSearched.remove(label.getLabel().getLabelName())){
+                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName()+" prihvacena",stmt);
+            }
+        }
     }
+
+    private Map<String, List<StmtGoto>> labelsSearched=new HashMap<>();
 
     @Override
     public void visit(StmtGoto stmt) {
         Obj o=Tab.find(stmt.getLabel().getLabelName());
         if(o.equals(Tab.noObj)){
-            report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
+            //report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
+            List<StmtGoto> list=new ArrayList<>();
+            list.add(stmt);
+            if(!labelsSearched.containsKey(stmt.getLabel().getLabelName()))labelsSearched.put(stmt.getLabel().getLabelName(),list);
+            else labelsSearched.get(stmt.getLabel().getLabelName()).add(stmt);
         }
         else{
             if(o.getKind()==Obj.Con && o.getType().equals(Tab.noType)){
                 report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
             }
             else{
-                report_error("Labela: Ime " + stmt.getLabel().getLabelName() + " nije deklarisana!", stmt);
+                report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " se ne moze koristiti kao labela!", stmt);
             }
         }
 

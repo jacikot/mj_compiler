@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 19:55:36
+// 1/0/2022 20:18:11
 
 
 package compiler.pp1.ast;
@@ -130,6 +130,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodName MethodName) { visit(); }
     public void visit(RetTypeVoid RetTypeVoid) { visit(); }
     public void visit(RetTypeType RetTypeType) { visit(); }
+    public void visit(MethodDeclChecker MethodDeclChecker) { visit(); }
     public void visit(MethodDeclNoPar MethodDeclNoPar) { visit(); }
     public void visit(MethodDeclPar MethodDeclPar) { visit(); }
     public void visit(MethodDeclsEmpty MethodDeclsEmpty) { visit(); }

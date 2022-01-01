@@ -3,6 +3,12 @@ const int size = 10, jaab=0, xx=5;
 const char variable='p';
 const bool xyz=false;
 int xyza, jana2[];
+class Base{
+
+}
+class Derived extends Base{
+
+}
 class B{
     int baseField;
     bool xyza;
@@ -10,7 +16,7 @@ class B{
         B() int a, j;{
             a++;
         }
-        void xyz(int j) {}
+        Base xyz(int j) {}
     }
 }
 class A extends B{
@@ -18,7 +24,7 @@ class A extends B{
             A(){
 
             }
-            //void xyz(int h) int x; {}
+            void xyz(int h) int x; {}
     }
 }
 {

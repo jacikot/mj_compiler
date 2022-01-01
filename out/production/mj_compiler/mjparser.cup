@@ -65,7 +65,7 @@ terminal Integer NUMBER, BOOL;
 terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
-terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS;
+terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS, SUPER;
 
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
@@ -77,7 +77,7 @@ nonterminal Cond, CondTerm, CondFact, Relop, Label;
 nonterminal Mulop, Addop, Factor, Term, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
@@ -179,10 +179,11 @@ MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList
 				|
 				(MethodDeclsEmpty) /* epsilon */
 				;
-MethodDecl ::= (MethodDeclPar) RetType:type MethodName:name LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+MethodDecl ::= (MethodDeclPar) MethodDeclChecker:name LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
                 |
-                (MethodDeclNoPar) RetType:type MethodName:name LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
+                (MethodDeclNoPar) MethodDeclChecker:name LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE
                 ;
+MethodDeclChecker ::= (MethodDeclChecker) RetType:type MethodName:name;
 RetType ::= (RetTypeType) Type:type
         |
         (RetTypeVoid) VOID

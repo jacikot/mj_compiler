@@ -18,14 +18,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
     int constDeclCount=0;
     boolean errorDetected = false;
     boolean methodDeclActive=false;
-    boolean overriding=false;
+    Obj overriding=null;
     int nVars;
     Type currentType=null;
     Obj retType=null;
     Obj currentTypeDefinition=null;
     Obj thisElem=null;
     MJParser parser;
-    int paramsCounter=0;
+    int paramsCounter=1;
 
     Logger log = Logger.getLogger(getClass());
 
@@ -307,10 +307,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
             if(currentTypeDefinition!=null && (symbol.getFpPos()&EXTENDS_TYPE)!=0){ //override metode
                 symbol.setFpPos(METHOD_TYPE);
                 Tab.openScope();
-                paramsCounter=0;
+                paramsCounter=1;
                 report_info("Pronadjen simbol: "+name.getMethodName(),name);
                 methodDeclActive=true;
-                overriding=true;
+                overriding=symbol;
                 name.obj=symbol;
                 Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
                 o.setFpPos(paramsCounter++);
@@ -324,7 +324,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             name.obj=Tab.insert(Obj.Meth,name.getMethodName(),retType.getType());
             name.obj.setFpPos(METHOD_TYPE);
             Tab.openScope();
-            paramsCounter=0;
+            paramsCounter=1;
             if(currentTypeDefinition!=null){
                 Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
                 o.setFpPos(paramsCounter++);
@@ -345,6 +345,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
+            if(overriding!=null){
+                if(!overriding.getLocalSymbols().stream().anyMatch(e->{
+                    return e.getFpPos()==paramsCounter && e.getType().equals(arrayType);
+                })){
+                    report_error("Tip parametra " + pars.getParName() + " nije jednak tipu parametra base metode!", pars);
+                    return;
+                }
+            }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
             arg.setFpPos(paramsCounter++);
             report_info("Pronadjen simbol: "+pars.getParName(),pars);
@@ -361,6 +369,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
+            if(overriding!=null){
+                if(!overriding.getLocalSymbols().stream().anyMatch(e->{
+                   return e.getFpPos()==paramsCounter && e.getType().equals(arrayType);
+                })){
+                    report_error("Tip parametra " + pars.getParName() + " nije jednak tipu parametra base metode!", pars);
+                    return;
+                }
+            }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
             arg.setFpPos(paramsCounter++);
             report_info("Pronadjen simbol: "+pars.getParName(),pars);
@@ -376,6 +392,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
         }
         else{
+            if(overriding!=null){
+                if(!overriding.getLocalSymbols().stream().anyMatch(e->{
+                    return e.getFpPos()==paramsCounter && e.getType().equals(currentType.obj.getType());
+                })){
+                    report_error("Tip parametra " + pars.getParName() + " nije jednak tipu parametra base metode!", pars);
+                    return;
+                }
+            }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
             arg.setFpPos(paramsCounter++);
             report_info("Pronadjen simbol: "+pars.getParName(),pars);
@@ -389,6 +413,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
         }
         else{
+            if(overriding!=null){
+                if(!overriding.getLocalSymbols().stream().anyMatch(e->{
+                    return e.getFpPos()==paramsCounter && e.getType().equals(currentType.obj.getType());
+                })){
+                    report_error("Tip parametra " + pars.getParName() + " nije jednak tipu parametra base metode!", pars);
+                    return;
+                }
+            }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
             arg.setFpPos(paramsCounter++);
             report_info("Pronadjen simbol: "+pars.getParName(),pars);
@@ -396,14 +428,23 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
     }
 
+    @Override
+    public void visit(MethodDeclChecker m) {
+        m.obj=m.getMethodName().obj;
+        if(overriding!=null){
+            if(!m.getRetType().obj.getType().compatibleWith(overriding.getType())){
+                report_error("Tip metode " + m.getMethodName().getMethodName() + " nije kompatibilan sa povratnim tipom base metode!", m);
+            }
+        }
+    }
 
     @Override
     public void visit(MethodDeclPar m) {
         retType=null;
         currentType=null;
         methodDeclActive=false;
-        overriding=false;
-        Tab.chainLocalSymbols(m.getMethodName().obj);
+        overriding=null;
+        Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         Tab.closeScope();
     }
 
@@ -412,8 +453,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
         retType=null;
         currentType=null;
         methodDeclActive=false;
-        overriding=false;
-        Tab.chainLocalSymbols(m.getMethodName().obj);
+        overriding=null;
+        Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         Tab.closeScope();
     }
 

@@ -1,23 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 19:55:36
+// 1/0/2022 20:18:11
 
 
 package compiler.pp1.ast;
 
 public class MethodDeclPar extends MethodDecl {
 
-    private RetType RetType;
-    private MethodName MethodName;
+    private MethodDeclChecker MethodDeclChecker;
     private FormParList FormParList;
     private InnerVarDeclList InnerVarDeclList;
     private StatementList StatementList;
 
-    public MethodDeclPar (RetType RetType, MethodName MethodName, FormParList FormParList, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
-        this.RetType=RetType;
-        if(RetType!=null) RetType.setParent(this);
-        this.MethodName=MethodName;
-        if(MethodName!=null) MethodName.setParent(this);
+    public MethodDeclPar (MethodDeclChecker MethodDeclChecker, FormParList FormParList, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
+        this.MethodDeclChecker=MethodDeclChecker;
+        if(MethodDeclChecker!=null) MethodDeclChecker.setParent(this);
         this.FormParList=FormParList;
         if(FormParList!=null) FormParList.setParent(this);
         this.InnerVarDeclList=InnerVarDeclList;
@@ -26,20 +23,12 @@ public class MethodDeclPar extends MethodDecl {
         if(StatementList!=null) StatementList.setParent(this);
     }
 
-    public RetType getRetType() {
-        return RetType;
+    public MethodDeclChecker getMethodDeclChecker() {
+        return MethodDeclChecker;
     }
 
-    public void setRetType(RetType RetType) {
-        this.RetType=RetType;
-    }
-
-    public MethodName getMethodName() {
-        return MethodName;
-    }
-
-    public void setMethodName(MethodName MethodName) {
-        this.MethodName=MethodName;
+    public void setMethodDeclChecker(MethodDeclChecker MethodDeclChecker) {
+        this.MethodDeclChecker=MethodDeclChecker;
     }
 
     public FormParList getFormParList() {
@@ -71,8 +60,7 @@ public class MethodDeclPar extends MethodDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(RetType!=null) RetType.accept(visitor);
-        if(MethodName!=null) MethodName.accept(visitor);
+        if(MethodDeclChecker!=null) MethodDeclChecker.accept(visitor);
         if(FormParList!=null) FormParList.accept(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.accept(visitor);
         if(StatementList!=null) StatementList.accept(visitor);
@@ -80,16 +68,14 @@ public class MethodDeclPar extends MethodDecl {
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(RetType!=null) RetType.traverseTopDown(visitor);
-        if(MethodName!=null) MethodName.traverseTopDown(visitor);
+        if(MethodDeclChecker!=null) MethodDeclChecker.traverseTopDown(visitor);
         if(FormParList!=null) FormParList.traverseTopDown(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseTopDown(visitor);
         if(StatementList!=null) StatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(RetType!=null) RetType.traverseBottomUp(visitor);
-        if(MethodName!=null) MethodName.traverseBottomUp(visitor);
+        if(MethodDeclChecker!=null) MethodDeclChecker.traverseBottomUp(visitor);
         if(FormParList!=null) FormParList.traverseBottomUp(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseBottomUp(visitor);
         if(StatementList!=null) StatementList.traverseBottomUp(visitor);
@@ -101,14 +87,8 @@ public class MethodDeclPar extends MethodDecl {
         buffer.append(tab);
         buffer.append("MethodDeclPar(\n");
 
-        if(RetType!=null)
-            buffer.append(RetType.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(MethodName!=null)
-            buffer.append(MethodName.toString("  "+tab));
+        if(MethodDeclChecker!=null)
+            buffer.append(MethodDeclChecker.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

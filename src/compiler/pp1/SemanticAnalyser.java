@@ -249,6 +249,17 @@ public class SemanticAnalyser extends VisitorAdaptor {
         currentTypeDefinition=null;
     }
 
+    private void copyContent(Obj from, Obj to){
+        Tab.openScope();
+        Collection<Obj> members=from.getLocalSymbols();
+        for(Obj o:members){
+            Obj newO=Tab.insert(o.getKind(),o.getName(),o.getType());
+            newO.setFpPos(o.getFpPos());
+        }
+        Tab.chainLocalSymbols(to);
+        Tab.closeScope();
+    }
+
     @Override
     public void visit(ExtendsDeclType elem) {
         if(currentType==null) return; //vec je greska ispisana
@@ -266,9 +277,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
             if(member.getKind()==Obj.Fld){
                 Tab.insert(Obj.Fld,member.getName(),member.getType());
             }
-            if(member.getKind()==Obj.Meth){
+            if(member.getKind()==Obj.Meth && (member.getFpPos()&METHOD_TYPE)==METHOD_TYPE){
                 Obj o=Tab.insert(Obj.Meth,member.getName(),member.getType());
                 o.setFpPos(member.getFpPos()|EXTENDS_TYPE);
+                copyContent(member,o);
+            }
+            if(member.getKind()==Obj.Meth && (member.getFpPos()==CONSTRUCTOR_TYPE)){
+                Obj o=Tab.insert(Obj.Meth,"super",member.getType());
+                o.setFpPos(member.getFpPos()|EXTENDS_TYPE);
+                copyContent(member,o);
             }
         }
         currentType=null;

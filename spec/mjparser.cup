@@ -65,7 +65,7 @@ terminal Integer NUMBER, BOOL;
 terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
-terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS;
+terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS, SUPER;
 
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;

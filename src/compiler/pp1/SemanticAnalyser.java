@@ -502,11 +502,30 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(LabelDef label) {
         if(!Tab.find(label.getLabel().getLabelName()).equals(Tab.noObj)){
             report_error("Simbol: Ime " + label.getLabel().getLabelName() + " je vec deklarisan!", label);
+            return;
         }
         Struct struct=new Struct(Struct.Class);
         Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
         report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
     }
+
+    @Override
+    public void visit(StmtGoto stmt) {
+        Obj o=Tab.find(stmt.getLabel().getLabelName());
+        if(o.equals(Tab.noObj)){
+            report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
+        }
+        else{
+            if(o.getKind()==Obj.Con && o.getType().equals(Tab.noType)){
+                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
+            }
+            else{
+                report_error("Labela: Ime " + stmt.getLabel().getLabelName() + " nije deklarisana!", stmt);
+            }
+        }
+
+    }
+
 
     @Override
     public void visit(ConstDeclError b) {

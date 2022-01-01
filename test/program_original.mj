@@ -34,6 +34,7 @@ class A extends B{
 {
     int method(B d, A a){}
     void main(){
-        if(a==1) if(b 2) a=0; else b=0;
+        LABELA: if(a==1) {if(b==0) a=0;} else b=0;
+        goto LABELA;
     }
 }

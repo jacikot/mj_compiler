@@ -217,36 +217,31 @@ Statement ::= (StatementSingle) SingleStatement:statement
             ;
 LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
-SingleStatement ::= (MatchedIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
+SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (MatchedIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
+            (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (UnmatchedIf) IF LPAREN Cond RPAREN Statement:ifStmt
+            (StmtIf) IF LPAREN Cond RPAREN Statement:ifStmt
             |
-            (UnmatchedIfError) IF LPAREN error RPAREN Statement:ifStmt
+            (StmtIfError) IF LPAREN error RPAREN Statement:ifStmt
             |
-            (MatchedDesign) DesignStatement:statement SEMI
+            (StmtDesign) DesignStatement:statement SEMI
             |
-            (MatchedDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
+            (StmtDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
             |
-            (MatchedBreak) BREAK SEMI
+            (StmtBreak) BREAK SEMI
             |
-            (MatchedContinue) CONT SEMI
+            (StmtContinue) CONT SEMI
             |
-            (MatchedReturn) RETURN Expr:retValue SEMI
+            (StmtReturn) RETURN Expr:retValue SEMI
             |
-            (MatchedRead) READ LPAREN Designator:dst RPAREN SEMI
+            (StmtRead) READ LPAREN Designator:dst RPAREN SEMI
             |
-            (MatchedPrintSize) PRINT LPAREN Expr:src COMMA NUMBER:size RPAREN SEMI
+            (StmtPrintSize) PRINT LPAREN Expr:src COMMA NUMBER:size RPAREN SEMI
             |
-            (MatchedPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
+            (StmtPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
             |
-            (MatchedGoto) GOTO Label:dst SEMI
-            ;
-
-IfElseBlock ::= (IfElseBlockSingle) Matched
-            |
-            (IfElseBlockMultiple) Statements
+            (StmtGoto) GOTO Label:dst SEMI
             ;
 DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
 Designator ::= (DesignatorAccess) Designator AccessDsgn:access

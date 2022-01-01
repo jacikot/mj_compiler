@@ -65,7 +65,7 @@ terminal Integer NUMBER, BOOL;
 terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
-terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC;
+terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS;
 
 
 nonterminal Program Program;
@@ -82,7 +82,6 @@ nonterminal InnerVarDeclList InnerVarDeclList;
 nonterminal InnerMethodBlock InnerMethodBlock;
 nonterminal ConstructorDecl ConstructorDecl;
 nonterminal StatementList StatementList;
-nonterminal RetType RetType;
 nonterminal FormParList FormParList;
 nonterminal Statement Statement;
 nonterminal SingleStatement SingleStatement;
@@ -107,7 +106,6 @@ nonterminal Mulop Mulop;
 nonterminal Addop Addop;
 nonterminal Factor Factor;
 nonterminal Term Term;
-nonterminal ArrayBracks ArrayBracks;
 nonterminal IfElseBlock IfElseBlock;
 nonterminal VarDeclGlobal VarDeclGlobal;
 nonterminal VarDeclCheck VarDeclCheck;
@@ -115,7 +113,8 @@ nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
 nonterminal ClassDeclList ClassDeclList;
 nonterminal ClassVarDecl ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type, ClassName, ExtendsDecl, ConstructorName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType;
 nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
@@ -182,10 +181,6 @@ VarDeclElem ::= (VarDeclElemArray) IDENT:varName LBRACK RBRACK {: RESULT=new Var
                 |
                 (VarDeclError) error {: RESULT=new VarDeclError(); :}
                 ;
-ArrayBracks ::= (Bracks) LBRACK RBRACK {: RESULT=new Bracks(); :}
-                |
-                (BracksEmpty) {: RESULT=new BracksEmpty(); :} /* epsilon */
-                ;
 ClassDecl ::= (ClassDecl) CLASS ClassName:C1 ExtendsDecl:E2 LBRACE ClassDeclList:vars RBRACE {: RESULT=new ClassDecl(C1, E2, vars); RESULT.setLine(C1left); :};
 
 ClassName ::= (ClassName)IDENT:name {: RESULT=new ClassName(name); RESULT.setLine(nameleft); :};
@@ -223,20 +218,25 @@ MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList:M1 {: RESULT=n
 				|
 				(MethodDeclsEmpty) {: RESULT=new MethodDeclsEmpty(); :} /* epsilon */
 				;
-MethodDecl ::= (MethodDeclPar) RetType:R1 IDENT:methodName LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new MethodDeclPar(R1, methodName, params, vars, statements); RESULT.setLine(R1left); :}
+MethodDecl ::= (MethodDeclPar) RetType:type MethodName:name LPAREN FormParList:params RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new MethodDeclPar(type, name, params, vars, statements); RESULT.setLine(typeleft); :}
                 |
-                (MethodDeclNoPar) RetType:R1 IDENT:methodName LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new MethodDeclNoPar(R1, methodName, vars, statements); RESULT.setLine(R1left); :}
+                (MethodDeclNoPar) RetType:type MethodName:name LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new MethodDeclNoPar(type, name, vars, statements); RESULT.setLine(typeleft); :}
                 ;
-RetType ::= (RetTypeType) Type:T1 {: RESULT=new RetTypeType(T1); RESULT.setLine(T1left); :}
+RetType ::= (RetTypeType) Type:type {: RESULT=new RetTypeType(type); RESULT.setLine(typeleft); :}
         |
         (RetTypeVoid) VOID {: RESULT=new RetTypeVoid(); :}
         ;
-FormParList ::= (FormParsMultiple) FormParList:F1 COMMA Type:type IDENT:parName ArrayBracks:A2 {: RESULT=new FormParsMultiple(F1, type, parName, A2); RESULT.setLine(F1left); :}
+MethodName ::= (MethodName) IDENT:methodName {: RESULT=new MethodName(methodName); RESULT.setLine(methodNameleft); :};
+FormParList ::= (FormParsMultipleArray) FormParList:F1 COMMA Type:type IDENT:parName LBRACK RBRACK {: RESULT=new FormParsMultipleArray(F1, type, parName); RESULT.setLine(F1left); :}
+                |
+                (FormParsMultiple) FormParList:F1 COMMA Type:type IDENT:parName {: RESULT=new FormParsMultiple(F1, type, parName); RESULT.setLine(F1left); :}
                 |
                 (FormParsError) FormParList:F1 COMMA error {: RESULT=new FormParsError(F1); RESULT.setLine(F1left); :}
                 |
-                (FormParsSingle) Type:type IDENT:parName ArrayBracks:A1 {: RESULT=new FormParsSingle(type, parName, A1); RESULT.setLine(typeleft); :}
+                (FormParsSingleArray) Type:type IDENT:parName LBRACK RBRACK {: RESULT=new FormParsSingleArray(type, parName); RESULT.setLine(typeleft); :}
                 |
+                (FormParsSingle) Type:type IDENT:parName {: RESULT=new FormParsSingle(type, parName); RESULT.setLine(typeleft); :}
+                                |
                 (FormParsSingleError) error {: RESULT=new FormParsSingleError(); :}
                 ;
 StatementList ::= (StatementsList) StatementList:statements Statement:S1 {: RESULT=new StatementsList(statements, S1); RESULT.setLine(statementsleft); :}

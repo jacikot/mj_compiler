@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 14:23:11
+// 1/0/2022 16:58:32
 
 
 package compiler.pp1.ast;
@@ -8,14 +8,15 @@ package compiler.pp1.ast;
 public class MethodDeclNoPar extends MethodDecl {
 
     private RetType RetType;
-    private String methodName;
+    private MethodName MethodName;
     private InnerVarDeclList InnerVarDeclList;
     private StatementList StatementList;
 
-    public MethodDeclNoPar (RetType RetType, String methodName, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
+    public MethodDeclNoPar (RetType RetType, MethodName MethodName, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
         this.RetType=RetType;
         if(RetType!=null) RetType.setParent(this);
-        this.methodName=methodName;
+        this.MethodName=MethodName;
+        if(MethodName!=null) MethodName.setParent(this);
         this.InnerVarDeclList=InnerVarDeclList;
         if(InnerVarDeclList!=null) InnerVarDeclList.setParent(this);
         this.StatementList=StatementList;
@@ -30,12 +31,12 @@ public class MethodDeclNoPar extends MethodDecl {
         this.RetType=RetType;
     }
 
-    public String getMethodName() {
-        return methodName;
+    public MethodName getMethodName() {
+        return MethodName;
     }
 
-    public void setMethodName(String methodName) {
-        this.methodName=methodName;
+    public void setMethodName(MethodName MethodName) {
+        this.MethodName=MethodName;
     }
 
     public InnerVarDeclList getInnerVarDeclList() {
@@ -60,6 +61,7 @@ public class MethodDeclNoPar extends MethodDecl {
 
     public void childrenAccept(Visitor visitor) {
         if(RetType!=null) RetType.accept(visitor);
+        if(MethodName!=null) MethodName.accept(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.accept(visitor);
         if(StatementList!=null) StatementList.accept(visitor);
     }
@@ -67,12 +69,14 @@ public class MethodDeclNoPar extends MethodDecl {
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(RetType!=null) RetType.traverseTopDown(visitor);
+        if(MethodName!=null) MethodName.traverseTopDown(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseTopDown(visitor);
         if(StatementList!=null) StatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(RetType!=null) RetType.traverseBottomUp(visitor);
+        if(MethodName!=null) MethodName.traverseBottomUp(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseBottomUp(visitor);
         if(StatementList!=null) StatementList.traverseBottomUp(visitor);
         accept(visitor);
@@ -89,7 +93,10 @@ public class MethodDeclNoPar extends MethodDecl {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+methodName);
+        if(MethodName!=null)
+            buffer.append(MethodName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(InnerVarDeclList!=null)

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 14:23:11
+// 1/0/2022 16:58:32
 
 
 package compiler.pp1.ast;
@@ -10,16 +10,13 @@ public class FormParsMultiple extends FormParList {
     private FormParList FormParList;
     private Type Type;
     private String parName;
-    private ArrayBracks ArrayBracks;
 
-    public FormParsMultiple (FormParList FormParList, Type Type, String parName, ArrayBracks ArrayBracks) {
+    public FormParsMultiple (FormParList FormParList, Type Type, String parName) {
         this.FormParList=FormParList;
         if(FormParList!=null) FormParList.setParent(this);
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
         this.parName=parName;
-        this.ArrayBracks=ArrayBracks;
-        if(ArrayBracks!=null) ArrayBracks.setParent(this);
     }
 
     public FormParList getFormParList() {
@@ -46,14 +43,6 @@ public class FormParsMultiple extends FormParList {
         this.parName=parName;
     }
 
-    public ArrayBracks getArrayBracks() {
-        return ArrayBracks;
-    }
-
-    public void setArrayBracks(ArrayBracks ArrayBracks) {
-        this.ArrayBracks=ArrayBracks;
-    }
-
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -61,20 +50,17 @@ public class FormParsMultiple extends FormParList {
     public void childrenAccept(Visitor visitor) {
         if(FormParList!=null) FormParList.accept(visitor);
         if(Type!=null) Type.accept(visitor);
-        if(ArrayBracks!=null) ArrayBracks.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(FormParList!=null) FormParList.traverseTopDown(visitor);
         if(Type!=null) Type.traverseTopDown(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(FormParList!=null) FormParList.traverseBottomUp(visitor);
         if(Type!=null) Type.traverseBottomUp(visitor);
-        if(ArrayBracks!=null) ArrayBracks.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -96,12 +82,6 @@ public class FormParsMultiple extends FormParList {
         buffer.append("\n");
 
         buffer.append(" "+tab+parName);
-        buffer.append("\n");
-
-        if(ArrayBracks!=null)
-            buffer.append(ArrayBracks.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);

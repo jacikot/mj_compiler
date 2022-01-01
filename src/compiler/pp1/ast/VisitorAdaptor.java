@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 14:23:11
+// 1/0/2022 16:58:32
 
 
 package compiler.pp1.ast;
@@ -31,15 +31,14 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DeclList DeclList) { }
     public void visit(Designator Designator) { }
     public void visit(Term Term) { }
-    public void visit(VarDeclCheck VarDeclCheck) { }
     public void visit(RetType RetType) { }
+    public void visit(VarDeclCheck VarDeclCheck) { }
     public void visit(Statements Statements) { }
     public void visit(VarDeclElemNoC VarDeclElemNoC) { }
     public void visit(ConstDeclList ConstDeclList) { }
     public void visit(ActParsList ActParsList) { }
     public void visit(InnerVarDeclList InnerVarDeclList) { }
     public void visit(ExtendsDecl ExtendsDecl) { }
-    public void visit(ArrayBracks ArrayBracks) { }
     public void visit(VarDeclList VarDeclList) { }
     public void visit(Expr Expr) { }
     public void visit(Cond Cond) { }
@@ -124,8 +123,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(StatementsList StatementsList) { visit(); }
     public void visit(FormParsSingleError FormParsSingleError) { visit(); }
     public void visit(FormParsSingle FormParsSingle) { visit(); }
+    public void visit(FormParsSingleArray FormParsSingleArray) { visit(); }
     public void visit(FormParsError FormParsError) { visit(); }
     public void visit(FormParsMultiple FormParsMultiple) { visit(); }
+    public void visit(FormParsMultipleArray FormParsMultipleArray) { visit(); }
+    public void visit(MethodName MethodName) { visit(); }
     public void visit(RetTypeVoid RetTypeVoid) { visit(); }
     public void visit(RetTypeType RetTypeType) { visit(); }
     public void visit(MethodDeclNoPar MethodDeclNoPar) { visit(); }
@@ -150,8 +152,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExtendsDeclType ExtendsDeclType) { visit(); }
     public void visit(ClassName ClassName) { visit(); }
     public void visit(ClassDecl ClassDecl) { visit(); }
-    public void visit(BracksEmpty BracksEmpty) { visit(); }
-    public void visit(Bracks Bracks) { visit(); }
     public void visit(VarDeclError VarDeclError) { visit(); }
     public void visit(VarDeclElemSingle VarDeclElemSingle) { visit(); }
     public void visit(VarDeclElemArray VarDeclElemArray) { visit(); }

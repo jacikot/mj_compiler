@@ -10,13 +10,17 @@ class B{
         B() int a, j;{
             a++;
         }
+        void xyz(int j) int bl; {}
     }
 }
-class D extends B{
+class A extends B{
     {
-        D(){
-           xyza=0;
-        }
+            A(){
+
+            }
+            void xyz(int h) int x; {}
     }
 }
-{}
+{
+    int method(B d, A a){}
+}

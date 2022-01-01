@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 14:23:11
+// 1/0/2022 16:58:32
 
 
 package compiler.pp1.ast;
@@ -31,15 +31,14 @@ public interface Visitor {
     public void visit(DeclList DeclList);
     public void visit(Designator Designator);
     public void visit(Term Term);
-    public void visit(VarDeclCheck VarDeclCheck);
     public void visit(RetType RetType);
+    public void visit(VarDeclCheck VarDeclCheck);
     public void visit(Statements Statements);
     public void visit(VarDeclElemNoC VarDeclElemNoC);
     public void visit(ConstDeclList ConstDeclList);
     public void visit(ActParsList ActParsList);
     public void visit(InnerVarDeclList InnerVarDeclList);
     public void visit(ExtendsDecl ExtendsDecl);
-    public void visit(ArrayBracks ArrayBracks);
     public void visit(VarDeclList VarDeclList);
     public void visit(Expr Expr);
     public void visit(Cond Cond);
@@ -124,8 +123,11 @@ public interface Visitor {
     public void visit(StatementsList StatementsList);
     public void visit(FormParsSingleError FormParsSingleError);
     public void visit(FormParsSingle FormParsSingle);
+    public void visit(FormParsSingleArray FormParsSingleArray);
     public void visit(FormParsError FormParsError);
     public void visit(FormParsMultiple FormParsMultiple);
+    public void visit(FormParsMultipleArray FormParsMultipleArray);
+    public void visit(MethodName MethodName);
     public void visit(RetTypeVoid RetTypeVoid);
     public void visit(RetTypeType RetTypeType);
     public void visit(MethodDeclNoPar MethodDeclNoPar);
@@ -150,8 +152,6 @@ public interface Visitor {
     public void visit(ExtendsDeclType ExtendsDeclType);
     public void visit(ClassName ClassName);
     public void visit(ClassDecl ClassDecl);
-    public void visit(BracksEmpty BracksEmpty);
-    public void visit(Bracks Bracks);
     public void visit(VarDeclError VarDeclError);
     public void visit(VarDeclElemSingle VarDeclElemSingle);
     public void visit(VarDeclElemArray VarDeclElemArray);

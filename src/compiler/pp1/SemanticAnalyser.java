@@ -11,17 +11,21 @@ import java.util.Collection;
 
 public class SemanticAnalyser extends VisitorAdaptor {
 
-    static final int RECORD_TYPE=1,CLASS_TYPE=0, CONSTRUCTOR_TYPE=2, METHOD_TYPE=3;
+    static final int RECORD_TYPE=1,CLASS_TYPE=0, CONSTRUCTOR_TYPE=2, METHOD_TYPE=3, EXTENDS_TYPE=4;
     int printCallCount = 0;
     int varDeclCount = 0;
     int varDeclCountArray = 0;
     int constDeclCount=0;
     boolean errorDetected = false;
     boolean methodDeclActive=false;
+    boolean overriding=false;
     int nVars;
     Type currentType=null;
+    Obj retType=null;
     Obj currentTypeDefinition=null;
+    Obj thisElem=null;
     MJParser parser;
+    int paramsCounter=0;
 
     Logger log = Logger.getLogger(getClass());
 
@@ -29,6 +33,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void init(){
         Tab.init();
         Obj o=Tab.insert(Obj.Type,"bool",new Struct(Struct.Bool));
+        o.setAdr(-1);
+        o.setLevel(-1);
+        o=Tab.insert(Obj.Type,"void",Tab.noType);
         o.setAdr(-1);
         o.setLevel(-1);
     }
@@ -140,7 +147,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            Obj node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            Tab.insert(Obj.Var,elem.getVarName(),arrayType);
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCountArray++;
         }
@@ -154,7 +161,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            Obj node=Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
+            Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCount++;
         }
@@ -163,19 +170,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(VarDeclElemArrayNoC elem) {
         if(currentType==null) return; //vec je greska ispisana
-        if(currentType.obj.equals(currentTypeDefinition)){
-            report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
-            return;
-        }
         if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            Obj node;
-            if(!methodDeclActive) node=Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
-            else node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            if(!methodDeclActive) Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
+            else Tab.insert(Obj.Var,elem.getVarName(),arrayType);
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCountArray++;
         }
@@ -184,17 +186,11 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(VarDeclElemSingleNoC elem) {
         if(currentType==null) return; //vec je greska ispisana
-        if(currentType.obj.equals(currentTypeDefinition)){
-            report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
-            return;
-        }
         if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-
-            Obj node;
             if(!methodDeclActive) Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
             else Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
@@ -230,10 +226,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(ConstructorName name) {
-        name.obj= Tab.insert(Obj.Meth,name.getName(), Tab.noType);
+        name.obj= Tab.insert(Obj.Meth,"__"+name.getName(), Tab.noType);
         name.obj.setFpPos(CONSTRUCTOR_TYPE);
         report_info("Pronadjen simbol: "+name.getName(),name);
         Tab.openScope();
+        Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
+        o.setFpPos(0);
         methodDeclActive=true;
     }
 
@@ -269,13 +267,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 Tab.insert(Obj.Fld,member.getName(),member.getType());
             }
             if(member.getKind()==Obj.Meth){
-                if(member.getFpPos()==CONSTRUCTOR_TYPE){
-                    Obj o=Tab.insert(Obj.Meth,member.getName(),member.getType());
-                    o.setFpPos(member.getFpPos());
-                }
+                Obj o=Tab.insert(Obj.Meth,member.getName(),member.getType());
+                o.setFpPos(member.getFpPos()|EXTENDS_TYPE);
             }
         }
-        //dodeliti sve metode osnovne klase izvedenoj i uvesti izmene
         currentType=null;
     }
 
@@ -286,6 +281,137 @@ public class SemanticAnalyser extends VisitorAdaptor {
         Tab.closeScope();
         currentTypeDefinition=null;
     }
+
+    @Override
+    public void visit(MethodName name) {
+        if(retType==null) return; //vec je greska ispisana
+        Obj symbol=Tab.currentScope().findSymbol(name.getMethodName());
+        if(symbol!=null){
+            if(currentTypeDefinition!=null && (symbol.getFpPos()&EXTENDS_TYPE)!=0){ //override metode
+                symbol.setFpPos(METHOD_TYPE);
+                Tab.openScope();
+                paramsCounter=0;
+                report_info("Pronadjen simbol: "+name.getMethodName(),name);
+                methodDeclActive=true;
+                overriding=true;
+                name.obj=symbol;
+                Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
+                o.setFpPos(paramsCounter++);
+            }
+            else{
+                report_error("Simbol: Ime " + name.getMethodName() + " je vec deklarisan!", name);
+            }
+
+        }
+        else{
+            name.obj=Tab.insert(Obj.Meth,name.getMethodName(),retType.getType());
+            name.obj.setFpPos(METHOD_TYPE);
+            Tab.openScope();
+            paramsCounter=0;
+            if(currentTypeDefinition!=null){
+                Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
+                o.setFpPos(paramsCounter++);
+                thisElem=o;
+            }
+            report_info("Pronadjen simbol: "+name.getMethodName(),name);
+            methodDeclActive=true;
+        }
+    }
+
+
+    @Override
+    public void visit(FormParsMultipleArray pars) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(Tab.currentScope().findSymbol(pars.getParName())!=null){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
+        }
+        else{
+            Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
+            Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
+            arg.setFpPos(paramsCounter++);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+
+        }
+    }
+
+    @Override
+    public void visit(FormParsSingleArray pars) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(Tab.currentScope().findSymbol(pars.getParName())!=null){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
+        }
+        else{
+            Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
+            Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
+            arg.setFpPos(paramsCounter++);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+
+        }
+    }
+
+    @Override
+    public void visit(FormParsMultiple pars) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(Tab.currentScope().findSymbol(pars.getParName())!=null){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
+        }
+        else{
+            Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
+            arg.setFpPos(paramsCounter++);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+        }
+    }
+    @Override
+    public void visit(FormParsSingle pars) {
+        if(currentType==null) return; //vec je greska ispisana
+        if(Tab.currentScope().findSymbol(pars.getParName())!=null){
+            //vec postoji simbol
+            report_error("Simbol: Ime " + pars.getParName() + " je vec deklarisan!", pars);
+        }
+        else{
+            Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
+            arg.setFpPos(paramsCounter++);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+
+        }
+    }
+
+
+    @Override
+    public void visit(MethodDeclPar m) {
+        retType=null;
+        currentType=null;
+        methodDeclActive=false;
+        overriding=false;
+        Tab.chainLocalSymbols(m.getMethodName().obj);
+        Tab.closeScope();
+    }
+
+    @Override
+    public void visit(MethodDeclNoPar m) {
+        retType=null;
+        currentType=null;
+        methodDeclActive=false;
+        overriding=false;
+        Tab.chainLocalSymbols(m.getMethodName().obj);
+        Tab.closeScope();
+    }
+
+    @Override
+    public void visit(RetTypeType type) {
+        type.obj=type.getType().obj;
+        retType=type.obj;
+    }
+
+    @Override
+    public void visit(RetTypeVoid type) {
+        type.obj=Tab.find("void");
+        retType=type.obj;
+    }
+
     @Override
     public void visit(ConstDeclError b) {
         report_error("Izvrsen oporavak od greske. ",b);
@@ -315,6 +441,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(ExtendsDeclError b) {
+        report_error("Izvrsen oporavak od greske. ",b);
+    }
+
+    @Override
+    public void visit(FormParsError b) {
+        report_error("Izvrsen oporavak od greske. ",b);
+    }
+    @Override
+    public void visit(FormParsSingleError b) {
         report_error("Izvrsen oporavak od greske. ",b);
     }
 

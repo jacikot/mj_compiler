@@ -58,7 +58,8 @@ import java_cup.runtime.Symbol;
 "extends"   { return new_symbol(sym.EXTND, yytext());}
 "continue"  { return new_symbol(sym.CONT, yytext());}
 "goto"      { return new_symbol(sym.GOTO, yytext());}
-"record"      { return new_symbol(sym.RECORD, yytext());}
+"record"    { return new_symbol(sym.RECORD, yytext());}
+"this"      { return new_symbol(sym.THIS, yytext());}
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "-" 		{ return new_symbol(sym.MINUS, yytext()); }
 "*" 		{ return new_symbol(sym.MUL, yytext()); }

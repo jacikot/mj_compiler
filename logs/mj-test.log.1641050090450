@@ -1,0 +1,356 @@
+INFO  16:14:21,828 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program_original.mj
+INFO  16:14:21,936 - #2 program
+INFO  16:14:21,936 - #22 p
+INFO  16:14:21,937 - #5 const
+INFO  16:14:21,939 - #22 int
+INFO  16:14:21,940 - #22 size
+INFO  16:14:21,941 - #9 =
+INFO  16:14:21,941 - #20 10
+INFO  16:14:21,941 - #7 ,
+INFO  16:14:21,942 - #22 jaab
+INFO  16:14:21,942 - #9 =
+INFO  16:14:21,942 - #20 0
+INFO  16:14:21,942 - #7 ,
+INFO  16:14:21,943 - #22 xx
+INFO  16:14:21,943 - #9 =
+INFO  16:14:21,943 - #20 5
+INFO  16:14:21,943 - #6 ;
+INFO  16:14:21,943 - #5 const
+INFO  16:14:21,944 - #22 char
+INFO  16:14:21,944 - #22 variable
+INFO  16:14:21,945 - #9 =
+INFO  16:14:21,945 - #23 'p'
+INFO  16:14:21,947 - #6 ;
+INFO  16:14:21,947 - #5 const
+INFO  16:14:21,947 - #22 bool
+INFO  16:14:21,947 - #22 xyz
+INFO  16:14:21,947 - #9 =
+INFO  16:14:21,947 - #21 0
+INFO  16:14:21,947 - #6 ;
+INFO  16:14:21,948 - #22 int
+INFO  16:14:21,948 - #22 xyza
+INFO  16:14:21,948 - #7 ,
+INFO  16:14:21,948 - #22 jana2
+INFO  16:14:21,948 - #10 [
+INFO  16:14:21,949 - #11 ]
+INFO  16:14:21,949 - #6 ;
+INFO  16:14:21,949 - #13 class
+INFO  16:14:21,949 - #22 B
+INFO  16:14:21,950 - #3 {
+INFO  16:14:21,952 - #22 int
+INFO  16:14:21,952 - #22 baseField
+INFO  16:14:21,952 - #6 ;
+INFO  16:14:21,952 - #22 bool
+INFO  16:14:21,953 - #22 xyza
+INFO  16:14:21,953 - #6 ;
+INFO  16:14:21,953 - #3 {
+INFO  16:14:21,953 - #22 B
+INFO  16:14:21,953 - #15 (
+INFO  16:14:21,955 - #16 )
+INFO  16:14:21,955 - #22 int
+INFO  16:14:21,956 - #22 a
+INFO  16:14:21,956 - #7 ,
+INFO  16:14:21,957 - #22 j
+INFO  16:14:21,958 - #6 ;
+INFO  16:14:21,958 - #3 {
+INFO  16:14:21,960 - #22 a
+INFO  16:14:21,962 - #47 ++
+INFO  16:14:21,962 - #6 ;
+INFO  16:14:21,964 - #4 }
+INFO  16:14:21,965 - #4 }
+INFO  16:14:21,968 - #4 }
+INFO  16:14:21,968 - #13 class
+INFO  16:14:21,970 - #22 A
+INFO  16:14:21,970 - #14 extends
+INFO  16:14:21,970 - #22 B
+INFO  16:14:21,970 - #3 {
+INFO  16:14:21,971 - #3 {
+INFO  16:14:21,971 - #22 A
+INFO  16:14:21,971 - #15 (
+INFO  16:14:21,971 - #16 )
+INFO  16:14:21,971 - #3 {
+INFO  16:14:21,971 - #4 }
+INFO  16:14:21,971 - #4 }
+INFO  16:14:21,971 - #4 }
+INFO  16:14:21,971 - #13 class
+INFO  16:14:21,971 - #22 D
+INFO  16:14:21,972 - #14 extends
+INFO  16:14:21,972 - #22 A
+INFO  16:14:21,972 - #3 {
+INFO  16:14:21,972 - #3 {
+INFO  16:14:21,972 - #22 D
+INFO  16:14:21,972 - #15 (
+INFO  16:14:21,972 - #16 )
+INFO  16:14:21,972 - #3 {
+INFO  16:14:21,973 - #22 xyza
+INFO  16:14:21,973 - #9 =
+INFO  16:14:21,973 - #20 0
+INFO  16:14:21,974 - #6 ;
+INFO  16:14:21,975 - #4 }
+INFO  16:14:21,975 - #4 }
+INFO  16:14:21,976 - #4 }
+INFO  16:14:21,976 - #3 {
+INFO  16:14:21,976 - #4 }
+INFO  16:14:21,993 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListClass(
+    DeclListClass(
+      DeclListClass(
+        DeclListVar(
+          DeclListConst(
+            DeclListConst(
+              DeclListConst(
+                DeclListEmpty(
+                ) [DeclListEmpty]
+                DeclConst(
+                  Type(
+                   int
+                  ) [Type]
+                  ConstDeclMultiple(
+                    ConstDeclMultiple(
+                      ConstDeclSingle(
+                        ConstDeclElemCorrect(
+                         size
+                          ConstLitNum(
+                           10
+                          ) [ConstLitNum]
+                        ) [ConstDeclElemCorrect]
+                      ) [ConstDeclSingle]
+                      ConstDeclElemCorrect(
+                       jaab
+                        ConstLitNum(
+                         0
+                        ) [ConstLitNum]
+                      ) [ConstDeclElemCorrect]
+                    ) [ConstDeclMultiple]
+                    ConstDeclElemCorrect(
+                     xx
+                      ConstLitNum(
+                       5
+                      ) [ConstLitNum]
+                    ) [ConstDeclElemCorrect]
+                  ) [ConstDeclMultiple]
+                ) [DeclConst]
+              ) [DeclListConst]
+              DeclConst(
+                Type(
+                 char
+                ) [Type]
+                ConstDeclSingle(
+                  ConstDeclElemCorrect(
+                   variable
+                    ConstLitChar(
+                     'p'
+                    ) [ConstLitChar]
+                  ) [ConstDeclElemCorrect]
+                ) [ConstDeclSingle]
+              ) [DeclConst]
+            ) [DeclListConst]
+            DeclConst(
+              Type(
+               bool
+              ) [Type]
+              ConstDeclSingle(
+                ConstDeclElemCorrect(
+                 xyz
+                  ConstLitBool(
+                   0
+                  ) [ConstLitBool]
+                ) [ConstDeclElemCorrect]
+              ) [ConstDeclSingle]
+            ) [DeclConst]
+          ) [DeclListConst]
+          VarDeclGlobalCorrect(
+            Type(
+             int
+            ) [Type]
+            VarDeclMultiple(
+              VarDeclSingle(
+                VarDeclElemSingle(
+                 xyza
+                ) [VarDeclElemSingle]
+              ) [VarDeclSingle]
+              VarDeclElemArray(
+               jana2
+              ) [VarDeclElemArray]
+            ) [VarDeclMultiple]
+          ) [VarDeclGlobalCorrect]
+        ) [DeclListVar]
+        ClassDecl(
+          ClassName(
+           B
+          ) [ClassName]
+          ExtendsDeclEmpty(
+          ) [ExtendsDeclEmpty]
+          ClassVarDecls(
+            VarDeclsCorrect(
+              Type(
+               int
+              ) [Type]
+              VarDeclSingleNoC(
+                VarDeclElemSingleNoC(
+                 baseField
+                ) [VarDeclElemSingleNoC]
+              ) [VarDeclSingleNoC]
+            ) [VarDeclsCorrect]
+            ClassVarDecls(
+              VarDeclsCorrect(
+                Type(
+                 bool
+                ) [Type]
+                VarDeclSingleNoC(
+                  VarDeclElemSingleNoC(
+                   xyza
+                  ) [VarDeclElemSingleNoC]
+                ) [VarDeclSingleNoC]
+              ) [VarDeclsCorrect]
+              ClassDeclsMethods(
+                InnerMethodBlockAll(
+                  ConstructorDecl(
+                    ConstructorName(
+                     B
+                    ) [ConstructorName]
+                    InnerVarDecls(
+                      InnerVarDeclsEmpty(
+                      ) [InnerVarDeclsEmpty]
+                      VarDecl(
+                        Type(
+                         int
+                        ) [Type]
+                        VarDeclMultipleNoC(
+                          VarDeclSingleNoC(
+                            VarDeclElemSingleNoC(
+                             a
+                            ) [VarDeclElemSingleNoC]
+                          ) [VarDeclSingleNoC]
+                          VarDeclElemSingleNoC(
+                           j
+                          ) [VarDeclElemSingleNoC]
+                        ) [VarDeclMultipleNoC]
+                      ) [VarDecl]
+                    ) [InnerVarDecls]
+                    StatementsList(
+                      StatementsEmpty(
+                      ) [StatementsEmpty]
+                      StatementSingle(
+                        StatementMatched(
+                          MatchedDesign(
+                            DesignStmt(
+                              DesignatorFirst(
+                               a
+                              ) [DesignatorFirst]
+                              DsgnOpInc(
+                              ) [DsgnOpInc]
+                            ) [DesignStmt]
+                          ) [MatchedDesign]
+                        ) [StatementMatched]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                  ) [ConstructorDecl]
+                  MethodDeclsEmpty(
+                  ) [MethodDeclsEmpty]
+                ) [InnerMethodBlockAll]
+              ) [ClassDeclsMethods]
+            ) [ClassVarDecls]
+          ) [ClassVarDecls]
+        ) [ClassDecl]
+      ) [DeclListClass]
+      ClassDecl(
+        ClassName(
+         A
+        ) [ClassName]
+        ExtendsDeclType(
+          Type(
+           B
+          ) [Type]
+        ) [ExtendsDeclType]
+        ClassDeclsMethods(
+          InnerMethodBlockAll(
+            ConstructorDecl(
+              ConstructorName(
+               A
+              ) [ConstructorName]
+              InnerVarDeclsEmpty(
+              ) [InnerVarDeclsEmpty]
+              StatementsEmpty(
+              ) [StatementsEmpty]
+            ) [ConstructorDecl]
+            MethodDeclsEmpty(
+            ) [MethodDeclsEmpty]
+          ) [InnerMethodBlockAll]
+        ) [ClassDeclsMethods]
+      ) [ClassDecl]
+    ) [DeclListClass]
+    ClassDecl(
+      ClassName(
+       D
+      ) [ClassName]
+      ExtendsDeclType(
+        Type(
+         A
+        ) [Type]
+      ) [ExtendsDeclType]
+      ClassDeclsMethods(
+        InnerMethodBlockAll(
+          ConstructorDecl(
+            ConstructorName(
+             D
+            ) [ConstructorName]
+            InnerVarDeclsEmpty(
+            ) [InnerVarDeclsEmpty]
+            StatementsList(
+              StatementsEmpty(
+              ) [StatementsEmpty]
+              StatementSingle(
+                StatementMatched(
+                  MatchedDesign(
+                    DesignStmt(
+                      DesignatorFirst(
+                       xyza
+                      ) [DesignatorFirst]
+                      DsgnOpAssign(
+                        Assignop(
+                        ) [Assignop]
+                        ExprSingle(
+                          TermSingle(
+                            FactorNumber(
+                             0
+                            ) [FactorNumber]
+                          ) [TermSingle]
+                        ) [ExprSingle]
+                      ) [DsgnOpAssign]
+                    ) [DesignStmt]
+                  ) [MatchedDesign]
+                ) [StatementMatched]
+              ) [StatementSingle]
+            ) [StatementsList]
+          ) [ConstructorDecl]
+          MethodDeclsEmpty(
+          ) [MethodDeclsEmpty]
+        ) [InnerMethodBlockAll]
+      ) [ClassDeclsMethods]
+    ) [ClassDecl]
+  ) [DeclListClass]
+  MethodDeclsEmpty(
+  ) [MethodDeclsEmpty]
+) [Program]
+INFO  16:14:22,009 - Pronadjen simbol: p na liniji 1
+INFO  16:14:22,009 - Pronadjen simbol: size na liniji 2
+INFO  16:14:22,010 - Pronadjen simbol: jaab na liniji 2
+INFO  16:14:22,010 - Pronadjen simbol: xx na liniji 2
+INFO  16:14:22,010 - Pronadjen simbol: variable na liniji 3
+INFO  16:14:22,010 - Pronadjen simbol: xyz na liniji 4
+INFO  16:14:22,010 - Pronadjen simbol: xyza na liniji 5
+INFO  16:14:22,017 - Pronadjen simbol: jana2 na liniji 5
+INFO  16:14:22,018 - Pronadjen simbol: B na liniji 6
+INFO  16:14:22,018 - Pronadjen simbol: baseField na liniji 7
+INFO  16:14:22,018 - Pronadjen simbol: xyza na liniji 8
+INFO  16:14:22,019 - Pronadjen simbol: B na liniji 10
+INFO  16:14:22,019 - Pronadjen simbol: a na liniji 10
+INFO  16:14:22,019 - Pronadjen simbol: j na liniji 10
+INFO  16:14:22,019 - Pronadjen simbol: A na liniji 15
+INFO  16:14:22,019 - Pronadjen simbol: A na liniji 17
+INFO  16:14:22,019 - Pronadjen simbol: D na liniji 22
+INFO  16:14:22,019 - Pronadjen simbol: D na liniji 24

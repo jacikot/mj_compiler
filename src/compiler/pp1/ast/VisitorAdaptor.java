@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 20:18:11
+// 1/0/2022 21:15:39
 
 
 package compiler.pp1.ast;
@@ -116,6 +116,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(StatementUnmatched StatementUnmatched) { visit(); }
     public void visit(StatementMatched StatementMatched) { visit(); }
     public void visit(StatementsBlock StatementsBlock) { visit(); }
+    public void visit(LabelDef LabelDef) { visit(); }
     public void visit(StatementMultiple StatementMultiple) { visit(); }
     public void visit(StatementSingleLabel StatementSingleLabel) { visit(); }
     public void visit(StatementSingle StatementSingle) { visit(); }

@@ -5,24 +5,23 @@
 
 package compiler.pp1.ast;
 
-public class ClassName implements SyntaxNode {
+public class LabelDef implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
+    private Label Label;
 
-    private String name;
-
-    public ClassName (String name) {
-        this.name=name;
+    public LabelDef (Label Label) {
+        this.Label=Label;
+        if(Label!=null) Label.setParent(this);
     }
 
-    public String getName() {
-        return name;
+    public Label getLabel() {
+        return Label;
     }
 
-    public void setName(String name) {
-        this.name=name;
+    public void setLabel(Label Label) {
+        this.Label=Label;
     }
 
     public SyntaxNode getParent() {
@@ -46,26 +45,32 @@ public class ClassName implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Label!=null) Label.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Label!=null) Label.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Label!=null) Label.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ClassName(\n");
+        buffer.append("LabelDef(\n");
 
-        buffer.append(" "+tab+name);
+        if(Label!=null)
+            buffer.append(Label.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [ClassName]");
+        buffer.append(") [LabelDef]");
         return buffer.toString();
     }
 }

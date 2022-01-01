@@ -78,7 +78,7 @@ nonterminal Mulop, Addop, Factor, Term, IfElseBlock;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
-nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -207,10 +207,11 @@ StatementList ::= (StatementsList) StatementList:statements Statement
 				;
 Statement ::= (StatementSingle) SingleStatement:statement
             |
-            (StatementSingleLabel) Label:label COLUMN SingleStatement:statement
+            (StatementSingleLabel) LabelDef:label SingleStatement:statement
             |
             (StatementMultiple) Statements
             ;
+LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
 SingleStatement ::= (StatementMatched) Matched:statement
 		   |

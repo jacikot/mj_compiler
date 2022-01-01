@@ -1,28 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 20:18:11
+// 1/0/2022 21:15:39
 
 
 package compiler.pp1.ast;
 
 public class StatementSingleLabel extends Statement {
 
-    private Label Label;
+    private LabelDef LabelDef;
     private SingleStatement SingleStatement;
 
-    public StatementSingleLabel (Label Label, SingleStatement SingleStatement) {
-        this.Label=Label;
-        if(Label!=null) Label.setParent(this);
+    public StatementSingleLabel (LabelDef LabelDef, SingleStatement SingleStatement) {
+        this.LabelDef=LabelDef;
+        if(LabelDef!=null) LabelDef.setParent(this);
         this.SingleStatement=SingleStatement;
         if(SingleStatement!=null) SingleStatement.setParent(this);
     }
 
-    public Label getLabel() {
-        return Label;
+    public LabelDef getLabelDef() {
+        return LabelDef;
     }
 
-    public void setLabel(Label Label) {
-        this.Label=Label;
+    public void setLabelDef(LabelDef LabelDef) {
+        this.LabelDef=LabelDef;
     }
 
     public SingleStatement getSingleStatement() {
@@ -38,18 +38,18 @@ public class StatementSingleLabel extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Label!=null) Label.accept(visitor);
+        if(LabelDef!=null) LabelDef.accept(visitor);
         if(SingleStatement!=null) SingleStatement.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Label!=null) Label.traverseTopDown(visitor);
+        if(LabelDef!=null) LabelDef.traverseTopDown(visitor);
         if(SingleStatement!=null) SingleStatement.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Label!=null) Label.traverseBottomUp(visitor);
+        if(LabelDef!=null) LabelDef.traverseBottomUp(visitor);
         if(SingleStatement!=null) SingleStatement.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -59,8 +59,8 @@ public class StatementSingleLabel extends Statement {
         buffer.append(tab);
         buffer.append("StatementSingleLabel(\n");
 
-        if(Label!=null)
-            buffer.append(Label.toString("  "+tab));
+        if(LabelDef!=null)
+            buffer.append(LabelDef.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

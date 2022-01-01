@@ -16,7 +16,7 @@ class B{
         B() int a, j;{
             a++;
         }
-        Base xyz(int j) {}
+        void xyz(int j) {}
     }
 }
 class A extends B{
@@ -24,7 +24,9 @@ class A extends B{
             A(){
 
             }
-            void xyz(int h) int x; {}
+            void xyz(int h) int x; {
+            Label: x++;
+            }
     }
 }
 {

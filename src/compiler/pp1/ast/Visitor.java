@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 20:18:11
+// 1/0/2022 21:15:39
 
 
 package compiler.pp1.ast;
@@ -116,6 +116,7 @@ public interface Visitor {
     public void visit(StatementUnmatched StatementUnmatched);
     public void visit(StatementMatched StatementMatched);
     public void visit(StatementsBlock StatementsBlock);
+    public void visit(LabelDef LabelDef);
     public void visit(StatementMultiple StatementMultiple);
     public void visit(StatementSingleLabel StatementSingleLabel);
     public void visit(StatementSingle StatementSingle);

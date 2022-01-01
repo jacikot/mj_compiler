@@ -471,6 +471,16 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
     @Override
+    public void visit(LabelDef label) {
+        if(!Tab.find(label.getLabel().getLabelName()).equals(Tab.noObj)){
+            report_error("Simbol: Ime " + label.getLabel().getLabelName() + " je vec deklarisan!", label);
+        }
+        Struct struct=new Struct(Struct.Class);
+        Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
+        report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
+    }
+
+    @Override
     public void visit(ConstDeclError b) {
         report_error("Izvrsen oporavak od greske. ",b);
     }

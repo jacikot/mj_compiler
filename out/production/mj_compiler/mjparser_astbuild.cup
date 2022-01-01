@@ -118,6 +118,7 @@ nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, Construc
 nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
+nonterminal LabelDef LabelDef;
 
 Program ::= (Program) PROG ProgramName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
 
@@ -246,10 +247,11 @@ StatementList ::= (StatementsList) StatementList:statements Statement:S1 {: RESU
 				;
 Statement ::= (StatementSingle) SingleStatement:statement {: RESULT=new StatementSingle(statement); RESULT.setLine(statementleft); :}
             |
-            (StatementSingleLabel) Label:label COLUMN SingleStatement:statement {: RESULT=new StatementSingleLabel(label, statement); RESULT.setLine(labelleft); :}
+            (StatementSingleLabel) LabelDef:label SingleStatement:statement {: RESULT=new StatementSingleLabel(label, statement); RESULT.setLine(labelleft); :}
             |
             (StatementMultiple) Statements:S1 {: RESULT=new StatementMultiple(S1); RESULT.setLine(S1left); :}
             ;
+LabelDef::= (LabelDef) Label:label COLUMN {: RESULT=new LabelDef(label); RESULT.setLine(labelleft); :};
 Statements ::= (StatementsBlock) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementsBlock(S1); RESULT.setLine(S1left); :};
 SingleStatement ::= (StatementMatched) Matched:statement {: RESULT=new StatementMatched(statement); RESULT.setLine(statementleft); :}
 		   |

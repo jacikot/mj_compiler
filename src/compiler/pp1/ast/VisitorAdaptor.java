@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
@@ -96,25 +96,19 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorFirst DesignatorFirst) { visit(); }
     public void visit(DesignatorAccess DesignatorAccess) { visit(); }
     public void visit(DesignStmt DesignStmt) { visit(); }
-    public void visit(IfElseBlockMultiple IfElseBlockMultiple) { visit(); }
-    public void visit(IfElseBlockSingle IfElseBlockSingle) { visit(); }
-    public void visit(MatchedGoto MatchedGoto) { visit(); }
-    public void visit(MatchedPrint MatchedPrint) { visit(); }
-    public void visit(MatchedPrintSize MatchedPrintSize) { visit(); }
-    public void visit(MatchedRead MatchedRead) { visit(); }
-    public void visit(MatchedReturn MatchedReturn) { visit(); }
-    public void visit(MatchedContinue MatchedContinue) { visit(); }
-    public void visit(MatchedBreak MatchedBreak) { visit(); }
-    public void visit(MatchedDoWhile MatchedDoWhile) { visit(); }
-    public void visit(MatchedDesign MatchedDesign) { visit(); }
-    public void visit(MatchedIfElseError MatchedIfElseError) { visit(); }
-    public void visit(MatchedIfElse MatchedIfElse) { visit(); }
-    public void visit(UnmatchedIfElseError UnmatchedIfElseError) { visit(); }
-    public void visit(UnmatchedIfElse UnmatchedIfElse) { visit(); }
-    public void visit(UnmatchedIfError UnmatchedIfError) { visit(); }
-    public void visit(UnmatchedIf UnmatchedIf) { visit(); }
-    public void visit(StatementUnmatched StatementUnmatched) { visit(); }
-    public void visit(StatementMatched StatementMatched) { visit(); }
+    public void visit(StmtGoto StmtGoto) { visit(); }
+    public void visit(StmtPrint StmtPrint) { visit(); }
+    public void visit(StmtPrintSize StmtPrintSize) { visit(); }
+    public void visit(StmtRead StmtRead) { visit(); }
+    public void visit(StmtReturn StmtReturn) { visit(); }
+    public void visit(StmtContinue StmtContinue) { visit(); }
+    public void visit(StmtBreak StmtBreak) { visit(); }
+    public void visit(StmtDoWhile StmtDoWhile) { visit(); }
+    public void visit(StmtDesign StmtDesign) { visit(); }
+    public void visit(StmtIfError StmtIfError) { visit(); }
+    public void visit(StmtIf StmtIf) { visit(); }
+    public void visit(StmtIfElseError StmtIfElseError) { visit(); }
+    public void visit(StmtIfElse StmtIfElse) { visit(); }
     public void visit(StatementsBlock StatementsBlock) { visit(); }
     public void visit(LabelDef LabelDef) { visit(); }
     public void visit(StatementMultiple StatementMultiple) { visit(); }

@@ -57,6 +57,7 @@ scan with {:
 	return s;
 :}
 
+
 terminal PROG, LBRACE, RBRACE;
 terminal CONST,SEMI, COMMA, COLUMN, EQUAL, LBRACK, RBRACK, RECORD;
 terminal CLASS, EXTND, LPAREN, RPAREN, DOT;
@@ -66,6 +67,7 @@ terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
 terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS, SUPER;
+
 
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
@@ -79,6 +81,8 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
+
+precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -213,21 +217,13 @@ Statement ::= (StatementSingle) SingleStatement:statement
             ;
 LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
-SingleStatement ::= (StatementMatched) Matched:statement
-		   |
-		   (StatementUnmatched) Unmatched:statement
-		   ;
-Unmatched ::= (UnmatchedIf) IF LPAREN Cond RPAREN Statement
+SingleStatement ::= (MatchedIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (UnmatchedIfError) IF LPAREN error RPAREN Statement
-		 	|
-		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
-		 	|
-		 	(UnmatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
-		 	;
-Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            (MatchedIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (MatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            (UnmatchedIf) IF LPAREN Cond RPAREN Statement:ifStmt
+            |
+            (UnmatchedIfError) IF LPAREN error RPAREN Statement:ifStmt
             |
             (MatchedDesign) DesignStatement:statement SEMI
             |

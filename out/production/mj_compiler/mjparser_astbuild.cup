@@ -57,6 +57,7 @@ scan with {:
 	return s;
 :}
 
+
 terminal PROG, LBRACE, RBRACE;
 terminal CONST,SEMI, COMMA, COLUMN, EQUAL, LBRACK, RBRACK, RECORD;
 terminal CLASS, EXTND, LPAREN, RPAREN, DOT;
@@ -66,6 +67,7 @@ terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
 terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS, SUPER;
+
 
 
 nonterminal Program Program;
@@ -119,6 +121,8 @@ nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
 nonterminal LabelDef LabelDef;
+
+precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
 
@@ -253,21 +257,13 @@ Statement ::= (StatementSingle) SingleStatement:statement {: RESULT=new Statemen
             ;
 LabelDef::= (LabelDef) Label:label COLUMN {: RESULT=new LabelDef(label); RESULT.setLine(labelleft); :};
 Statements ::= (StatementsBlock) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementsBlock(S1); RESULT.setLine(S1left); :};
-SingleStatement ::= (StatementMatched) Matched:statement {: RESULT=new StatementMatched(statement); RESULT.setLine(statementleft); :}
-		   |
-		   (StatementUnmatched) Unmatched:statement {: RESULT=new StatementUnmatched(statement); RESULT.setLine(statementleft); :}
-		   ;
-Unmatched ::= (UnmatchedIf) IF LPAREN Cond:C1 RPAREN Statement:S2 {: RESULT=new UnmatchedIf(C1, S2); RESULT.setLine(C1left); :}
+SingleStatement ::= (MatchedIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new MatchedIfElse(C1, ifStmt, elseStmt); RESULT.setLine(C1left); :}
             |
-            (UnmatchedIfError) IF LPAREN error RPAREN Statement:S1 {: RESULT=new UnmatchedIfError(S1); RESULT.setLine(S1left); :}
-		 	|
-		 	(UnmatchedIfElse) IF LPAREN Cond:C1 RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt {: RESULT=new UnmatchedIfElse(C1, ifStmt, elseStmt); RESULT.setLine(C1left); :}
-		 	|
-		 	(UnmatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt {: RESULT=new UnmatchedIfElseError(ifStmt, elseStmt); RESULT.setLine(ifStmtleft); :}
-		 	;
-Matched ::= (MatchedIfElse) IF LPAREN Cond:C1 RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt {: RESULT=new MatchedIfElse(C1, ifStmt, elseStmt); RESULT.setLine(C1left); :}
+            (MatchedIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new MatchedIfElseError(ifStmt, elseStmt); RESULT.setLine(ifStmtleft); :}
             |
-            (MatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt {: RESULT=new MatchedIfElseError(ifStmt, elseStmt); RESULT.setLine(ifStmtleft); :}
+            (UnmatchedIf) IF LPAREN Cond:C1 RPAREN Statement:ifStmt {: RESULT=new UnmatchedIf(C1, ifStmt); RESULT.setLine(C1left); :}
+            |
+            (UnmatchedIfError) IF LPAREN error RPAREN Statement:ifStmt {: RESULT=new UnmatchedIfError(ifStmt); RESULT.setLine(ifStmtleft); :}
             |
             (MatchedDesign) DesignStatement:statement SEMI {: RESULT=new MatchedDesign(statement); RESULT.setLine(statementleft); :}
             |

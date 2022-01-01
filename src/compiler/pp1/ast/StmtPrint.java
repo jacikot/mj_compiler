@@ -1,19 +1,17 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class MatchedPrintSize extends Matched {
+public class StmtPrint extends SingleStatement {
 
     private Expr Expr;
-    private Integer size;
 
-    public MatchedPrintSize (Expr Expr, Integer size) {
+    public StmtPrint (Expr Expr) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.size=size;
     }
 
     public Expr getExpr() {
@@ -22,14 +20,6 @@ public class MatchedPrintSize extends Matched {
 
     public void setExpr(Expr Expr) {
         this.Expr=Expr;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size=size;
     }
 
     public void accept(Visitor visitor) {
@@ -53,7 +43,7 @@ public class MatchedPrintSize extends Matched {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MatchedPrintSize(\n");
+        buffer.append("StmtPrint(\n");
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
@@ -61,11 +51,8 @@ public class MatchedPrintSize extends Matched {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+size);
-        buffer.append("\n");
-
         buffer.append(tab);
-        buffer.append(") [MatchedPrintSize]");
+        buffer.append(") [StmtPrint]");
         return buffer.toString();
     }
 }

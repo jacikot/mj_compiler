@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class MatchedDesign extends Matched {
+public class StmtDesign extends SingleStatement {
 
     private DesignStatement DesignStatement;
 
-    public MatchedDesign (DesignStatement DesignStatement) {
+    public StmtDesign (DesignStatement DesignStatement) {
         this.DesignStatement=DesignStatement;
         if(DesignStatement!=null) DesignStatement.setParent(this);
     }
@@ -43,7 +43,7 @@ public class MatchedDesign extends Matched {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MatchedDesign(\n");
+        buffer.append("StmtDesign(\n");
 
         if(DesignStatement!=null)
             buffer.append(DesignStatement.toString("  "+tab));
@@ -52,7 +52,7 @@ public class MatchedDesign extends Matched {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [MatchedDesign]");
+        buffer.append(") [StmtDesign]");
         return buffer.toString();
     }
 }

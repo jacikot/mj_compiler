@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class MatchedRead extends Matched {
+public class StmtRead extends SingleStatement {
 
     private Designator Designator;
 
-    public MatchedRead (Designator Designator) {
+    public StmtRead (Designator Designator) {
         this.Designator=Designator;
         if(Designator!=null) Designator.setParent(this);
     }
@@ -43,7 +43,7 @@ public class MatchedRead extends Matched {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MatchedRead(\n");
+        buffer.append("StmtRead(\n");
 
         if(Designator!=null)
             buffer.append(Designator.toString("  "+tab));
@@ -52,7 +52,7 @@ public class MatchedRead extends Matched {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [MatchedRead]");
+        buffer.append(") [StmtRead]");
         return buffer.toString();
     }
 }

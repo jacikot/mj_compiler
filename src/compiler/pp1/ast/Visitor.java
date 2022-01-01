@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
@@ -96,25 +96,19 @@ public interface Visitor {
     public void visit(DesignatorFirst DesignatorFirst);
     public void visit(DesignatorAccess DesignatorAccess);
     public void visit(DesignStmt DesignStmt);
-    public void visit(IfElseBlockMultiple IfElseBlockMultiple);
-    public void visit(IfElseBlockSingle IfElseBlockSingle);
-    public void visit(MatchedGoto MatchedGoto);
-    public void visit(MatchedPrint MatchedPrint);
-    public void visit(MatchedPrintSize MatchedPrintSize);
-    public void visit(MatchedRead MatchedRead);
-    public void visit(MatchedReturn MatchedReturn);
-    public void visit(MatchedContinue MatchedContinue);
-    public void visit(MatchedBreak MatchedBreak);
-    public void visit(MatchedDoWhile MatchedDoWhile);
-    public void visit(MatchedDesign MatchedDesign);
-    public void visit(MatchedIfElseError MatchedIfElseError);
-    public void visit(MatchedIfElse MatchedIfElse);
-    public void visit(UnmatchedIfElseError UnmatchedIfElseError);
-    public void visit(UnmatchedIfElse UnmatchedIfElse);
-    public void visit(UnmatchedIfError UnmatchedIfError);
-    public void visit(UnmatchedIf UnmatchedIf);
-    public void visit(StatementUnmatched StatementUnmatched);
-    public void visit(StatementMatched StatementMatched);
+    public void visit(StmtGoto StmtGoto);
+    public void visit(StmtPrint StmtPrint);
+    public void visit(StmtPrintSize StmtPrintSize);
+    public void visit(StmtRead StmtRead);
+    public void visit(StmtReturn StmtReturn);
+    public void visit(StmtContinue StmtContinue);
+    public void visit(StmtBreak StmtBreak);
+    public void visit(StmtDoWhile StmtDoWhile);
+    public void visit(StmtDesign StmtDesign);
+    public void visit(StmtIfError StmtIfError);
+    public void visit(StmtIf StmtIf);
+    public void visit(StmtIfElseError StmtIfElseError);
+    public void visit(StmtIfElse StmtIfElse);
     public void visit(StatementsBlock StatementsBlock);
     public void visit(LabelDef LabelDef);
     public void visit(StatementMultiple StatementMultiple);

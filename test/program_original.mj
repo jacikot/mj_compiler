@@ -15,7 +15,7 @@ class B{
     bool xyza;
     {
         B() int a, j;{
-            a++;
+
         }
         void xyz(int j) {}
     }
@@ -33,5 +33,7 @@ class A extends B{
 }
 {
     int method(B d, A a){}
-    void main(){}
+    void main(){
+        if(a==1) if(b 2) a=0; else b=0;
+    }
 }

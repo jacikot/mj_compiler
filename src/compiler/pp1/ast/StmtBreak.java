@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class MatchedBreak extends Matched {
+public class StmtBreak extends SingleStatement {
 
-    public MatchedBreak () {
+    public StmtBreak () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class MatchedBreak extends Matched {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MatchedBreak(\n");
+        buffer.append("StmtBreak(\n");
 
         buffer.append(tab);
-        buffer.append(") [MatchedBreak]");
+        buffer.append(") [StmtBreak]");
         return buffer.toString();
     }
 }

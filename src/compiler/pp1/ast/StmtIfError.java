@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class UnmatchedIfError extends Unmatched {
+public class StmtIfError extends SingleStatement {
 
     private Statement Statement;
 
-    public UnmatchedIfError (Statement Statement) {
+    public StmtIfError (Statement Statement) {
         this.Statement=Statement;
         if(Statement!=null) Statement.setParent(this);
     }
@@ -43,7 +43,7 @@ public class UnmatchedIfError extends Unmatched {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("UnmatchedIfError(\n");
+        buffer.append("StmtIfError(\n");
 
         if(Statement!=null)
             buffer.append(Statement.toString("  "+tab));
@@ -52,7 +52,7 @@ public class UnmatchedIfError extends Unmatched {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [UnmatchedIfError]");
+        buffer.append(") [StmtIfError]");
         return buffer.toString();
     }
 }

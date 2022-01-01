@@ -1,20 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 21:15:39
+// 1/0/2022 23:20:12
 
 
 package compiler.pp1.ast;
 
-public class MatchedDoWhile extends Matched {
+public class StmtIfElseError extends SingleStatement {
 
     private Statement Statement;
-    private Cond Cond;
+    private Statement Statement1;
 
-    public MatchedDoWhile (Statement Statement, Cond Cond) {
+    public StmtIfElseError (Statement Statement, Statement Statement1) {
         this.Statement=Statement;
         if(Statement!=null) Statement.setParent(this);
-        this.Cond=Cond;
-        if(Cond!=null) Cond.setParent(this);
+        this.Statement1=Statement1;
+        if(Statement1!=null) Statement1.setParent(this);
     }
 
     public Statement getStatement() {
@@ -25,12 +25,12 @@ public class MatchedDoWhile extends Matched {
         this.Statement=Statement;
     }
 
-    public Cond getCond() {
-        return Cond;
+    public Statement getStatement1() {
+        return Statement1;
     }
 
-    public void setCond(Cond Cond) {
-        this.Cond=Cond;
+    public void setStatement1(Statement Statement1) {
+        this.Statement1=Statement1;
     }
 
     public void accept(Visitor visitor) {
@@ -39,25 +39,25 @@ public class MatchedDoWhile extends Matched {
 
     public void childrenAccept(Visitor visitor) {
         if(Statement!=null) Statement.accept(visitor);
-        if(Cond!=null) Cond.accept(visitor);
+        if(Statement1!=null) Statement1.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Statement!=null) Statement.traverseTopDown(visitor);
-        if(Cond!=null) Cond.traverseTopDown(visitor);
+        if(Statement1!=null) Statement1.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Statement!=null) Statement.traverseBottomUp(visitor);
-        if(Cond!=null) Cond.traverseBottomUp(visitor);
+        if(Statement1!=null) Statement1.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MatchedDoWhile(\n");
+        buffer.append("StmtIfElseError(\n");
 
         if(Statement!=null)
             buffer.append(Statement.toString("  "+tab));
@@ -65,14 +65,14 @@ public class MatchedDoWhile extends Matched {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Cond!=null)
-            buffer.append(Cond.toString("  "+tab));
+        if(Statement1!=null)
+            buffer.append(Statement1.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [MatchedDoWhile]");
+        buffer.append(") [StmtIfElseError]");
         return buffer.toString();
     }
 }

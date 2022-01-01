@@ -57,6 +57,7 @@ scan with {:
 	return s;
 :}
 
+
 terminal PROG, LBRACE, RBRACE;
 terminal CONST,SEMI, COMMA, COLUMN, EQUAL, LBRACK, RBRACK, RECORD;
 terminal CLASS, EXTND, LPAREN, RPAREN, DOT;
@@ -66,6 +67,7 @@ terminal String IDENT, CHAR;
 terminal IF, ELSE, GOTO, DO, WHILE, BREAK, CONT, RETURN, READ, PRINT;
 terminal EQU, NEQ, GRT, GRE, LES, LEE, AND, OR;
 terminal MUL, DIV, MOD, PLUS, MINUS, INC, DEC, THIS, SUPER;
+
 
 
 nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, RecordDecl, MethodDecl;
@@ -79,6 +81,8 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
+
+precedence left ELSE;
 
 Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
 
@@ -213,44 +217,31 @@ Statement ::= (StatementSingle) SingleStatement:statement
             ;
 LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
-SingleStatement ::= (StatementMatched) Matched:statement
-		   |
-		   (StatementUnmatched) Unmatched:statement
-		   ;
-Unmatched ::= (UnmatchedIf) IF LPAREN Cond RPAREN Statement
+SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (UnmatchedIfError) IF LPAREN error RPAREN Statement
-		 	|
-		 	(UnmatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
-		 	|
-		 	(UnmatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE Unmatched:elseStmt
-		 	;
-Matched ::= (MatchedIfElse) IF LPAREN Cond RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
-            (MatchedIfElseError) IF LPAREN error RPAREN IfElseBlock:ifStmt ELSE IfElseBlock:elseStmt
+            (StmtIf) IF LPAREN Cond RPAREN Statement:ifStmt
             |
-            (MatchedDesign) DesignStatement:statement SEMI
+            (StmtIfError) IF LPAREN error RPAREN Statement:ifStmt
             |
-            (MatchedDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
+            (StmtDesign) DesignStatement:statement SEMI
             |
-            (MatchedBreak) BREAK SEMI
+            (StmtDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
             |
-            (MatchedContinue) CONT SEMI
+            (StmtBreak) BREAK SEMI
             |
-            (MatchedReturn) RETURN Expr:retValue SEMI
+            (StmtContinue) CONT SEMI
             |
-            (MatchedRead) READ LPAREN Designator:dst RPAREN SEMI
+            (StmtReturn) RETURN Expr:retValue SEMI
             |
-            (MatchedPrintSize) PRINT LPAREN Expr:src COMMA NUMBER:size RPAREN SEMI
+            (StmtRead) READ LPAREN Designator:dst RPAREN SEMI
             |
-            (MatchedPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
+            (StmtPrintSize) PRINT LPAREN Expr:src COMMA NUMBER:size RPAREN SEMI
             |
-            (MatchedGoto) GOTO Label:dst SEMI
-            ;
-
-IfElseBlock ::= (IfElseBlockSingle) Matched
+            (StmtPrint) PRINT LPAREN Expr:src RPAREN:size SEMI
             |
-            (IfElseBlockMultiple) Statements
+            (StmtGoto) GOTO Label:dst SEMI
             ;
 DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
 Designator ::= (DesignatorAccess) Designator AccessDsgn:access

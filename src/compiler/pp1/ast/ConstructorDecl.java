@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 23:6:23
+// 1/0/2022 14:23:11
 
 
 package compiler.pp1.ast;
@@ -9,24 +9,25 @@ public class ConstructorDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String I1;
+    private ConstructorName ConstructorName;
     private InnerVarDeclList InnerVarDeclList;
     private StatementList StatementList;
 
-    public ConstructorDecl (String I1, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
-        this.I1=I1;
+    public ConstructorDecl (ConstructorName ConstructorName, InnerVarDeclList InnerVarDeclList, StatementList StatementList) {
+        this.ConstructorName=ConstructorName;
+        if(ConstructorName!=null) ConstructorName.setParent(this);
         this.InnerVarDeclList=InnerVarDeclList;
         if(InnerVarDeclList!=null) InnerVarDeclList.setParent(this);
         this.StatementList=StatementList;
         if(StatementList!=null) StatementList.setParent(this);
     }
 
-    public String getI1() {
-        return I1;
+    public ConstructorName getConstructorName() {
+        return ConstructorName;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setConstructorName(ConstructorName ConstructorName) {
+        this.ConstructorName=ConstructorName;
     }
 
     public InnerVarDeclList getInnerVarDeclList() {
@@ -66,17 +67,20 @@ public class ConstructorDecl implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(ConstructorName!=null) ConstructorName.accept(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.accept(visitor);
         if(StatementList!=null) StatementList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(ConstructorName!=null) ConstructorName.traverseTopDown(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseTopDown(visitor);
         if(StatementList!=null) StatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(ConstructorName!=null) ConstructorName.traverseBottomUp(visitor);
         if(InnerVarDeclList!=null) InnerVarDeclList.traverseBottomUp(visitor);
         if(StatementList!=null) StatementList.traverseBottomUp(visitor);
         accept(visitor);
@@ -87,7 +91,10 @@ public class ConstructorDecl implements SyntaxNode {
         buffer.append(tab);
         buffer.append("ConstructorDecl(\n");
 
-        buffer.append(" "+tab+I1);
+        if(ConstructorName!=null)
+            buffer.append(ConstructorName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(InnerVarDeclList!=null)

@@ -11,12 +11,13 @@ import java.util.Collection;
 
 public class SemanticAnalyser extends VisitorAdaptor {
 
-    static final int RECORD_TYPE=1,CLASS_TYPE=0;
+    static final int RECORD_TYPE=1,CLASS_TYPE=0, CONSTRUCTOR_TYPE=2, METHOD_TYPE=3;
     int printCallCount = 0;
     int varDeclCount = 0;
     int varDeclCountArray = 0;
     int constDeclCount=0;
     boolean errorDetected = false;
+    boolean methodDeclActive=false;
     int nVars;
     Type currentType=null;
     Obj currentTypeDefinition=null;
@@ -133,7 +134,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(VarDeclElemArray elem) {
         if(currentType==null) return; //vec je greska ispisana
-        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+        if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
@@ -148,7 +149,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(VarDeclElemSingle elem) {
         if(currentType==null) return; //vec je greska ispisana
-        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+        if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
@@ -166,13 +167,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
             return;
         }
-        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+        if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            Obj node=Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
+            Obj node;
+            if(!methodDeclActive) node=Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
+            else node=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCountArray++;
         }
@@ -185,12 +188,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Rekurzija tipova: " + currentType.getTypeName(), elem);
             return;
         }
-        if(!Tab.find(elem.getVarName()).equals(Tab.noObj)){
+        if(Tab.currentScope().findSymbol(elem.getVarName())!=null){
             //vec postoji simbol
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            Obj node=Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
+
+            Obj node;
+            if(!methodDeclActive) Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
+            else Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCount++;
         }
@@ -223,6 +229,22 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
     @Override
+    public void visit(ConstructorName name) {
+        name.obj= Tab.insert(Obj.Meth,name.getName(), Tab.noType);
+        name.obj.setFpPos(CONSTRUCTOR_TYPE);
+        report_info("Pronadjen simbol: "+name.getName(),name);
+        Tab.openScope();
+        methodDeclActive=true;
+    }
+
+    @Override
+    public void visit(ConstructorDecl decl) {
+        Tab.chainLocalSymbols(decl.getConstructorName().obj);
+        Tab.closeScope();
+        methodDeclActive=false;
+    }
+
+    @Override
     public void visit(ClassDecl d) {
         Tab.chainLocalSymbols(d.getClassName().obj.getType());
         Tab.closeScope();
@@ -245,6 +267,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
         for(Obj member:members){
             if(member.getKind()==Obj.Fld){
                 Tab.insert(Obj.Fld,member.getName(),member.getType());
+            }
+            if(member.getKind()==Obj.Meth){
+                if(member.getFpPos()==CONSTRUCTOR_TYPE){
+                    Obj o=Tab.insert(Obj.Meth,member.getName(),member.getType());
+                    o.setFpPos(member.getFpPos());
+                }
             }
         }
         //dodeliti sve metode osnovne klase izvedenoj i uvesti izmene

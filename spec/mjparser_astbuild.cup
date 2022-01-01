@@ -115,7 +115,7 @@ nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
 nonterminal ClassDeclList ClassDeclList;
 nonterminal ClassVarDecl ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type, ClassName, ExtendsDecl;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, Type, ClassName, ExtendsDecl, ConstructorName;
 nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
@@ -163,7 +163,7 @@ VarDecl ::= (VarDecl) Type:varsType VarDeclListNoC:decls SEMI {: RESULT=new VarD
 
 ClassVarDecl ::= (VarDeclsCorrect) Type:varsType VarDeclListNoC:decls {: RESULT=new VarDeclsCorrect(varsType, decls); RESULT.setLine(varsTypeleft); :};
 
-VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC:V1 VarDeclElemNoC:V2 {: RESULT=new VarDeclMultipleNoC(V1, V2); RESULT.setLine(V1left); :}
+VarDeclListNoC ::= (VarDeclMultipleNoC) VarDeclListNoC:V1 COMMA VarDeclElemNoC:V2 {: RESULT=new VarDeclMultipleNoC(V1, V2); RESULT.setLine(V1left); :}
                 |
                 (VarDeclSingleNoC) VarDeclElemNoC:V1 {: RESULT=new VarDeclSingleNoC(V1); RESULT.setLine(V1left); :}
                 ;
@@ -216,7 +216,8 @@ InnerMethodBlock ::= (InnerMethodBlockAll) LBRACE ConstructorDecl:constructor Me
                     ;
 RecordDecl ::= (RecordDecl) RECORD RecordName:R1 LBRACE InnerVarDeclList:vars RBRACE {: RESULT=new RecordDecl(R1, vars); RESULT.setLine(R1left); :};
 RecordName ::= (RecordName) IDENT:recordName {: RESULT=new RecordName(recordName); RESULT.setLine(recordNameleft); :};
-ConstructorDecl ::= (ConstructorDecl) IDENT:I1 LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new ConstructorDecl(I1, vars, statements); RESULT.setLine(I1left); :};
+ConstructorDecl ::= (ConstructorDecl) ConstructorName:name LPAREN RPAREN InnerVarDeclList:vars LBRACE StatementList:statements RBRACE {: RESULT=new ConstructorDecl(name, vars, statements); RESULT.setLine(nameleft); :};
+ConstructorName ::= (ConstructorName) IDENT:name {: RESULT=new ConstructorName(name); RESULT.setLine(nameleft); :};
 
 MethodDeclList ::= (MethodDecls) MethodDecl:method MethodDeclList:M1 {: RESULT=new MethodDecls(method, M1); RESULT.setLine(methodleft); :}
 				|

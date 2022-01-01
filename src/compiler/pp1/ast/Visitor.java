@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2021 23:6:24
+// 1/0/2022 14:23:11
 
 
 package compiler.pp1.ast;
@@ -132,6 +132,7 @@ public interface Visitor {
     public void visit(MethodDeclPar MethodDeclPar);
     public void visit(MethodDeclsEmpty MethodDeclsEmpty);
     public void visit(MethodDecls MethodDecls);
+    public void visit(ConstructorName ConstructorName);
     public void visit(ConstructorDecl ConstructorDecl);
     public void visit(RecordName RecordName);
     public void visit(RecordDecl RecordDecl);

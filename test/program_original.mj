@@ -5,14 +5,18 @@ const bool xyz=false;
 int xyza, jana2[];
 class B{
     int baseField;
+    bool xyza;
+    {
+        B() int a, j;{
+            a++;
+        }
+    }
 }
 class D extends B{
-
+    {
+        D(){
+           xyza=0;
+        }
+    }
 }
-record A{
-    int mama;
-    B jana;
-}
-A aa;
-B bb;
 {}

@@ -99,6 +99,7 @@ nonterminal ActPars ActPars;
 nonterminal ActParsList ActParsList;
 nonterminal Relop Relop;
 nonterminal Label Label;
+nonterminal DoStart DoStart;
 nonterminal Mulop Mulop;
 nonterminal Addop Addop;
 nonterminal IfElseBlock IfElseBlock;
@@ -263,7 +264,7 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE 
             |
             (StmtDesign) DesignStatement:statement SEMI {: RESULT=new StmtDesign(statement); RESULT.setLine(statementleft); :}
             |
-            (StmtDoWhile) DO Statement:S1 WHILE LPAREN Cond:C2 RPAREN SEMI {: RESULT=new StmtDoWhile(S1, C2); RESULT.setLine(S1left); :}
+            (StmtDoWhile) DoStart:D1 Statement:S2 WHILE LPAREN Cond:C3 RPAREN SEMI {: RESULT=new StmtDoWhile(D1, S2, C3); RESULT.setLine(D1left); :}
             |
             (StmtBreak) BREAK SEMI {: RESULT=new StmtBreak(); :}
             |
@@ -281,6 +282,7 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE 
             |
             (StmtGoto) GOTO Label:dst SEMI {: RESULT=new StmtGoto(dst); RESULT.setLine(dstleft); :}
             ;
+DoStart ::= (DoStart) DO {: RESULT=new DoStart(); :};
 DesignStatement ::= (DesignStmt) Designator:D1 DsgnOp:operation {: RESULT=new DesignStmt(D1, operation); RESULT.setLine(D1left); :};
 Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field {: RESULT=new DesignatorAccessField(base, field); RESULT.setLine(baseleft); :}
               |

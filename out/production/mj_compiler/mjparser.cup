@@ -75,7 +75,7 @@ nonterminal ConstDeclList, VarDeclList;
 nonterminal InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
-nonterminal Relop, Label;
+nonterminal Relop, Label, DoStart;
 nonterminal Mulop, Addop, IfElseBlock, RelopEq;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator;
@@ -229,7 +229,7 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             |
             (StmtDesign) DesignStatement:statement SEMI
             |
-            (StmtDoWhile) DO Statement WHILE LPAREN Cond RPAREN SEMI
+            (StmtDoWhile) DoStart Statement WHILE LPAREN Cond RPAREN SEMI
             |
             (StmtBreak) BREAK SEMI
             |
@@ -247,6 +247,7 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             |
             (StmtGoto) GOTO Label:dst SEMI
             ;
+DoStart ::= (DoStart) DO;
 DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
 Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
               |

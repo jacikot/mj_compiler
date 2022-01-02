@@ -21,6 +21,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     int methodDeclCountGlobal=0;
     int mainCount=0;
     boolean errorDetected = false;
+    boolean dowhile=false;
     int returnCounter = 0;
     Obj methodDecl=null;
     Obj overriding=null;
@@ -819,6 +820,29 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(FactorDsgn dsgn) {
         dsgn.obj=dsgn.getDesignator().obj;
+    }
+
+
+    @Override
+    public void visit(DoStart x) {
+        dowhile=true;
+    }
+    @Override
+    public void visit(StmtDoWhile x) {
+        dowhile=false;
+    }
+    @Override
+    public void visit(StmtBreak x) {
+        if(!dowhile){
+            report_error("Nije moguce koriscenje break naredbe van do-while bloka!", x);
+        }
+    }
+    @Override
+    public void visit(StmtContinue x) {
+        if(!dowhile){
+            report_error("Nije moguce koriscenje continue naredbe van do-while bloka!", x);
+
+        }
     }
 
 

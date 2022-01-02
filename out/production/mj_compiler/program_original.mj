@@ -50,6 +50,9 @@ A niz [];
         goto LABELA;
         LABELA: a.baseField[0]++;
         niz[a.baseField[0]].baseField[2]++;
-
+        do{
+            continue;
+        }
+        while(1>0);
     }
 }

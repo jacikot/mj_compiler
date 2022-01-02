@@ -5,9 +5,27 @@
 
 package compiler.pp1.ast;
 
-public class MethodDeclsEmpty extends MethodDeclList {
+public class DoStart implements SyntaxNode {
 
-    public MethodDeclsEmpty () {
+    private SyntaxNode parent;
+    private int line;
+    public DoStart () {
+    }
+
+    public SyntaxNode getParent() {
+        return parent;
+    }
+
+    public void setParent(SyntaxNode parent) {
+        this.parent=parent;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public void setLine(int line) {
+        this.line=line;
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +46,10 @@ public class MethodDeclsEmpty extends MethodDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MethodDeclsEmpty(\n");
+        buffer.append("DoStart(\n");
 
         buffer.append(tab);
-        buffer.append(") [MethodDeclsEmpty]");
+        buffer.append(") [DoStart]");
         return buffer.toString();
     }
 }

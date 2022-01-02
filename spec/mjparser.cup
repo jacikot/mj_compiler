@@ -74,11 +74,12 @@ nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, Re
 nonterminal ConstDeclList, VarDeclList;
 nonterminal InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal FormParList, Statement, SingleStatement, Statements;
-nonterminal Matched, Unmatched, DesignStatement, Expr, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
-nonterminal Cond, CondTerm, CondFact, Relop, Label;
-nonterminal Mulop, Addop, Factor, Term, IfElseBlock;
+nonterminal Matched, Unmatched, DesignStatement, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
+nonterminal Relop, Label;
+nonterminal Mulop, Addop, IfElseBlock, RelopEq;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
 
@@ -217,6 +218,7 @@ Statement ::= (StatementSingle) SingleStatement:statement
             ;
 LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
+
 SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
             |
             (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
@@ -234,6 +236,8 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             (StmtContinue) CONT SEMI
             |
             (StmtReturn) RETURN Expr:retValue SEMI
+            |
+            (StmtReturnVoid) RETURN SEMI
             |
             (StmtRead) READ LPAREN Designator:dst RPAREN SEMI
             |
@@ -281,14 +285,17 @@ CondTerm ::= (CondTermMultiple) CondTerm:conds AND CondFact:cond
             ;
 CondFact ::= (CondFactMultiple) Expr:op1 Relop Expr:op2
             |
+            (CondFactMultipleEq) Expr:op1 RelopEq Expr:op2
+            |
             (CondFactSingle) Expr:operand
             ;
-Relop ::= (RelopEqu) EQU
-        | (RelopNeq) NEQ
-        | (RelopGrt) GRT
-        | (RelopGre) GRE
-        | (RelopLes) LES
-        | (RelopLee) LEE ;
+RelopEq ::= (RelopEqu) EQU:val
+            | (RelopNeq) NEQ:val
+            ;
+Relop ::= (RelopGrt) GRT:val
+        | (RelopGre) GRE:val
+        | (RelopLes) LES:val
+        | (RelopLee) LEE:val ;
 Addop ::= (AddopPlus) PLUS
         | (AddopMinus) MINUS;
 Mulop ::= (MulopMul) MUL

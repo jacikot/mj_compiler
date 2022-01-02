@@ -1,11 +1,11 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 23:20:12
+// 2/0/2022 15:46:54
 
 
 package compiler.pp1.ast;
 
-public class RelopEqu extends Relop {
+public class RelopEqu extends RelopEq {
 
     public RelopEqu () {
     }

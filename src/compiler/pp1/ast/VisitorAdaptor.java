@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 1/0/2022 23:20:12
+// 2/0/2022 15:46:54
 
 
 package compiler.pp1.ast;
@@ -40,6 +40,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(InnerVarDeclList InnerVarDeclList) { }
     public void visit(ExtendsDecl ExtendsDecl) { }
     public void visit(VarDeclList VarDeclList) { }
+    public void visit(RelopEq RelopEq) { }
     public void visit(Expr Expr) { }
     public void visit(Cond Cond) { }
     public void visit(ActPars ActPars) { }
@@ -77,6 +78,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(RelopNeq RelopNeq) { visit(); }
     public void visit(RelopEqu RelopEqu) { visit(); }
     public void visit(CondFactSingle CondFactSingle) { visit(); }
+    public void visit(CondFactMultipleEq CondFactMultipleEq) { visit(); }
     public void visit(CondFactMultiple CondFactMultiple) { visit(); }
     public void visit(CondTermSingle CondTermSingle) { visit(); }
     public void visit(CondTermMultiple CondTermMultiple) { visit(); }
@@ -100,6 +102,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(StmtPrint StmtPrint) { visit(); }
     public void visit(StmtPrintSize StmtPrintSize) { visit(); }
     public void visit(StmtRead StmtRead) { visit(); }
+    public void visit(StmtReturnVoid StmtReturnVoid) { visit(); }
     public void visit(StmtReturn StmtReturn) { visit(); }
     public void visit(StmtContinue StmtContinue) { visit(); }
     public void visit(StmtBreak StmtBreak) { visit(); }

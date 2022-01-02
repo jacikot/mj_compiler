@@ -31,11 +31,20 @@ class A extends B{
 
     }
 }
+record M{
+
+}
 {
-    int method(B d, A a){}
+    void method(B d, A a){
+        //a=new M[4];
+        if(1>0 && new A==new A){
+             print('j');
+             return;
+        }
+    }
     void main(){
         goto LABELA;
-        goto X;
-        LABELA: if(a==1) {if(b==0) a=0;} else b=0;
+        LABELA: a++;
+
     }
 }

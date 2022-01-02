@@ -91,7 +91,6 @@ nonterminal Statements Statements;
 nonterminal Matched Matched;
 nonterminal Unmatched Unmatched;
 nonterminal DesignStatement DesignStatement;
-nonterminal Expr Expr;
 nonterminal Designator Designator;
 nonterminal PrintSize PrintSize;
 nonterminal DsgnOp DsgnOp;
@@ -99,23 +98,20 @@ nonterminal AccessDsgn AccessDsgn;
 nonterminal Assignop Assignop;
 nonterminal ActPars ActPars;
 nonterminal ActParsList ActParsList;
-nonterminal Cond Cond;
-nonterminal CondTerm CondTerm;
-nonterminal CondFact CondFact;
 nonterminal Relop Relop;
 nonterminal Label Label;
 nonterminal Mulop Mulop;
 nonterminal Addop Addop;
-nonterminal Factor Factor;
-nonterminal Term Term;
 nonterminal IfElseBlock IfElseBlock;
+nonterminal RelopEq RelopEq;
 nonterminal VarDeclGlobal VarDeclGlobal;
 nonterminal VarDeclCheck VarDeclCheck;
 nonterminal Xx Xx;
 nonterminal VarDeclListNoC VarDeclListNoC;
 nonterminal ClassDeclList ClassDeclList;
 nonterminal ClassVarDecl ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem ConstDeclElem;
 nonterminal VarDeclElem VarDeclElem;
@@ -257,6 +253,7 @@ Statement ::= (StatementSingle) SingleStatement:statement {: RESULT=new Statemen
             ;
 LabelDef::= (LabelDef) Label:label COLUMN {: RESULT=new LabelDef(label); RESULT.setLine(labelleft); :};
 Statements ::= (StatementsBlock) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementsBlock(S1); RESULT.setLine(S1left); :};
+
 SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new StmtIfElse(C1, ifStmt, elseStmt); RESULT.setLine(C1left); :}
             |
             (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new StmtIfElseError(ifStmt, elseStmt); RESULT.setLine(ifStmtleft); :}
@@ -274,6 +271,8 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE 
             (StmtContinue) CONT SEMI {: RESULT=new StmtContinue(); :}
             |
             (StmtReturn) RETURN Expr:retValue SEMI {: RESULT=new StmtReturn(retValue); RESULT.setLine(retValueleft); :}
+            |
+            (StmtReturnVoid) RETURN SEMI {: RESULT=new StmtReturnVoid(); :}
             |
             (StmtRead) READ LPAREN Designator:dst RPAREN SEMI {: RESULT=new StmtRead(dst); RESULT.setLine(dstleft); :}
             |
@@ -321,14 +320,17 @@ CondTerm ::= (CondTermMultiple) CondTerm:conds AND CondFact:cond {: RESULT=new C
             ;
 CondFact ::= (CondFactMultiple) Expr:op1 Relop:R1 Expr:op2 {: RESULT=new CondFactMultiple(op1, R1, op2); RESULT.setLine(op1left); :}
             |
+            (CondFactMultipleEq) Expr:op1 RelopEq:R1 Expr:op2 {: RESULT=new CondFactMultipleEq(op1, R1, op2); RESULT.setLine(op1left); :}
+            |
             (CondFactSingle) Expr:operand {: RESULT=new CondFactSingle(operand); RESULT.setLine(operandleft); :}
             ;
-Relop ::= (RelopEqu) EQU {: RESULT=new RelopEqu(); :}
-        | (RelopNeq) NEQ {: RESULT=new RelopNeq(); :}
-        | (RelopGrt) GRT {: RESULT=new RelopGrt(); :}
-        | (RelopGre) GRE {: RESULT=new RelopGre(); :}
-        | (RelopLes) LES {: RESULT=new RelopLes(); :}
-        | (RelopLee) LEE {: RESULT=new RelopLee(); :} ;
+RelopEq ::= (RelopEqu) EQU:val {: RESULT=new RelopEqu(); :}
+            | (RelopNeq) NEQ:val {: RESULT=new RelopNeq(); :}
+            ;
+Relop ::= (RelopGrt) GRT:val {: RESULT=new RelopGrt(); :}
+        | (RelopGre) GRE:val {: RESULT=new RelopGre(); :}
+        | (RelopLes) LES:val {: RESULT=new RelopLes(); :}
+        | (RelopLee) LEE:val {: RESULT=new RelopLee(); :} ;
 Addop ::= (AddopPlus) PLUS {: RESULT=new AddopPlus(); :}
         | (AddopMinus) MINUS {: RESULT=new AddopMinus(); :};
 Mulop ::= (MulopMul) MUL {: RESULT=new MulopMul(); :}

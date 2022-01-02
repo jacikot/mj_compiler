@@ -12,7 +12,7 @@ import java.util.*;
 public class SemanticAnalyser extends VisitorAdaptor {
 
     static final int RECORD_TYPE=1,CLASS_TYPE=0, CONSTRUCTOR_TYPE=2, METHOD_TYPE=3, EXTENDS_TYPE=4;
-    int printCallCount = 0;
+
     int varDeclCount = 0;
     int varDeclCountArray = 0;
     int constDeclCount=0;
@@ -21,7 +21,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
     int methodDeclCountGlobal=0;
     int mainCount=0;
     boolean errorDetected = false;
-    boolean methodDeclActive=false;
+    int returnCounter = 0;
+    Obj methodDecl=null;
     Obj overriding=null;
     int nVars;
     Type currentType=null;
@@ -42,6 +43,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
         o=Tab.insert(Obj.Type,"void",Tab.noType);
         o.setAdr(-1);
         o.setLevel(-1);
+        o=Tab.insert(Obj.Var,"null",Tab.nullType);
+
     }
 
 
@@ -118,19 +121,20 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
     @Override
     public void visit(ConstLitNum b) {
-        b.obj=Tab.find("int");
+        b.obj=new Obj(Obj.Type,"int",Tab.intType);
         b.obj.setFpPos(b.getValue());
     }
     @Override
     public void visit(ConstLitBool b) {
-        b.obj=Tab.find("bool");
+        b.obj=new Obj(Obj.Type,"bool",Tab.find("bool").getType());
         b.obj.setFpPos(b.getValue());
     }
     @Override
     public void visit(ConstLitChar b) {
-        b.obj=Tab.find("char");
+        b.obj=new Obj(Obj.Type,"char",Tab.charType);
         b.obj.setFpPos(b.getValue().charAt(1));
     }
+
 
     @Override
     public void visit(VarDeclGlobalCorrect b) {
@@ -180,7 +184,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            if(!methodDeclActive) Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
+            if(methodDecl==null) Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
             else Tab.insert(Obj.Var,elem.getVarName(),arrayType);
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCountArray++;
@@ -195,7 +199,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            if(!methodDeclActive) Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
+            if(methodDecl==null) Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
             else Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
             report_info("Pronadjen simbol: "+elem.getVarName(),elem);
             varDeclCount++;
@@ -250,7 +254,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         Tab.openScope();
         Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
         o.setFpPos(0);
-        methodDeclActive=true;
+        methodDecl=name.obj;
     }
 
     @Override
@@ -261,7 +265,11 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         Tab.chainLocalSymbols(decl.getConstructorName().obj);
         Tab.closeScope();
-        methodDeclActive=false;
+        if(returnCounter==0 && !methodDecl.getType().equals(Tab.noType)){
+            report_error("Metoda: " + decl.getConstructorName().getName()+" nema return naredbu", decl);
+        }
+        returnCounter=0;
+        methodDecl=null;
     }
 
     @Override
@@ -331,7 +339,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 Tab.openScope();
                 paramsCounter=1;
                 report_info("Pronadjen simbol: "+name.getMethodName(),name);
-                methodDeclActive=true;
+                methodDecl=symbol;
                 overriding=symbol;
                 name.obj=symbol;
                 Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
@@ -356,7 +364,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             else methodDeclCountGlobal++;
             report_info("Pronadjen simbol: "+name.getMethodName(),name);
-            methodDeclActive=true;
+            methodDecl=name.obj;
         }
     }
 
@@ -470,7 +478,11 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(MethodDeclPar m) {
         retType=null;
         currentType=null;
-        methodDeclActive=false;
+        if(returnCounter==0 && !methodDecl.getType().equals(Tab.noType)){
+            report_error("Metoda: " + m.getMethodDeclChecker().getMethodName().getMethodName()+" nema return naredbu", m);
+        }
+        returnCounter=0;
+        methodDecl=null;
         overriding=null;
         if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         for(List<StmtGoto> unresolved:labelsSearched.values()){
@@ -486,7 +498,11 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(MethodDeclNoPar m) {
         retType=null;
         currentType=null;
-        methodDeclActive=false;
+        if(returnCounter==0 && !methodDecl.getType().equals(Tab.noType)){
+            report_error("Metoda: " + m.getMethodDeclChecker().getMethodName().getMethodName()+" nema return naredbu", m);
+        }
+        returnCounter=0;
+        methodDecl=null;
         overriding=null;
         if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         for(List<StmtGoto> unresolved:labelsSearched.values()){
@@ -547,6 +563,202 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
         }
 
+    }
+
+    @Override
+    public void visit(FactorBool b) {
+        b.obj=new Obj(Obj.Type,"bool",Tab.find("bool").getType());
+        b.obj.setFpPos(b.getOperand()); //tu je vrednost
+    }
+    @Override
+    public void visit(FactorChar b) {
+        b.obj=new Obj(Obj.Type,"char",Tab.charType);
+        b.obj.setFpPos(b.getOperand().charAt(1));
+    }
+    @Override
+    public void visit(FactorNumber b) {
+        b.obj=new Obj(Obj.Type,"int",Tab.intType);
+        b.obj.setFpPos(b.getOperand());
+    }
+    @Override
+    public void visit(FactorObject b) {
+        b.obj=Tab.noObj;
+        if(b.getType().obj.equals(Tab.noObj)) return;
+        if(b.getType().obj.getType().getKind()==Struct.Class){
+            b.obj=b.getType().obj;
+        }
+        else{
+            report_error("Tip " + b.getType().getTypeName() + " nije korisnicki definisan tip!", b);
+        }
+    }
+    @Override
+    public void visit(FactorArray b) {
+        b.obj=Tab.noObj;
+        if(b.getType().obj.equals(Tab.noObj)) return;
+        if(!b.getExpr().obj.getType().equals(Tab.intType)){
+            report_error("Tip " + b.getExpr().obj.getName() + " nije tip int!", b);
+        }
+        else{
+            Struct type=new Struct(Struct.Array,b.getType().obj.getType());
+            b.obj=new Obj(Obj.Type,"array",type);
+            b.obj.setFpPos(b.getExpr().obj.getFpPos()); //fppos - velicina niza
+        }
+
+
+    }
+    @Override
+    public void visit(TermSingle b) {
+        b.obj=b.getFactor().obj;
+    }
+    @Override
+    public void visit(ExprSingle b) {
+        b.obj=b.getTerm().obj;
+    }
+    @Override
+    public void visit(ExprSingleMinus b) {
+        b.obj=Tab.noObj;
+        if(b.getTerm().obj.getType().equals(Tab.intType)){
+            b.obj=b.getTerm().obj;
+            b.obj.setFpPos(-b.getTerm().obj.getFpPos());
+        }
+        else{
+            report_error("Operand operatora - nije tipa int!", b);
+        }
+    }
+    @Override
+    public void visit(ExprMultiple b) {
+        b.obj=Tab.noObj;
+        if(b.getExpr().obj.getType().equals(Tab.intType) && b.getTerm().obj.getType().equals(Tab.intType)){
+            b.obj=b.getExpr().obj;
+            b.obj.setFpPos(b.getExpr().obj.getFpPos()+b.getTerm().obj.getFpPos());
+        }
+        else{
+            report_error("Operandi operatora + nisu tipa int!", b);
+        }
+    }
+
+    @Override
+    public void visit(TermMultiple b) {
+        b.obj=Tab.noObj;
+        if(b.getFactor().obj.getType().equals(Tab.intType) && b.getTerm().obj.getType().equals(Tab.intType)){
+            b.obj=b.getFactor().obj;
+            b.obj.setFpPos(b.getFactor().obj.getFpPos()*b.getTerm().obj.getFpPos());
+        }
+        else{
+            report_error("Operandi operatora * nisu tipa int!", b);
+        }
+    }
+    @Override
+    public void visit(CondFactMultiple b) {
+        b.obj=Tab.noObj;
+        int exprKind=b.getExpr().obj.getType().getKind();
+        int expr1Kind=b.getExpr1().obj.getType().getKind();
+        if(exprKind!=Struct.Class && exprKind!=Struct.Array && exprKind!=Struct.None
+                && expr1Kind!=Struct.Class && expr1Kind!=Struct.Array && expr1Kind!=Struct.None
+                && b.getExpr().obj.getType().compatibleWith(b.getExpr1().obj.getType())
+
+        ){
+            Struct boolstruct=Tab.find("bool").getType();
+            b.obj=new Obj(Obj.Type,"bool",boolstruct);
+        }
+        else{
+            if(!b.getExpr().obj.getType().compatibleWith(b.getExpr1().obj.getType()))
+                report_error("Operandi nisu kompatibilni!", b);
+            else
+                report_error("Relacioni operator nije moguce primeniti na korisnicke tipove i nizove!", b);
+        }
+    }
+
+    @Override
+    public void visit(CondFactMultipleEq b) {
+        b.obj=Tab.noObj;
+        if( b.getExpr().obj.getType().compatibleWith(b.getExpr1().obj.getType())){
+            Struct boolstruct=Tab.find("bool").getType();
+            b.obj=new Obj(Obj.Type,"bool",boolstruct);
+        }
+        else{
+            report_error("Operandi nisu kompatibilni!", b);
+        }
+    }
+    @Override
+    public void visit(CondFactSingle b) {
+        b.obj=Tab.noObj;
+        if( b.getExpr().obj.getType().equals(Tab.find("bool").getType())){
+            Struct boolstruct=Tab.find("bool").getType();
+            b.obj=new Obj(Obj.Type,"bool",boolstruct);
+        }
+        else{
+            report_error("Condition mora da bude tipa bool!", b);
+        }
+    }
+    @Override
+    public void visit(CondTermMultiple b) {
+        if(b.getCondFact().obj.getType().equals(b.getCondTerm().obj.getType()))
+            b.obj=b.getCondFact().obj;
+        else b.obj=Tab.noObj;
+    }
+    @Override
+    public void visit(CondTermSingle b) {
+        b.obj=b.getCondFact().obj;
+    }
+    @Override
+    public void visit(CondMultiple b) {
+        if(b.getCond().obj.getType().equals(b.getCondTerm().obj.getType()))
+            b.obj=b.getCondTerm().obj;
+        else b.obj=Tab.noObj;
+    }
+    @Override
+    public void visit(CondSingle b) {
+        b.obj=b.getCondTerm().obj;
+    }
+
+
+    @Override
+    public void visit(StmtPrint b) {
+        Struct type=b.getExpr().obj.getType();
+        if( type.equals(Tab.find("bool").getType())
+                || type.equals(Tab.intType) || type.equals(Tab.charType)
+        ){
+            //sve ok
+        }
+        else{
+            report_error("Argument print naredbe mora da bude int, char ili bool!", b);
+        }
+    }
+    @Override
+    public void visit(StmtPrintSize b) {
+        Struct type=b.getExpr().obj.getType();
+        if( type.equals(Tab.find("bool").getType())
+                || type.equals(Tab.intType) || type.equals(Tab.charType)
+        ){
+            //sve ok
+        }
+        else{
+            report_error("Argument print naredbe mora da bude int, char ili bool!", b);
+        }
+    }
+    @Override
+    public void visit(StmtReturn b) {
+        Struct type=b.getExpr().obj.getType();
+        if(methodDecl!=null && type.equals(methodDecl.getType())){
+            returnCounter++;
+        }
+        else{
+            if(methodDecl!=null) report_error("Tip izraza return naredbe nije jednak tipu fje: "+methodDecl.getName()+"!", b);
+            else  report_error("Return naredba ne sme postojati izvan funkcije!", b);
+        }
+    }
+
+    @Override
+    public void visit(StmtReturnVoid b) {
+        Struct type=Tab.noType;
+        if(methodDecl!=null && type.equals(methodDecl.getType())){
+            returnCounter++;
+        }
+        else{
+            if(methodDecl!=null) report_error("Tip izraza return naredbe nije jednak tipu fje: "+methodDecl.getName()+"!", b);
+            else  report_error("Return naredba ne sme postojati izvan funkcije!", b);
+        }
     }
 
 

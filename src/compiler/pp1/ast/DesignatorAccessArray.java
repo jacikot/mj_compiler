@@ -1,17 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 15:46:54
+// 2/0/2022 16:48:30
 
 
 package compiler.pp1.ast;
 
-public class AccessDsgnArray extends AccessDsgn {
+public class DesignatorAccessArray extends Designator {
 
+    private Designator Designator;
     private Expr Expr;
 
-    public AccessDsgnArray (Expr Expr) {
+    public DesignatorAccessArray (Designator Designator, Expr Expr) {
+        this.Designator=Designator;
+        if(Designator!=null) Designator.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
+    }
+
+    public Designator getDesignator() {
+        return Designator;
+    }
+
+    public void setDesignator(Designator Designator) {
+        this.Designator=Designator;
     }
 
     public Expr getExpr() {
@@ -27,15 +38,18 @@ public class AccessDsgnArray extends AccessDsgn {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Designator!=null) Designator.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Designator!=null) Designator.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Designator!=null) Designator.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -43,7 +57,13 @@ public class AccessDsgnArray extends AccessDsgn {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("AccessDsgnArray(\n");
+        buffer.append("DesignatorAccessArray(\n");
+
+        if(Designator!=null)
+            buffer.append(Designator.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
@@ -52,7 +72,7 @@ public class AccessDsgnArray extends AccessDsgn {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [AccessDsgnArray]");
+        buffer.append(") [DesignatorAccessArray]");
         return buffer.toString();
     }
 }

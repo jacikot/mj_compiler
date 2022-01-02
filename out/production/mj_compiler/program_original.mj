@@ -11,7 +11,7 @@ class Derived extends Base{
 
 }
 class B{
-    int baseField;
+    int baseField[];
     bool xyza;
     {
         B() int a, j;{
@@ -34,17 +34,22 @@ class A extends B{
 record M{
 
 }
+
+A niz [];
+
 {
-    A method(B d, A a){
+    B method(B d, A a){
         //a=new M[4];
         if(1>0 && new A==new A){
              print('j');
-             return new B;
+
+             return new A;
         }
     }
-    void main(){
+    void main(A a){
         goto LABELA;
-        LABELA: a++;
+        LABELA: a.baseField[0]++;
+        niz[a.baseField[0]].baseField[2]++;
 
     }
 }

@@ -623,6 +623,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
         b.obj=b.getTerm().obj;
     }
     @Override
+    public void visit(FactorBlock b) {
+        b.obj=b.getExpr().obj;
+    }
+    @Override
     public void visit(ExprSingleMinus b) {
         b.obj=Tab.noObj;
         if(b.getTerm().obj.getType().equals(Tab.intType)){
@@ -766,6 +770,55 @@ public class SemanticAnalyser extends VisitorAdaptor {
             if(methodDecl!=null) report_error("Tip izraza return naredbe nije jednak tipu fje: "+methodDecl.getName()+"!", b);
             else  report_error("Return naredba ne sme postojati izvan funkcije!", b);
         }
+    }
+    @Override
+    public void visit(DesignatorFirst dsgn) {
+        dsgn.obj=Tab.find(dsgn.getDsgnName());
+        if(dsgn.obj==Tab.noObj){
+            report_error("Simbol: Ime "+dsgn.getDsgnName()+" nije deklarisan!", dsgn);
+        }
+        else{
+            report_info("Upotreba simbola: "+dsgn.getDsgnName()+" prihvacena",dsgn);
+        }
+    }
+    @Override
+    public void visit(DesignatorAccessField dsgn) {
+        if(dsgn.getDesignator().obj.getType().getKind()!=Struct.Class){
+            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije korisnicki definisanog tipa i nema polja!", dsgn);
+            dsgn.obj=Tab.noObj;
+            return;
+        }
+        Collection<Obj> members=dsgn.getDesignator().obj.getType().getMembers();
+        Obj o=members.stream().filter(e->{
+            return e.getName().equals(dsgn.getField()) && e.getKind()==Obj.Fld;
+        }).findAny().orElse(null);
+        if(o==null){
+            report_error("Simbol: Ime "+dsgn.getField()+" nije deklarisan u opsegu simbola "+dsgn.getDesignator().obj.getName()+"!", dsgn);
+            dsgn.obj=Tab.noObj;
+        }
+        else{
+            dsgn.obj=o;
+            report_info("Upotreba simbola: "+dsgn.getField()+" prihvacena",dsgn);
+        }
+    }
+    @Override
+    public void visit(DesignatorAccessArray dsgn) {
+        if(dsgn.getDesignator().obj.getType().getKind()!=Struct.Array){
+            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije nizovskog tipa i ne moze se indeksirati!", dsgn);
+            dsgn.obj=Tab.noObj;
+            return;
+        }
+        if(!dsgn.getExpr().obj.getType().equals(Tab.intType)){
+            report_error("Tip " + dsgn.getExpr().obj.getName() + " nije tip int!", dsgn);
+            dsgn.obj=Tab.noObj;
+            return;
+        }
+        dsgn.obj=new Obj(Obj.Type,"array_elem",dsgn.getDesignator().obj.getType().getElemType());
+
+    }
+    @Override
+    public void visit(FactorDsgn dsgn) {
+        dsgn.obj=dsgn.getDesignator().obj;
     }
 
 

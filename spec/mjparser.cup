@@ -74,11 +74,11 @@ nonterminal Program, DeclList, MethodDeclList, ConstDecl, VarDecl, ClassDecl, Re
 nonterminal ConstDeclList, VarDeclList;
 nonterminal InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal FormParList, Statement, SingleStatement, Statements;
-nonterminal Matched, Unmatched, DesignStatement, Designator, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
+nonterminal Matched, Unmatched, DesignStatement, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Relop, Label;
 nonterminal Mulop, Addop, IfElseBlock, RelopEq;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
 nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
@@ -248,13 +248,11 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             (StmtGoto) GOTO Label:dst SEMI
             ;
 DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
-Designator ::= (DesignatorAccess) Designator AccessDsgn:access
+Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
+              |
+               (DesignatorAccessArray) Designator:base LBRACK Expr:index RBRACK
               |
               (DesignatorFirst) IDENT:dsgnName
-              ;
-AccessDsgn ::= (AccessDsgnField) DOT IDENT:field
-              |
-              (AccessDsgnArray) LBRACK Expr:index RBRACK
               ;
 
 DsgnOp ::= (DsgnOpAssign) Assignop Expr

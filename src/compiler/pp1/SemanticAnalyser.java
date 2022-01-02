@@ -47,6 +47,14 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     }
 
+    private boolean isCompatible(Obj derived, Obj base){
+        if(derived.getType().equals(base.getType())) return true;
+        while(derived.getType().getElemType()!=null){
+            if(derived.getType().getElemType().equals(base.getType())) return true;
+        }
+        return false;
+    }
+
 
     public void report_error(String message, SyntaxNode info) {
         errorDetected = true;
@@ -739,8 +747,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
     @Override
     public void visit(StmtReturn b) {
-        Struct type=b.getExpr().obj.getType();
-        if(methodDecl!=null && type.equals(methodDecl.getType())){
+        if(methodDecl!=null && isCompatible(b.getExpr().obj,methodDecl)){
             returnCounter++;
         }
         else{

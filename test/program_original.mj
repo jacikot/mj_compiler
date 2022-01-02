@@ -35,11 +35,11 @@ record M{
 
 }
 {
-    void method(B d, A a){
+    B method(B d, A a){
         //a=new M[4];
         if(1>0 && new A==new A){
              print('j');
-             return;
+             return new A;
         }
     }
     void main(){

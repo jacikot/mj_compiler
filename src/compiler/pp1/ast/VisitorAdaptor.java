@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 17:46:42
+// 2/0/2022 19:14:48
 
 
 package compiler.pp1.ast;
@@ -87,6 +87,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ActParsSingle ActParsSingle) { visit(); }
     public void visit(ActParsMultiple ActParsMultiple) { visit(); }
     public void visit(Assignop Assignop) { visit(); }
+    public void visit(CallName CallName) { visit(); }
     public void visit(DsgnOpDec DsgnOpDec) { visit(); }
     public void visit(DsgnOpInc DsgnOpInc) { visit(); }
     public void visit(DsgnOpCallEmpty DsgnOpCallEmpty) { visit(); }
@@ -96,7 +97,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorFirst DesignatorFirst) { visit(); }
     public void visit(DesignatorAccessArray DesignatorAccessArray) { visit(); }
     public void visit(DesignatorAccessField DesignatorAccessField) { visit(); }
-    public void visit(DesignStmt DesignStmt) { visit(); }
     public void visit(DoStart DoStart) { visit(); }
     public void visit(StmtGoto StmtGoto) { visit(); }
     public void visit(StmtPrint StmtPrint) { visit(); }

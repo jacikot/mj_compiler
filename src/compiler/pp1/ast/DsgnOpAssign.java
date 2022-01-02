@@ -1,20 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 17:46:42
+// 2/0/2022 19:14:48
 
 
 package compiler.pp1.ast;
 
-public class DsgnOpAssign extends DsgnOp {
+public class DsgnOpAssign extends DesignStatement {
 
+    private CallName CallName;
     private Assignop Assignop;
     private Expr Expr;
 
-    public DsgnOpAssign (Assignop Assignop, Expr Expr) {
+    public DsgnOpAssign (CallName CallName, Assignop Assignop, Expr Expr) {
+        this.CallName=CallName;
+        if(CallName!=null) CallName.setParent(this);
         this.Assignop=Assignop;
         if(Assignop!=null) Assignop.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
+    }
+
+    public CallName getCallName() {
+        return CallName;
+    }
+
+    public void setCallName(CallName CallName) {
+        this.CallName=CallName;
     }
 
     public Assignop getAssignop() {
@@ -38,17 +49,20 @@ public class DsgnOpAssign extends DsgnOp {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(CallName!=null) CallName.accept(visitor);
         if(Assignop!=null) Assignop.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(CallName!=null) CallName.traverseTopDown(visitor);
         if(Assignop!=null) Assignop.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(CallName!=null) CallName.traverseBottomUp(visitor);
         if(Assignop!=null) Assignop.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
@@ -58,6 +72,12 @@ public class DsgnOpAssign extends DsgnOp {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("DsgnOpAssign(\n");
+
+        if(CallName!=null)
+            buffer.append(CallName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
 
         if(Assignop!=null)
             buffer.append(Assignop.toString("  "+tab));

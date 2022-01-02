@@ -12,12 +12,14 @@ class Derived extends Base{
 }
 class B{
     int baseField[];
-    bool xyza;
+    int xyza;
     {
         B() int a, j;{
 
         }
-        void xyz(int j) {}
+        void xyz(Base j) {
+
+        }
     }
 }
 class A extends B{
@@ -25,24 +27,29 @@ class A extends B{
             A() {
 
             }
-            void xyz(int h) int x; {
+            void xyz(Base h) int x; {
                  Label: x++;
+            }
+            void mmm(){
             }
 
     }
 }
 record M{
-
+    Derived ddd;
 }
 
 A niz [];
+int pom;
+M m;
 
 {
-    B method(B d, A a){
+    B method(B d, A a) int h;{
         //a=new M[4];
         if(1>0 && new A==new A){
              print('j');
-
+             //a=h;
+             //a++;
              return new A;
         }
     }
@@ -51,8 +58,12 @@ A niz [];
         LABELA: a.baseField[0]++;
         niz[a.baseField[0]].baseField[2]++;
         do{
+            read(a.baseField[0]);
+            a.xyz(m.ddd);
+            method(niz[0],niz[1]);
             continue;
         }
         while(1>0);
+        a.mmm();
     }
 }

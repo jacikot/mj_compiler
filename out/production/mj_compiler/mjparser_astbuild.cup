@@ -104,6 +104,7 @@ nonterminal Mulop Mulop;
 nonterminal Addop Addop;
 nonterminal IfElseBlock IfElseBlock;
 nonterminal RelopEq RelopEq;
+nonterminal CallName CallName;
 nonterminal VarDeclGlobal VarDeclGlobal;
 nonterminal VarDeclCheck VarDeclCheck;
 nonterminal Xx Xx;
@@ -283,7 +284,6 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE 
             (StmtGoto) GOTO Label:dst SEMI {: RESULT=new StmtGoto(dst); RESULT.setLine(dstleft); :}
             ;
 DoStart ::= (DoStart) DO {: RESULT=new DoStart(); :};
-DesignStatement ::= (DesignStmt) Designator:D1 DsgnOp:operation {: RESULT=new DesignStmt(D1, operation); RESULT.setLine(D1left); :};
 Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field {: RESULT=new DesignatorAccessField(base, field); RESULT.setLine(baseleft); :}
               |
                (DesignatorAccessArray) Designator:base LBRACK Expr:index RBRACK {: RESULT=new DesignatorAccessArray(base, index); RESULT.setLine(baseleft); :}
@@ -291,18 +291,19 @@ Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field {: RESULT
               (DesignatorFirst) IDENT:dsgnName {: RESULT=new DesignatorFirst(dsgnName); RESULT.setLine(dsgnNameleft); :}
               ;
 
-DsgnOp ::= (DsgnOpAssign) Assignop:A1 Expr:E2 {: RESULT=new DsgnOpAssign(A1, E2); RESULT.setLine(A1left); :}
+DesignStatement ::= (DsgnOpAssign) CallName:C1 Assignop:A2 Expr:E3 {: RESULT=new DsgnOpAssign(C1, A2, E3); RESULT.setLine(C1left); :}
             |
-            (DsgnOpAssignError) Assignop:r error {: RESULT=new DsgnOpAssignError(r); RESULT.setLine(rleft); :}
+            (DsgnOpAssignError) CallName:C1 Assignop:r error {: RESULT=new DsgnOpAssignError(C1, r); RESULT.setLine(C1left); :}
             |
-            (DsgnOpCallPars) LPAREN ActPars:params RPAREN {: RESULT=new DsgnOpCallPars(params); RESULT.setLine(paramsleft); :}
+            (DsgnOpCallPars) CallName:C1 LPAREN ActPars:params RPAREN {: RESULT=new DsgnOpCallPars(C1, params); RESULT.setLine(C1left); :}
             |
-            (DsgnOpCallEmpty) LPAREN RPAREN {: RESULT=new DsgnOpCallEmpty(); :}
+            (DsgnOpCallEmpty) CallName:C1 LPAREN RPAREN {: RESULT=new DsgnOpCallEmpty(C1); RESULT.setLine(C1left); :}
             |
-            (DsgnOpInc) INC {: RESULT=new DsgnOpInc(); :}
+            (DsgnOpInc) CallName:C1 INC {: RESULT=new DsgnOpInc(C1); RESULT.setLine(C1left); :}
             |
-            (DsgnOpDec) DEC {: RESULT=new DsgnOpDec(); :}
+            (DsgnOpDec) CallName:C1 DEC {: RESULT=new DsgnOpDec(C1); RESULT.setLine(C1left); :}
             ;
+CallName ::= (CallName) Designator:dsgn {: RESULT=new CallName(dsgn); RESULT.setLine(dsgnleft); :};
 Assignop ::= (Assignop) EQUAL {: RESULT=new Assignop(); :};
 
 ActPars ::= (ActParsMultiple) ActPars:params COMMA Expr:param {: RESULT=new ActParsMultiple(params, param); RESULT.setLine(paramsleft); :}

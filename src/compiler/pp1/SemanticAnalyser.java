@@ -50,8 +50,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     private boolean isCompatible(Obj derived, Obj base){
         if(derived.getType().equals(base.getType())) return true;
-        while(derived.getType().getElemType()!=null){
-            if(derived.getType().getElemType().equals(base.getType())) return true;
+        Struct type=derived.getType();
+        while(type.getElemType()!=null){
+            if(type.getElemType().equals(base.getType())) return true;
+            type=type.getElemType();
         }
         return false;
     }
@@ -791,7 +793,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         Collection<Obj> members=dsgn.getDesignator().obj.getType().getMembers();
         Obj o=members.stream().filter(e->{
-            return e.getName().equals(dsgn.getField()) && e.getKind()==Obj.Fld;
+            return e.getName().equals(dsgn.getField());
         }).findAny().orElse(null);
         if(o==null){
             report_error("Simbol: Ime "+dsgn.getField()+" nije deklarisan u opsegu simbola "+dsgn.getDesignator().obj.getName()+"!", dsgn);
@@ -815,7 +817,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
             return;
         }
         dsgn.obj=new Obj(Obj.Type,"array_elem",dsgn.getDesignator().obj.getType().getElemType());
-
     }
     @Override
     public void visit(FactorDsgn dsgn) {
@@ -823,10 +824,98 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
 
+
+    @Override
+    public void visit(DsgnOpCallEmpty dsgn) {
+        if(dsgn.getCallName().getDesignator().obj.getKind()!=Obj.Meth){
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.obj.getName()+" koji nije metod!", dsgn);
+        }
+        else{
+            Collection<Obj> locals=dsgn.getCallName().getDesignator().obj.getLocalSymbols();
+            for(Obj local:locals){
+                if(local.getFpPos()>0 && !local.getName().equals("this")){
+                    report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan!", dsgn);
+                    currentDesignator=null;
+                    return;
+                }
+            }
+            report_info("Upotreba simbola: "+currentDesignator.obj.getName()+" prihvacena",dsgn);
+            currentDesignator=null;
+        }
+
+    }
+
+    @Override
+    public void visit(DsgnOpCallPars dsgn) {
+        if(dsgn.getCallName().getDesignator().obj.getKind()!=Obj.Meth){
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.obj.getName()+" koji nije metod!", dsgn);
+        }
+        else{
+            if(cnt==-1) {
+                currentDesignator=null;
+                return;
+            }
+            Collection<Obj> locals=dsgn.getCallName().getDesignator().obj.getLocalSymbols();
+            for(Obj local:locals){
+                if(local.getFpPos()>=cnt){
+                    report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan!", dsgn);
+                    currentDesignator=null;
+                    return;
+                }
+            }
+            report_info("Upotreba simbola: "+currentDesignator.obj.getName()+" prihvacena",dsgn);
+            currentDesignator=null;
+        }
+
+    }
+
+
+    int cnt;
+    @Override
+    public void visit(ActParsSingle x) {
+        cnt=1;
+        Collection<Obj> locals=currentDesignator.obj.getLocalSymbols();
+        if(locals==null){ cnt=-1; return;}
+        if(locals.stream().anyMatch(e->{
+            return e.getName().equals("this");
+        })) cnt=2;
+        Obj o=locals.stream().filter(e->{
+            return e.getFpPos()==cnt;
+        }).findFirst().orElse(null);
+        if(o==null || !isCompatible(x.getExpr().obj,o)){
+            report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan - kompatibilnost!", x);
+            cnt=-1;
+        }
+        else cnt++;
+    }
+    @Override
+    public void visit(ActParsMultiple x) {
+        if(cnt==-1) return;
+        Collection<Obj> locals=currentDesignator.obj.getLocalSymbols();
+        if(locals==null) {cnt=-1; return;}
+        Obj o=locals.stream().filter(e->{
+            return e.getFpPos()==cnt;
+        }).findFirst().orElse(null);
+        if(o==null || !isCompatible(x.getExpr().obj,o)){
+            report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan-kompatibilnost!", x);
+            cnt=-1;
+        }
+        else cnt++;
+    }
+
+
+    Designator currentDesignator;
+
     @Override
     public void visit(DoStart x) {
         dowhile=true;
     }
+
+    @Override
+    public void visit(CallName x) {
+        currentDesignator=x.getDesignator();
+    }
+
     @Override
     public void visit(StmtDoWhile x) {
         dowhile=false;
@@ -844,10 +933,43 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
         }
     }
+    @Override
+    public void visit(StmtRead x) {
+        if(!x.getDesignator().obj.getType().equals(Tab.intType)
+        && !x.getDesignator().obj.getType().equals(Tab.charType)
+        && !x.getDesignator().obj.getType().equals(Tab.find("bool").getType())
+        ){
+            report_error("Argument naredbe read mora da bude int, char ili bool tipa!", x);
+        }
+    }
+    @Override
+    public void visit(DsgnOpInc x) {
+        if(!x.getCallName().getDesignator().obj.getType().equals(Tab.intType)){
+            report_error("Argument naredbe ++ mora da bude int!", x);
+        }
+    }
+    @Override
+    public void visit(DsgnOpDec x) {
+        if(!x.getCallName().getDesignator().obj.getType().equals(Tab.intType)){
+            report_error("Argument naredbe -- mora da bude int!", x);
+        }
+    }
+
+    @Override
+    public void visit(DsgnOpAssign x) {
+        if(!isCompatible(x.getExpr().obj,x.getCallName().getDesignator().obj)){
+            report_error("Tipovi nisu kompatibilni za dodelu vrednosti!", x);
+        }
+    }
 
 
     @Override
     public void visit(ConstDeclError b) {
+        report_error("Izvrsen oporavak od greske. ",b);
+    }
+
+    @Override
+    public void visit(DsgnOpAssignError b) {
         report_error("Izvrsen oporavak od greske. ",b);
     }
     @Override

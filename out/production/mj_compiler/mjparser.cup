@@ -76,7 +76,7 @@ nonterminal InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
 nonterminal Relop, Label, DoStart;
-nonterminal Mulop, Addop, IfElseBlock, RelopEq;
+nonterminal Mulop, Addop, IfElseBlock, RelopEq, CallName;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr;
@@ -248,7 +248,6 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             (StmtGoto) GOTO Label:dst SEMI
             ;
 DoStart ::= (DoStart) DO;
-DesignStatement ::= (DesignStmt) Designator DsgnOp:operation;
 Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
               |
                (DesignatorAccessArray) Designator:base LBRACK Expr:index RBRACK
@@ -256,18 +255,19 @@ Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
               (DesignatorFirst) IDENT:dsgnName
               ;
 
-DsgnOp ::= (DsgnOpAssign) Assignop Expr
+DesignStatement ::= (DsgnOpAssign) CallName Assignop Expr
             |
-            (DsgnOpAssignError) Assignop:r error
+            (DsgnOpAssignError) CallName Assignop:r error
             |
-            (DsgnOpCallPars) LPAREN ActPars:params RPAREN
+            (DsgnOpCallPars) CallName LPAREN ActPars:params RPAREN
             |
-            (DsgnOpCallEmpty) LPAREN RPAREN
+            (DsgnOpCallEmpty) CallName LPAREN RPAREN
             |
-            (DsgnOpInc) INC
+            (DsgnOpInc) CallName INC
             |
-            (DsgnOpDec) DEC
+            (DsgnOpDec) CallName DEC
             ;
+CallName ::= (CallName) Designator:dsgn;
 Assignop ::= (Assignop) EQUAL;
 
 ActPars ::= (ActParsMultiple) ActPars:params COMMA Expr:param

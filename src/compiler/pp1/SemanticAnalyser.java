@@ -820,7 +820,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
     @Override
     public void visit(FactorDsgn dsgn) {
-        dsgn.obj=dsgn.getDesignator().obj;
+        dsgn.obj=dsgn.getFactorDesignator().getDesignator().obj;
     }
 
 
@@ -828,19 +828,43 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(DsgnOpCallEmpty dsgn) {
         if(dsgn.getCallName().getDesignator().obj.getKind()!=Obj.Meth){
-            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.obj.getName()+" koji nije metod!", dsgn);
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" koji nije metod!", dsgn);
         }
         else{
             Collection<Obj> locals=dsgn.getCallName().getDesignator().obj.getLocalSymbols();
             for(Obj local:locals){
                 if(local.getFpPos()>0 && !local.getName().equals("this")){
-                    report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan!", dsgn);
-                    currentDesignator=null;
+                    report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan!", dsgn);
+                    currentDesignator.remove(currentDesignator.size()-1);
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+currentDesignator.obj.getName()+" prihvacena",dsgn);
-            currentDesignator=null;
+            report_info("Upotreba simbola: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" prihvacena",dsgn);
+            currentDesignator.remove(currentDesignator.size()-1);
+        }
+
+    }
+
+
+    @Override
+    public void visit(FactorDsgnCallEmpty dsgn) {
+        if(dsgn.getFactorDesignator().getDesignator().obj.getKind()!=Obj.Meth){
+            dsgn.obj=Tab.noObj;
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" koji nije metod!", dsgn);
+        }
+        else{
+            Collection<Obj> locals=dsgn.getFactorDesignator().getDesignator().obj.getLocalSymbols();
+            for(Obj local:locals){
+                if(local.getFpPos()>0 && !local.getName().equals("this")){
+                    dsgn.obj=Tab.noObj;
+                    report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan!", dsgn);
+                    currentDesignator.remove(currentDesignator.size()-1);
+                    return;
+                }
+            }
+            dsgn.obj=dsgn.getFactorDesignator().getDesignator().obj;
+            report_info("Upotreba simbola: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" prihvacena",dsgn);
+            currentDesignator.remove(currentDesignator.size()-1);
         }
 
     }
@@ -848,33 +872,58 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(DsgnOpCallPars dsgn) {
         if(dsgn.getCallName().getDesignator().obj.getKind()!=Obj.Meth){
-            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.obj.getName()+" koji nije metod!", dsgn);
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" koji nije metod!", dsgn);
         }
         else{
             if(cnt==-1) {
-                currentDesignator=null;
+                currentDesignator.remove(currentDesignator.size()-1);
                 return;
             }
             Collection<Obj> locals=dsgn.getCallName().getDesignator().obj.getLocalSymbols();
             for(Obj local:locals){
                 if(local.getFpPos()>=cnt){
-                    report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan!", dsgn);
-                    currentDesignator=null;
+                    report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan!", dsgn);
+                    currentDesignator.remove(currentDesignator.size()-1);
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+currentDesignator.obj.getName()+" prihvacena",dsgn);
-            currentDesignator=null;
+            report_info("Upotreba simbola: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" prihvacena",dsgn);
+            currentDesignator.remove(currentDesignator.size()-1);
+        }
+
+    }
+    @Override
+    public void visit(FactorDsgnCall dsgn) {
+        if(dsgn.getFactorDesignator().getDesignator().obj.getKind()!=Obj.Meth){
+            dsgn.obj=Tab.noObj;
+            report_error("Pokusaj poziva nad simbolom: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" koji nije metod!", dsgn);
+        }
+        else{
+            if(cnt==-1) {
+                currentDesignator.remove(currentDesignator.size()-1);
+                dsgn.obj=Tab.noObj;
+                return;
+            }
+            Collection<Obj> locals=dsgn.getFactorDesignator().getDesignator().obj.getLocalSymbols();
+            for(Obj local:locals){
+                if(local.getFpPos()>=cnt){
+                    report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan!", dsgn);
+                    currentDesignator.remove(currentDesignator.size()-1);
+                    dsgn.obj=Tab.noObj;
+                    return;
+                }
+            }
+            report_info("Upotreba simbola: "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" prihvacena",dsgn);
+            dsgn.obj=dsgn.getFactorDesignator().getDesignator().obj;
+            currentDesignator.remove(currentDesignator.size()-1);
         }
 
     }
 
-
-    int cnt;
     @Override
     public void visit(ActParsSingle x) {
         cnt=1;
-        Collection<Obj> locals=currentDesignator.obj.getLocalSymbols();
+        Collection<Obj> locals=currentDesignator.get(currentDesignator.size()-1).obj.getLocalSymbols();
         if(locals==null){ cnt=-1; return;}
         if(locals.stream().anyMatch(e->{
             return e.getName().equals("this");
@@ -883,7 +932,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             return e.getFpPos()==cnt;
         }).findFirst().orElse(null);
         if(o==null || !isCompatible(x.getExpr().obj,o)){
-            report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan - kompatibilnost!", x);
+            report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan - kompatibilnost!", x);
             cnt=-1;
         }
         else cnt++;
@@ -891,20 +940,22 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(ActParsMultiple x) {
         if(cnt==-1) return;
-        Collection<Obj> locals=currentDesignator.obj.getLocalSymbols();
+        Collection<Obj> locals=currentDesignator.get(currentDesignator.size()-1).obj.getLocalSymbols();
         if(locals==null) {cnt=-1; return;}
         Obj o=locals.stream().filter(e->{
             return e.getFpPos()==cnt;
         }).findFirst().orElse(null);
         if(o==null || !isCompatible(x.getExpr().obj,o)){
-            report_error("Potpis metode "+currentDesignator.obj.getName()+" neispravan-kompatibilnost!", x);
+            report_error("Potpis metode "+currentDesignator.get(currentDesignator.size()-1).obj.getName()+" neispravan-kompatibilnost!", x);
             cnt=-1;
         }
         else cnt++;
     }
 
 
-    Designator currentDesignator;
+    List<Designator> currentDesignator=new ArrayList<>();
+    Designator pom;
+    int cnt;
 
     @Override
     public void visit(DoStart x) {
@@ -913,7 +964,15 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     @Override
     public void visit(CallName x) {
-        currentDesignator=x.getDesignator();
+        pom=x.getDesignator();
+    }
+    @Override
+    public void visit(FactorDesignator x) {
+        pom=x.getDesignator();
+    }
+    @Override
+    public void visit(CopyDsgn x) {
+        currentDesignator.add(pom);
     }
 
     @Override

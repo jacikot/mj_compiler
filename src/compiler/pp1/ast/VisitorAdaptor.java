@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 19:14:48
+// 3/0/2022 0:18:54
 
 
 package compiler.pp1.ast;
@@ -39,8 +39,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ActParsList ActParsList) { }
     public void visit(InnerVarDeclList InnerVarDeclList) { }
     public void visit(ExtendsDecl ExtendsDecl) { }
-    public void visit(VarDeclList VarDeclList) { }
     public void visit(RelopEq RelopEq) { }
+    public void visit(VarDeclList VarDeclList) { }
     public void visit(Expr Expr) { }
     public void visit(Cond Cond) { }
     public void visit(ActPars ActPars) { }
@@ -59,8 +59,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FactorBool FactorBool) { visit(); }
     public void visit(FactorChar FactorChar) { visit(); }
     public void visit(FactorNumber FactorNumber) { visit(); }
+    public void visit(FactorDsgnCallEmpty FactorDsgnCallEmpty) { visit(); }
     public void visit(FactorDsgnCall FactorDsgnCall) { visit(); }
     public void visit(FactorDsgn FactorDsgn) { visit(); }
+    public void visit(CopyDsgn CopyDsgn) { visit(); }
+    public void visit(FactorDesignator FactorDesignator) { visit(); }
     public void visit(TermSingle TermSingle) { visit(); }
     public void visit(TermMultiple TermMultiple) { visit(); }
     public void visit(ExprSingleMinus ExprSingleMinus) { visit(); }

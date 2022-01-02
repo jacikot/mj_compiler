@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 19:14:48
+// 3/0/2022 0:18:54
 
 
 package compiler.pp1.ast;
 
 public class FactorDsgn extends Factor {
 
-    private Designator Designator;
+    private FactorDesignator FactorDesignator;
 
-    public FactorDsgn (Designator Designator) {
-        this.Designator=Designator;
-        if(Designator!=null) Designator.setParent(this);
+    public FactorDsgn (FactorDesignator FactorDesignator) {
+        this.FactorDesignator=FactorDesignator;
+        if(FactorDesignator!=null) FactorDesignator.setParent(this);
     }
 
-    public Designator getDesignator() {
-        return Designator;
+    public FactorDesignator getFactorDesignator() {
+        return FactorDesignator;
     }
 
-    public void setDesignator(Designator Designator) {
-        this.Designator=Designator;
+    public void setFactorDesignator(FactorDesignator FactorDesignator) {
+        this.FactorDesignator=FactorDesignator;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class FactorDsgn extends Factor {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Designator!=null) Designator.accept(visitor);
+        if(FactorDesignator!=null) FactorDesignator.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Designator!=null) Designator.traverseTopDown(visitor);
+        if(FactorDesignator!=null) FactorDesignator.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Designator!=null) Designator.traverseBottomUp(visitor);
+        if(FactorDesignator!=null) FactorDesignator.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class FactorDsgn extends Factor {
         buffer.append(tab);
         buffer.append("FactorDsgn(\n");
 
-        if(Designator!=null)
-            buffer.append(Designator.toString("  "+tab));
+        if(FactorDesignator!=null)
+            buffer.append(FactorDesignator.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

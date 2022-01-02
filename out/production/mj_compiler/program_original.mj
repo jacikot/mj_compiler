@@ -5,6 +5,10 @@ const bool xyz=false;
 int xyza, jana2[];
 class Base{
 
+{
+    void meth(){}
+}
+
 }
 
 class Derived extends Base{
@@ -27,11 +31,16 @@ class A extends B{
             A() {
 
             }
+            int mmm(){
+            return 1;
+            }
             void xyz(Base h) int x; {
                  Label: x++;
+                 h.meth();
+                 if(mmm()==1) mmm();
+                 xyz(h);
             }
-            void mmm(){
-            }
+
 
     }
 }
@@ -53,6 +62,7 @@ M m;
              return new A;
         }
     }
+    void abc(int qjk){}
     void main(A a){
         goto LABELA;
         LABELA: a.baseField[0]++;
@@ -61,6 +71,7 @@ M m;
             read(a.baseField[0]);
             a.xyz(m.ddd);
             method(niz[0],niz[1]);
+            abc(a.mmm());
             continue;
         }
         while(1>0);

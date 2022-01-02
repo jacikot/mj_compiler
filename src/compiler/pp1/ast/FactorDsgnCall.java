@@ -1,28 +1,39 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 19:14:48
+// 3/0/2022 0:18:54
 
 
 package compiler.pp1.ast;
 
 public class FactorDsgnCall extends Factor {
 
-    private Designator Designator;
+    private FactorDesignator FactorDesignator;
+    private CopyDsgn CopyDsgn;
     private ActPars ActPars;
 
-    public FactorDsgnCall (Designator Designator, ActPars ActPars) {
-        this.Designator=Designator;
-        if(Designator!=null) Designator.setParent(this);
+    public FactorDsgnCall (FactorDesignator FactorDesignator, CopyDsgn CopyDsgn, ActPars ActPars) {
+        this.FactorDesignator=FactorDesignator;
+        if(FactorDesignator!=null) FactorDesignator.setParent(this);
+        this.CopyDsgn=CopyDsgn;
+        if(CopyDsgn!=null) CopyDsgn.setParent(this);
         this.ActPars=ActPars;
         if(ActPars!=null) ActPars.setParent(this);
     }
 
-    public Designator getDesignator() {
-        return Designator;
+    public FactorDesignator getFactorDesignator() {
+        return FactorDesignator;
     }
 
-    public void setDesignator(Designator Designator) {
-        this.Designator=Designator;
+    public void setFactorDesignator(FactorDesignator FactorDesignator) {
+        this.FactorDesignator=FactorDesignator;
+    }
+
+    public CopyDsgn getCopyDsgn() {
+        return CopyDsgn;
+    }
+
+    public void setCopyDsgn(CopyDsgn CopyDsgn) {
+        this.CopyDsgn=CopyDsgn;
     }
 
     public ActPars getActPars() {
@@ -38,18 +49,21 @@ public class FactorDsgnCall extends Factor {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Designator!=null) Designator.accept(visitor);
+        if(FactorDesignator!=null) FactorDesignator.accept(visitor);
+        if(CopyDsgn!=null) CopyDsgn.accept(visitor);
         if(ActPars!=null) ActPars.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Designator!=null) Designator.traverseTopDown(visitor);
+        if(FactorDesignator!=null) FactorDesignator.traverseTopDown(visitor);
+        if(CopyDsgn!=null) CopyDsgn.traverseTopDown(visitor);
         if(ActPars!=null) ActPars.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Designator!=null) Designator.traverseBottomUp(visitor);
+        if(FactorDesignator!=null) FactorDesignator.traverseBottomUp(visitor);
+        if(CopyDsgn!=null) CopyDsgn.traverseBottomUp(visitor);
         if(ActPars!=null) ActPars.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -59,8 +73,14 @@ public class FactorDsgnCall extends Factor {
         buffer.append(tab);
         buffer.append("FactorDsgnCall(\n");
 
-        if(Designator!=null)
-            buffer.append(Designator.toString("  "+tab));
+        if(FactorDesignator!=null)
+            buffer.append(FactorDesignator.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(CopyDsgn!=null)
+            buffer.append(CopyDsgn.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

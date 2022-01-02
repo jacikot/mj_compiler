@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2022 19:14:48
+// 3/0/2022 0:18:54
 
 
 package compiler.pp1.ast;
@@ -39,8 +39,8 @@ public interface Visitor {
     public void visit(ActParsList ActParsList);
     public void visit(InnerVarDeclList InnerVarDeclList);
     public void visit(ExtendsDecl ExtendsDecl);
-    public void visit(VarDeclList VarDeclList);
     public void visit(RelopEq RelopEq);
+    public void visit(VarDeclList VarDeclList);
     public void visit(Expr Expr);
     public void visit(Cond Cond);
     public void visit(ActPars ActPars);
@@ -59,8 +59,11 @@ public interface Visitor {
     public void visit(FactorBool FactorBool);
     public void visit(FactorChar FactorChar);
     public void visit(FactorNumber FactorNumber);
+    public void visit(FactorDsgnCallEmpty FactorDsgnCallEmpty);
     public void visit(FactorDsgnCall FactorDsgnCall);
     public void visit(FactorDsgn FactorDsgn);
+    public void visit(CopyDsgn CopyDsgn);
+    public void visit(FactorDesignator FactorDesignator);
     public void visit(TermSingle TermSingle);
     public void visit(TermMultiple TermMultiple);
     public void visit(ExprSingleMinus ExprSingleMinus);

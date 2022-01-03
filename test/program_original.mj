@@ -28,6 +28,7 @@ class B{
     }
 }
 class A extends B{
+    int x;
     {
             A() {
 
@@ -39,7 +40,8 @@ class A extends B{
             }
             int xyz(Base h) int x; {
                 super(h);
-                 Label: x++;
+                this.mmm();
+                 Label: this.x++;
                  h.meth();
                  if(super(h)==1) mmm();
                  xyz(h);
@@ -67,8 +69,8 @@ M m;
              return new A;
         }
     }
-    void abc(int qjk){}
-    void main(A a){
+    A abc(int qjk){ return new A;}
+    void main(A a) int i;{
         goto LABELA;
         LABELA: a.baseField[0]++;
         niz[a.baseField[0]].baseField[2]++;

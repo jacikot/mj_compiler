@@ -785,9 +785,27 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
     }
     @Override
+    public void visit(DesignatorThis dsgn) {
+        dsgn.obj=Tab.find("this");
+        if(dsgn.obj==Tab.noObj || currentTypeDefinition==null){
+            report_error("Nije dozvoljeno koriscenje this izvan metode klase!", dsgn);
+            dsgn.obj=Tab.noObj;
+        }
+        else{
+            dsgn.obj.getType().setMembers(Tab.currentScope().getOuter().getLocals());
+            report_info("Upotreba simbola: this prihvacena",dsgn);
+        }
+    }
+    @Override
     public void visit(DesignatorAccessField dsgn) {
+
         if(dsgn.getDesignator().obj.getType().getKind()!=Struct.Class){
             report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije korisnicki definisanog tipa i nema polja!", dsgn);
+            dsgn.obj=Tab.noObj;
+            return;
+        }
+        if(dsgn.getDesignator().obj.getKind()!=Obj.Fld && dsgn.getDesignator().obj.getKind()!=Obj.Var){
+            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
@@ -811,12 +829,17 @@ public class SemanticAnalyser extends VisitorAdaptor {
             dsgn.obj=Tab.noObj;
             return;
         }
+        if(dsgn.getDesignator().obj.getKind()!=Obj.Fld && dsgn.getDesignator().obj.getKind()!=Obj.Var){
+            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
+            dsgn.obj=Tab.noObj;
+            return;
+        }
         if(!dsgn.getExpr().obj.getType().equals(Tab.intType)){
             report_error("Tip " + dsgn.getExpr().obj.getName() + " nije tip int!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
-        dsgn.obj=new Obj(Obj.Type,"array_elem",dsgn.getDesignator().obj.getType().getElemType());
+        dsgn.obj=new Obj(Obj.Var,"array_elem",dsgn.getDesignator().obj.getType().getElemType());
     }
     @Override
     public void visit(FactorDsgn dsgn) {

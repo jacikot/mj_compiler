@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 3/0/2022 9:58:45
+// 3/0/2022 11:20:14
 
 
 package compiler.pp1.ast;
@@ -102,6 +102,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DsgnOpCallPars DsgnOpCallPars) { visit(); }
     public void visit(DsgnOpAssignError DsgnOpAssignError) { visit(); }
     public void visit(DsgnOpAssign DsgnOpAssign) { visit(); }
+    public void visit(DesignatorThis DesignatorThis) { visit(); }
     public void visit(DesignatorFirst DesignatorFirst) { visit(); }
     public void visit(DesignatorAccessArray DesignatorAccessArray) { visit(); }
     public void visit(DesignatorAccessField DesignatorAccessField) { visit(); }

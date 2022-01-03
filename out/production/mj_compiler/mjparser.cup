@@ -253,6 +253,8 @@ Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
                (DesignatorAccessArray) Designator:base LBRACK Expr:index RBRACK
               |
               (DesignatorFirst) IDENT:dsgnName
+              |
+              (DesignatorThis) THIS
               ;
 
 DesignStatement ::= (DsgnOpAssign) CallName Assignop Expr

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 3/0/2022 9:58:45
+// 3/0/2022 11:20:14
 
 
 package compiler.pp1.ast;
@@ -102,6 +102,7 @@ public interface Visitor {
     public void visit(DsgnOpCallPars DsgnOpCallPars);
     public void visit(DsgnOpAssignError DsgnOpAssignError);
     public void visit(DsgnOpAssign DsgnOpAssign);
+    public void visit(DesignatorThis DesignatorThis);
     public void visit(DesignatorFirst DesignatorFirst);
     public void visit(DesignatorAccessArray DesignatorAccessArray);
     public void visit(DesignatorAccessField DesignatorAccessField);

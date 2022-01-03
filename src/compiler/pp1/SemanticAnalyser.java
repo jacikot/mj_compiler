@@ -815,7 +815,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
             dsgn.obj=Tab.noObj;
         }
         else{
-            dsgn.obj=o;
+            if(o.getName().startsWith("__")){
+                dsgn.obj=new Obj(o.getKind(),o.getName(),dsgn.getDesignator().obj.getType());
+            }
+            else dsgn.obj=o;
             report_info("Upotreba simbola: "+dsgn.getField()+" prihvacena",dsgn);
         }
     }
@@ -1072,7 +1075,13 @@ public class SemanticAnalyser extends VisitorAdaptor {
                         e.getName().equals(methodDecl.getName()):e.getName().startsWith("__"));
             }).findFirst().orElse(null);
             if(o==null) pom=Tab.noObj;
-            else pom=o;
+            else {
+                if(o.getName().startsWith("__")){
+                    pom=new Obj(o.getKind(),o.getName(),base);
+                }
+                else pom=o;
+
+            }
         }
         else{
             pom=Tab.noObj;
@@ -1109,6 +1118,9 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     report_error("Pokusaj poziva nad simbolom: "+pom.getName()+" koji nije metod!", x);
                 }
                 else{
+                    if(constructor.getName().startsWith("__")){
+                        constructor=new Obj(constructor.getKind(),constructor.getName(),pom.getType());
+                    }
                     x.obj=constructor;
                     currentDesignator.add(constructor);
                 }

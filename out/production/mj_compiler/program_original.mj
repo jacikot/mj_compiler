@@ -72,7 +72,7 @@ M m;
         }
     }
     A abc(int qjk){ return new A;}
-    void main(A a) int i;{
+    void main(A a) int i; B bk;{
         goto LABELA;
         LABELA: a.baseField[0]++;
         niz[a.baseField[0]].baseField[2]++;
@@ -84,7 +84,7 @@ M m;
             continue;
         }
         while(1>0);
-        A();
+        bk=A();
         a.mmm();
     }
 }

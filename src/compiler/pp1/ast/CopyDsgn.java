@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 3/0/2022 11:20:14
+// 3/0/2022 11:44:52
 
 
 package compiler.pp1.ast;
@@ -9,6 +9,8 @@ public class CopyDsgn implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
+
     public CopyDsgn () {
     }
 

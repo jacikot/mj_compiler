@@ -31,7 +31,7 @@ class A extends B{
     int x;
     {
             A() {
-
+                super();
 
             }
             int mmm(){
@@ -39,8 +39,9 @@ class A extends B{
             return 1;
             }
             int xyz(Base h) int x; {
-                super(h);
+                super(new Derived);
                 this.mmm();
+                 //this.A();
                  Label: this.x++;
                  h.meth();
                  if(super(h)==1) mmm();

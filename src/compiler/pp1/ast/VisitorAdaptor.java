@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 3/0/2022 0:18:54
+// 3/0/2022 9:58:45
 
 
 package compiler.pp1.ast;
@@ -59,6 +59,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FactorBool FactorBool) { visit(); }
     public void visit(FactorChar FactorChar) { visit(); }
     public void visit(FactorNumber FactorNumber) { visit(); }
+    public void visit(FactorDsgnSuperEmpty FactorDsgnSuperEmpty) { visit(); }
+    public void visit(FactorDsgnSuper FactorDsgnSuper) { visit(); }
     public void visit(FactorDsgnCallEmpty FactorDsgnCallEmpty) { visit(); }
     public void visit(FactorDsgnCall FactorDsgnCall) { visit(); }
     public void visit(FactorDsgn FactorDsgn) { visit(); }
@@ -91,8 +93,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ActParsMultiple ActParsMultiple) { visit(); }
     public void visit(Assignop Assignop) { visit(); }
     public void visit(CallName CallName) { visit(); }
+    public void visit(SuperDsgn SuperDsgn) { visit(); }
     public void visit(DsgnOpDec DsgnOpDec) { visit(); }
     public void visit(DsgnOpInc DsgnOpInc) { visit(); }
+    public void visit(DsgnSuperEmpty DsgnSuperEmpty) { visit(); }
+    public void visit(DsgnSuperPars DsgnSuperPars) { visit(); }
     public void visit(DsgnOpCallEmpty DsgnOpCallEmpty) { visit(); }
     public void visit(DsgnOpCallPars DsgnOpCallPars) { visit(); }
     public void visit(DsgnOpAssignError DsgnOpAssignError) { visit(); }

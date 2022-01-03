@@ -7,6 +7,7 @@ class Base{
 
 {
     void meth(){}
+
 }
 
 }
@@ -21,8 +22,8 @@ class B{
         B() int a, j;{
 
         }
-        void xyz(Base j) {
-
+        int xyz(Base j) {
+            return 0;
         }
     }
 }
@@ -30,15 +31,19 @@ class A extends B{
     {
             A() {
 
+
             }
             int mmm(){
+
             return 1;
             }
-            void xyz(Base h) int x; {
+            int xyz(Base h) int x; {
+                super(h);
                  Label: x++;
                  h.meth();
-                 if(mmm()==1) mmm();
+                 if(super(h)==1) mmm();
                  xyz(h);
+                 return 1;
             }
 
 

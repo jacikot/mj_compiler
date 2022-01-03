@@ -101,6 +101,7 @@ nonterminal Relop Relop;
 nonterminal Label Label;
 nonterminal DoStart DoStart;
 nonterminal CopyDsgn CopyDsgn;
+nonterminal SuperDsgn SuperDsgn;
 nonterminal Mulop Mulop;
 nonterminal Addop Addop;
 nonterminal IfElseBlock IfElseBlock;
@@ -301,10 +302,15 @@ DesignStatement ::= (DsgnOpAssign) CallName:C1 Assignop:A2 Expr:E3 {: RESULT=new
             |
             (DsgnOpCallEmpty) CallName:C1 CopyDsgn:C2 LPAREN RPAREN {: RESULT=new DsgnOpCallEmpty(C1, C2); RESULT.setLine(C1left); :}
             |
+            (DsgnSuperPars) SuperDsgn:S1 CopyDsgn:C2 LPAREN ActPars:params RPAREN {: RESULT=new DsgnSuperPars(S1, C2, params); RESULT.setLine(S1left); :}
+            |
+            (DsgnSuperEmpty) SuperDsgn:S1 CopyDsgn:C2 LPAREN RPAREN {: RESULT=new DsgnSuperEmpty(S1, C2); RESULT.setLine(S1left); :}
+            |
             (DsgnOpInc) CallName:C1 INC {: RESULT=new DsgnOpInc(C1); RESULT.setLine(C1left); :}
             |
             (DsgnOpDec) CallName:C1 DEC {: RESULT=new DsgnOpDec(C1); RESULT.setLine(C1left); :}
             ;
+SuperDsgn ::= (SuperDsgn) SUPER {: RESULT=new SuperDsgn(); :};
 CallName ::= (CallName) Designator:dsgn {: RESULT=new CallName(dsgn); RESULT.setLine(dsgnleft); :};
 Assignop ::= (Assignop) EQUAL {: RESULT=new Assignop(); :};
 
@@ -356,6 +362,10 @@ Factor ::= (FactorDsgn) FactorDesignator:operand {: RESULT=new FactorDsgn(operan
         (FactorDsgnCall) FactorDesignator:fun CopyDsgn:C1 LPAREN ActPars:params RPAREN {: RESULT=new FactorDsgnCall(fun, C1, params); RESULT.setLine(funleft); :}
         |
         (FactorDsgnCallEmpty) FactorDesignator:fun CopyDsgn:C1 LPAREN RPAREN {: RESULT=new FactorDsgnCallEmpty(fun, C1); RESULT.setLine(funleft); :}
+        |
+        (FactorDsgnSuper) SuperDsgn:fun CopyDsgn:C1 LPAREN ActPars:params RPAREN {: RESULT=new FactorDsgnSuper(fun, C1, params); RESULT.setLine(funleft); :}
+        |
+        (FactorDsgnSuperEmpty) SuperDsgn:fun CopyDsgn:C1 LPAREN RPAREN {: RESULT=new FactorDsgnSuperEmpty(fun, C1); RESULT.setLine(funleft); :}
         |
         (FactorNumber) NUMBER:operand {: RESULT=new FactorNumber(operand); RESULT.setLine(operandleft); :}
         |

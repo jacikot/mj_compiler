@@ -75,7 +75,7 @@ nonterminal ConstDeclList, VarDeclList;
 nonterminal InnerVarDeclList, InnerMethodBlock, ConstructorDecl, StatementList;
 nonterminal FormParList, Statement, SingleStatement, Statements;
 nonterminal Matched, Unmatched, DesignStatement, PrintSize, DsgnOp, AccessDsgn, Assignop, ActPars, ActParsList;
-nonterminal Relop, Label, DoStart, CopyDsgn;
+nonterminal Relop, Label, DoStart, CopyDsgn, SuperDsgn;
 nonterminal Mulop, Addop, IfElseBlock, RelopEq, CallName, FactorDesignator;
 nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, ClassVarDecl;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator;
@@ -263,10 +263,15 @@ DesignStatement ::= (DsgnOpAssign) CallName Assignop Expr
             |
             (DsgnOpCallEmpty) CallName CopyDsgn LPAREN RPAREN
             |
+            (DsgnSuperPars) SuperDsgn CopyDsgn LPAREN ActPars:params RPAREN
+            |
+            (DsgnSuperEmpty) SuperDsgn CopyDsgn LPAREN RPAREN
+            |
             (DsgnOpInc) CallName INC
             |
             (DsgnOpDec) CallName DEC
             ;
+SuperDsgn ::= (SuperDsgn) SUPER;
 CallName ::= (CallName) Designator:dsgn;
 Assignop ::= (Assignop) EQUAL;
 
@@ -318,6 +323,10 @@ Factor ::= (FactorDsgn) FactorDesignator:operand
         (FactorDsgnCall) FactorDesignator:fun CopyDsgn LPAREN ActPars:params RPAREN
         |
         (FactorDsgnCallEmpty) FactorDesignator:fun CopyDsgn LPAREN RPAREN
+        |
+        (FactorDsgnSuper) SuperDsgn:fun CopyDsgn LPAREN ActPars:params RPAREN
+        |
+        (FactorDsgnSuperEmpty) SuperDsgn:fun CopyDsgn LPAREN RPAREN
         |
         (FactorNumber) NUMBER:operand
         |

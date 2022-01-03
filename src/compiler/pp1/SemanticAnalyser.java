@@ -480,24 +480,35 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
     }
 
+    private void closeDeclMethod(){
+        returnCounter=0;
+        methodDecl=null;
+        overriding=null;
+        labelsSearched.clear();
+        Tab.closeScope();
+    }
+
     @Override
     public void visit(MethodDeclPar m) {
         retType=null;
         currentType=null;
         if(returnCounter==0 && !methodDecl.getType().equals(Tab.noType)){
             report_error("Metoda: " + m.getMethodDeclChecker().getMethodName().getMethodName()+" nema return naredbu", m);
+            closeDeclMethod();
+            return;
         }
-        returnCounter=0;
-        methodDecl=null;
-        overriding=null;
+        if(currentTypeDefinition==null&&methodDecl.getName().equals("main")){
+            report_error("Globalna metoda main ne moze imati parametre!", m);
+            closeDeclMethod();
+            return;
+        }
         if(!m.getMethodDeclChecker().obj.equals(Tab.noObj)) Tab.chainLocalSymbols(m.getMethodDeclChecker().obj);
         for(List<StmtGoto> unresolved:labelsSearched.values()){
             for(StmtGoto stmt:unresolved){
                 report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
             }
         }
-        labelsSearched.clear();
-        Tab.closeScope();
+        closeDeclMethod();
     }
 
     @Override

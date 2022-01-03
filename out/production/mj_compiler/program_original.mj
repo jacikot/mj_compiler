@@ -41,10 +41,11 @@ class A extends B{
             int xyz(Base h) int x; {
                 super(new Derived);
                 this.mmm();
-                 //this.A();
+                 this.A();
                  Label: this.x++;
                  h.meth();
                  if(super(h)==1) mmm();
+                 //if(A()==new A) mmm();
                  xyz(h);
                  return 1;
             }
@@ -83,6 +84,7 @@ M m;
             continue;
         }
         while(1>0);
+        A();
         a.mmm();
     }
 }

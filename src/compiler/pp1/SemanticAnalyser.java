@@ -808,7 +808,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         Collection<Obj> members=dsgn.getDesignator().obj.getType().getMembers();
         Obj o=members.stream().filter(e->{
-            return e.getName().equals(dsgn.getField());
+            return (e.getFpPos()!=CONSTRUCTOR_TYPE)?e.getName().equals(dsgn.getField()):e.getName().equals("__"+dsgn.getField());
         }).findAny().orElse(null);
         if(o==null){
             report_error("Simbol: Ime "+dsgn.getField()+" nije deklarisan u opsegu simbola "+dsgn.getDesignator().obj.getName()+"!", dsgn);
@@ -1097,7 +1097,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             else{
                 //konstruktor
-                if(currentTypeDefinition.getType().equals(pom.getType())){
+                if(currentTypeDefinition!=null && currentTypeDefinition.getType().equals(pom.getType())){
                     pom.getType().setMembers(Tab.currentScope().getOuter().getLocals());
                 }
                 Collection<Obj> members=pom.getType().getMembers();

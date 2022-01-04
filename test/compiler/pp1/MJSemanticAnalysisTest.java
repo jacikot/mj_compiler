@@ -13,6 +13,9 @@ import java_cup.runtime.Symbol;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import rs.etf.pp1.symboltable.Tab;
+import rs.etf.pp1.symboltable.concepts.Scope;
+import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
+import rs.etf.pp1.symboltable.visitors.SymbolTableVisitor;
 
 
 public class MJSemanticAnalysisTest {
@@ -20,6 +23,22 @@ public class MJSemanticAnalysisTest {
     static {
         DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());
         Log4JUtils.instance().prepareLogFile(Logger.getRootLogger());
+    }
+
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+
+    private static SymbolTableVisitor visitor;
+
+    public static void tsdump(){
+        System.out.println(ANSI_BLUE+"=====================SYMBOL TABLE DUMP========================="+ANSI_RESET);
+        if (visitor == null)
+            visitor = new MySymbolTableVisitor();
+        for (Scope s = Tab.currentScope(); s != null; s = s.getOuter()) {
+            s.accept(visitor);
+        }
+        System.out.println(visitor.getOutput());
     }
 
     public static void main(String[] args) throws Exception {
@@ -42,13 +61,13 @@ public class MJSemanticAnalysisTest {
 
             // ispis sintaksnog stabla
             log.info(prog.toString(""));
-            System.out.println("=====================SEMANTICKA OBRADA=========================");
+            System.out.println(ANSI_BLUE+"=====================SEMANTICKA OBRADA========================="+ANSI_RESET);
 
             // ispis prepoznatih programskih konstrukcija
             SemanticAnalyser v = new SemanticAnalyser();
             v.init();
             prog.traverseBottomUp(v);
-            System.out.println("=====================SINTAKSNA ANALIZA=========================");
+            System.out.println(ANSI_BLUE+"=====================SINTAKSNA ANALIZA========================="+ANSI_RESET);
 
 //            log.info(" Print count calls = " + v.printCallCount);
 //
@@ -59,14 +78,14 @@ public class MJSemanticAnalysisTest {
             System.out.println(v.classDeclCount +" inner classes");
             System.out.println(v.recordDeclCount +" records");
             System.out.println(v.mainCount +" main method");
-            Tab.dump();
+            tsdump();
             if(!v.errorDetected&&!p.errorDetected&&v.mainCount>0)
-                System.out.println("=====================USPESNO=========================");
+                System.out.println(ANSI_BLUE+"=====================USPESNO========================="+ANSI_RESET);
             else{
-                System.err.println("=====================NEUSPESNO=========================");
-                if(p.errorDetected) System.err.println("Detektovane su sintaksne greske!");
-                if(v.errorDetected) System.err.println("Detektovane su semanticke greske!");
-                if(v.mainCount==0) System.err.println("Ne postoji metoda main!");
+                System.out.println(ANSI_RED+"=====================NEUSPESNO=========================");
+                if(p.errorDetected) System.out.println("Detektovane su sintaksne greske!");
+                if(v.errorDetected) System.out.println("Detektovane su semanticke greske!");
+                if(v.mainCount==0) System.out.println("Ne postoji metoda main!"+ANSI_RESET);
             }
 
         }

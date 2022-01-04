@@ -292,7 +292,7 @@ Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field {: RESULT
               |
               (DesignatorFirst) IDENT:dsgnName {: RESULT=new DesignatorFirst(dsgnName); RESULT.setLine(dsgnNameleft); :}
               |
-              (DesignatorThis) THIS {: RESULT=new DesignatorThis(); :}
+              (DesignatorThis) THIS:l {: RESULT=new DesignatorThis(); :}
               ;
 
 DesignStatement ::= (DsgnOpAssign) CallName:C1 Assignop:A2 Expr:E3 {: RESULT=new DsgnOpAssign(C1, A2, E3); RESULT.setLine(C1left); :}

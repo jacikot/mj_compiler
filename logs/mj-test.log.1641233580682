@@ -1,0 +1,971 @@
+INFO  19:11:04,642 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\program2.mj
+INFO  19:11:04,770 - #2 program
+INFO  19:11:04,770 - #22 Program
+INFO  19:11:04,771 - #13 class
+INFO  19:11:04,773 - #22 A
+INFO  19:11:04,773 - #3 {
+INFO  19:11:04,775 - #22 int
+INFO  19:11:04,776 - #22 x
+INFO  19:11:04,777 - #10 [
+INFO  19:11:04,777 - #11 ]
+INFO  19:11:04,777 - #7 ,
+INFO  19:11:04,777 - #22 y
+INFO  19:11:04,777 - #10 [
+INFO  19:11:04,778 - #11 ]
+INFO  19:11:04,778 - #6 ;
+INFO  19:11:04,778 - #4 }
+INFO  19:11:04,779 - #5 const
+INFO  19:11:04,781 - #22 int
+INFO  19:11:04,781 - #22 pi
+INFO  19:11:04,781 - #9 =
+INFO  19:11:04,781 - #20 3
+INFO  19:11:04,781 - #7 ,
+INFO  19:11:04,782 - #22 e
+INFO  19:11:04,784 - #9 =
+INFO  19:11:04,784 - #20 2
+INFO  19:11:04,784 - #6 ;
+INFO  19:11:04,784 - #13 class
+INFO  19:11:04,785 - #22 B
+INFO  19:11:04,785 - #14 extends
+INFO  19:11:04,785 - #22 A
+INFO  19:11:04,785 - #3 {
+INFO  19:11:04,785 - #22 int
+INFO  19:11:04,785 - #22 i
+INFO  19:11:04,785 - #6 ;
+INFO  19:11:04,786 - #3 {
+INFO  19:11:04,786 - #22 int
+INFO  19:11:04,786 - #22 getValue
+INFO  19:11:04,786 - #15 (
+INFO  19:11:04,788 - #22 int
+INFO  19:11:04,788 - #22 a
+INFO  19:11:04,789 - #16 )
+INFO  19:11:04,789 - #22 int
+INFO  19:11:04,790 - #22 b
+INFO  19:11:04,790 - #6 ;
+INFO  19:11:04,790 - #22 bool
+INFO  19:11:04,792 - #22 c
+INFO  19:11:04,792 - #6 ;
+INFO  19:11:04,792 - #3 {
+INFO  19:11:04,792 - #31 return
+INFO  19:11:04,793 - #49 this
+INFO  19:11:04,793 - #17 .
+INFO  19:11:04,794 - #22 i
+INFO  19:11:04,795 - #45 +
+INFO  19:11:04,796 - #49 this
+INFO  19:11:04,798 - #17 .
+INFO  19:11:04,798 - #22 x
+INFO  19:11:04,799 - #10 [
+INFO  19:11:04,799 - #20 0
+INFO  19:11:04,799 - #11 ]
+INFO  19:11:04,799 - #45 +
+INFO  19:11:04,799 - #22 a
+INFO  19:11:04,799 - #6 ;
+INFO  19:11:04,800 - #4 }
+INFO  19:11:04,800 - #18 void
+INFO  19:11:04,800 - #22 m
+INFO  19:11:04,801 - #15 (
+INFO  19:11:04,802 - #16 )
+INFO  19:11:04,802 - #3 {
+INFO  19:11:04,802 - #4 }
+INFO  19:11:04,802 - #4 }
+INFO  19:11:04,803 - #4 }
+INFO  19:11:04,803 - #13 class
+INFO  19:11:04,803 - #22 C
+INFO  19:11:04,804 - #14 extends
+INFO  19:11:04,804 - #22 B
+INFO  19:11:04,804 - #3 {
+INFO  19:11:04,804 - #22 A
+INFO  19:11:04,804 - #22 theA
+INFO  19:11:04,804 - #6 ;
+INFO  19:11:04,804 - #22 int
+INFO  19:11:04,804 - #22 a
+INFO  19:11:04,804 - #6 ;
+INFO  19:11:04,804 - #4 }
+INFO  19:11:04,805 - #3 {
+INFO  19:11:04,805 - #18 void
+INFO  19:11:04,805 - #22 main
+INFO  19:11:04,805 - #15 (
+INFO  19:11:04,805 - #16 )
+INFO  19:11:04,805 - #22 A
+INFO  19:11:04,805 - #22 a
+INFO  19:11:04,805 - #6 ;
+INFO  19:11:04,805 - #22 C
+INFO  19:11:04,806 - #22 c
+INFO  19:11:04,806 - #6 ;
+INFO  19:11:04,806 - #22 int
+INFO  19:11:04,806 - #22 i
+INFO  19:11:04,806 - #6 ;
+INFO  19:11:04,806 - #22 int
+INFO  19:11:04,806 - #22 x
+INFO  19:11:04,807 - #10 [
+INFO  19:11:04,807 - #11 ]
+INFO  19:11:04,813 - #6 ;
+INFO  19:11:04,814 - #22 char
+INFO  19:11:04,814 - #22 ch
+INFO  19:11:04,814 - #6 ;
+INFO  19:11:04,814 - #3 {
+INFO  19:11:04,814 - #22 a
+INFO  19:11:04,814 - #9 =
+INFO  19:11:04,815 - #19 new
+INFO  19:11:04,817 - #22 A
+INFO  19:11:04,817 - #6 ;
+INFO  19:11:04,817 - #22 a
+INFO  19:11:04,817 - #17 .
+INFO  19:11:04,817 - #22 x
+INFO  19:11:04,817 - #9 =
+INFO  19:11:04,818 - #19 new
+INFO  19:11:04,818 - #22 int
+INFO  19:11:04,818 - #10 [
+INFO  19:11:04,818 - #20 5
+INFO  19:11:04,818 - #11 ]
+INFO  19:11:04,818 - #6 ;
+INFO  19:11:04,819 - #22 a
+INFO  19:11:04,819 - #17 .
+INFO  19:11:04,819 - #22 y
+INFO  19:11:04,819 - #9 =
+INFO  19:11:04,819 - #19 new
+INFO  19:11:04,819 - #22 int
+INFO  19:11:04,820 - #10 [
+INFO  19:11:04,820 - #20 5
+INFO  19:11:04,820 - #11 ]
+INFO  19:11:04,820 - #6 ;
+INFO  19:11:04,820 - #22 c
+INFO  19:11:04,820 - #9 =
+INFO  19:11:04,820 - #19 new
+INFO  19:11:04,820 - #22 C
+INFO  19:11:04,820 - #6 ;
+INFO  19:11:04,821 - #22 c
+INFO  19:11:04,821 - #17 .
+INFO  19:11:04,821 - #22 theA
+INFO  19:11:04,821 - #9 =
+INFO  19:11:04,821 - #22 a
+INFO  19:11:04,821 - #6 ;
+INFO  19:11:04,821 - #22 c
+INFO  19:11:04,821 - #17 .
+INFO  19:11:04,821 - #22 x
+INFO  19:11:04,821 - #9 =
+INFO  19:11:04,821 - #19 new
+INFO  19:11:04,821 - #22 int
+INFO  19:11:04,821 - #10 [
+INFO  19:11:04,821 - #20 5
+INFO  19:11:04,821 - #11 ]
+INFO  19:11:04,822 - #6 ;
+INFO  19:11:04,822 - #22 x
+INFO  19:11:04,822 - #9 =
+INFO  19:11:04,822 - #19 new
+INFO  19:11:04,822 - #22 int
+INFO  19:11:04,822 - #10 [
+INFO  19:11:04,822 - #20 3
+INFO  19:11:04,822 - #11 ]
+INFO  19:11:04,822 - #6 ;
+INFO  19:11:04,822 - #32 read
+INFO  19:11:04,823 - #15 (
+INFO  19:11:04,823 - #22 c
+INFO  19:11:04,823 - #17 .
+INFO  19:11:04,823 - #22 i
+INFO  19:11:04,823 - #16 )
+INFO  19:11:04,823 - #6 ;
+INFO  19:11:04,823 - #22 i
+INFO  19:11:04,823 - #9 =
+INFO  19:11:04,823 - #20 0
+INFO  19:11:04,823 - #6 ;
+INFO  19:11:04,823 - #27 do
+INFO  19:11:04,824 - #3 {
+INFO  19:11:04,825 - #32 read
+INFO  19:11:04,825 - #15 (
+INFO  19:11:04,825 - #22 c
+INFO  19:11:04,825 - #17 .
+INFO  19:11:04,825 - #22 x
+INFO  19:11:04,825 - #10 [
+INFO  19:11:04,825 - #22 i
+INFO  19:11:04,825 - #11 ]
+INFO  19:11:04,825 - #16 )
+INFO  19:11:04,825 - #6 ;
+INFO  19:11:04,825 - #32 read
+INFO  19:11:04,826 - #15 (
+INFO  19:11:04,826 - #22 c
+INFO  19:11:04,826 - #17 .
+INFO  19:11:04,826 - #22 theA
+INFO  19:11:04,826 - #17 .
+INFO  19:11:04,826 - #22 x
+INFO  19:11:04,826 - #10 [
+INFO  19:11:04,826 - #22 i
+INFO  19:11:04,826 - #11 ]
+INFO  19:11:04,827 - #16 )
+INFO  19:11:04,827 - #6 ;
+INFO  19:11:04,827 - #22 i
+INFO  19:11:04,827 - #47 ++
+INFO  19:11:04,827 - #6 ;
+INFO  19:11:04,827 - #4 }
+INFO  19:11:04,827 - #28 while
+INFO  19:11:04,827 - #15 (
+INFO  19:11:04,827 - #22 i
+INFO  19:11:04,828 - #38 <
+INFO  19:11:04,828 - #20 5
+INFO  19:11:04,829 - #16 )
+INFO  19:11:04,830 - #6 ;
+INFO  19:11:04,830 - #33 print
+INFO  19:11:04,830 - #15 (
+INFO  19:11:04,830 - #22 c
+INFO  19:11:04,830 - #17 .
+INFO  19:11:04,830 - #22 getValue
+INFO  19:11:04,831 - #15 (
+INFO  19:11:04,832 - #22 c
+INFO  19:11:04,832 - #17 .
+INFO  19:11:04,832 - #22 theA
+INFO  19:11:04,832 - #17 .
+INFO  19:11:04,832 - #22 x
+INFO  19:11:04,832 - #10 [
+INFO  19:11:04,832 - #20 0
+INFO  19:11:04,833 - #11 ]
+INFO  19:11:04,833 - #16 )
+INFO  19:11:04,833 - #16 )
+INFO  19:11:04,833 - #6 ;
+INFO  19:11:04,833 - #22 c
+INFO  19:11:04,834 - #17 .
+INFO  19:11:04,834 - #22 m
+INFO  19:11:04,834 - #15 (
+INFO  19:11:04,834 - #16 )
+INFO  19:11:04,834 - #6 ;
+INFO  19:11:04,834 - #4 }
+INFO  19:11:04,834 - #4 }
+INFO  19:11:04,855 - Program(
+  ProgramName(
+   Program
+  ) [ProgramName]
+  DeclListClass(
+    DeclListClass(
+      DeclListConst(
+        DeclListClass(
+          DeclListEmpty(
+          ) [DeclListEmpty]
+          ClassDecl(
+            ClassName(
+             A
+            ) [ClassName]
+            ExtendsDeclEmpty(
+            ) [ExtendsDeclEmpty]
+            ClassVarDecls(
+              VarDeclsCorrect(
+                Type(
+                 int
+                ) [Type]
+                VarDeclMultipleNoC(
+                  VarDeclSingleNoC(
+                    VarDeclElemArrayNoC(
+                     x
+                    ) [VarDeclElemArrayNoC]
+                  ) [VarDeclSingleNoC]
+                  VarDeclElemArrayNoC(
+                   y
+                  ) [VarDeclElemArrayNoC]
+                ) [VarDeclMultipleNoC]
+              ) [VarDeclsCorrect]
+              ClassDeclsEmpty(
+              ) [ClassDeclsEmpty]
+            ) [ClassVarDecls]
+          ) [ClassDecl]
+        ) [DeclListClass]
+        DeclConst(
+          Type(
+           int
+          ) [Type]
+          ConstDeclMultiple(
+            ConstDeclSingle(
+              ConstDeclElemCorrect(
+               pi
+                ConstLitNum(
+                 3
+                ) [ConstLitNum]
+              ) [ConstDeclElemCorrect]
+            ) [ConstDeclSingle]
+            ConstDeclElemCorrect(
+             e
+              ConstLitNum(
+               2
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclMultiple]
+        ) [DeclConst]
+      ) [DeclListConst]
+      ClassDecl(
+        ClassName(
+         B
+        ) [ClassName]
+        ExtendsDeclType(
+          Type(
+           A
+          ) [Type]
+        ) [ExtendsDeclType]
+        ClassVarDecls(
+          VarDeclsCorrect(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingleNoC(
+              VarDeclElemSingleNoC(
+               i
+              ) [VarDeclElemSingleNoC]
+            ) [VarDeclSingleNoC]
+          ) [VarDeclsCorrect]
+          ClassDeclsMethods(
+            InnerMethodBlockNoConstr(
+              MethodDecls(
+                MethodDeclPar(
+                  MethodDeclChecker(
+                    RetTypeType(
+                      Type(
+                       int
+                      ) [Type]
+                    ) [RetTypeType]
+                    MethodName(
+                     getValue
+                    ) [MethodName]
+                  ) [MethodDeclChecker]
+                  FormParsSingle(
+                    Type(
+                     int
+                    ) [Type]
+                   a
+                  ) [FormParsSingle]
+                  InnerVarDecls(
+                    InnerVarDecls(
+                      InnerVarDeclsEmpty(
+                      ) [InnerVarDeclsEmpty]
+                      VarDecl(
+                        Type(
+                         int
+                        ) [Type]
+                        VarDeclSingleNoC(
+                          VarDeclElemSingleNoC(
+                           b
+                          ) [VarDeclElemSingleNoC]
+                        ) [VarDeclSingleNoC]
+                      ) [VarDecl]
+                    ) [InnerVarDecls]
+                    VarDecl(
+                      Type(
+                       bool
+                      ) [Type]
+                      VarDeclSingleNoC(
+                        VarDeclElemSingleNoC(
+                         c
+                        ) [VarDeclElemSingleNoC]
+                      ) [VarDeclSingleNoC]
+                    ) [VarDecl]
+                  ) [InnerVarDecls]
+                  StatementsList(
+                    StatementsEmpty(
+                    ) [StatementsEmpty]
+                    StatementSingle(
+                      StmtReturn(
+                        ExprMultiple(
+                          ExprMultiple(
+                            ExprSingle(
+                              TermSingle(
+                                FactorDsgn(
+                                  FactorDesignator(
+                                    DesignatorAccessField(
+                                      DesignatorThis(
+                                      ) [DesignatorThis]
+                                     i
+                                    ) [DesignatorAccessField]
+                                  ) [FactorDesignator]
+                                ) [FactorDsgn]
+                              ) [TermSingle]
+                            ) [ExprSingle]
+                            AddopPlus(
+                            ) [AddopPlus]
+                            TermSingle(
+                              FactorDsgn(
+                                FactorDesignator(
+                                  DesignatorAccessArray(
+                                    DesignatorAccessField(
+                                      DesignatorThis(
+                                      ) [DesignatorThis]
+                                     x
+                                    ) [DesignatorAccessField]
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorNumber(
+                                         0
+                                        ) [FactorNumber]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                  ) [DesignatorAccessArray]
+                                ) [FactorDesignator]
+                              ) [FactorDsgn]
+                            ) [TermSingle]
+                          ) [ExprMultiple]
+                          AddopPlus(
+                          ) [AddopPlus]
+                          TermSingle(
+                            FactorDsgn(
+                              FactorDesignator(
+                                DesignatorFirst(
+                                 a
+                                ) [DesignatorFirst]
+                              ) [FactorDesignator]
+                            ) [FactorDsgn]
+                          ) [TermSingle]
+                        ) [ExprMultiple]
+                      ) [StmtReturn]
+                    ) [StatementSingle]
+                  ) [StatementsList]
+                ) [MethodDeclPar]
+                MethodDecls(
+                  MethodDeclNoPar(
+                    MethodDeclChecker(
+                      RetTypeVoid(
+                      ) [RetTypeVoid]
+                      MethodName(
+                       m
+                      ) [MethodName]
+                    ) [MethodDeclChecker]
+                    InnerVarDeclsEmpty(
+                    ) [InnerVarDeclsEmpty]
+                    StatementsEmpty(
+                    ) [StatementsEmpty]
+                  ) [MethodDeclNoPar]
+                  MethodDeclsEmpty(
+                  ) [MethodDeclsEmpty]
+                ) [MethodDecls]
+              ) [MethodDecls]
+            ) [InnerMethodBlockNoConstr]
+          ) [ClassDeclsMethods]
+        ) [ClassVarDecls]
+      ) [ClassDecl]
+    ) [DeclListClass]
+    ClassDecl(
+      ClassName(
+       C
+      ) [ClassName]
+      ExtendsDeclType(
+        Type(
+         B
+        ) [Type]
+      ) [ExtendsDeclType]
+      ClassVarDecls(
+        VarDeclsCorrect(
+          Type(
+           A
+          ) [Type]
+          VarDeclSingleNoC(
+            VarDeclElemSingleNoC(
+             theA
+            ) [VarDeclElemSingleNoC]
+          ) [VarDeclSingleNoC]
+        ) [VarDeclsCorrect]
+        ClassVarDecls(
+          VarDeclsCorrect(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingleNoC(
+              VarDeclElemSingleNoC(
+               a
+              ) [VarDeclElemSingleNoC]
+            ) [VarDeclSingleNoC]
+          ) [VarDeclsCorrect]
+          ClassDeclsEmpty(
+          ) [ClassDeclsEmpty]
+        ) [ClassVarDecls]
+      ) [ClassVarDecls]
+    ) [ClassDecl]
+  ) [DeclListClass]
+  MethodDecls(
+    MethodDeclNoPar(
+      MethodDeclChecker(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+        MethodName(
+         main
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      InnerVarDecls(
+        InnerVarDecls(
+          InnerVarDecls(
+            InnerVarDecls(
+              InnerVarDecls(
+                InnerVarDeclsEmpty(
+                ) [InnerVarDeclsEmpty]
+                VarDecl(
+                  Type(
+                   A
+                  ) [Type]
+                  VarDeclSingleNoC(
+                    VarDeclElemSingleNoC(
+                     a
+                    ) [VarDeclElemSingleNoC]
+                  ) [VarDeclSingleNoC]
+                ) [VarDecl]
+              ) [InnerVarDecls]
+              VarDecl(
+                Type(
+                 C
+                ) [Type]
+                VarDeclSingleNoC(
+                  VarDeclElemSingleNoC(
+                   c
+                  ) [VarDeclElemSingleNoC]
+                ) [VarDeclSingleNoC]
+              ) [VarDecl]
+            ) [InnerVarDecls]
+            VarDecl(
+              Type(
+               int
+              ) [Type]
+              VarDeclSingleNoC(
+                VarDeclElemSingleNoC(
+                 i
+                ) [VarDeclElemSingleNoC]
+              ) [VarDeclSingleNoC]
+            ) [VarDecl]
+          ) [InnerVarDecls]
+          VarDecl(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingleNoC(
+              VarDeclElemArrayNoC(
+               x
+              ) [VarDeclElemArrayNoC]
+            ) [VarDeclSingleNoC]
+          ) [VarDecl]
+        ) [InnerVarDecls]
+        VarDecl(
+          Type(
+           char
+          ) [Type]
+          VarDeclSingleNoC(
+            VarDeclElemSingleNoC(
+             ch
+            ) [VarDeclElemSingleNoC]
+          ) [VarDeclSingleNoC]
+        ) [VarDecl]
+      ) [InnerVarDecls]
+      StatementsList(
+        StatementsList(
+          StatementsList(
+            StatementsList(
+              StatementsList(
+                StatementsList(
+                  StatementsList(
+                    StatementsList(
+                      StatementsList(
+                        StatementsList(
+                          StatementsList(
+                            StatementsList(
+                              StatementsEmpty(
+                              ) [StatementsEmpty]
+                              StatementSingle(
+                                StmtDesign(
+                                  DsgnOpAssign(
+                                    CallName(
+                                      DesignatorFirst(
+                                       a
+                                      ) [DesignatorFirst]
+                                    ) [CallName]
+                                    Assignop(
+                                    ) [Assignop]
+                                    ExprSingle(
+                                      TermSingle(
+                                        FactorObject(
+                                          Type(
+                                           A
+                                          ) [Type]
+                                        ) [FactorObject]
+                                      ) [TermSingle]
+                                    ) [ExprSingle]
+                                  ) [DsgnOpAssign]
+                                ) [StmtDesign]
+                              ) [StatementSingle]
+                            ) [StatementsList]
+                            StatementSingle(
+                              StmtDesign(
+                                DsgnOpAssign(
+                                  CallName(
+                                    DesignatorAccessField(
+                                      DesignatorFirst(
+                                       a
+                                      ) [DesignatorFirst]
+                                     x
+                                    ) [DesignatorAccessField]
+                                  ) [CallName]
+                                  Assignop(
+                                  ) [Assignop]
+                                  ExprSingle(
+                                    TermSingle(
+                                      FactorArray(
+                                        Type(
+                                         int
+                                        ) [Type]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorNumber(
+                                             5
+                                            ) [FactorNumber]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [FactorArray]
+                                    ) [TermSingle]
+                                  ) [ExprSingle]
+                                ) [DsgnOpAssign]
+                              ) [StmtDesign]
+                            ) [StatementSingle]
+                          ) [StatementsList]
+                          StatementSingle(
+                            StmtDesign(
+                              DsgnOpAssign(
+                                CallName(
+                                  DesignatorAccessField(
+                                    DesignatorFirst(
+                                     a
+                                    ) [DesignatorFirst]
+                                   y
+                                  ) [DesignatorAccessField]
+                                ) [CallName]
+                                Assignop(
+                                ) [Assignop]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorArray(
+                                      Type(
+                                       int
+                                      ) [Type]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorNumber(
+                                           5
+                                          ) [FactorNumber]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [FactorArray]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [DsgnOpAssign]
+                            ) [StmtDesign]
+                          ) [StatementSingle]
+                        ) [StatementsList]
+                        StatementSingle(
+                          StmtDesign(
+                            DsgnOpAssign(
+                              CallName(
+                                DesignatorFirst(
+                                 c
+                                ) [DesignatorFirst]
+                              ) [CallName]
+                              Assignop(
+                              ) [Assignop]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorObject(
+                                    Type(
+                                     C
+                                    ) [Type]
+                                  ) [FactorObject]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [DsgnOpAssign]
+                          ) [StmtDesign]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                      StatementSingle(
+                        StmtDesign(
+                          DsgnOpAssign(
+                            CallName(
+                              DesignatorAccessField(
+                                DesignatorFirst(
+                                 c
+                                ) [DesignatorFirst]
+                               theA
+                              ) [DesignatorAccessField]
+                            ) [CallName]
+                            Assignop(
+                            ) [Assignop]
+                            ExprSingle(
+                              TermSingle(
+                                FactorDsgn(
+                                  FactorDesignator(
+                                    DesignatorFirst(
+                                     a
+                                    ) [DesignatorFirst]
+                                  ) [FactorDesignator]
+                                ) [FactorDsgn]
+                              ) [TermSingle]
+                            ) [ExprSingle]
+                          ) [DsgnOpAssign]
+                        ) [StmtDesign]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                    StatementSingle(
+                      StmtDesign(
+                        DsgnOpAssign(
+                          CallName(
+                            DesignatorAccessField(
+                              DesignatorFirst(
+                               c
+                              ) [DesignatorFirst]
+                             x
+                            ) [DesignatorAccessField]
+                          ) [CallName]
+                          Assignop(
+                          ) [Assignop]
+                          ExprSingle(
+                            TermSingle(
+                              FactorArray(
+                                Type(
+                                 int
+                                ) [Type]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorNumber(
+                                     5
+                                    ) [FactorNumber]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [FactorArray]
+                            ) [TermSingle]
+                          ) [ExprSingle]
+                        ) [DsgnOpAssign]
+                      ) [StmtDesign]
+                    ) [StatementSingle]
+                  ) [StatementsList]
+                  StatementSingle(
+                    StmtDesign(
+                      DsgnOpAssign(
+                        CallName(
+                          DesignatorFirst(
+                           x
+                          ) [DesignatorFirst]
+                        ) [CallName]
+                        Assignop(
+                        ) [Assignop]
+                        ExprSingle(
+                          TermSingle(
+                            FactorArray(
+                              Type(
+                               int
+                              ) [Type]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorNumber(
+                                   3
+                                  ) [FactorNumber]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [FactorArray]
+                          ) [TermSingle]
+                        ) [ExprSingle]
+                      ) [DsgnOpAssign]
+                    ) [StmtDesign]
+                  ) [StatementSingle]
+                ) [StatementsList]
+                StatementSingle(
+                  StmtRead(
+                    DesignatorAccessField(
+                      DesignatorFirst(
+                       c
+                      ) [DesignatorFirst]
+                     i
+                    ) [DesignatorAccessField]
+                  ) [StmtRead]
+                ) [StatementSingle]
+              ) [StatementsList]
+              StatementSingle(
+                StmtDesign(
+                  DsgnOpAssign(
+                    CallName(
+                      DesignatorFirst(
+                       i
+                      ) [DesignatorFirst]
+                    ) [CallName]
+                    Assignop(
+                    ) [Assignop]
+                    ExprSingle(
+                      TermSingle(
+                        FactorNumber(
+                         0
+                        ) [FactorNumber]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                  ) [DsgnOpAssign]
+                ) [StmtDesign]
+              ) [StatementSingle]
+            ) [StatementsList]
+            StatementSingle(
+              StmtDoWhile(
+                DoStart(
+                ) [DoStart]
+                StatementMultiple(
+                  StatementsBlock(
+                    StatementsList(
+                      StatementsList(
+                        StatementsList(
+                          StatementsEmpty(
+                          ) [StatementsEmpty]
+                          StatementSingle(
+                            StmtRead(
+                              DesignatorAccessArray(
+                                DesignatorAccessField(
+                                  DesignatorFirst(
+                                   c
+                                  ) [DesignatorFirst]
+                                 x
+                                ) [DesignatorAccessField]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorDsgn(
+                                      FactorDesignator(
+                                        DesignatorFirst(
+                                         i
+                                        ) [DesignatorFirst]
+                                      ) [FactorDesignator]
+                                    ) [FactorDsgn]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [DesignatorAccessArray]
+                            ) [StmtRead]
+                          ) [StatementSingle]
+                        ) [StatementsList]
+                        StatementSingle(
+                          StmtRead(
+                            DesignatorAccessArray(
+                              DesignatorAccessField(
+                                DesignatorAccessField(
+                                  DesignatorFirst(
+                                   c
+                                  ) [DesignatorFirst]
+                                 theA
+                                ) [DesignatorAccessField]
+                               x
+                              ) [DesignatorAccessField]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    FactorDesignator(
+                                      DesignatorFirst(
+                                       i
+                                      ) [DesignatorFirst]
+                                    ) [FactorDesignator]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [DesignatorAccessArray]
+                          ) [StmtRead]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                      StatementSingle(
+                        StmtDesign(
+                          DsgnOpInc(
+                            CallName(
+                              DesignatorFirst(
+                               i
+                              ) [DesignatorFirst]
+                            ) [CallName]
+                          ) [DsgnOpInc]
+                        ) [StmtDesign]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                  ) [StatementsBlock]
+                ) [StatementMultiple]
+                CondSingle(
+                  CondTermSingle(
+                    CondFactMultiple(
+                      ExprSingle(
+                        TermSingle(
+                          FactorDsgn(
+                            FactorDesignator(
+                              DesignatorFirst(
+                               i
+                              ) [DesignatorFirst]
+                            ) [FactorDesignator]
+                          ) [FactorDsgn]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                      RelopLes(
+                      ) [RelopLes]
+                      ExprSingle(
+                        TermSingle(
+                          FactorNumber(
+                           5
+                          ) [FactorNumber]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                    ) [CondFactMultiple]
+                  ) [CondTermSingle]
+                ) [CondSingle]
+              ) [StmtDoWhile]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StmtPrint(
+              ExprSingle(
+                TermSingle(
+                  FactorDsgnCall(
+                    FactorDesignator(
+                      DesignatorAccessField(
+                        DesignatorFirst(
+                         c
+                        ) [DesignatorFirst]
+                       getValue
+                      ) [DesignatorAccessField]
+                    ) [FactorDesignator]
+                    CopyDsgn(
+                    ) [CopyDsgn]
+                    ActParsSingle(
+                      ExprSingle(
+                        TermSingle(
+                          FactorDsgn(
+                            FactorDesignator(
+                              DesignatorAccessArray(
+                                DesignatorAccessField(
+                                  DesignatorAccessField(
+                                    DesignatorFirst(
+                                     c
+                                    ) [DesignatorFirst]
+                                   theA
+                                  ) [DesignatorAccessField]
+                                 x
+                                ) [DesignatorAccessField]
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorNumber(
+                                     0
+                                    ) [FactorNumber]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [DesignatorAccessArray]
+                            ) [FactorDesignator]
+                          ) [FactorDsgn]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                    ) [ActParsSingle]
+                  ) [FactorDsgnCall]
+                ) [TermSingle]
+              ) [ExprSingle]
+            ) [StmtPrint]
+          ) [StatementSingle]
+        ) [StatementsList]
+        StatementSingle(
+          StmtDesign(
+            DsgnOpCallEmpty(
+              CallName(
+                DesignatorAccessField(
+                  DesignatorFirst(
+                   c
+                  ) [DesignatorFirst]
+                 m
+                ) [DesignatorAccessField]
+              ) [CallName]
+              CopyDsgn(
+              ) [CopyDsgn]
+            ) [DsgnOpCallEmpty]
+          ) [StmtDesign]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]

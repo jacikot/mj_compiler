@@ -254,7 +254,7 @@ Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
               |
               (DesignatorFirst) IDENT:dsgnName
               |
-              (DesignatorThis) THIS
+              (DesignatorThis) THIS:l
               ;
 
 DesignStatement ::= (DsgnOpAssign) CallName Assignop Expr

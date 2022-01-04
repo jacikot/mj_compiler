@@ -29,14 +29,18 @@ class B{
 }
 class A extends B{
     int x;
+    A next;
     {
             A() {
                 super();
 
             }
+            A metoda(){
+                return new A;
+            }
             int mmm(){
 
-            return 1;
+                return 2;
             }
             int xyz(Base h) int x; {
                 super(new Derived);
@@ -47,7 +51,7 @@ class A extends B{
                  if(super(h)==1) mmm();
                  //if(A()==new A) mmm();
                  xyz(h);
-                 return 1;
+                 return 2;
             }
 
 

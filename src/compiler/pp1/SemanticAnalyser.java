@@ -10,6 +10,8 @@ import rs.etf.pp1.symboltable.concepts.Struct;
 import java.util.*;
 
 public class SemanticAnalyser extends VisitorAdaptor {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     static final int RECORD_TYPE=1,CLASS_TYPE=0, CONSTRUCTOR_TYPE=2, METHOD_TYPE=3, EXTENDS_TYPE=4;
 
@@ -61,19 +63,27 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     public void report_error(String message, SyntaxNode info) {
         errorDetected = true;
-        StringBuilder msg = new StringBuilder(message);
+        StringBuilder msg = new StringBuilder();
         int line = (info == null) ? 0: info.getLine();
         if (line != 0)
-            msg.append (" na liniji ").append(line);
-        log.error(msg.toString());
+            msg.append (" na liniji ").append(line).append(": ");
+        msg.append(message);
+
+        System.out.println(ANSI_RED+msg.toString()+ANSI_RESET);
+
     }
 
     public void report_info(String message, SyntaxNode info) {
-        StringBuilder msg = new StringBuilder(message);
+        StringBuilder msg = new StringBuilder();
         int line = (info == null) ? 0: info.getLine();
         if (line != 0)
-            msg.append (" na liniji ").append(line);
-        log.info(msg.toString());
+            msg.append (" na liniji ").append(line).append(": ");
+        msg.append(message);
+
+        System.out.println(msg.toString());
+        System.out.flush();
+        System.err.flush();
+
     }
 
 
@@ -99,6 +109,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }else{
             if(Obj.Type == type.obj.getKind()){
                 currentType=type;
+                report_info("Upotreba simbola: " + type.getTypeName(), type);
             }else{
                 report_error("Greska: Ime " + type.getTypeName() + " ne predstavlja tip!", type);
                 type.obj = Tab.noObj;
@@ -554,7 +565,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
         if(labelsSearched.containsKey(label.getLabel().getLabelName())){
             for(StmtGoto stmt:labelsSearched.remove(label.getLabel().getLabelName())){
-                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName()+" prihvacena",stmt);
+                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
             }
         }
     }
@@ -789,7 +800,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime "+dsgn.getDsgnName()+" nije deklarisan!", dsgn);
         }
         else{
-            report_info("Upotreba simbola: "+dsgn.getDsgnName()+" prihvacena",dsgn);
+            if(dsgn.obj.getKind()!=Obj.Meth)
+                report_info("Upotreba simbola: "+dsgn.getDsgnName(),dsgn);
         }
     }
     @Override
@@ -801,7 +813,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             dsgn.obj.getType().setMembers(Tab.currentScope().getOuter().getLocals());
-            report_info("Upotreba simbola: this prihvacena",dsgn);
         }
     }
     @Override
@@ -830,7 +841,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 dsgn.obj=new Obj(o.getKind(),o.getName(),dsgn.getDesignator().obj.getType());
             }
             else dsgn.obj=o;
-            report_info("Upotreba simbola: "+dsgn.getField()+" prihvacena",dsgn);
+            if(dsgn.obj.getKind()!=Obj.Meth)
+                report_info("Upotreba simbola: "+dsgn.getField(),dsgn);
         }
     }
     @Override
@@ -870,7 +882,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
     }
@@ -889,7 +901,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 }
             }
             dsgn.obj=dsgn.getCopyDsgn().obj;
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
         else dsgn.obj=Tab.noObj;
@@ -909,7 +921,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 }
             }
             dsgn.obj=dsgn.getCopyDsgn().obj;
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
         else dsgn.obj=Tab.noObj;
@@ -931,7 +943,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -948,7 +960,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -969,7 +981,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -991,7 +1003,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             dsgn.obj=dsgn.getCopyDsgn().obj;
             currentDesignator.remove(currentDesignator.size()-1);
         }
@@ -1018,7 +1030,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName()+" prihvacena",dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
             dsgn.obj=dsgn.getCopyDsgn().obj;
             currentDesignator.remove(currentDesignator.size()-1);
         }

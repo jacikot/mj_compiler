@@ -28,6 +28,8 @@ const char x='s';
 
         print(xjana);
 
+        goto READ;
+
         xjana=f(xjana,jana);
 
         print(xjana);
@@ -36,7 +38,7 @@ const char x='s';
 
         v();
 
-        print(calls);
+        READ: print(calls);
 
         print(xjana);
 

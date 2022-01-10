@@ -5,6 +5,11 @@ import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CodeGenerator extends VisitorAdaptor {
 
     private int mainPC;
@@ -110,6 +115,40 @@ public class CodeGenerator extends VisitorAdaptor {
         }
 
     }
+
+    private Map<String,List<Integer>> gotoAdvance=new HashMap<>();
+
+
+    @Override
+    public void visit(LabelDef dsgn) {
+        dsgn.getLabel().obj.setAdr(Code.pc);
+        if(gotoAdvance.get(dsgn.getLabel().getLabelName())!=null){
+            for(Integer adr:gotoAdvance.remove(dsgn.getLabel().getLabelName())){
+                Code.fixup(adr);
+            }
+        }
+    }
+
+    @Override
+    public void visit(StmtGoto stmt) {
+        Code.put(Code.jmp);
+        if(stmt.getLabel().obj.getAdr()==-1){
+            if(gotoAdvance.get(stmt.getLabel().getLabelName())==null){
+                ArrayList<Integer>list=new ArrayList<>();
+                list.add(Code.pc);
+                gotoAdvance.put(stmt.getLabel().getLabelName(),list);
+            }
+            else gotoAdvance.get(stmt.getLabel().getLabelName()).add(Code.pc);
+            Code.put2(0);
+        }
+        else{
+            int offset=stmt.getLabel().obj.getAdr()-Code.pc+1;
+            Code.put2(offset);
+        }
+
+    }
+
+
 
 
 

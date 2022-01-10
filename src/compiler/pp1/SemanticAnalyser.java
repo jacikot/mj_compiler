@@ -561,10 +561,12 @@ public class SemanticAnalyser extends VisitorAdaptor {
             return;
         }
         Struct struct=new Struct(Struct.Class);
-        Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
+        label.getLabel().obj=Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
+        label.getLabel().obj.setAdr(-1); //zbog provere u generisanju koda
         report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
         if(labelsSearched.containsKey(label.getLabel().getLabelName())){
             for(StmtGoto stmt:labelsSearched.remove(label.getLabel().getLabelName())){
+                stmt.getLabel().obj=label.getLabel().obj;
                 report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
             }
         }
@@ -576,7 +578,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(StmtGoto stmt) {
         Obj o=Tab.find(stmt.getLabel().getLabelName());
         if(o.equals(Tab.noObj)){
-            //report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " nije deklarisan!", stmt);
             List<StmtGoto> list=new ArrayList<>();
             list.add(stmt);
             if(!labelsSearched.containsKey(stmt.getLabel().getLabelName()))labelsSearched.put(stmt.getLabel().getLabelName(),list);
@@ -584,6 +585,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             if(o.getKind()==Obj.Con && o.getType().equals(Tab.noType)){
+                stmt.getLabel().obj=o;
                 report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
             }
             else{

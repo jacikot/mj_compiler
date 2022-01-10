@@ -651,7 +651,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
         b.obj=Tab.noObj;
         if(b.getTerm().obj.getType().equals(Tab.intType)){
             b.obj=b.getTerm().obj;
-            b.obj.setFpPos(-b.getTerm().obj.getFpPos());
         }
         else{
             report_error("Operand operatora - nije tipa int!", b);
@@ -662,7 +661,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
         b.obj=Tab.noObj;
         if(b.getExpr().obj.getType().equals(Tab.intType) && b.getTerm().obj.getType().equals(Tab.intType)){
             b.obj=b.getExpr().obj;
-            b.obj.setFpPos(b.getExpr().obj.getFpPos()+b.getTerm().obj.getFpPos());
         }
         else{
             report_error("Operandi operatora + nisu tipa int!", b);
@@ -674,7 +672,6 @@ public class SemanticAnalyser extends VisitorAdaptor {
         b.obj=Tab.noObj;
         if(b.getFactor().obj.getType().equals(Tab.intType) && b.getTerm().obj.getType().equals(Tab.intType)){
             b.obj=b.getFactor().obj;
-            b.obj.setFpPos(b.getFactor().obj.getFpPos()*b.getTerm().obj.getFpPos());
         }
         else{
             report_error("Operandi operatora * nisu tipa int!", b);
@@ -1131,11 +1128,17 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 //konstruktor
                 if(currentTypeDefinition!=null && currentTypeDefinition.getType().equals(pom.getType())){
                     pom.getType().setMembers(Tab.currentScope().getOuter().getLocals());
+                    //ako smo u konstruktoru i zovemo ga iz klase za koju je def - kopiramo tekuci scope da bismo ga nasli
+                    //on mora da je pre definisan
                 }
+
+                //pretraga konstruktora
                 Collection<Obj> members=pom.getType().getMembers();
                 Obj constructor=members.stream().filter(e->{
                     return e.getName().equals("__"+pom.getName());
                 }).findFirst().orElse(null);
+
+
                 if(constructor==null){
                     x.obj=Tab.noObj;
                     report_error("Pokusaj poziva nad simbolom: "+pom.getName()+" koji nije metod!", x);

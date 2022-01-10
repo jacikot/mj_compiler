@@ -1,0 +1,132 @@
+INFO  15:25:41,435 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  15:25:41,514 - #2 program
+INFO  15:25:41,514 - #22 p
+INFO  15:25:41,514 - #5 const
+INFO  15:25:41,516 - #22 int
+INFO  15:25:41,516 - #22 jana
+INFO  15:25:41,517 - #9 =
+INFO  15:25:41,517 - #20 12
+INFO  15:25:41,517 - #6 ;
+INFO  15:25:41,517 - #3 {
+INFO  15:25:41,518 - #18 void
+INFO  15:25:41,518 - #22 main
+INFO  15:25:41,518 - #15 (
+INFO  15:25:41,520 - #16 )
+INFO  15:25:41,520 - #3 {
+INFO  15:25:41,521 - #33 print
+INFO  15:25:41,522 - #15 (
+INFO  15:25:41,522 - #23 'j'
+INFO  15:25:41,522 - #16 )
+INFO  15:25:41,522 - #6 ;
+INFO  15:25:41,522 - #33 print
+INFO  15:25:41,522 - #15 (
+INFO  15:25:41,522 - #22 jana
+INFO  15:25:41,524 - #16 )
+INFO  15:25:41,525 - #6 ;
+INFO  15:25:41,525 - #33 print
+INFO  15:25:41,525 - #15 (
+INFO  15:25:41,525 - #21 0
+INFO  15:25:41,525 - #16 )
+INFO  15:25:41,526 - #6 ;
+INFO  15:25:41,526 - #33 print
+INFO  15:25:41,526 - #15 (
+INFO  15:25:41,526 - #20 2
+INFO  15:25:41,526 - #16 )
+INFO  15:25:41,526 - #6 ;
+INFO  15:25:41,526 - #4 }
+INFO  15:25:41,526 - #4 }
+INFO  15:25:41,532 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListEmpty(
+    ) [DeclListEmpty]
+    DeclConst(
+      Type(
+       int
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         jana
+          ConstLitNum(
+           12
+          ) [ConstLitNum]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDecls(
+    MethodDeclNoPar(
+      MethodDeclChecker(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+        MethodName(
+         main
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsList(
+          StatementsList(
+            StatementsList(
+              StatementsEmpty(
+              ) [StatementsEmpty]
+              StatementSingle(
+                StmtPrint(
+                  ExprSingle(
+                    TermSingle(
+                      FactorChar(
+                       'j'
+                      ) [FactorChar]
+                    ) [TermSingle]
+                  ) [ExprSingle]
+                ) [StmtPrint]
+              ) [StatementSingle]
+            ) [StatementsList]
+            StatementSingle(
+              StmtPrint(
+                ExprSingle(
+                  TermSingle(
+                    FactorDsgn(
+                      FactorDesignator(
+                        DesignatorFirst(
+                         jana
+                        ) [DesignatorFirst]
+                      ) [FactorDesignator]
+                    ) [FactorDsgn]
+                  ) [TermSingle]
+                ) [ExprSingle]
+              ) [StmtPrint]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StmtPrint(
+              ExprSingle(
+                TermSingle(
+                  FactorBool(
+                   0
+                  ) [FactorBool]
+                ) [TermSingle]
+              ) [ExprSingle]
+            ) [StmtPrint]
+          ) [StatementSingle]
+        ) [StatementsList]
+        StatementSingle(
+          StmtPrint(
+            ExprSingle(
+              TermSingle(
+                FactorNumber(
+                 2
+                ) [FactorNumber]
+              ) [TermSingle]
+            ) [ExprSingle]
+          ) [StmtPrint]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]

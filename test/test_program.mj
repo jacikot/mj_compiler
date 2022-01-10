@@ -1,0 +1,29 @@
+program p
+
+const int jana=10;
+int xjana;
+const char x='s';
+
+{
+
+    int f(int j, int k)
+        int l; {
+            l=j+k;
+            return l*k;
+        }
+
+    void main(){
+
+
+        read(xjana);
+
+        xjana=(xjana+jana)*2;
+
+        print(xjana);
+
+        xjana=f(xjana,jana)+f(10,10);
+
+        print(xjana);
+
+    }
+}

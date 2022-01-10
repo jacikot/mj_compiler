@@ -1,0 +1,219 @@
+INFO  18:06:47,877 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  18:06:47,957 - #2 program
+INFO  18:06:47,957 - #22 p
+INFO  18:06:47,957 - #5 const
+INFO  18:06:47,959 - #22 int
+INFO  18:06:47,959 - #22 jana
+INFO  18:06:47,960 - #9 =
+INFO  18:06:47,960 - #20 12
+INFO  18:06:47,961 - #6 ;
+INFO  18:06:47,961 - #22 int
+INFO  18:06:47,961 - #22 xjana
+INFO  18:06:47,961 - #6 ;
+INFO  18:06:47,962 - #5 const
+INFO  18:06:47,962 - #22 char
+INFO  18:06:47,962 - #22 x
+INFO  18:06:47,962 - #9 =
+INFO  18:06:47,962 - #23 's'
+INFO  18:06:47,962 - #6 ;
+INFO  18:06:47,962 - #3 {
+INFO  18:06:47,963 - #18 void
+INFO  18:06:47,963 - #22 main
+INFO  18:06:47,963 - #15 (
+INFO  18:06:47,967 - #16 )
+INFO  18:06:47,967 - #3 {
+INFO  18:06:47,968 - #33 print
+INFO  18:06:47,969 - #15 (
+INFO  18:06:47,969 - #23 'j'
+INFO  18:06:47,969 - #16 )
+INFO  18:06:47,969 - #6 ;
+INFO  18:06:47,969 - #33 print
+INFO  18:06:47,970 - #15 (
+INFO  18:06:47,970 - #22 jana
+INFO  18:06:47,970 - #16 )
+INFO  18:06:47,971 - #6 ;
+INFO  18:06:47,971 - #32 read
+INFO  18:06:47,971 - #15 (
+INFO  18:06:47,971 - #22 xjana
+INFO  18:06:47,972 - #16 )
+INFO  18:06:47,972 - #6 ;
+INFO  18:06:47,972 - #33 print
+INFO  18:06:47,972 - #15 (
+INFO  18:06:47,972 - #22 xjana
+INFO  18:06:47,972 - #45 +
+INFO  18:06:47,972 - #22 jana
+INFO  18:06:47,974 - #16 )
+INFO  18:06:47,974 - #6 ;
+INFO  18:06:47,974 - #33 print
+INFO  18:06:47,974 - #15 (
+INFO  18:06:47,974 - #21 0
+INFO  18:06:47,974 - #16 )
+INFO  18:06:47,974 - #6 ;
+INFO  18:06:47,974 - #33 print
+INFO  18:06:47,975 - #15 (
+INFO  18:06:47,975 - #20 2
+INFO  18:06:47,975 - #16 )
+INFO  18:06:47,975 - #6 ;
+INFO  18:06:47,975 - #4 }
+INFO  18:06:47,975 - #4 }
+INFO  18:06:47,981 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListConst(
+    DeclListVar(
+      DeclListConst(
+        DeclListEmpty(
+        ) [DeclListEmpty]
+        DeclConst(
+          Type(
+           int
+          ) [Type]
+          ConstDeclSingle(
+            ConstDeclElemCorrect(
+             jana
+              ConstLitNum(
+               12
+              ) [ConstLitNum]
+            ) [ConstDeclElemCorrect]
+          ) [ConstDeclSingle]
+        ) [DeclConst]
+      ) [DeclListConst]
+      VarDeclGlobalCorrect(
+        Type(
+         int
+        ) [Type]
+        VarDeclSingle(
+          VarDeclElemSingle(
+           xjana
+          ) [VarDeclElemSingle]
+        ) [VarDeclSingle]
+      ) [VarDeclGlobalCorrect]
+    ) [DeclListVar]
+    DeclConst(
+      Type(
+       char
+      ) [Type]
+      ConstDeclSingle(
+        ConstDeclElemCorrect(
+         x
+          ConstLitChar(
+           's'
+          ) [ConstLitChar]
+        ) [ConstDeclElemCorrect]
+      ) [ConstDeclSingle]
+    ) [DeclConst]
+  ) [DeclListConst]
+  MethodDecls(
+    MethodDeclNoPar(
+      MethodDeclChecker(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+        MethodName(
+         main
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsList(
+          StatementsList(
+            StatementsList(
+              StatementsList(
+                StatementsList(
+                  StatementsEmpty(
+                  ) [StatementsEmpty]
+                  StatementSingle(
+                    StmtPrint(
+                      ExprSingle(
+                        TermSingle(
+                          FactorChar(
+                           'j'
+                          ) [FactorChar]
+                        ) [TermSingle]
+                      ) [ExprSingle]
+                    ) [StmtPrint]
+                  ) [StatementSingle]
+                ) [StatementsList]
+                StatementSingle(
+                  StmtPrint(
+                    ExprSingle(
+                      TermSingle(
+                        FactorDsgn(
+                          FactorDesignator(
+                            DesignatorFirst(
+                             jana
+                            ) [DesignatorFirst]
+                          ) [FactorDesignator]
+                        ) [FactorDsgn]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                  ) [StmtPrint]
+                ) [StatementSingle]
+              ) [StatementsList]
+              StatementSingle(
+                StmtRead(
+                  DesignatorFirst(
+                   xjana
+                  ) [DesignatorFirst]
+                ) [StmtRead]
+              ) [StatementSingle]
+            ) [StatementsList]
+            StatementSingle(
+              StmtPrint(
+                ExprMultiple(
+                  ExprSingle(
+                    TermSingle(
+                      FactorDsgn(
+                        FactorDesignator(
+                          DesignatorFirst(
+                           xjana
+                          ) [DesignatorFirst]
+                        ) [FactorDesignator]
+                      ) [FactorDsgn]
+                    ) [TermSingle]
+                  ) [ExprSingle]
+                  AddopPlus(
+                  ) [AddopPlus]
+                  TermSingle(
+                    FactorDsgn(
+                      FactorDesignator(
+                        DesignatorFirst(
+                         jana
+                        ) [DesignatorFirst]
+                      ) [FactorDesignator]
+                    ) [FactorDsgn]
+                  ) [TermSingle]
+                ) [ExprMultiple]
+              ) [StmtPrint]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StmtPrint(
+              ExprSingle(
+                TermSingle(
+                  FactorBool(
+                   0
+                  ) [FactorBool]
+                ) [TermSingle]
+              ) [ExprSingle]
+            ) [StmtPrint]
+          ) [StatementSingle]
+        ) [StatementsList]
+        StatementSingle(
+          StmtPrint(
+            ExprSingle(
+              TermSingle(
+                FactorNumber(
+                 2
+                ) [FactorNumber]
+              ) [TermSingle]
+            ) [ExprSingle]
+          ) [StmtPrint]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]

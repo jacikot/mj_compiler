@@ -1,0 +1,71 @@
+INFO  14:58:28,253 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  14:58:28,333 - #2 program
+INFO  14:58:28,333 - #22 p
+INFO  14:58:28,333 - #3 {
+INFO  14:58:28,335 - #18 void
+INFO  14:58:28,335 - #22 main
+INFO  14:58:28,335 - #15 (
+INFO  14:58:28,336 - #16 )
+INFO  14:58:28,336 - #3 {
+INFO  14:58:28,337 - #33 print
+INFO  14:58:28,338 - #15 (
+INFO  14:58:28,338 - #20 1
+INFO  14:58:28,338 - #16 )
+INFO  14:58:28,338 - #6 ;
+INFO  14:58:28,338 - #33 print
+INFO  14:58:28,338 - #15 (
+INFO  14:58:28,338 - #20 2
+INFO  14:58:28,339 - #16 )
+INFO  14:58:28,339 - #6 ;
+INFO  14:58:28,339 - #4 }
+INFO  14:58:28,339 - #4 }
+INFO  14:58:28,344 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListEmpty(
+  ) [DeclListEmpty]
+  MethodDecls(
+    MethodDeclNoPar(
+      MethodDeclChecker(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+        MethodName(
+         main
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsList(
+          StatementsEmpty(
+          ) [StatementsEmpty]
+          StatementSingle(
+            StmtPrint(
+              ExprSingle(
+                TermSingle(
+                  FactorNumber(
+                   1
+                  ) [FactorNumber]
+                ) [TermSingle]
+              ) [ExprSingle]
+            ) [StmtPrint]
+          ) [StatementSingle]
+        ) [StatementsList]
+        StatementSingle(
+          StmtPrint(
+            ExprSingle(
+              TermSingle(
+                FactorNumber(
+                 2
+                ) [FactorNumber]
+              ) [TermSingle]
+            ) [ExprSingle]
+          ) [StmtPrint]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]

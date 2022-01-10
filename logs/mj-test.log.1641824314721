@@ -1,0 +1,89 @@
+INFO  15:17:43,016 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  15:17:43,097 - #2 program
+INFO  15:17:43,097 - #22 p
+INFO  15:17:43,097 - #3 {
+INFO  15:17:43,099 - #18 void
+INFO  15:17:43,099 - #22 main
+INFO  15:17:43,100 - #15 (
+INFO  15:17:43,102 - #16 )
+INFO  15:17:43,102 - #3 {
+INFO  15:17:43,102 - #33 print
+INFO  15:17:43,103 - #15 (
+INFO  15:17:43,103 - #23 'j'
+INFO  15:17:43,103 - #16 )
+INFO  15:17:43,104 - #6 ;
+INFO  15:17:43,104 - #33 print
+INFO  15:17:43,104 - #15 (
+INFO  15:17:43,104 - #21 1
+INFO  15:17:43,104 - #16 )
+INFO  15:17:43,104 - #6 ;
+INFO  15:17:43,104 - #33 print
+INFO  15:17:43,104 - #15 (
+INFO  15:17:43,105 - #20 2
+INFO  15:17:43,105 - #16 )
+INFO  15:17:43,106 - #6 ;
+INFO  15:17:43,107 - #4 }
+INFO  15:17:43,107 - #4 }
+INFO  15:17:43,111 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  DeclListEmpty(
+  ) [DeclListEmpty]
+  MethodDecls(
+    MethodDeclNoPar(
+      MethodDeclChecker(
+        RetTypeVoid(
+        ) [RetTypeVoid]
+        MethodName(
+         main
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsList(
+          StatementsList(
+            StatementsEmpty(
+            ) [StatementsEmpty]
+            StatementSingle(
+              StmtPrint(
+                ExprSingle(
+                  TermSingle(
+                    FactorChar(
+                     'j'
+                    ) [FactorChar]
+                  ) [TermSingle]
+                ) [ExprSingle]
+              ) [StmtPrint]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StmtPrint(
+              ExprSingle(
+                TermSingle(
+                  FactorBool(
+                   1
+                  ) [FactorBool]
+                ) [TermSingle]
+              ) [ExprSingle]
+            ) [StmtPrint]
+          ) [StatementSingle]
+        ) [StatementsList]
+        StatementSingle(
+          StmtPrint(
+            ExprSingle(
+              TermSingle(
+                FactorNumber(
+                 2
+                ) [FactorNumber]
+              ) [TermSingle]
+            ) [ExprSingle]
+          ) [StmtPrint]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclNoPar]
+    MethodDeclsEmpty(
+    ) [MethodDeclsEmpty]
+  ) [MethodDecls]
+) [Program]

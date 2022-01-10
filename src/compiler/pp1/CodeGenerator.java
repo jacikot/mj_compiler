@@ -54,6 +54,63 @@ public class CodeGenerator extends VisitorAdaptor {
         //return je vec stavljeno na stack preko expr
     }
 
+    @Override
+    public void visit(DsgnOpCallPars dsgn) {
+        //svi act params su vec na steku
+        int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(offset);
+
+        if(!dsgn.getCallName().getDesignator().obj.getType().equals(Tab.noType)){
+            Code.put(Code.pop);
+        }
+    }
+    @Override
+    public void visit(DsgnOpCallEmpty dsgn) {
+        //svi act params su vec na steku
+        int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(offset);
+
+        if(!dsgn.getCallName().getDesignator().obj.getType().equals(Tab.noType)){
+            Code.put(Code.pop);
+        }
+    }
+
+    @Override
+    public void visit(DsgnOpInc dsgn) {
+        //svi act params su vec na steku
+        if(dsgn.getCallName().getDesignator().obj.getLevel()==0){
+            Code.load(dsgn.getCallName().getDesignator().obj);
+            Code.loadConst(1);
+            Code.put(Code.add);
+            Code.store(dsgn.getCallName().getDesignator().obj);
+        }
+        else{
+            Code.put(Code.inc); //ne radi za globalne
+            Code.put(dsgn.getCallName().getDesignator().obj.getAdr());
+            Code.put(1);
+        }
+
+    }
+
+    @Override
+    public void visit(DsgnOpDec dsgn) {
+        //svi act params su vec na steku
+        if(dsgn.getCallName().getDesignator().obj.getLevel()==0){
+            Code.load(dsgn.getCallName().getDesignator().obj);
+            Code.loadConst(1);
+            Code.put(Code.sub);
+            Code.store(dsgn.getCallName().getDesignator().obj);
+        }
+        else{
+            Code.put(Code.inc); //ne radi za globalne
+            Code.put(dsgn.getCallName().getDesignator().obj.getAdr());
+            Code.put(-1);
+        }
+
+    }
+
 
 
     @Override

@@ -2,6 +2,7 @@ program p
 
 const int jana=10;
 int xjana;
+int calls;
 const char x='s';
 
 {
@@ -9,8 +10,14 @@ const char x='s';
     int f(int j, int k)
         int l; {
             l=j+k;
+            l--;
+            calls--;
+            print(l);
             return l*k;
         }
+    void v(){
+        xjana=2;
+    }
 
     void main(){
 
@@ -21,7 +28,15 @@ const char x='s';
 
         print(xjana);
 
-        xjana=f(xjana,jana)+f(10,10);
+        xjana=f(xjana,jana);
+
+        print(xjana);
+
+        f(10,10);
+
+        v();
+
+        print(calls);
 
         print(xjana);
 

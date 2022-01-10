@@ -1203,52 +1203,5 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
 
-    @Override
-    public void visit(ConstDeclError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-    @Override
-    public void visit(DsgnOpAssignError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-    @Override
-    public void visit(ConstDeclElemError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-    @Override
-    public void visit(VarDeclGlobalError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-    @Override
-    public void visit(VarDeclError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-    @Override
-    public void visit(ClassVarDeclsError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-    @Override
-    public void visit(ClassDeclsMethodsError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-    @Override
-    public void visit(ExtendsDeclError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-    @Override
-    public void visit(FormParsError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-    @Override
-    public void visit(FormParsSingleError b) {
-        report_error("Izvrsen oporavak od greske. ",b);
-    }
-
-
 
 }

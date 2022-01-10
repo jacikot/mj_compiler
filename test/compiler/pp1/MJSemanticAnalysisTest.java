@@ -61,6 +61,12 @@ public class MJSemanticAnalysisTest {
 
             // ispis sintaksnog stabla
             log.info(prog.toString(""));
+
+            System.out.println(ANSI_BLUE+"=====================OPORAVAK OD GRESKE========================="+ANSI_RESET);
+
+            ErrorRecovery errorRec=new ErrorRecovery();
+            prog.traverseBottomUp(errorRec);
+
             System.out.println(ANSI_BLUE+"=====================SEMANTICKA OBRADA========================="+ANSI_RESET);
 
             // ispis prepoznatih programskih konstrukcija

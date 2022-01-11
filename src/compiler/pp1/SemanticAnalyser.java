@@ -817,27 +817,27 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(DesignatorAccessField dsgn) {
 
-        if(dsgn.getDesignator().obj.getType().getKind()!=Struct.Class){
-            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije korisnicki definisanog tipa i nema polja!", dsgn);
+        if(dsgn.getBaseDsgn().getDesignator().obj.getType().getKind()!=Struct.Class){
+            report_error("Simbol: Ime "+dsgn.getBaseDsgn().getDesignator().obj.getName()+" nije korisnicki definisanog tipa i nema polja!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
-        if(dsgn.getDesignator().obj.getKind()!=Obj.Fld && dsgn.getDesignator().obj.getKind()!=Obj.Var){
-            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
+        if(dsgn.getBaseDsgn().getDesignator().obj.getKind()!=Obj.Fld && dsgn.getBaseDsgn().getDesignator().obj.getKind()!=Obj.Var){
+            report_error("Simbol: Ime "+dsgn.getBaseDsgn().getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
-        Collection<Obj> members=dsgn.getDesignator().obj.getType().getMembers();
+        Collection<Obj> members=dsgn.getBaseDsgn().getDesignator().obj.getType().getMembers();
         Obj o=members.stream().filter(e->{
             return (e.getFpPos()!=CONSTRUCTOR_TYPE)?e.getName().equals(dsgn.getField()):e.getName().equals("__"+dsgn.getField());
         }).findAny().orElse(null);
         if(o==null){
-            report_error("Simbol: Ime "+dsgn.getField()+" nije deklarisan u opsegu simbola "+dsgn.getDesignator().obj.getName()+"!", dsgn);
+            report_error("Simbol: Ime "+dsgn.getField()+" nije deklarisan u opsegu simbola "+dsgn.getBaseDsgn().getDesignator().obj.getName()+"!", dsgn);
             dsgn.obj=Tab.noObj;
         }
         else{
             if(o.getName().startsWith("__")){
-                dsgn.obj=new Obj(o.getKind(),o.getName(),dsgn.getDesignator().obj.getType());
+                dsgn.obj=new Obj(o.getKind(),o.getName(),dsgn.getBaseDsgn().getDesignator().obj.getType());
             }
             else dsgn.obj=o;
             if(dsgn.obj.getKind()!=Obj.Meth)
@@ -846,13 +846,13 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
     @Override
     public void visit(DesignatorAccessArray dsgn) {
-        if(dsgn.getDesignator().obj.getType().getKind()!=Struct.Array){
-            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije nizovskog tipa i ne moze se indeksirati!", dsgn);
+        if(dsgn.getBaseDsgn().getDesignator().obj.getType().getKind()!=Struct.Array){
+            report_error("Simbol: Ime "+dsgn.getBaseDsgn().getDesignator().obj.getName()+" nije nizovskog tipa i ne moze se indeksirati!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
-        if(dsgn.getDesignator().obj.getKind()!=Obj.Fld && dsgn.getDesignator().obj.getKind()!=Obj.Var){
-            report_error("Simbol: Ime "+dsgn.getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
+        if(dsgn.getBaseDsgn().getDesignator().obj.getKind()!=Obj.Fld && dsgn.getBaseDsgn().getDesignator().obj.getKind()!=Obj.Var){
+            report_error("Simbol: Ime "+dsgn.getBaseDsgn().getDesignator().obj.getName()+" nije promenljiva ili polje unutrasnje klase!", dsgn);
             dsgn.obj=Tab.noObj;
             return;
         }
@@ -861,7 +861,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             dsgn.obj=Tab.noObj;
             return;
         }
-        dsgn.obj=new Obj(Obj.Var,"array_elem",dsgn.getDesignator().obj.getType().getElemType());
+        dsgn.obj=new Obj(Obj.Elem,"_array_elem",dsgn.getBaseDsgn().getDesignator().obj.getType().getElemType());
     }
     @Override
     public void visit(FactorDsgn dsgn) {

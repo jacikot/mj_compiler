@@ -84,8 +84,14 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(DsgnOpInc dsgn) {
-        //svi act params su vec na steku
-        if(dsgn.getCallName().getDesignator().obj.getLevel()==0){
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem || dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
+            //posto za inc treba i load i store fali nam index i adresa jos jednom
+            dsgn.getCallName().getDesignator().traverseBottomUp(this);
+        }
+        if(dsgn.getCallName().getDesignator().obj.getLevel()==0 ||
+                dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem ||
+                dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld
+        ){
             Code.load(dsgn.getCallName().getDesignator().obj);
             Code.loadConst(1);
             Code.put(Code.add);
@@ -101,8 +107,13 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(DsgnOpDec dsgn) {
-        //svi act params su vec na steku
-        if(dsgn.getCallName().getDesignator().obj.getLevel()==0){
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem || dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
+            //posto za inc treba i load i store fali nam index i adresa jos jednom
+            dsgn.getCallName().getDesignator().traverseBottomUp(this);
+        }
+        if(dsgn.getCallName().getDesignator().obj.getLevel()==0||
+                dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem ||
+                dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
             Code.load(dsgn.getCallName().getDesignator().obj);
             Code.loadConst(1);
             Code.put(Code.sub);
@@ -242,4 +253,27 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.put(Code.exit);
         Code.put(Code.return_);
     }
+
+
+    public void visit(FactorArray factorArray){
+        Code.put(Code.newarray);
+        if(factorArray.obj.getType().getElemType().equals(Tab.charType) ||
+        factorArray.obj.getType().getElemType().equals(Tab.find("bool").getType())
+        ){
+            Code.put(0);
+        }
+        else{
+            Code.put(1);
+        }
+    }
+    public void visit(FactorObject object){
+        Code.put(Code.new_);
+        Code.put2(object.obj.getType().getNumberOfFields());
+    }
+
+    public void visit(BaseDsgn base){
+        Code.load(base.getDesignator().obj);
+    }
+
+
 }

@@ -1,17 +1,24 @@
 program p
 
+record MAMA {
+    int s;
+    char p;
+}
+
 const int jana=10;
 int xjana;
 int calls;
 const char x='s';
+int xyz[];
+MAMA mama;
 
 {
 
     int f(int j, int k)
         int l; {
             l=j+k;
-            l--;
-            calls--;
+            //l--;
+            //calls--;
             print(l);
             return l*k;
         }
@@ -21,10 +28,25 @@ const char x='s';
 
     void main(){
 
+        mama = new MAMA;
+        mama.s=-1;
+        mama.p='j';
+        print(mama.p);
+        print(mama.s);
+        mama.s++;
+        print(mama.s);
 
         read(xjana);
 
-        xjana=(xjana+jana)*2;
+        xyz=new int[4];
+
+        xyz[2]=8;
+
+        xjana=(xjana+jana)*2+xyz[2]+mama.s;
+
+        xyz[2]++;
+
+        print(xyz[2]);
 
         print(xjana);
 

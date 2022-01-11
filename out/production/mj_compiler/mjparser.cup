@@ -81,7 +81,7 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator, Label;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr, CopyDsgn;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
-nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn;
 
 precedence left ELSE;
 
@@ -247,16 +247,17 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Sta
             |
             (StmtGoto) GOTO Label:dst SEMI
             ;
+
 DoStart ::= (DoStart) DO;
-Designator ::= (DesignatorAccessField) Designator:base DOT IDENT:field
+Designator ::= (DesignatorAccessField) BaseDsgn:base DOT IDENT:field
               |
-               (DesignatorAccessArray) Designator:base LBRACK Expr:index RBRACK
+               (DesignatorAccessArray) BaseDsgn:base LBRACK Expr:index RBRACK
               |
               (DesignatorFirst) IDENT:dsgnName
               |
               (DesignatorThis) THIS:l
               ;
-
+BaseDsgn ::= (BaseDsgn)Designator:base;
 DesignStatement ::= (DsgnOpAssign) CallName Assignop Expr
             |
             (DsgnOpAssignError) CallName Assignop:r error

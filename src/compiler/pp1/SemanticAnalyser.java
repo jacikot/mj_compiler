@@ -51,10 +51,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
     }
 
     private boolean isCompatible(Obj derived, Obj base){
-        if(derived.getType().equals(base.getType())) return true;
+        if(derived.getType().assignableTo(base.getType())) return true;
         Struct type=derived.getType();
         while(type.getElemType()!=null){
-            if(type.getElemType().equals(base.getType())) return true;
+            if(type.getElemType().assignableTo(base.getType())) return true;
             type=type.getElemType();
         }
         return false;

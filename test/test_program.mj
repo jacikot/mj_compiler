@@ -1,8 +1,15 @@
 program p
 
+
+
 record MAMA {
-    int s;
     char p;
+    int s[];
+
+}
+
+record TATA{
+    MAMA mama;
 }
 
 const int jana=10;
@@ -10,7 +17,7 @@ int xjana;
 int calls;
 const char x='s';
 int xyz[];
-MAMA mama;
+TATA tata;
 
 {
 
@@ -22,19 +29,28 @@ MAMA mama;
             print(l);
             return l*k;
         }
-    void v(){
-        xjana=2;
+    void v(TATA a){
+        print(a.mama.s[0]);
     }
 
     void main(){
 
-        mama = new MAMA;
-        mama.s=-1;
-        mama.p='j';
-        print(mama.p);
-        print(mama.s);
-        mama.s++;
-        print(mama.s);
+
+        tata= new TATA;
+        tata.mama = new MAMA;
+        tata.mama.s=new int[1];
+
+        tata.mama.s[0]=10;
+
+
+        tata.mama.p='0';
+
+        print(tata.mama.s[2]);
+
+        print(tata.mama.p);
+        print(tata.mama.s[2]);
+        tata.mama.s[0]++;
+        print(tata.mama.s[0]);
 
         read(xjana);
 
@@ -42,7 +58,7 @@ MAMA mama;
 
         xyz[2]=8;
 
-        xjana=(xjana+jana)*2+xyz[2]+mama.s;
+        xjana=(xjana+jana)*2+xyz[2]+tata.mama.s[0];
 
         xyz[2]++;
 
@@ -58,11 +74,12 @@ MAMA mama;
 
         f(10,10);
 
-        v();
-
         READ: print(calls);
 
         print(xjana);
+
+        v(tata);
+
 
     }
 }

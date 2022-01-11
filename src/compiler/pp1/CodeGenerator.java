@@ -268,7 +268,7 @@ public class CodeGenerator extends VisitorAdaptor {
     }
     public void visit(FactorObject object){
         Code.put(Code.new_);
-        Code.put2(object.obj.getType().getNumberOfFields());
+        Code.put2(object.obj.getType().getNumberOfFields()*4);
     }
 
     public void visit(BaseDsgn base){

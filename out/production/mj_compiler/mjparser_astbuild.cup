@@ -124,6 +124,7 @@ nonterminal CondOr CondOr;
 nonterminal IfCond IfCond;
 nonterminal ElseCond ElseCond;
 nonterminal IfInit IfInit;
+nonterminal WhileCheck WhileCheck;
 
 precedence left ELSE;
 
@@ -264,6 +265,7 @@ Statements ::= (StatementsBlock) LBRACE StatementList:S1 RBRACE {: RESULT=new St
 IfInit ::= (IfInit) IF {: RESULT=new IfInit(); :};
 IfCond::= (IfCond)IfInit:I1 LPAREN Cond:C2 RPAREN {: RESULT=new IfCond(I1, C2); RESULT.setLine(I1left); :};
 ElseCond ::= (ElseCond) ELSE {: RESULT=new ElseCond(); :};
+WhileCheck ::= (WhileCheck) WHILE {: RESULT=new WhileCheck(); :};
 
 SingleStatement ::= (StmtIfElse) IfCond:I1 Statement:ifStmt ElseCond:E2 Statement:elseStmt {: RESULT=new StmtIfElse(I1, ifStmt, E2, elseStmt); RESULT.setLine(I1left); :}
             |
@@ -275,7 +277,7 @@ SingleStatement ::= (StmtIfElse) IfCond:I1 Statement:ifStmt ElseCond:E2 Statemen
             |
             (StmtDesign) DesignStatement:statement SEMI {: RESULT=new StmtDesign(statement); RESULT.setLine(statementleft); :}
             |
-            (StmtDoWhile) DoStart:D1 Statement:S2 WHILE LPAREN Cond:C3 RPAREN SEMI {: RESULT=new StmtDoWhile(D1, S2, C3); RESULT.setLine(D1left); :}
+            (StmtDoWhile) DoStart:D1 Statement:S2 WhileCheck:W3 LPAREN Cond:C4 RPAREN SEMI {: RESULT=new StmtDoWhile(D1, S2, W3, C4); RESULT.setLine(D1left); :}
             |
             (StmtBreak) BREAK SEMI {: RESULT=new StmtBreak(); :}
             |

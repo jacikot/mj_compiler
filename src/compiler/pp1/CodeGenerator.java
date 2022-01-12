@@ -157,168 +157,7 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     int relop=0;
-    Map<String,List<Integer>> map=null;
-    Stack<Map<String,List<Integer>>> mapStack=new Stack<>();
 
-    private void jmp(String where,int adr){
-        if(map.get(where)==null){
-            map.put(where,new ArrayList<>());
-        }
-        map.get(where).add(adr);
-    }
-
-    public void visit(IfInit init){
-        if(map!=null){
-            mapStack.push(map);
-        }
-        map=new HashMap<>();
-    }
-
-    public void visit(CondOr or){
-        if(map.get("or")==null) return;
-        for(Integer adr:map.remove("or")){
-            Code.fixup(adr);
-        }
-    }
-
-    public void visit(IfCond then){
-        if(map.get("then")==null) return;
-        for(Integer adr:map.remove("then")){
-            Code.fixup(adr);
-        }
-
-    }
-
-    public void visit(ElseCond elseCond){
-        map.put("end",new ArrayList<>());
-        map.get("end").add(Code.pc+1);
-        Code.putJump(0);
-        if(map.get("else")==null) return;
-        for(Integer adr:map.remove("else")){
-            Code.fixup(adr);
-        }
-    }
-
-    public void visit(StmtIf elseCond){
-        if(map.get("else")==null) return;
-        for(Integer adr:map.remove("else")){
-            Code.fixup(adr);
-        }
-        map=(!mapStack.empty())?mapStack.pop():null;
-    }
-    public void visit(StmtIfElse elseCond){
-        if(map.get("end")==null) return;
-        for(Integer adr:map.remove("end")){
-            Code.fixup(adr);
-        }
-        map=(!mapStack.empty())?mapStack.pop():null;
-    }
-
-
-    @Override
-    public void visit(CondFactMultiple cond) {
-        Counter.RelOperationSolver solver=new Counter.RelOperationSolver();
-        cond.getRelop().traverseTopDown(solver);
-        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
-            //iza njega se nalazi and, expr su vec na steku
-            Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
-            SyntaxNode parent=cond.getParent().getParent();
-            while(parent instanceof CondTermMultiple) parent=parent.getParent();
-            if(parent.getParent().getClass()==CondMultiple.class){
-                //iza niza and se nalazi or
-                jmp("or",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                //iza niza and se nalazi kraj uslova
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-        }
-        else{
-            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
-                Code.put(Code.jcc+solver.getCnt()); //proveri
-                jmp("then",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-
-        }
-    }
-
-
-
-    @Override
-    public void visit(CondFactMultipleEq cond) {
-        Counter.RelOperationSolver solver=new Counter.RelOperationSolver();
-        cond.getRelopEq().traverseTopDown(solver);
-        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
-            //iza njega se nalazi and, expr su vec na steku
-            Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
-            SyntaxNode parent=cond.getParent().getParent();
-            while(parent instanceof CondTermMultiple) parent=parent.getParent();
-            if(parent.getParent().getClass()==CondMultiple.class){
-                //iza niza and se nalazi or
-                jmp("or",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                //iza niza and se nalazi kraj uslova
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-        }
-        else{
-            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
-                Code.put(Code.jcc+solver.getCnt()); //proveri
-                jmp("then",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-
-        }
-    }
-    @Override
-    public void visit(CondFactSingle cond) {
-        Code.loadConst(0);
-        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
-            //iza njega se nalazi and, expr su vec na steku
-            Code.put(Code.jcc+Code.inverse[Code.ne]);
-            SyntaxNode parent=cond.getParent().getParent();
-            while(parent instanceof CondTermMultiple) parent=parent.getParent();
-            if(parent.getParent().getClass()==CondMultiple.class){
-                //iza niza and se nalazi or
-                jmp("or",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                //iza niza and se nalazi kraj uslova
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-        }
-        else{
-            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
-                Code.put(Code.jcc+Code.ne); //proveri
-                jmp("then",Code.pc);
-                Code.put2(0);
-            }
-            else{
-                Code.put(Code.jcc+Code.inverse[Code.ne]); //proveri
-                jmp("else",Code.pc);
-                Code.put2(0);
-            }
-
-        }
-    }
 
     @Override
     public void visit(TermMultiple term) {
@@ -432,9 +271,241 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.load(base.getDesignator().obj);
     }
 
-    public static class IfConditionsGenerator extends VisitorAdaptor{
+    private Map<String,List<Integer>> map=null;
+    public Stack<Map<String,List<Integer>>> mapStack=new Stack<>();
+    private Stack<Integer> thens=new Stack<>();
 
+    private void jmp(String where,int adr){
+        if(map.get(where)==null){
+            map.put(where,new ArrayList<>());
+        }
+        map.get(where).add(adr);
     }
+
+
+    private void jmpFirstWhile(String where,int adr){
+        for(int i=thens.size()-1;i>=0;i--){
+            if(thens.get(i)!=-1){
+                if(i==thens.size()-1){
+                    jmp(where,adr);
+                }
+                else{
+                    if(mapStack.get(i).get(where)==null){
+                        mapStack.get(i).put(where,new ArrayList<>());
+                    }
+                    mapStack.get(i).get(where).add(adr);
+                }
+                return;
+            }
+        }
+    }
+
+    public void visit(DoStart init){
+        if(map!=null){
+            mapStack.push(map);
+        }
+        map=new HashMap<>();
+        thens.push(Code.pc);
+    }
+
+    public void visit(StmtDoWhile init){
+        if(map.get("else")==null) return;
+        for(Integer adr:map.remove("else")){
+            Code.fixup(adr);
+        }
+        thens.pop();
+        map=(!mapStack.empty())?mapStack.pop():null;
+    }
+    public void visit(IfInit init){
+        if(map!=null){
+            mapStack.push(map);
+        }
+        map=new HashMap<>();
+        thens.push(-1);
+    }
+
+    public void visit(CondOr or){
+        if(map.get("or")==null) return;
+        for(Integer adr:map.remove("or")){
+            Code.fixup(adr);
+        }
+    }
+
+    public void visit(IfCond then){
+        if(map.get("then")==null) return;
+        for(Integer adr:map.remove("then")){
+            Code.fixup(adr);
+        }
+    }
+
+    public void visit(ElseCond elseCond){
+        map.put("end",new ArrayList<>());
+        map.get("end").add(Code.pc+1);
+        Code.putJump(0);
+        if(map.get("else")==null) return;
+        for(Integer adr:map.remove("else")){
+            Code.fixup(adr);
+        }
+    }
+
+    public void visit(StmtIf elseCond){
+        if(map.get("else")==null) return;
+        for(Integer adr:map.remove("else")){
+            Code.fixup(adr);
+        }
+        map=(!mapStack.empty())?mapStack.pop():null;
+        thens.pop();
+    }
+    public void visit(StmtIfElse elseCond){
+        if(map.get("end")==null) return;
+        for(Integer adr:map.remove("end")){
+            Code.fixup(adr);
+        }
+        map=(!mapStack.empty())?mapStack.pop():null;
+        thens.pop();
+    }
+    public void visit(WhileCheck check){
+        if(map.get("check")==null) return;
+        for(Integer adr:map.remove("check")){
+            Code.fixup(adr);
+        }
+    }
+
+
+
+    @Override
+    public void visit(CondFactMultiple cond) {
+        Counter.RelOperationSolver solver=new Counter.RelOperationSolver();
+        cond.getRelop().traverseTopDown(solver);
+        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
+            //iza njega se nalazi and, expr su vec na steku
+            Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
+            SyntaxNode parent=cond.getParent().getParent();
+            while(parent instanceof CondTermMultiple) parent=parent.getParent();
+            if(parent.getParent().getClass()==CondMultiple.class){
+                //iza niza and se nalazi or
+                jmp("or",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                //iza niza and se nalazi kraj uslova
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+        }
+        else{
+            if(thens.size()>0 && thens.peek()>0){ //do while
+                Code.put(Code.jcc+solver.getCnt());
+                Code.put2(thens.peek()-Code.pc+1);
+                return;
+            }
+            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
+                Code.put(Code.jcc+solver.getCnt()); //proveri
+                jmp("then",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+
+        }
+    }
+
+    public void visit(StmtBreak breakstmt){
+        Code.put(Code.jmp);
+        jmpFirstWhile("else", Code.pc);
+        Code.put2(0);
+    }
+    public void visit(StmtContinue cont){
+        Code.put(Code.jmp);
+        jmpFirstWhile("check", Code.pc);
+        Code.put2(0);
+    }
+
+
+
+    @Override
+    public void visit(CondFactMultipleEq cond) {
+        Counter.RelOperationSolver solver=new Counter.RelOperationSolver();
+        cond.getRelopEq().traverseTopDown(solver);
+        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
+            //iza njega se nalazi and, expr su vec na steku
+            Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
+            SyntaxNode parent=cond.getParent().getParent();
+            while(parent instanceof CondTermMultiple) parent=parent.getParent();
+            if(parent.getParent().getClass()==CondMultiple.class){
+                //iza niza and se nalazi or
+                jmp("or",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                //iza niza and se nalazi kraj uslova
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+        }
+        else{
+            if(thens.size()>0&& thens.peek()>0){ //do while
+                Code.put(Code.jcc+solver.getCnt());
+                Code.put2(thens.peek()-Code.pc+1);
+                return;
+            }
+            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
+                Code.put(Code.jcc+solver.getCnt()); //proveri
+                jmp("then",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                Code.put(Code.jcc+Code.inverse[solver.getCnt()]); //proveri
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+
+        }
+    }
+    @Override
+    public void visit(CondFactSingle cond) {
+        Code.loadConst(0);
+        if(cond.getParent().getParent().getClass()==CondTermMultiple.class){
+            //iza njega se nalazi and, expr su vec na steku
+            Code.put(Code.jcc+Code.inverse[Code.ne]);
+            SyntaxNode parent=cond.getParent().getParent();
+            while(parent instanceof CondTermMultiple) parent=parent.getParent();
+            if(parent.getParent().getClass()==CondMultiple.class){
+                //iza niza and se nalazi or
+                jmp("or",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                //iza niza and se nalazi kraj uslova
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+        }
+        else{
+            if(thens.size()>0 && thens.peek()>0){ //do while
+                Code.put(Code.jcc+Code.ne);
+                Code.put2(thens.peek()-Code.pc+1);
+                return;
+            }
+            if(cond.getParent().getParent().getParent().getClass()==CondMultiple.class){
+                //iza se nalazi ||
+                Code.put(Code.jcc+Code.ne); //proveri
+                jmp("then",Code.pc);
+                Code.put2(0);
+            }
+            else{
+                Code.put(Code.jcc+Code.inverse[Code.ne]); //proveri
+                jmp("else",Code.pc);
+                Code.put2(0);
+            }
+
+        }
+    }
+
+
 
 
 }

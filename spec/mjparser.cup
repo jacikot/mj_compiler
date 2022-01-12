@@ -81,7 +81,7 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator, Label;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr, CopyDsgn;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
-nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn, CondOr, IfCond, ElseCond, IfInit;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn, CondOr, IfCond, ElseCond, IfInit, WhileCheck;
 
 precedence left ELSE;
 
@@ -222,6 +222,7 @@ Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
 IfInit ::= (IfInit) IF;
 IfCond::= (IfCond)IfInit LPAREN Cond RPAREN;
 ElseCond ::= (ElseCond) ELSE;
+WhileCheck ::= (WhileCheck) WHILE;
 
 SingleStatement ::= (StmtIfElse) IfCond Statement:ifStmt ElseCond Statement:elseStmt
             |
@@ -233,7 +234,7 @@ SingleStatement ::= (StmtIfElse) IfCond Statement:ifStmt ElseCond Statement:else
             |
             (StmtDesign) DesignStatement:statement SEMI
             |
-            (StmtDoWhile) DoStart Statement WHILE LPAREN Cond RPAREN SEMI
+            (StmtDoWhile) DoStart Statement WhileCheck LPAREN Cond RPAREN SEMI
             |
             (StmtBreak) BREAK SEMI
             |

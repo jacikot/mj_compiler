@@ -30,7 +30,7 @@ TATA tata;
         print(a.mama.s[0]);
     }
 
-    void main() bool j; TATA t;{
+    void main() bool j; TATA t; int brojac;{
 
 
         tata= new TATA;
@@ -48,9 +48,28 @@ TATA tata;
             print(1);
         }
 
+        brojac=10;
+        do{
+            if(brojac<8){
+               print(brojac);
+            }
+            brojac--;
+        }
+        while(brojac>2);
 
-
-
+        do{
+            do{
+                brojac++;
+                if(brojac<5) {
+                    brojac=4;
+                    continue;
+                }
+                print(brojac);
+            }
+            while(brojac<10);
+            read(brojac);
+        }
+        while(brojac>0);
 
     }
 }

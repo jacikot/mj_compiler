@@ -316,8 +316,8 @@ public class CodeGenerator extends VisitorAdaptor {
 
 
         Code.put(Code.enter);
-        Code.put(fpc.getCnt()+((isInner)?1:0));
-        Code.put(fpc.getCnt()+lvc.getCnt()+((isInner)?1:0));
+        Code.put(fpc.getCnt()+((currentType!=null)?1:0));
+        Code.put(fpc.getCnt()+lvc.getCnt()+((currentType!=null)?1:0));
     }
 
     public void visit(MethodDeclPar methodDecl){
@@ -360,8 +360,19 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.put2(0);
     }
 
+
+
     public void visit(BaseDsgn base){
         Code.load(base.getDesignator().obj);
+    }
+    public void visit(DesignatorFirst base){
+        if(currentType!=null){ //implicinti this
+            if(currentType.getType().getMembers().stream().filter(e->{
+                return e.getName().equals(base.getDsgnName());
+            }).count()>0){
+                Code.put(Code.load_n);
+            }
+        }
     }
 
     private Map<String,List<Integer>> map=null;
@@ -603,7 +614,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ClassName className) {
-        isInner=true;
+        currentType=className.obj;
         Obj currentTypeDef=className.obj;
         Struct base=currentTypeDef.getType().getElemType();
         List<Obj> list=currentTypeDef.getType().getMembers().stream().filter(e->{
@@ -661,9 +672,9 @@ public class CodeGenerator extends VisitorAdaptor {
         program=((Program)init.getParent()).getProgramName().obj;
     }
 
-    private boolean isInner=false;
+    private Obj currentType=null;
     @Override
     public void visit(ClassDecl ClassDecl) {
-        isInner=false;
+        currentType=null;
     }
 }

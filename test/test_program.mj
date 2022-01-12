@@ -9,8 +9,10 @@ class Base {
 
         int marinko(int k){
             print(k);
-            if(k==0)
-                return this.s[k];
+            if(k==0){
+                print(s[k]);
+                return s[k];
+            }
             else
                 return 0;
         }

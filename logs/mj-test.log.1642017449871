@@ -1,273 +1,265 @@
-INFO  21:17:27,340 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
-INFO  21:17:27,416 - #2 program
-INFO  21:17:27,416 - #22 p
-INFO  21:17:27,416 - #13 class
-INFO  21:17:27,417 - #22 Base
-INFO  21:17:27,417 - #3 {
-INFO  21:17:27,419 - #22 int
-INFO  21:17:27,419 - #22 s
-INFO  21:17:27,419 - #10 [
-INFO  21:17:27,420 - #11 ]
-INFO  21:17:27,420 - #6 ;
-INFO  21:17:27,420 - #3 {
-INFO  21:17:27,420 - #18 void
-INFO  21:17:27,420 - #22 nevena
-INFO  21:17:27,421 - #15 (
-INFO  21:17:27,422 - #22 int
-INFO  21:17:27,422 - #22 k
-INFO  21:17:27,423 - #16 )
-INFO  21:17:27,423 - #3 {
-INFO  21:17:27,424 - #33 print
-INFO  21:17:27,424 - #15 (
-INFO  21:17:27,425 - #22 k
-INFO  21:17:27,425 - #16 )
-INFO  21:17:27,428 - #6 ;
-INFO  21:17:27,428 - #4 }
-INFO  21:17:27,428 - #22 int
-INFO  21:17:27,429 - #22 marinko
-INFO  21:17:27,429 - #15 (
-INFO  21:17:27,429 - #22 int
-INFO  21:17:27,429 - #22 k
-INFO  21:17:27,429 - #16 )
-INFO  21:17:27,429 - #3 {
-INFO  21:17:27,429 - #33 print
-INFO  21:17:27,429 - #15 (
-INFO  21:17:27,429 - #22 k
-INFO  21:17:27,429 - #16 )
-INFO  21:17:27,430 - #6 ;
-INFO  21:17:27,430 - #24 if
-INFO  21:17:27,430 - #15 (
-INFO  21:17:27,431 - #22 k
-INFO  21:17:27,431 - #34 ==
-INFO  21:17:27,431 - #20 0
-INFO  21:17:27,432 - #16 )
-INFO  21:17:27,432 - #3 {
-INFO  21:17:27,433 - #33 print
-INFO  21:17:27,433 - #15 (
-INFO  21:17:27,433 - #22 s
-INFO  21:17:27,433 - #10 [
-INFO  21:17:27,434 - #22 k
-INFO  21:17:27,434 - #11 ]
-INFO  21:17:27,434 - #16 )
-INFO  21:17:27,434 - #6 ;
-INFO  21:17:27,434 - #31 return
-INFO  21:17:27,434 - #22 s
-INFO  21:17:27,434 - #10 [
-INFO  21:17:27,434 - #22 k
-INFO  21:17:27,434 - #11 ]
-INFO  21:17:27,434 - #6 ;
-INFO  21:17:27,435 - #4 }
-INFO  21:17:27,435 - #25 else
-INFO  21:17:27,435 - #31 return
-INFO  21:17:27,436 - #20 0
-INFO  21:17:27,436 - #6 ;
-INFO  21:17:27,436 - #4 }
-INFO  21:17:27,436 - #4 }
-INFO  21:17:27,437 - #4 }
-INFO  21:17:27,438 - #13 class
-INFO  21:17:27,439 - #22 MAMA
-INFO  21:17:27,439 - #14 extends
-INFO  21:17:27,439 - #22 Base
-INFO  21:17:27,439 - #3 {
-INFO  21:17:27,439 - #22 char
-INFO  21:17:27,439 - #22 p
-INFO  21:17:27,439 - #6 ;
-INFO  21:17:27,439 - #22 int
-INFO  21:17:27,439 - #22 num
-INFO  21:17:27,439 - #6 ;
-INFO  21:17:27,440 - #3 {
-INFO  21:17:27,440 - #18 void
-INFO  21:17:27,440 - #22 nevena
-INFO  21:17:27,440 - #15 (
-INFO  21:17:27,440 - #22 int
-INFO  21:17:27,440 - #22 k
-INFO  21:17:27,440 - #16 )
-INFO  21:17:27,440 - #3 {
-INFO  21:17:27,440 - #33 print
-INFO  21:17:27,440 - #15 (
-INFO  21:17:27,440 - #20 2
-INFO  21:17:27,440 - #16 )
-INFO  21:17:27,440 - #6 ;
-INFO  21:17:27,441 - #22 k
-INFO  21:17:27,441 - #47 ++
-INFO  21:17:27,441 - #6 ;
-INFO  21:17:27,442 - #4 }
-INFO  21:17:27,442 - #18 void
-INFO  21:17:27,442 - #22 jana
-INFO  21:17:27,442 - #15 (
-INFO  21:17:27,442 - #22 char
-INFO  21:17:27,442 - #22 d
-INFO  21:17:27,442 - #16 )
-INFO  21:17:27,442 - #22 Base
-INFO  21:17:27,442 - #22 b
-INFO  21:17:27,442 - #6 ;
-INFO  21:17:27,442 - #3 {
-INFO  21:17:27,443 - #22 p
-INFO  21:17:27,443 - #9 =
-INFO  21:17:27,444 - #22 d
-INFO  21:17:27,444 - #6 ;
-INFO  21:17:27,445 - #22 b
-INFO  21:17:27,445 - #9 =
-INFO  21:17:27,445 - #19 new
-INFO  21:17:27,445 - #22 Base
-INFO  21:17:27,445 - #6 ;
-INFO  21:17:27,445 - #33 print
-INFO  21:17:27,445 - #15 (
-INFO  21:17:27,445 - #20 3
-INFO  21:17:27,445 - #16 )
-INFO  21:17:27,445 - #6 ;
-INFO  21:17:27,445 - #4 }
-INFO  21:17:27,445 - #4 }
-INFO  21:17:27,445 - #4 }
-INFO  21:17:27,445 - #12 record
-INFO  21:17:27,445 - #22 TATA
-INFO  21:17:27,445 - #3 {
-INFO  21:17:27,446 - #22 MAMA
-INFO  21:17:27,446 - #22 mama
-INFO  21:17:27,446 - #6 ;
-INFO  21:17:27,447 - #4 }
-INFO  21:17:27,447 - #22 TATA
-INFO  21:17:27,448 - #22 tata
-INFO  21:17:27,448 - #6 ;
-INFO  21:17:27,448 - #3 {
-INFO  21:17:27,449 - #22 int
-INFO  21:17:27,449 - #22 f
-INFO  21:17:27,449 - #15 (
-INFO  21:17:27,449 - #22 int
-INFO  21:17:27,449 - #22 j
-INFO  21:17:27,449 - #7 ,
-INFO  21:17:27,449 - #22 int
-INFO  21:17:27,449 - #22 k
-INFO  21:17:27,449 - #16 )
-INFO  21:17:27,449 - #22 int
-INFO  21:17:27,449 - #22 l
-INFO  21:17:27,449 - #6 ;
-INFO  21:17:27,449 - #3 {
-INFO  21:17:27,449 - #22 l
-INFO  21:17:27,449 - #9 =
-INFO  21:17:27,449 - #22 j
-INFO  21:17:27,449 - #45 +
-INFO  21:17:27,450 - #22 k
-INFO  21:17:27,451 - #6 ;
-INFO  21:17:27,451 - #31 return
-INFO  21:17:27,451 - #22 l
-INFO  21:17:27,451 - #42 *
-INFO  21:17:27,451 - #22 k
-INFO  21:17:27,453 - #6 ;
-INFO  21:17:27,453 - #4 }
-INFO  21:17:27,453 - #18 void
-INFO  21:17:27,453 - #22 v
-INFO  21:17:27,453 - #15 (
-INFO  21:17:27,453 - #22 TATA
-INFO  21:17:27,453 - #22 a
-INFO  21:17:27,453 - #16 )
-INFO  21:17:27,453 - #3 {
-INFO  21:17:27,454 - #33 print
-INFO  21:17:27,459 - #15 (
-INFO  21:17:27,459 - #22 a
-INFO  21:17:27,459 - #17 .
-INFO  21:17:27,459 - #22 mama
-INFO  21:17:27,459 - #17 .
-INFO  21:17:27,459 - #22 s
-INFO  21:17:27,460 - #10 [
-INFO  21:17:27,460 - #20 0
-INFO  21:17:27,460 - #11 ]
-INFO  21:17:27,460 - #16 )
-INFO  21:17:27,460 - #6 ;
-INFO  21:17:27,460 - #4 }
-INFO  21:17:27,460 - #18 void
-INFO  21:17:27,460 - #22 main
-INFO  21:17:27,460 - #15 (
-INFO  21:17:27,460 - #16 )
-INFO  21:17:27,460 - #22 Base
-INFO  21:17:27,460 - #22 b
-INFO  21:17:27,460 - #6 ;
-INFO  21:17:27,461 - #3 {
-INFO  21:17:27,461 - #22 tata
-INFO  21:17:27,461 - #9 =
-INFO  21:17:27,461 - #19 new
-INFO  21:17:27,461 - #22 TATA
-INFO  21:17:27,461 - #6 ;
-INFO  21:17:27,461 - #22 tata
-INFO  21:17:27,461 - #17 .
-INFO  21:17:27,461 - #22 mama
-INFO  21:17:27,461 - #9 =
-INFO  21:17:27,461 - #19 new
-INFO  21:17:27,461 - #22 MAMA
-INFO  21:17:27,461 - #6 ;
-INFO  21:17:27,462 - #22 tata
-INFO  21:17:27,462 - #17 .
-INFO  21:17:27,462 - #22 mama
-INFO  21:17:27,462 - #17 .
-INFO  21:17:27,462 - #22 s
-INFO  21:17:27,462 - #9 =
-INFO  21:17:27,462 - #19 new
-INFO  21:17:27,462 - #22 int
-INFO  21:17:27,462 - #10 [
-INFO  21:17:27,462 - #20 2
-INFO  21:17:27,462 - #11 ]
-INFO  21:17:27,462 - #6 ;
-INFO  21:17:27,462 - #22 tata
-INFO  21:17:27,462 - #17 .
-INFO  21:17:27,462 - #22 mama
-INFO  21:17:27,463 - #17 .
-INFO  21:17:27,463 - #22 s
-INFO  21:17:27,463 - #10 [
-INFO  21:17:27,463 - #20 0
-INFO  21:17:27,463 - #11 ]
-INFO  21:17:27,463 - #9 =
-INFO  21:17:27,463 - #20 2
-INFO  21:17:27,463 - #6 ;
-INFO  21:17:27,463 - #22 b
-INFO  21:17:27,463 - #9 =
-INFO  21:17:27,463 - #22 tata
-INFO  21:17:27,463 - #17 .
-INFO  21:17:27,463 - #22 mama
-INFO  21:17:27,463 - #6 ;
-INFO  21:17:27,463 - #33 print
-INFO  21:17:27,463 - #15 (
-INFO  21:17:27,463 - #22 b
-INFO  21:17:27,463 - #17 .
-INFO  21:17:27,463 - #22 s
-INFO  21:17:27,463 - #10 [
-INFO  21:17:27,463 - #20 0
-INFO  21:17:27,463 - #11 ]
-INFO  21:17:27,463 - #16 )
-INFO  21:17:27,464 - #6 ;
-INFO  21:17:27,464 - #22 b
-INFO  21:17:27,464 - #9 =
-INFO  21:17:27,464 - #19 new
-INFO  21:17:27,464 - #22 Base
-INFO  21:17:27,464 - #6 ;
-INFO  21:17:27,464 - #22 b
-INFO  21:17:27,464 - #17 .
-INFO  21:17:27,464 - #22 s
-INFO  21:17:27,464 - #9 =
-INFO  21:17:27,464 - #19 new
-INFO  21:17:27,464 - #22 int
-INFO  21:17:27,464 - #10 [
-INFO  21:17:27,464 - #20 2
-INFO  21:17:27,464 - #11 ]
-INFO  21:17:27,464 - #6 ;
-INFO  21:17:27,464 - #22 tata
-INFO  21:17:27,464 - #17 .
-INFO  21:17:27,465 - #22 mama
-INFO  21:17:27,465 - #17 .
-INFO  21:17:27,465 - #22 marinko
-INFO  21:17:27,465 - #15 (
-INFO  21:17:27,466 - #20 0
-INFO  21:17:27,466 - #16 )
-INFO  21:17:27,466 - #6 ;
-INFO  21:17:27,466 - #22 b
-INFO  21:17:27,466 - #17 .
-INFO  21:17:27,466 - #22 marinko
-INFO  21:17:27,466 - #15 (
-INFO  21:17:27,466 - #20 0
-INFO  21:17:27,466 - #16 )
-INFO  21:17:27,466 - #6 ;
-INFO  21:17:27,466 - #4 }
-INFO  21:17:27,466 - #4 }
-INFO  21:17:27,478 - Program(
+INFO  20:52:09,120 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  20:52:09,193 - #2 program
+INFO  20:52:09,194 - #22 p
+INFO  20:52:09,194 - #13 class
+INFO  20:52:09,196 - #22 Base
+INFO  20:52:09,196 - #3 {
+INFO  20:52:09,197 - #22 int
+INFO  20:52:09,198 - #22 s
+INFO  20:52:09,198 - #10 [
+INFO  20:52:09,199 - #11 ]
+INFO  20:52:09,199 - #6 ;
+INFO  20:52:09,199 - #3 {
+INFO  20:52:09,199 - #18 void
+INFO  20:52:09,199 - #22 nevena
+INFO  20:52:09,200 - #15 (
+INFO  20:52:09,202 - #22 int
+INFO  20:52:09,202 - #22 k
+INFO  20:52:09,202 - #16 )
+INFO  20:52:09,202 - #3 {
+INFO  20:52:09,203 - #33 print
+INFO  20:52:09,204 - #15 (
+INFO  20:52:09,204 - #22 k
+INFO  20:52:09,204 - #16 )
+INFO  20:52:09,205 - #6 ;
+INFO  20:52:09,205 - #4 }
+INFO  20:52:09,205 - #22 int
+INFO  20:52:09,205 - #22 marinko
+INFO  20:52:09,206 - #15 (
+INFO  20:52:09,206 - #22 int
+INFO  20:52:09,206 - #22 k
+INFO  20:52:09,206 - #16 )
+INFO  20:52:09,206 - #3 {
+INFO  20:52:09,206 - #33 print
+INFO  20:52:09,206 - #15 (
+INFO  20:52:09,206 - #22 k
+INFO  20:52:09,206 - #16 )
+INFO  20:52:09,206 - #6 ;
+INFO  20:52:09,206 - #24 if
+INFO  20:52:09,206 - #15 (
+INFO  20:52:09,207 - #22 k
+INFO  20:52:09,207 - #34 ==
+INFO  20:52:09,207 - #20 0
+INFO  20:52:09,208 - #16 )
+INFO  20:52:09,209 - #31 return
+INFO  20:52:09,210 - #49 this
+INFO  20:52:09,210 - #17 .
+INFO  20:52:09,211 - #22 s
+INFO  20:52:09,211 - #10 [
+INFO  20:52:09,211 - #22 k
+INFO  20:52:09,211 - #11 ]
+INFO  20:52:09,211 - #6 ;
+INFO  20:52:09,212 - #25 else
+INFO  20:52:09,212 - #31 return
+INFO  20:52:09,213 - #20 0
+INFO  20:52:09,213 - #6 ;
+INFO  20:52:09,213 - #4 }
+INFO  20:52:09,213 - #4 }
+INFO  20:52:09,214 - #4 }
+INFO  20:52:09,215 - #13 class
+INFO  20:52:09,216 - #22 MAMA
+INFO  20:52:09,216 - #14 extends
+INFO  20:52:09,216 - #22 Base
+INFO  20:52:09,216 - #3 {
+INFO  20:52:09,216 - #22 char
+INFO  20:52:09,216 - #22 p
+INFO  20:52:09,216 - #6 ;
+INFO  20:52:09,217 - #22 int
+INFO  20:52:09,217 - #22 num
+INFO  20:52:09,217 - #6 ;
+INFO  20:52:09,217 - #3 {
+INFO  20:52:09,217 - #18 void
+INFO  20:52:09,217 - #22 nevena
+INFO  20:52:09,217 - #15 (
+INFO  20:52:09,217 - #22 int
+INFO  20:52:09,217 - #22 k
+INFO  20:52:09,217 - #16 )
+INFO  20:52:09,217 - #3 {
+INFO  20:52:09,217 - #33 print
+INFO  20:52:09,217 - #15 (
+INFO  20:52:09,217 - #20 2
+INFO  20:52:09,217 - #16 )
+INFO  20:52:09,217 - #6 ;
+INFO  20:52:09,217 - #22 k
+INFO  20:52:09,218 - #47 ++
+INFO  20:52:09,218 - #6 ;
+INFO  20:52:09,219 - #4 }
+INFO  20:52:09,219 - #18 void
+INFO  20:52:09,219 - #22 jana
+INFO  20:52:09,219 - #15 (
+INFO  20:52:09,219 - #22 char
+INFO  20:52:09,219 - #22 d
+INFO  20:52:09,219 - #16 )
+INFO  20:52:09,219 - #22 Base
+INFO  20:52:09,219 - #22 b
+INFO  20:52:09,219 - #6 ;
+INFO  20:52:09,219 - #3 {
+INFO  20:52:09,220 - #22 p
+INFO  20:52:09,220 - #9 =
+INFO  20:52:09,220 - #22 d
+INFO  20:52:09,221 - #6 ;
+INFO  20:52:09,221 - #22 b
+INFO  20:52:09,225 - #9 =
+INFO  20:52:09,226 - #19 new
+INFO  20:52:09,226 - #22 Base
+INFO  20:52:09,226 - #6 ;
+INFO  20:52:09,226 - #33 print
+INFO  20:52:09,226 - #15 (
+INFO  20:52:09,226 - #20 3
+INFO  20:52:09,226 - #16 )
+INFO  20:52:09,226 - #6 ;
+INFO  20:52:09,226 - #4 }
+INFO  20:52:09,226 - #4 }
+INFO  20:52:09,227 - #4 }
+INFO  20:52:09,227 - #12 record
+INFO  20:52:09,227 - #22 TATA
+INFO  20:52:09,227 - #3 {
+INFO  20:52:09,228 - #22 MAMA
+INFO  20:52:09,228 - #22 mama
+INFO  20:52:09,228 - #6 ;
+INFO  20:52:09,228 - #4 }
+INFO  20:52:09,228 - #22 TATA
+INFO  20:52:09,229 - #22 tata
+INFO  20:52:09,229 - #6 ;
+INFO  20:52:09,229 - #3 {
+INFO  20:52:09,230 - #22 int
+INFO  20:52:09,230 - #22 f
+INFO  20:52:09,230 - #15 (
+INFO  20:52:09,231 - #22 int
+INFO  20:52:09,231 - #22 j
+INFO  20:52:09,231 - #7 ,
+INFO  20:52:09,231 - #22 int
+INFO  20:52:09,231 - #22 k
+INFO  20:52:09,231 - #16 )
+INFO  20:52:09,231 - #22 int
+INFO  20:52:09,231 - #22 l
+INFO  20:52:09,231 - #6 ;
+INFO  20:52:09,231 - #3 {
+INFO  20:52:09,231 - #22 l
+INFO  20:52:09,231 - #9 =
+INFO  20:52:09,231 - #22 j
+INFO  20:52:09,232 - #45 +
+INFO  20:52:09,232 - #22 k
+INFO  20:52:09,233 - #6 ;
+INFO  20:52:09,233 - #31 return
+INFO  20:52:09,233 - #22 l
+INFO  20:52:09,233 - #42 *
+INFO  20:52:09,233 - #22 k
+INFO  20:52:09,234 - #6 ;
+INFO  20:52:09,235 - #4 }
+INFO  20:52:09,235 - #18 void
+INFO  20:52:09,235 - #22 v
+INFO  20:52:09,235 - #15 (
+INFO  20:52:09,235 - #22 TATA
+INFO  20:52:09,235 - #22 a
+INFO  20:52:09,235 - #16 )
+INFO  20:52:09,235 - #3 {
+INFO  20:52:09,235 - #33 print
+INFO  20:52:09,235 - #15 (
+INFO  20:52:09,235 - #22 a
+INFO  20:52:09,235 - #17 .
+INFO  20:52:09,235 - #22 mama
+INFO  20:52:09,235 - #17 .
+INFO  20:52:09,235 - #22 s
+INFO  20:52:09,235 - #10 [
+INFO  20:52:09,235 - #20 0
+INFO  20:52:09,235 - #11 ]
+INFO  20:52:09,235 - #16 )
+INFO  20:52:09,235 - #6 ;
+INFO  20:52:09,236 - #4 }
+INFO  20:52:09,236 - #18 void
+INFO  20:52:09,236 - #22 main
+INFO  20:52:09,236 - #15 (
+INFO  20:52:09,236 - #16 )
+INFO  20:52:09,236 - #22 Base
+INFO  20:52:09,236 - #22 b
+INFO  20:52:09,236 - #6 ;
+INFO  20:52:09,236 - #3 {
+INFO  20:52:09,236 - #22 tata
+INFO  20:52:09,236 - #9 =
+INFO  20:52:09,236 - #19 new
+INFO  20:52:09,236 - #22 TATA
+INFO  20:52:09,236 - #6 ;
+INFO  20:52:09,236 - #22 tata
+INFO  20:52:09,236 - #17 .
+INFO  20:52:09,236 - #22 mama
+INFO  20:52:09,236 - #9 =
+INFO  20:52:09,237 - #19 new
+INFO  20:52:09,237 - #22 MAMA
+INFO  20:52:09,237 - #6 ;
+INFO  20:52:09,237 - #22 tata
+INFO  20:52:09,237 - #17 .
+INFO  20:52:09,237 - #22 mama
+INFO  20:52:09,237 - #17 .
+INFO  20:52:09,237 - #22 s
+INFO  20:52:09,237 - #9 =
+INFO  20:52:09,237 - #19 new
+INFO  20:52:09,237 - #22 int
+INFO  20:52:09,237 - #10 [
+INFO  20:52:09,237 - #20 2
+INFO  20:52:09,237 - #11 ]
+INFO  20:52:09,237 - #6 ;
+INFO  20:52:09,237 - #22 tata
+INFO  20:52:09,238 - #17 .
+INFO  20:52:09,238 - #22 mama
+INFO  20:52:09,238 - #17 .
+INFO  20:52:09,238 - #22 s
+INFO  20:52:09,238 - #10 [
+INFO  20:52:09,238 - #20 0
+INFO  20:52:09,238 - #11 ]
+INFO  20:52:09,238 - #9 =
+INFO  20:52:09,238 - #20 2
+INFO  20:52:09,238 - #6 ;
+INFO  20:52:09,238 - #22 b
+INFO  20:52:09,238 - #9 =
+INFO  20:52:09,238 - #22 tata
+INFO  20:52:09,238 - #17 .
+INFO  20:52:09,238 - #22 mama
+INFO  20:52:09,238 - #6 ;
+INFO  20:52:09,238 - #33 print
+INFO  20:52:09,238 - #15 (
+INFO  20:52:09,238 - #22 b
+INFO  20:52:09,239 - #17 .
+INFO  20:52:09,239 - #22 s
+INFO  20:52:09,239 - #10 [
+INFO  20:52:09,239 - #20 0
+INFO  20:52:09,239 - #11 ]
+INFO  20:52:09,239 - #16 )
+INFO  20:52:09,239 - #6 ;
+INFO  20:52:09,239 - #22 b
+INFO  20:52:09,239 - #9 =
+INFO  20:52:09,239 - #19 new
+INFO  20:52:09,239 - #22 Base
+INFO  20:52:09,239 - #6 ;
+INFO  20:52:09,240 - #22 b
+INFO  20:52:09,240 - #17 .
+INFO  20:52:09,240 - #22 s
+INFO  20:52:09,240 - #9 =
+INFO  20:52:09,240 - #19 new
+INFO  20:52:09,240 - #22 int
+INFO  20:52:09,240 - #10 [
+INFO  20:52:09,240 - #20 2
+INFO  20:52:09,240 - #11 ]
+INFO  20:52:09,240 - #6 ;
+INFO  20:52:09,240 - #22 tata
+INFO  20:52:09,240 - #17 .
+INFO  20:52:09,240 - #22 mama
+INFO  20:52:09,240 - #17 .
+INFO  20:52:09,240 - #22 marinko
+INFO  20:52:09,240 - #15 (
+INFO  20:52:09,241 - #20 0
+INFO  20:52:09,241 - #16 )
+INFO  20:52:09,242 - #6 ;
+INFO  20:52:09,242 - #22 b
+INFO  20:52:09,242 - #17 .
+INFO  20:52:09,242 - #22 marinko
+INFO  20:52:09,242 - #15 (
+INFO  20:52:09,242 - #20 0
+INFO  20:52:09,242 - #16 )
+INFO  20:52:09,242 - #6 ;
+INFO  20:52:09,242 - #4 }
+INFO  20:52:09,243 - #4 }
+INFO  20:52:09,258 - Program(
   ProgramName(
    p
   ) [ProgramName]
@@ -405,76 +397,40 @@ INFO  21:17:27,478 - Program(
                                   ) [CondTermSingle]
                                 ) [CondSingle]
                               ) [IfCond]
-                              StatementMultiple(
-                                StatementsBlock(
-                                  StatementsList(
-                                    StatementsList(
-                                      StatementsEmpty(
-                                      ) [StatementsEmpty]
-                                      StatementSingle(
-                                        StmtPrint(
-                                          ExprSingle(
-                                            TermSingle(
-                                              FactorDsgn(
-                                                FactorDesignator(
-                                                  DesignatorAccessArray(
-                                                    BaseDsgn(
-                                                      DesignatorFirst(
-                                                       s
-                                                      ) [DesignatorFirst]
-                                                    ) [BaseDsgn]
-                                                    ExprSingle(
-                                                      TermSingle(
-                                                        FactorDsgn(
-                                                          FactorDesignator(
-                                                            DesignatorFirst(
-                                                             k
-                                                            ) [DesignatorFirst]
-                                                          ) [FactorDesignator]
-                                                        ) [FactorDsgn]
-                                                      ) [TermSingle]
-                                                    ) [ExprSingle]
-                                                  ) [DesignatorAccessArray]
-                                                ) [FactorDesignator]
-                                              ) [FactorDsgn]
-                                            ) [TermSingle]
-                                          ) [ExprSingle]
-                                        ) [StmtPrint]
-                                      ) [StatementSingle]
-                                    ) [StatementsList]
-                                    StatementSingle(
-                                      StmtReturn(
-                                        ExprSingle(
-                                          TermSingle(
-                                            FactorDsgn(
-                                              FactorDesignator(
-                                                DesignatorAccessArray(
-                                                  BaseDsgn(
+                              StatementSingle(
+                                StmtReturn(
+                                  ExprSingle(
+                                    TermSingle(
+                                      FactorDsgn(
+                                        FactorDesignator(
+                                          DesignatorAccessArray(
+                                            BaseDsgn(
+                                              DesignatorAccessField(
+                                                BaseDsgn(
+                                                  DesignatorThis(
+                                                  ) [DesignatorThis]
+                                                ) [BaseDsgn]
+                                               s
+                                              ) [DesignatorAccessField]
+                                            ) [BaseDsgn]
+                                            ExprSingle(
+                                              TermSingle(
+                                                FactorDsgn(
+                                                  FactorDesignator(
                                                     DesignatorFirst(
-                                                     s
+                                                     k
                                                     ) [DesignatorFirst]
-                                                  ) [BaseDsgn]
-                                                  ExprSingle(
-                                                    TermSingle(
-                                                      FactorDsgn(
-                                                        FactorDesignator(
-                                                          DesignatorFirst(
-                                                           k
-                                                          ) [DesignatorFirst]
-                                                        ) [FactorDesignator]
-                                                      ) [FactorDsgn]
-                                                    ) [TermSingle]
-                                                  ) [ExprSingle]
-                                                ) [DesignatorAccessArray]
-                                              ) [FactorDesignator]
-                                            ) [FactorDsgn]
-                                          ) [TermSingle]
-                                        ) [ExprSingle]
-                                      ) [StmtReturn]
-                                    ) [StatementSingle]
-                                  ) [StatementsList]
-                                ) [StatementsBlock]
-                              ) [StatementMultiple]
+                                                  ) [FactorDesignator]
+                                                ) [FactorDsgn]
+                                              ) [TermSingle]
+                                            ) [ExprSingle]
+                                          ) [DesignatorAccessArray]
+                                        ) [FactorDesignator]
+                                      ) [FactorDsgn]
+                                    ) [TermSingle]
+                                  ) [ExprSingle]
+                                ) [StmtReturn]
+                              ) [StatementSingle]
                               ElseCond(
                               ) [ElseCond]
                               StatementSingle(

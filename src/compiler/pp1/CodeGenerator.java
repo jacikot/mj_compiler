@@ -4,12 +4,19 @@ import compiler.pp1.ast.*;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
+import rs.etf.pp1.symboltable.concepts.Struct;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CodeGenerator extends VisitorAdaptor {
 
     private int mainPC;
+    private int varCnt;
+
+    public CodeGenerator(int cnt){
+        varCnt=cnt;
+    }
 
     public int getMainPC() {
         return mainPC;
@@ -38,20 +45,56 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.load(dsgn.getFactorDesignator().getDesignator().obj);
     }
 
+
+
+
+
     @Override
     public void visit(FactorDsgnCallEmpty dsgn) {
-        int offset=dsgn.getFactorDesignator().getDesignator().obj.getAdr()-Code.pc;
-        Code.put(Code.call);
-        Code.put2(offset);
+        Designator d=dsgn.getFactorDesignator().getDesignator();
+        if(d instanceof DesignatorAccessField){
+            //base adresa je na steku, argumenata nema
+            Code.put(Code.getfield);
+            Code.put2(0);
+            Code.put(Code.invokevirtual);
+            String name=((DesignatorAccessField)d).getField();
+            for(int i=0;i<name.length();i++){
+                Code.put4(name.charAt(i));
+            }
+            Code.put4(-1);
+        }
+        else{
+            int offset=dsgn.getFactorDesignator().getDesignator().obj.getAdr()-Code.pc;
+            Code.put(Code.call);
+            Code.put2(offset);
+        }
 
         //return je vec stavljeno na stack preko expr
     }
     @Override
     public void visit(FactorDsgnCall dsgn) {
         //svi act params su vec na steku
-        int offset=dsgn.getFactorDesignator().getDesignator().obj.getAdr()-Code.pc;
-        Code.put(Code.call);
-        Code.put2(offset);
+        Designator d=dsgn.getFactorDesignator().getDesignator();
+        if(d instanceof DesignatorAccessField){
+            d.traverseBottomUp(this);
+            //base adresa je na steku sad nakon argumenata
+            Code.put(Code.getfield);
+            Code.put2(0);
+            Code.put(Code.invokevirtual);
+            String name=((DesignatorAccessField)d).getField();
+            for(int i=0;i<name.length();i++){
+                Code.put4(name.charAt(i));
+            }
+            Code.put4(-1);
+            //ocisti staru base adresu
+
+        }
+        else{
+            int offset=dsgn.getFactorDesignator().getDesignator().obj.getAdr()-Code.pc;
+            Code.put(Code.call);
+            Code.put2(offset);
+        }
+
 
         //return je vec stavljeno na stack preko expr
     }
@@ -59,9 +102,25 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(DsgnOpCallPars dsgn) {
         //svi act params su vec na steku
-        int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
-        Code.put(Code.call);
-        Code.put2(offset);
+        Designator d=dsgn.getCallName().getDesignator();
+        if(d instanceof DesignatorAccessField){
+            d.traverseBottomUp(this);
+            //base adresa je na steku sad nakon argumenata, ona prethodna je this
+            Code.put(Code.getfield);
+            Code.put2(0);
+            Code.put(Code.invokevirtual);
+            String name=((DesignatorAccessField)d).getField();
+            for(int i=0;i<name.length();i++){
+                Code.put4(name.charAt(i));
+            }
+            Code.put4(-1);
+        }
+        else {
+            int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
+            Code.put(Code.call);
+            Code.put2(offset);
+
+        }
 
         if(!dsgn.getCallName().getDesignator().obj.getType().equals(Tab.noType)){
             Code.put(Code.pop);
@@ -70,10 +129,23 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(DsgnOpCallEmpty dsgn) {
         //svi act params su vec na steku
-        int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
-        Code.put(Code.call);
-        Code.put2(offset);
-
+        Designator d=dsgn.getCallName().getDesignator();
+        if(d instanceof DesignatorAccessField){
+            //base adresa je na steku
+            Code.put(Code.getfield);
+            Code.put2(0);
+            Code.put(Code.invokevirtual);
+            String name=((DesignatorAccessField)d).getField();
+            for(int i=0;i<name.length();i++){
+                Code.put4(name.charAt(i));
+            }
+            Code.put4(-1);
+        }
+        else{
+            int offset=dsgn.getCallName().getDesignator().obj.getAdr()-Code.pc;
+            Code.put(Code.call);
+            Code.put2(offset);
+        }
         if(!dsgn.getCallName().getDesignator().obj.getType().equals(Tab.noType)){
             Code.put(Code.pop);
         }
@@ -233,6 +305,7 @@ public class CodeGenerator extends VisitorAdaptor {
         method.obj.setAdr(Code.pc);
         if(method.getMethodName().equals("main")){
             mainPC=Code.pc;
+            initVTP();
         }
 
         Counter.FormParamCounter fpc=new Counter.FormParamCounter();
@@ -241,9 +314,10 @@ public class CodeGenerator extends VisitorAdaptor {
         Counter.LocalVarCounter lvc=new Counter.LocalVarCounter();
         method.getParent().getParent().traverseTopDown(lvc);
 
+
         Code.put(Code.enter);
-        Code.put(fpc.getCnt());
-        Code.put(fpc.getCnt()+lvc.getCnt());
+        Code.put(fpc.getCnt()+((isInner)?1:0));
+        Code.put(fpc.getCnt()+lvc.getCnt()+((isInner)?1:0));
     }
 
     public void visit(MethodDeclPar methodDecl){
@@ -270,6 +344,20 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(FactorObject object){
         Code.put(Code.new_);
         Code.put2(object.obj.getType().getNumberOfFields()*4);
+        if(object.obj.getFpPos()==SemanticAnalyser.RECORD_TYPE) return; //nemaju vtp
+        Code.put(Code.dup); //dupliram adresu za potrebe uciatavanja vtp
+        if(vtAddresses.get(object.obj.getName())==null){
+            if(newAdvance.get(object.obj.getName())==null){
+                newAdvance.put(object.obj.getName(),new ArrayList<>());
+            }
+            newAdvance.get(object.obj.getName()).add(Code.pc+1);
+            Code.loadConst(6); //jer ne znamo kolika ce konstanta biti - duzi oblik consta
+        }
+        else{
+            Code.loadConst(vtAddresses.get(object.obj.getName()));
+        }
+        Code.put(Code.putfield);
+        Code.put2(0);
     }
 
     public void visit(BaseDsgn base){
@@ -510,7 +598,72 @@ public class CodeGenerator extends VisitorAdaptor {
         }
     }
 
+    private Map<String, Integer> vtAddresses=new HashMap<>();
+    private Map<String, List<Integer>> newAdvance=new HashMap<>();
 
+    @Override
+    public void visit(ClassName className) {
+        isInner=true;
+        Obj currentTypeDef=className.obj;
+        Struct base=currentTypeDef.getType().getElemType();
+        List<Obj> list=currentTypeDef.getType().getMembers().stream().filter(e->{
+            return e.getKind()==Obj.Meth && (e.getFpPos()&SemanticAnalyser.EXTENDS_TYPE)!=0;
+        }).collect(Collectors.toList());
+        for(Obj method:list){
+            Obj baseMeth=base.getMembers().stream().filter(e->{
+                return e.getName().equals(method.getName());
+            }).findFirst().orElse(null);
+            method.setAdr(baseMeth.getAdr());
+        }
+    }
 
+    private void fillStaticIput(int content){
+        Code.loadConst(content);
+        Code.put(Code.putstatic);
+        Code.put2(varCnt++);
+    }
 
+    private void addVtAddressToMap(Obj cls){
+        vtAddresses.put(cls.getName(),varCnt);
+        if(newAdvance.get(cls.getName())==null) return;
+        for(Integer adr:newAdvance.remove(cls.getName())){
+            Code.put2(adr,varCnt>>16);
+            Code.put2(adr+2,varCnt);
+        }
+    }
+
+    private Obj program=null;
+
+    private void initVTP(){
+        List<Obj> classes=program.getLocalSymbols().stream().filter(e->{
+            return e.getKind()==Obj.Type && e.getFpPos()==SemanticAnalyser.CLASS_TYPE;
+        }).collect(Collectors.toList());
+        for(Obj cls:classes){
+            addVtAddressToMap(cls);
+            List<Obj> list=cls.getType().getMembers().stream().filter(e->{
+                return e.getKind()==Obj.Meth;
+            }).collect(Collectors.toList());
+            for(Obj method:list){
+                String name=method.getName();
+                for(int i=0;i<name.length();i++){
+                    fillStaticIput(name.charAt(i));
+                }
+                fillStaticIput(-1);
+                fillStaticIput(method.getAdr());
+            }
+            fillStaticIput(-2);
+        }
+        Code.dataSize=varCnt;
+    }
+
+    @Override
+    public void visit(InitVTP init) {
+        program=((Program)init.getParent()).getProgramName().obj;
+    }
+
+    private boolean isInner=false;
+    @Override
+    public void visit(ClassDecl ClassDecl) {
+        isInner=false;
+    }
 }

@@ -125,10 +125,13 @@ nonterminal IfCond IfCond;
 nonterminal ElseCond ElseCond;
 nonterminal IfInit IfInit;
 nonterminal WhileCheck WhileCheck;
+nonterminal InitVTP InitVTP;
 
 precedence left ELSE;
 
-Program ::= (Program) PROG ProgramName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :};
+Program ::= (Program) PROG ProgramName:P1 DeclList:D2 InitVTP:I3 LBRACE MethodDeclList:M4 RBRACE {: RESULT=new Program(P1, D2, I3, M4); RESULT.setLine(P1left); :};
+
+InitVTP ::=(InitVTP) {: RESULT=new InitVTP(); :};
 
 ProgramName::= (ProgramName) IDENT:name {: RESULT=new ProgramName(name); RESULT.setLine(nameleft); :};
 

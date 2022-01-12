@@ -260,6 +260,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         name.obj.setFpPos(CLASS_TYPE);
         report_info("Pronadjen simbol: "+name.getName(),name);
         Tab.openScope();
+        Tab.insert(Obj.Fld,"__VTP",Tab.noType);
     }
 
     @Override
@@ -326,7 +327,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         currentTypeDefinition.getType().setElementType(currentType.obj.getType());
         Collection<Obj> members=currentType.obj.getType().getMembers();
         for(Obj member:members){
-            if(member.getKind()==Obj.Fld){
+            if(member.getKind()==Obj.Fld && !member.getName().equals("__VTP")){
                 Tab.insert(Obj.Fld,member.getName(),member.getType());
             }
             if(member.getKind()==Obj.Meth && (member.getFpPos()&METHOD_TYPE)==METHOD_TYPE){

@@ -1,265 +1,286 @@
-INFO  20:52:09,120 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
-INFO  20:52:09,193 - #2 program
-INFO  20:52:09,194 - #22 p
-INFO  20:52:09,194 - #13 class
-INFO  20:52:09,196 - #22 Base
-INFO  20:52:09,196 - #3 {
-INFO  20:52:09,197 - #22 int
-INFO  20:52:09,198 - #22 s
-INFO  20:52:09,198 - #10 [
-INFO  20:52:09,199 - #11 ]
-INFO  20:52:09,199 - #6 ;
-INFO  20:52:09,199 - #3 {
-INFO  20:52:09,199 - #18 void
-INFO  20:52:09,199 - #22 nevena
-INFO  20:52:09,200 - #15 (
-INFO  20:52:09,202 - #22 int
-INFO  20:52:09,202 - #22 k
-INFO  20:52:09,202 - #16 )
-INFO  20:52:09,202 - #3 {
-INFO  20:52:09,203 - #33 print
-INFO  20:52:09,204 - #15 (
-INFO  20:52:09,204 - #22 k
-INFO  20:52:09,204 - #16 )
-INFO  20:52:09,205 - #6 ;
-INFO  20:52:09,205 - #4 }
-INFO  20:52:09,205 - #22 int
-INFO  20:52:09,205 - #22 marinko
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,206 - #22 int
-INFO  20:52:09,206 - #22 k
-INFO  20:52:09,206 - #16 )
-INFO  20:52:09,206 - #3 {
-INFO  20:52:09,206 - #33 print
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,206 - #22 k
-INFO  20:52:09,206 - #16 )
-INFO  20:52:09,206 - #6 ;
-INFO  20:52:09,206 - #24 if
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,207 - #22 k
-INFO  20:52:09,207 - #34 ==
-INFO  20:52:09,207 - #20 0
-INFO  20:52:09,208 - #16 )
-INFO  20:52:09,209 - #31 return
-INFO  20:52:09,210 - #49 this
-INFO  20:52:09,210 - #17 .
-INFO  20:52:09,211 - #22 s
-INFO  20:52:09,211 - #10 [
-INFO  20:52:09,211 - #22 k
-INFO  20:52:09,211 - #11 ]
-INFO  20:52:09,211 - #6 ;
-INFO  20:52:09,212 - #25 else
-INFO  20:52:09,212 - #31 return
-INFO  20:52:09,213 - #20 0
-INFO  20:52:09,213 - #6 ;
-INFO  20:52:09,213 - #4 }
-INFO  20:52:09,213 - #4 }
-INFO  20:52:09,214 - #4 }
-INFO  20:52:09,215 - #13 class
-INFO  20:52:09,216 - #22 MAMA
-INFO  20:52:09,216 - #14 extends
-INFO  20:52:09,216 - #22 Base
-INFO  20:52:09,216 - #3 {
-INFO  20:52:09,216 - #22 char
-INFO  20:52:09,216 - #22 p
-INFO  20:52:09,216 - #6 ;
-INFO  20:52:09,217 - #22 int
-INFO  20:52:09,217 - #22 num
-INFO  20:52:09,217 - #6 ;
-INFO  20:52:09,217 - #3 {
-INFO  20:52:09,217 - #18 void
-INFO  20:52:09,217 - #22 nevena
-INFO  20:52:09,217 - #15 (
-INFO  20:52:09,217 - #22 int
-INFO  20:52:09,217 - #22 k
-INFO  20:52:09,217 - #16 )
-INFO  20:52:09,217 - #3 {
-INFO  20:52:09,217 - #33 print
-INFO  20:52:09,217 - #15 (
-INFO  20:52:09,217 - #20 2
-INFO  20:52:09,217 - #16 )
-INFO  20:52:09,217 - #6 ;
-INFO  20:52:09,217 - #22 k
-INFO  20:52:09,218 - #47 ++
-INFO  20:52:09,218 - #6 ;
-INFO  20:52:09,219 - #4 }
-INFO  20:52:09,219 - #18 void
-INFO  20:52:09,219 - #22 jana
-INFO  20:52:09,219 - #15 (
-INFO  20:52:09,219 - #22 char
-INFO  20:52:09,219 - #22 d
-INFO  20:52:09,219 - #16 )
-INFO  20:52:09,219 - #22 Base
-INFO  20:52:09,219 - #22 b
-INFO  20:52:09,219 - #6 ;
-INFO  20:52:09,219 - #3 {
-INFO  20:52:09,220 - #22 p
-INFO  20:52:09,220 - #9 =
-INFO  20:52:09,220 - #22 d
-INFO  20:52:09,221 - #6 ;
-INFO  20:52:09,221 - #22 b
-INFO  20:52:09,225 - #9 =
-INFO  20:52:09,226 - #19 new
-INFO  20:52:09,226 - #22 Base
-INFO  20:52:09,226 - #6 ;
-INFO  20:52:09,226 - #33 print
-INFO  20:52:09,226 - #15 (
-INFO  20:52:09,226 - #20 3
-INFO  20:52:09,226 - #16 )
-INFO  20:52:09,226 - #6 ;
-INFO  20:52:09,226 - #4 }
-INFO  20:52:09,226 - #4 }
-INFO  20:52:09,227 - #4 }
-INFO  20:52:09,227 - #12 record
-INFO  20:52:09,227 - #22 TATA
-INFO  20:52:09,227 - #3 {
-INFO  20:52:09,228 - #22 MAMA
-INFO  20:52:09,228 - #22 mama
-INFO  20:52:09,228 - #6 ;
-INFO  20:52:09,228 - #4 }
-INFO  20:52:09,228 - #22 TATA
-INFO  20:52:09,229 - #22 tata
-INFO  20:52:09,229 - #6 ;
-INFO  20:52:09,229 - #3 {
-INFO  20:52:09,230 - #22 int
-INFO  20:52:09,230 - #22 f
-INFO  20:52:09,230 - #15 (
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 j
-INFO  20:52:09,231 - #7 ,
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 k
-INFO  20:52:09,231 - #16 )
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 l
-INFO  20:52:09,231 - #6 ;
-INFO  20:52:09,231 - #3 {
-INFO  20:52:09,231 - #22 l
-INFO  20:52:09,231 - #9 =
-INFO  20:52:09,231 - #22 j
-INFO  20:52:09,232 - #45 +
-INFO  20:52:09,232 - #22 k
-INFO  20:52:09,233 - #6 ;
-INFO  20:52:09,233 - #31 return
-INFO  20:52:09,233 - #22 l
-INFO  20:52:09,233 - #42 *
-INFO  20:52:09,233 - #22 k
-INFO  20:52:09,234 - #6 ;
-INFO  20:52:09,235 - #4 }
-INFO  20:52:09,235 - #18 void
-INFO  20:52:09,235 - #22 v
-INFO  20:52:09,235 - #15 (
-INFO  20:52:09,235 - #22 TATA
-INFO  20:52:09,235 - #22 a
-INFO  20:52:09,235 - #16 )
-INFO  20:52:09,235 - #3 {
-INFO  20:52:09,235 - #33 print
-INFO  20:52:09,235 - #15 (
-INFO  20:52:09,235 - #22 a
-INFO  20:52:09,235 - #17 .
-INFO  20:52:09,235 - #22 mama
-INFO  20:52:09,235 - #17 .
-INFO  20:52:09,235 - #22 s
-INFO  20:52:09,235 - #10 [
-INFO  20:52:09,235 - #20 0
-INFO  20:52:09,235 - #11 ]
-INFO  20:52:09,235 - #16 )
-INFO  20:52:09,235 - #6 ;
-INFO  20:52:09,236 - #4 }
-INFO  20:52:09,236 - #18 void
-INFO  20:52:09,236 - #22 main
-INFO  20:52:09,236 - #15 (
-INFO  20:52:09,236 - #16 )
-INFO  20:52:09,236 - #22 Base
-INFO  20:52:09,236 - #22 b
-INFO  20:52:09,236 - #6 ;
-INFO  20:52:09,236 - #3 {
-INFO  20:52:09,236 - #22 tata
-INFO  20:52:09,236 - #9 =
-INFO  20:52:09,236 - #19 new
-INFO  20:52:09,236 - #22 TATA
-INFO  20:52:09,236 - #6 ;
-INFO  20:52:09,236 - #22 tata
-INFO  20:52:09,236 - #17 .
-INFO  20:52:09,236 - #22 mama
-INFO  20:52:09,236 - #9 =
-INFO  20:52:09,237 - #19 new
-INFO  20:52:09,237 - #22 MAMA
-INFO  20:52:09,237 - #6 ;
-INFO  20:52:09,237 - #22 tata
-INFO  20:52:09,237 - #17 .
-INFO  20:52:09,237 - #22 mama
-INFO  20:52:09,237 - #17 .
-INFO  20:52:09,237 - #22 s
-INFO  20:52:09,237 - #9 =
-INFO  20:52:09,237 - #19 new
-INFO  20:52:09,237 - #22 int
-INFO  20:52:09,237 - #10 [
-INFO  20:52:09,237 - #20 2
-INFO  20:52:09,237 - #11 ]
-INFO  20:52:09,237 - #6 ;
-INFO  20:52:09,237 - #22 tata
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 mama
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 s
-INFO  20:52:09,238 - #10 [
-INFO  20:52:09,238 - #20 0
-INFO  20:52:09,238 - #11 ]
-INFO  20:52:09,238 - #9 =
-INFO  20:52:09,238 - #20 2
-INFO  20:52:09,238 - #6 ;
-INFO  20:52:09,238 - #22 b
-INFO  20:52:09,238 - #9 =
-INFO  20:52:09,238 - #22 tata
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 mama
-INFO  20:52:09,238 - #6 ;
-INFO  20:52:09,238 - #33 print
-INFO  20:52:09,238 - #15 (
-INFO  20:52:09,238 - #22 b
-INFO  20:52:09,239 - #17 .
-INFO  20:52:09,239 - #22 s
-INFO  20:52:09,239 - #10 [
-INFO  20:52:09,239 - #20 0
-INFO  20:52:09,239 - #11 ]
-INFO  20:52:09,239 - #16 )
-INFO  20:52:09,239 - #6 ;
-INFO  20:52:09,239 - #22 b
-INFO  20:52:09,239 - #9 =
-INFO  20:52:09,239 - #19 new
-INFO  20:52:09,239 - #22 Base
-INFO  20:52:09,239 - #6 ;
-INFO  20:52:09,240 - #22 b
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 s
-INFO  20:52:09,240 - #9 =
-INFO  20:52:09,240 - #19 new
-INFO  20:52:09,240 - #22 int
-INFO  20:52:09,240 - #10 [
-INFO  20:52:09,240 - #20 2
-INFO  20:52:09,240 - #11 ]
-INFO  20:52:09,240 - #6 ;
-INFO  20:52:09,240 - #22 tata
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 mama
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 marinko
-INFO  20:52:09,240 - #15 (
-INFO  20:52:09,241 - #20 0
-INFO  20:52:09,241 - #16 )
-INFO  20:52:09,242 - #6 ;
-INFO  20:52:09,242 - #22 b
-INFO  20:52:09,242 - #17 .
-INFO  20:52:09,242 - #22 marinko
-INFO  20:52:09,242 - #15 (
-INFO  20:52:09,242 - #20 0
-INFO  20:52:09,242 - #16 )
-INFO  20:52:09,242 - #6 ;
-INFO  20:52:09,242 - #4 }
-INFO  20:52:09,243 - #4 }
-INFO  20:52:09,258 - Program(
+INFO  20:23:45,569 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  20:23:45,651 - #2 program
+INFO  20:23:45,651 - #22 p
+INFO  20:23:45,651 - #13 class
+INFO  20:23:45,654 - #22 Base
+INFO  20:23:45,654 - #3 {
+INFO  20:23:45,655 - #22 int
+INFO  20:23:45,656 - #22 s
+INFO  20:23:45,657 - #10 [
+INFO  20:23:45,657 - #11 ]
+INFO  20:23:45,657 - #6 ;
+INFO  20:23:45,657 - #3 {
+INFO  20:23:45,657 - #18 void
+INFO  20:23:45,657 - #22 nevena
+INFO  20:23:45,659 - #15 (
+INFO  20:23:45,661 - #22 int
+INFO  20:23:45,661 - #22 k
+INFO  20:23:45,661 - #16 )
+INFO  20:23:45,661 - #3 {
+INFO  20:23:45,662 - #33 print
+INFO  20:23:45,663 - #15 (
+INFO  20:23:45,663 - #20 0
+INFO  20:23:45,663 - #16 )
+INFO  20:23:45,664 - #6 ;
+INFO  20:23:45,664 - #4 }
+INFO  20:23:45,664 - #22 int
+INFO  20:23:45,665 - #22 marinko
+INFO  20:23:45,665 - #15 (
+INFO  20:23:45,665 - #22 int
+INFO  20:23:45,665 - #22 k
+INFO  20:23:45,665 - #16 )
+INFO  20:23:45,665 - #3 {
+INFO  20:23:45,665 - #33 print
+INFO  20:23:45,665 - #15 (
+INFO  20:23:45,665 - #20 1
+INFO  20:23:45,665 - #16 )
+INFO  20:23:45,665 - #6 ;
+INFO  20:23:45,665 - #24 if
+INFO  20:23:45,666 - #15 (
+INFO  20:23:45,666 - #22 k
+INFO  20:23:45,666 - #34 ==
+INFO  20:23:45,667 - #20 0
+INFO  20:23:45,669 - #16 )
+INFO  20:23:45,669 - #31 return
+INFO  20:23:45,670 - #22 s
+INFO  20:23:45,670 - #10 [
+INFO  20:23:45,671 - #22 k
+INFO  20:23:45,671 - #11 ]
+INFO  20:23:45,671 - #6 ;
+INFO  20:23:45,671 - #25 else
+INFO  20:23:45,671 - #31 return
+INFO  20:23:45,672 - #20 0
+INFO  20:23:45,672 - #6 ;
+INFO  20:23:45,673 - #4 }
+INFO  20:23:45,673 - #4 }
+INFO  20:23:45,674 - #4 }
+INFO  20:23:45,674 - #13 class
+INFO  20:23:45,675 - #22 MAMA
+INFO  20:23:45,675 - #14 extends
+INFO  20:23:45,675 - #22 Base
+INFO  20:23:45,676 - #3 {
+INFO  20:23:45,676 - #22 char
+INFO  20:23:45,676 - #22 p
+INFO  20:23:45,676 - #6 ;
+INFO  20:23:45,676 - #22 int
+INFO  20:23:45,676 - #22 num
+INFO  20:23:45,676 - #6 ;
+INFO  20:23:45,676 - #3 {
+INFO  20:23:45,676 - #18 void
+INFO  20:23:45,676 - #22 nevena
+INFO  20:23:45,676 - #15 (
+INFO  20:23:45,676 - #22 int
+INFO  20:23:45,676 - #22 k
+INFO  20:23:45,677 - #16 )
+INFO  20:23:45,677 - #3 {
+INFO  20:23:45,677 - #33 print
+INFO  20:23:45,677 - #15 (
+INFO  20:23:45,677 - #20 2
+INFO  20:23:45,677 - #16 )
+INFO  20:23:45,677 - #6 ;
+INFO  20:23:45,677 - #22 k
+INFO  20:23:45,677 - #47 ++
+INFO  20:23:45,678 - #6 ;
+INFO  20:23:45,678 - #4 }
+INFO  20:23:45,678 - #18 void
+INFO  20:23:45,678 - #22 jana
+INFO  20:23:45,678 - #15 (
+INFO  20:23:45,679 - #22 char
+INFO  20:23:45,679 - #22 d
+INFO  20:23:45,679 - #16 )
+INFO  20:23:45,679 - #22 Base
+INFO  20:23:45,679 - #22 b
+INFO  20:23:45,679 - #6 ;
+INFO  20:23:45,679 - #3 {
+INFO  20:23:45,680 - #22 p
+INFO  20:23:45,680 - #9 =
+INFO  20:23:45,680 - #22 d
+INFO  20:23:45,681 - #6 ;
+INFO  20:23:45,681 - #22 b
+INFO  20:23:45,681 - #9 =
+INFO  20:23:45,681 - #19 new
+INFO  20:23:45,686 - #22 Base
+INFO  20:23:45,686 - #6 ;
+INFO  20:23:45,686 - #33 print
+INFO  20:23:45,686 - #15 (
+INFO  20:23:45,686 - #20 3
+INFO  20:23:45,686 - #16 )
+INFO  20:23:45,686 - #6 ;
+INFO  20:23:45,686 - #4 }
+INFO  20:23:45,686 - #4 }
+INFO  20:23:45,686 - #4 }
+INFO  20:23:45,686 - #12 record
+INFO  20:23:45,686 - #22 TATA
+INFO  20:23:45,686 - #3 {
+INFO  20:23:45,687 - #22 MAMA
+INFO  20:23:45,687 - #22 mama
+INFO  20:23:45,687 - #6 ;
+INFO  20:23:45,687 - #4 }
+INFO  20:23:45,687 - #22 TATA
+INFO  20:23:45,688 - #22 tata
+INFO  20:23:45,688 - #6 ;
+INFO  20:23:45,688 - #3 {
+INFO  20:23:45,689 - #22 int
+INFO  20:23:45,689 - #22 f
+INFO  20:23:45,689 - #15 (
+INFO  20:23:45,689 - #22 int
+INFO  20:23:45,689 - #22 j
+INFO  20:23:45,689 - #7 ,
+INFO  20:23:45,690 - #22 int
+INFO  20:23:45,690 - #22 k
+INFO  20:23:45,690 - #16 )
+INFO  20:23:45,690 - #22 int
+INFO  20:23:45,690 - #22 l
+INFO  20:23:45,690 - #6 ;
+INFO  20:23:45,690 - #3 {
+INFO  20:23:45,690 - #22 l
+INFO  20:23:45,690 - #9 =
+INFO  20:23:45,690 - #22 j
+INFO  20:23:45,690 - #45 +
+INFO  20:23:45,690 - #22 k
+INFO  20:23:45,691 - #6 ;
+INFO  20:23:45,692 - #31 return
+INFO  20:23:45,692 - #22 l
+INFO  20:23:45,692 - #42 *
+INFO  20:23:45,692 - #22 k
+INFO  20:23:45,693 - #6 ;
+INFO  20:23:45,693 - #4 }
+INFO  20:23:45,693 - #18 void
+INFO  20:23:45,693 - #22 v
+INFO  20:23:45,693 - #15 (
+INFO  20:23:45,693 - #22 TATA
+INFO  20:23:45,693 - #22 a
+INFO  20:23:45,693 - #16 )
+INFO  20:23:45,693 - #3 {
+INFO  20:23:45,693 - #33 print
+INFO  20:23:45,693 - #15 (
+INFO  20:23:45,693 - #22 a
+INFO  20:23:45,693 - #17 .
+INFO  20:23:45,693 - #22 mama
+INFO  20:23:45,694 - #17 .
+INFO  20:23:45,694 - #22 s
+INFO  20:23:45,694 - #10 [
+INFO  20:23:45,694 - #20 0
+INFO  20:23:45,694 - #11 ]
+INFO  20:23:45,694 - #16 )
+INFO  20:23:45,694 - #6 ;
+INFO  20:23:45,694 - #4 }
+INFO  20:23:45,694 - #18 void
+INFO  20:23:45,694 - #22 main
+INFO  20:23:45,694 - #15 (
+INFO  20:23:45,694 - #16 )
+INFO  20:23:45,694 - #22 Base
+INFO  20:23:45,694 - #22 b
+INFO  20:23:45,694 - #6 ;
+INFO  20:23:45,694 - #3 {
+INFO  20:23:45,694 - #22 tata
+INFO  20:23:45,694 - #9 =
+INFO  20:23:45,694 - #19 new
+INFO  20:23:45,694 - #22 TATA
+INFO  20:23:45,694 - #6 ;
+INFO  20:23:45,694 - #22 tata
+INFO  20:23:45,695 - #17 .
+INFO  20:23:45,695 - #22 mama
+INFO  20:23:45,695 - #9 =
+INFO  20:23:45,695 - #19 new
+INFO  20:23:45,695 - #22 MAMA
+INFO  20:23:45,695 - #6 ;
+INFO  20:23:45,695 - #22 tata
+INFO  20:23:45,695 - #17 .
+INFO  20:23:45,695 - #22 mama
+INFO  20:23:45,695 - #17 .
+INFO  20:23:45,695 - #22 s
+INFO  20:23:45,695 - #9 =
+INFO  20:23:45,695 - #19 new
+INFO  20:23:45,695 - #22 int
+INFO  20:23:45,695 - #10 [
+INFO  20:23:45,695 - #20 2
+INFO  20:23:45,695 - #11 ]
+INFO  20:23:45,695 - #6 ;
+INFO  20:23:45,695 - #22 tata
+INFO  20:23:45,695 - #17 .
+INFO  20:23:45,695 - #22 mama
+INFO  20:23:45,695 - #17 .
+INFO  20:23:45,695 - #22 s
+INFO  20:23:45,696 - #10 [
+INFO  20:23:45,696 - #20 0
+INFO  20:23:45,696 - #11 ]
+INFO  20:23:45,696 - #9 =
+INFO  20:23:45,696 - #20 2
+INFO  20:23:45,696 - #6 ;
+INFO  20:23:45,696 - #22 b
+INFO  20:23:45,696 - #9 =
+INFO  20:23:45,696 - #22 tata
+INFO  20:23:45,696 - #17 .
+INFO  20:23:45,696 - #22 mama
+INFO  20:23:45,696 - #6 ;
+INFO  20:23:45,696 - #33 print
+INFO  20:23:45,696 - #15 (
+INFO  20:23:45,696 - #22 b
+INFO  20:23:45,696 - #17 .
+INFO  20:23:45,696 - #22 s
+INFO  20:23:45,696 - #10 [
+INFO  20:23:45,696 - #20 0
+INFO  20:23:45,696 - #11 ]
+INFO  20:23:45,696 - #16 )
+INFO  20:23:45,696 - #6 ;
+INFO  20:23:45,696 - #22 tata
+INFO  20:23:45,697 - #17 .
+INFO  20:23:45,697 - #22 mama
+INFO  20:23:45,697 - #17 .
+INFO  20:23:45,697 - #22 nevena
+INFO  20:23:45,697 - #15 (
+INFO  20:23:45,697 - #20 0
+INFO  20:23:45,697 - #16 )
+INFO  20:23:45,698 - #6 ;
+INFO  20:23:45,698 - #22 b
+INFO  20:23:45,698 - #17 .
+INFO  20:23:45,698 - #22 nevena
+INFO  20:23:45,698 - #15 (
+INFO  20:23:45,698 - #20 0
+INFO  20:23:45,698 - #16 )
+INFO  20:23:45,698 - #6 ;
+INFO  20:23:45,698 - #22 b
+INFO  20:23:45,698 - #9 =
+INFO  20:23:45,698 - #19 new
+INFO  20:23:45,698 - #22 Base
+INFO  20:23:45,698 - #6 ;
+INFO  20:23:45,698 - #22 b
+INFO  20:23:45,698 - #17 .
+INFO  20:23:45,698 - #22 s
+INFO  20:23:45,698 - #9 =
+INFO  20:23:45,698 - #19 new
+INFO  20:23:45,699 - #22 int
+INFO  20:23:45,699 - #10 [
+INFO  20:23:45,699 - #20 2
+INFO  20:23:45,699 - #11 ]
+INFO  20:23:45,699 - #6 ;
+INFO  20:23:45,699 - #22 b
+INFO  20:23:45,699 - #17 .
+INFO  20:23:45,699 - #22 nevena
+INFO  20:23:45,699 - #15 (
+INFO  20:23:45,699 - #20 0
+INFO  20:23:45,699 - #16 )
+INFO  20:23:45,699 - #6 ;
+INFO  20:23:45,700 - #22 tata
+INFO  20:23:45,700 - #17 .
+INFO  20:23:45,700 - #22 mama
+INFO  20:23:45,700 - #17 .
+INFO  20:23:45,700 - #22 marinko
+INFO  20:23:45,700 - #15 (
+INFO  20:23:45,700 - #20 0
+INFO  20:23:45,700 - #16 )
+INFO  20:23:45,700 - #6 ;
+INFO  20:23:45,700 - #22 b
+INFO  20:23:45,700 - #17 .
+INFO  20:23:45,700 - #22 marinko
+INFO  20:23:45,700 - #15 (
+INFO  20:23:45,700 - #20 0
+INFO  20:23:45,700 - #16 )
+INFO  20:23:45,700 - #6 ;
+INFO  20:23:45,700 - #4 }
+INFO  20:23:45,700 - #4 }
+INFO  20:23:45,714 - Program(
   ProgramName(
    p
   ) [ProgramName]
@@ -312,13 +333,9 @@ INFO  20:52:09,258 - Program(
                           StmtPrint(
                             ExprSingle(
                               TermSingle(
-                                FactorDsgn(
-                                  FactorDesignator(
-                                    DesignatorFirst(
-                                     k
-                                    ) [DesignatorFirst]
-                                  ) [FactorDesignator]
-                                ) [FactorDsgn]
+                                FactorNumber(
+                                 0
+                                ) [FactorNumber]
                               ) [TermSingle]
                             ) [ExprSingle]
                           ) [StmtPrint]
@@ -353,13 +370,9 @@ INFO  20:52:09,258 - Program(
                               StmtPrint(
                                 ExprSingle(
                                   TermSingle(
-                                    FactorDsgn(
-                                      FactorDesignator(
-                                        DesignatorFirst(
-                                         k
-                                        ) [DesignatorFirst]
-                                      ) [FactorDesignator]
-                                    ) [FactorDsgn]
+                                    FactorNumber(
+                                     1
+                                    ) [FactorNumber]
                                   ) [TermSingle]
                                 ) [ExprSingle]
                               ) [StmtPrint]
@@ -405,13 +418,9 @@ INFO  20:52:09,258 - Program(
                                         FactorDesignator(
                                           DesignatorAccessArray(
                                             BaseDsgn(
-                                              DesignatorAccessField(
-                                                BaseDsgn(
-                                                  DesignatorThis(
-                                                  ) [DesignatorThis]
-                                                ) [BaseDsgn]
+                                              DesignatorFirst(
                                                s
-                                              ) [DesignatorAccessField]
+                                              ) [DesignatorFirst]
                                             ) [BaseDsgn]
                                             ExprSingle(
                                               TermSingle(
@@ -873,25 +882,138 @@ INFO  20:52:09,258 - Program(
                         StatementsList(
                           StatementsList(
                             StatementsList(
-                              StatementsEmpty(
-                              ) [StatementsEmpty]
+                              StatementsList(
+                                StatementsList(
+                                  StatementsList(
+                                    StatementsEmpty(
+                                    ) [StatementsEmpty]
+                                    StatementSingle(
+                                      StmtDesign(
+                                        DsgnOpAssign(
+                                          CallName(
+                                            DesignatorFirst(
+                                             tata
+                                            ) [DesignatorFirst]
+                                          ) [CallName]
+                                          Assignop(
+                                          ) [Assignop]
+                                          ExprSingle(
+                                            TermSingle(
+                                              FactorObject(
+                                                Type(
+                                                 TATA
+                                                ) [Type]
+                                              ) [FactorObject]
+                                            ) [TermSingle]
+                                          ) [ExprSingle]
+                                        ) [DsgnOpAssign]
+                                      ) [StmtDesign]
+                                    ) [StatementSingle]
+                                  ) [StatementsList]
+                                  StatementSingle(
+                                    StmtDesign(
+                                      DsgnOpAssign(
+                                        CallName(
+                                          DesignatorAccessField(
+                                            BaseDsgn(
+                                              DesignatorFirst(
+                                               tata
+                                              ) [DesignatorFirst]
+                                            ) [BaseDsgn]
+                                           mama
+                                          ) [DesignatorAccessField]
+                                        ) [CallName]
+                                        Assignop(
+                                        ) [Assignop]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorObject(
+                                              Type(
+                                               MAMA
+                                              ) [Type]
+                                            ) [FactorObject]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [DsgnOpAssign]
+                                    ) [StmtDesign]
+                                  ) [StatementSingle]
+                                ) [StatementsList]
+                                StatementSingle(
+                                  StmtDesign(
+                                    DsgnOpAssign(
+                                      CallName(
+                                        DesignatorAccessField(
+                                          BaseDsgn(
+                                            DesignatorAccessField(
+                                              BaseDsgn(
+                                                DesignatorFirst(
+                                                 tata
+                                                ) [DesignatorFirst]
+                                              ) [BaseDsgn]
+                                             mama
+                                            ) [DesignatorAccessField]
+                                          ) [BaseDsgn]
+                                         s
+                                        ) [DesignatorAccessField]
+                                      ) [CallName]
+                                      Assignop(
+                                      ) [Assignop]
+                                      ExprSingle(
+                                        TermSingle(
+                                          FactorArray(
+                                            Type(
+                                             int
+                                            ) [Type]
+                                            ExprSingle(
+                                              TermSingle(
+                                                FactorNumber(
+                                                 2
+                                                ) [FactorNumber]
+                                              ) [TermSingle]
+                                            ) [ExprSingle]
+                                          ) [FactorArray]
+                                        ) [TermSingle]
+                                      ) [ExprSingle]
+                                    ) [DsgnOpAssign]
+                                  ) [StmtDesign]
+                                ) [StatementSingle]
+                              ) [StatementsList]
                               StatementSingle(
                                 StmtDesign(
                                   DsgnOpAssign(
                                     CallName(
-                                      DesignatorFirst(
-                                       tata
-                                      ) [DesignatorFirst]
+                                      DesignatorAccessArray(
+                                        BaseDsgn(
+                                          DesignatorAccessField(
+                                            BaseDsgn(
+                                              DesignatorAccessField(
+                                                BaseDsgn(
+                                                  DesignatorFirst(
+                                                   tata
+                                                  ) [DesignatorFirst]
+                                                ) [BaseDsgn]
+                                               mama
+                                              ) [DesignatorAccessField]
+                                            ) [BaseDsgn]
+                                           s
+                                          ) [DesignatorAccessField]
+                                        ) [BaseDsgn]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorNumber(
+                                             0
+                                            ) [FactorNumber]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [DesignatorAccessArray]
                                     ) [CallName]
                                     Assignop(
                                     ) [Assignop]
                                     ExprSingle(
                                       TermSingle(
-                                        FactorObject(
-                                          Type(
-                                           TATA
-                                          ) [Type]
-                                        ) [FactorObject]
+                                        FactorNumber(
+                                         2
+                                        ) [FactorNumber]
                                       ) [TermSingle]
                                     ) [ExprSingle]
                                   ) [DsgnOpAssign]
@@ -902,24 +1024,26 @@ INFO  20:52:09,258 - Program(
                               StmtDesign(
                                 DsgnOpAssign(
                                   CallName(
-                                    DesignatorAccessField(
-                                      BaseDsgn(
-                                        DesignatorFirst(
-                                         tata
-                                        ) [DesignatorFirst]
-                                      ) [BaseDsgn]
-                                     mama
-                                    ) [DesignatorAccessField]
+                                    DesignatorFirst(
+                                     b
+                                    ) [DesignatorFirst]
                                   ) [CallName]
                                   Assignop(
                                   ) [Assignop]
                                   ExprSingle(
                                     TermSingle(
-                                      FactorObject(
-                                        Type(
-                                         MAMA
-                                        ) [Type]
-                                      ) [FactorObject]
+                                      FactorDsgn(
+                                        FactorDesignator(
+                                          DesignatorAccessField(
+                                            BaseDsgn(
+                                              DesignatorFirst(
+                                               tata
+                                              ) [DesignatorFirst]
+                                            ) [BaseDsgn]
+                                           mama
+                                          ) [DesignatorAccessField]
+                                        ) [FactorDesignator]
+                                      ) [FactorDsgn]
                                     ) [TermSingle]
                                   ) [ExprSingle]
                                 ) [DsgnOpAssign]
@@ -927,101 +1051,43 @@ INFO  20:52:09,258 - Program(
                             ) [StatementSingle]
                           ) [StatementsList]
                           StatementSingle(
-                            StmtDesign(
-                              DsgnOpAssign(
-                                CallName(
-                                  DesignatorAccessField(
-                                    BaseDsgn(
-                                      DesignatorAccessField(
+                            StmtPrint(
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    FactorDesignator(
+                                      DesignatorAccessArray(
                                         BaseDsgn(
-                                          DesignatorFirst(
-                                           tata
-                                          ) [DesignatorFirst]
+                                          DesignatorAccessField(
+                                            BaseDsgn(
+                                              DesignatorFirst(
+                                               b
+                                              ) [DesignatorFirst]
+                                            ) [BaseDsgn]
+                                           s
+                                          ) [DesignatorAccessField]
                                         ) [BaseDsgn]
-                                       mama
-                                      ) [DesignatorAccessField]
-                                    ) [BaseDsgn]
-                                   s
-                                  ) [DesignatorAccessField]
-                                ) [CallName]
-                                Assignop(
-                                ) [Assignop]
-                                ExprSingle(
-                                  TermSingle(
-                                    FactorArray(
-                                      Type(
-                                       int
-                                      ) [Type]
-                                      ExprSingle(
-                                        TermSingle(
-                                          FactorNumber(
-                                           2
-                                          ) [FactorNumber]
-                                        ) [TermSingle]
-                                      ) [ExprSingle]
-                                    ) [FactorArray]
-                                  ) [TermSingle]
-                                ) [ExprSingle]
-                              ) [DsgnOpAssign]
-                            ) [StmtDesign]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorNumber(
+                                             0
+                                            ) [FactorNumber]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [DesignatorAccessArray]
+                                    ) [FactorDesignator]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [StmtPrint]
                           ) [StatementSingle]
                         ) [StatementsList]
                         StatementSingle(
                           StmtDesign(
-                            DsgnOpAssign(
+                            DsgnOpCallPars(
                               CallName(
-                                DesignatorAccessArray(
+                                DesignatorAccessField(
                                   BaseDsgn(
-                                    DesignatorAccessField(
-                                      BaseDsgn(
-                                        DesignatorAccessField(
-                                          BaseDsgn(
-                                            DesignatorFirst(
-                                             tata
-                                            ) [DesignatorFirst]
-                                          ) [BaseDsgn]
-                                         mama
-                                        ) [DesignatorAccessField]
-                                      ) [BaseDsgn]
-                                     s
-                                    ) [DesignatorAccessField]
-                                  ) [BaseDsgn]
-                                  ExprSingle(
-                                    TermSingle(
-                                      FactorNumber(
-                                       0
-                                      ) [FactorNumber]
-                                    ) [TermSingle]
-                                  ) [ExprSingle]
-                                ) [DesignatorAccessArray]
-                              ) [CallName]
-                              Assignop(
-                              ) [Assignop]
-                              ExprSingle(
-                                TermSingle(
-                                  FactorNumber(
-                                   2
-                                  ) [FactorNumber]
-                                ) [TermSingle]
-                              ) [ExprSingle]
-                            ) [DsgnOpAssign]
-                          ) [StmtDesign]
-                        ) [StatementSingle]
-                      ) [StatementsList]
-                      StatementSingle(
-                        StmtDesign(
-                          DsgnOpAssign(
-                            CallName(
-                              DesignatorFirst(
-                               b
-                              ) [DesignatorFirst]
-                            ) [CallName]
-                            Assignop(
-                            ) [Assignop]
-                            ExprSingle(
-                              TermSingle(
-                                FactorDsgn(
-                                  FactorDesignator(
                                     DesignatorAccessField(
                                       BaseDsgn(
                                         DesignatorFirst(
@@ -1030,63 +1096,105 @@ INFO  20:52:09,258 - Program(
                                       ) [BaseDsgn]
                                      mama
                                     ) [DesignatorAccessField]
-                                  ) [FactorDesignator]
-                                ) [FactorDsgn]
-                              ) [TermSingle]
-                            ) [ExprSingle]
-                          ) [DsgnOpAssign]
+                                  ) [BaseDsgn]
+                                 nevena
+                                ) [DesignatorAccessField]
+                              ) [CallName]
+                              CopyDsgn(
+                              ) [CopyDsgn]
+                              ActParsSingle(
+                                ExprSingle(
+                                  TermSingle(
+                                    FactorNumber(
+                                     0
+                                    ) [FactorNumber]
+                                  ) [TermSingle]
+                                ) [ExprSingle]
+                              ) [ActParsSingle]
+                            ) [DsgnOpCallPars]
+                          ) [StmtDesign]
+                        ) [StatementSingle]
+                      ) [StatementsList]
+                      StatementSingle(
+                        StmtDesign(
+                          DsgnOpCallPars(
+                            CallName(
+                              DesignatorAccessField(
+                                BaseDsgn(
+                                  DesignatorFirst(
+                                   b
+                                  ) [DesignatorFirst]
+                                ) [BaseDsgn]
+                               nevena
+                              ) [DesignatorAccessField]
+                            ) [CallName]
+                            CopyDsgn(
+                            ) [CopyDsgn]
+                            ActParsSingle(
+                              ExprSingle(
+                                TermSingle(
+                                  FactorNumber(
+                                   0
+                                  ) [FactorNumber]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [ActParsSingle]
+                          ) [DsgnOpCallPars]
                         ) [StmtDesign]
                       ) [StatementSingle]
                     ) [StatementsList]
                     StatementSingle(
-                      StmtPrint(
-                        ExprSingle(
-                          TermSingle(
-                            FactorDsgn(
-                              FactorDesignator(
-                                DesignatorAccessArray(
-                                  BaseDsgn(
-                                    DesignatorAccessField(
-                                      BaseDsgn(
-                                        DesignatorFirst(
-                                         b
-                                        ) [DesignatorFirst]
-                                      ) [BaseDsgn]
-                                     s
-                                    ) [DesignatorAccessField]
-                                  ) [BaseDsgn]
-                                  ExprSingle(
-                                    TermSingle(
-                                      FactorNumber(
-                                       0
-                                      ) [FactorNumber]
-                                    ) [TermSingle]
-                                  ) [ExprSingle]
-                                ) [DesignatorAccessArray]
-                              ) [FactorDesignator]
-                            ) [FactorDsgn]
-                          ) [TermSingle]
-                        ) [ExprSingle]
-                      ) [StmtPrint]
+                      StmtDesign(
+                        DsgnOpAssign(
+                          CallName(
+                            DesignatorFirst(
+                             b
+                            ) [DesignatorFirst]
+                          ) [CallName]
+                          Assignop(
+                          ) [Assignop]
+                          ExprSingle(
+                            TermSingle(
+                              FactorObject(
+                                Type(
+                                 Base
+                                ) [Type]
+                              ) [FactorObject]
+                            ) [TermSingle]
+                          ) [ExprSingle]
+                        ) [DsgnOpAssign]
+                      ) [StmtDesign]
                     ) [StatementSingle]
                   ) [StatementsList]
                   StatementSingle(
                     StmtDesign(
                       DsgnOpAssign(
                         CallName(
-                          DesignatorFirst(
-                           b
-                          ) [DesignatorFirst]
+                          DesignatorAccessField(
+                            BaseDsgn(
+                              DesignatorFirst(
+                               b
+                              ) [DesignatorFirst]
+                            ) [BaseDsgn]
+                           s
+                          ) [DesignatorAccessField]
                         ) [CallName]
                         Assignop(
                         ) [Assignop]
                         ExprSingle(
                           TermSingle(
-                            FactorObject(
+                            FactorArray(
                               Type(
-                               Base
+                               int
                               ) [Type]
-                            ) [FactorObject]
+                              ExprSingle(
+                                TermSingle(
+                                  FactorNumber(
+                                   2
+                                  ) [FactorNumber]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [FactorArray]
                           ) [TermSingle]
                         ) [ExprSingle]
                       ) [DsgnOpAssign]
@@ -1095,7 +1203,7 @@ INFO  20:52:09,258 - Program(
                 ) [StatementsList]
                 StatementSingle(
                   StmtDesign(
-                    DsgnOpAssign(
+                    DsgnOpCallPars(
                       CallName(
                         DesignatorAccessField(
                           BaseDsgn(
@@ -1103,28 +1211,21 @@ INFO  20:52:09,258 - Program(
                              b
                             ) [DesignatorFirst]
                           ) [BaseDsgn]
-                         s
+                         nevena
                         ) [DesignatorAccessField]
                       ) [CallName]
-                      Assignop(
-                      ) [Assignop]
-                      ExprSingle(
-                        TermSingle(
-                          FactorArray(
-                            Type(
-                             int
-                            ) [Type]
-                            ExprSingle(
-                              TermSingle(
-                                FactorNumber(
-                                 2
-                                ) [FactorNumber]
-                              ) [TermSingle]
-                            ) [ExprSingle]
-                          ) [FactorArray]
-                        ) [TermSingle]
-                      ) [ExprSingle]
-                    ) [DsgnOpAssign]
+                      CopyDsgn(
+                      ) [CopyDsgn]
+                      ActParsSingle(
+                        ExprSingle(
+                          TermSingle(
+                            FactorNumber(
+                             0
+                            ) [FactorNumber]
+                          ) [TermSingle]
+                        ) [ExprSingle]
+                      ) [ActParsSingle]
+                    ) [DsgnOpCallPars]
                   ) [StmtDesign]
                 ) [StatementSingle]
               ) [StatementsList]

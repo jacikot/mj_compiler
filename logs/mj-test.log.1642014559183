@@ -1,265 +1,250 @@
-INFO  20:52:09,120 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
-INFO  20:52:09,193 - #2 program
-INFO  20:52:09,194 - #22 p
-INFO  20:52:09,194 - #13 class
-INFO  20:52:09,196 - #22 Base
-INFO  20:52:09,196 - #3 {
-INFO  20:52:09,197 - #22 int
-INFO  20:52:09,198 - #22 s
-INFO  20:52:09,198 - #10 [
-INFO  20:52:09,199 - #11 ]
-INFO  20:52:09,199 - #6 ;
-INFO  20:52:09,199 - #3 {
-INFO  20:52:09,199 - #18 void
-INFO  20:52:09,199 - #22 nevena
-INFO  20:52:09,200 - #15 (
-INFO  20:52:09,202 - #22 int
-INFO  20:52:09,202 - #22 k
-INFO  20:52:09,202 - #16 )
-INFO  20:52:09,202 - #3 {
-INFO  20:52:09,203 - #33 print
-INFO  20:52:09,204 - #15 (
-INFO  20:52:09,204 - #22 k
-INFO  20:52:09,204 - #16 )
-INFO  20:52:09,205 - #6 ;
-INFO  20:52:09,205 - #4 }
-INFO  20:52:09,205 - #22 int
-INFO  20:52:09,205 - #22 marinko
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,206 - #22 int
-INFO  20:52:09,206 - #22 k
-INFO  20:52:09,206 - #16 )
-INFO  20:52:09,206 - #3 {
-INFO  20:52:09,206 - #33 print
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,206 - #22 k
-INFO  20:52:09,206 - #16 )
-INFO  20:52:09,206 - #6 ;
-INFO  20:52:09,206 - #24 if
-INFO  20:52:09,206 - #15 (
-INFO  20:52:09,207 - #22 k
-INFO  20:52:09,207 - #34 ==
-INFO  20:52:09,207 - #20 0
-INFO  20:52:09,208 - #16 )
-INFO  20:52:09,209 - #31 return
-INFO  20:52:09,210 - #49 this
-INFO  20:52:09,210 - #17 .
-INFO  20:52:09,211 - #22 s
-INFO  20:52:09,211 - #10 [
-INFO  20:52:09,211 - #22 k
-INFO  20:52:09,211 - #11 ]
-INFO  20:52:09,211 - #6 ;
-INFO  20:52:09,212 - #25 else
-INFO  20:52:09,212 - #31 return
-INFO  20:52:09,213 - #20 0
-INFO  20:52:09,213 - #6 ;
-INFO  20:52:09,213 - #4 }
-INFO  20:52:09,213 - #4 }
-INFO  20:52:09,214 - #4 }
-INFO  20:52:09,215 - #13 class
-INFO  20:52:09,216 - #22 MAMA
-INFO  20:52:09,216 - #14 extends
-INFO  20:52:09,216 - #22 Base
-INFO  20:52:09,216 - #3 {
-INFO  20:52:09,216 - #22 char
-INFO  20:52:09,216 - #22 p
-INFO  20:52:09,216 - #6 ;
-INFO  20:52:09,217 - #22 int
-INFO  20:52:09,217 - #22 num
-INFO  20:52:09,217 - #6 ;
-INFO  20:52:09,217 - #3 {
-INFO  20:52:09,217 - #18 void
-INFO  20:52:09,217 - #22 nevena
-INFO  20:52:09,217 - #15 (
-INFO  20:52:09,217 - #22 int
-INFO  20:52:09,217 - #22 k
-INFO  20:52:09,217 - #16 )
-INFO  20:52:09,217 - #3 {
-INFO  20:52:09,217 - #33 print
-INFO  20:52:09,217 - #15 (
-INFO  20:52:09,217 - #20 2
-INFO  20:52:09,217 - #16 )
-INFO  20:52:09,217 - #6 ;
-INFO  20:52:09,217 - #22 k
-INFO  20:52:09,218 - #47 ++
-INFO  20:52:09,218 - #6 ;
-INFO  20:52:09,219 - #4 }
-INFO  20:52:09,219 - #18 void
-INFO  20:52:09,219 - #22 jana
-INFO  20:52:09,219 - #15 (
-INFO  20:52:09,219 - #22 char
-INFO  20:52:09,219 - #22 d
-INFO  20:52:09,219 - #16 )
-INFO  20:52:09,219 - #22 Base
-INFO  20:52:09,219 - #22 b
-INFO  20:52:09,219 - #6 ;
-INFO  20:52:09,219 - #3 {
-INFO  20:52:09,220 - #22 p
-INFO  20:52:09,220 - #9 =
-INFO  20:52:09,220 - #22 d
-INFO  20:52:09,221 - #6 ;
-INFO  20:52:09,221 - #22 b
-INFO  20:52:09,225 - #9 =
-INFO  20:52:09,226 - #19 new
-INFO  20:52:09,226 - #22 Base
-INFO  20:52:09,226 - #6 ;
-INFO  20:52:09,226 - #33 print
-INFO  20:52:09,226 - #15 (
-INFO  20:52:09,226 - #20 3
-INFO  20:52:09,226 - #16 )
-INFO  20:52:09,226 - #6 ;
-INFO  20:52:09,226 - #4 }
-INFO  20:52:09,226 - #4 }
-INFO  20:52:09,227 - #4 }
-INFO  20:52:09,227 - #12 record
-INFO  20:52:09,227 - #22 TATA
-INFO  20:52:09,227 - #3 {
-INFO  20:52:09,228 - #22 MAMA
-INFO  20:52:09,228 - #22 mama
-INFO  20:52:09,228 - #6 ;
-INFO  20:52:09,228 - #4 }
-INFO  20:52:09,228 - #22 TATA
-INFO  20:52:09,229 - #22 tata
-INFO  20:52:09,229 - #6 ;
-INFO  20:52:09,229 - #3 {
-INFO  20:52:09,230 - #22 int
-INFO  20:52:09,230 - #22 f
-INFO  20:52:09,230 - #15 (
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 j
-INFO  20:52:09,231 - #7 ,
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 k
-INFO  20:52:09,231 - #16 )
-INFO  20:52:09,231 - #22 int
-INFO  20:52:09,231 - #22 l
-INFO  20:52:09,231 - #6 ;
-INFO  20:52:09,231 - #3 {
-INFO  20:52:09,231 - #22 l
-INFO  20:52:09,231 - #9 =
-INFO  20:52:09,231 - #22 j
-INFO  20:52:09,232 - #45 +
-INFO  20:52:09,232 - #22 k
-INFO  20:52:09,233 - #6 ;
-INFO  20:52:09,233 - #31 return
-INFO  20:52:09,233 - #22 l
-INFO  20:52:09,233 - #42 *
-INFO  20:52:09,233 - #22 k
-INFO  20:52:09,234 - #6 ;
-INFO  20:52:09,235 - #4 }
-INFO  20:52:09,235 - #18 void
-INFO  20:52:09,235 - #22 v
-INFO  20:52:09,235 - #15 (
-INFO  20:52:09,235 - #22 TATA
-INFO  20:52:09,235 - #22 a
-INFO  20:52:09,235 - #16 )
-INFO  20:52:09,235 - #3 {
-INFO  20:52:09,235 - #33 print
-INFO  20:52:09,235 - #15 (
-INFO  20:52:09,235 - #22 a
-INFO  20:52:09,235 - #17 .
-INFO  20:52:09,235 - #22 mama
-INFO  20:52:09,235 - #17 .
-INFO  20:52:09,235 - #22 s
-INFO  20:52:09,235 - #10 [
-INFO  20:52:09,235 - #20 0
-INFO  20:52:09,235 - #11 ]
-INFO  20:52:09,235 - #16 )
-INFO  20:52:09,235 - #6 ;
-INFO  20:52:09,236 - #4 }
-INFO  20:52:09,236 - #18 void
-INFO  20:52:09,236 - #22 main
-INFO  20:52:09,236 - #15 (
-INFO  20:52:09,236 - #16 )
-INFO  20:52:09,236 - #22 Base
-INFO  20:52:09,236 - #22 b
-INFO  20:52:09,236 - #6 ;
-INFO  20:52:09,236 - #3 {
-INFO  20:52:09,236 - #22 tata
-INFO  20:52:09,236 - #9 =
-INFO  20:52:09,236 - #19 new
-INFO  20:52:09,236 - #22 TATA
-INFO  20:52:09,236 - #6 ;
-INFO  20:52:09,236 - #22 tata
-INFO  20:52:09,236 - #17 .
-INFO  20:52:09,236 - #22 mama
-INFO  20:52:09,236 - #9 =
-INFO  20:52:09,237 - #19 new
-INFO  20:52:09,237 - #22 MAMA
-INFO  20:52:09,237 - #6 ;
-INFO  20:52:09,237 - #22 tata
-INFO  20:52:09,237 - #17 .
-INFO  20:52:09,237 - #22 mama
-INFO  20:52:09,237 - #17 .
-INFO  20:52:09,237 - #22 s
-INFO  20:52:09,237 - #9 =
-INFO  20:52:09,237 - #19 new
-INFO  20:52:09,237 - #22 int
-INFO  20:52:09,237 - #10 [
-INFO  20:52:09,237 - #20 2
-INFO  20:52:09,237 - #11 ]
-INFO  20:52:09,237 - #6 ;
-INFO  20:52:09,237 - #22 tata
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 mama
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 s
-INFO  20:52:09,238 - #10 [
-INFO  20:52:09,238 - #20 0
-INFO  20:52:09,238 - #11 ]
-INFO  20:52:09,238 - #9 =
-INFO  20:52:09,238 - #20 2
-INFO  20:52:09,238 - #6 ;
-INFO  20:52:09,238 - #22 b
-INFO  20:52:09,238 - #9 =
-INFO  20:52:09,238 - #22 tata
-INFO  20:52:09,238 - #17 .
-INFO  20:52:09,238 - #22 mama
-INFO  20:52:09,238 - #6 ;
-INFO  20:52:09,238 - #33 print
-INFO  20:52:09,238 - #15 (
-INFO  20:52:09,238 - #22 b
-INFO  20:52:09,239 - #17 .
-INFO  20:52:09,239 - #22 s
-INFO  20:52:09,239 - #10 [
-INFO  20:52:09,239 - #20 0
-INFO  20:52:09,239 - #11 ]
-INFO  20:52:09,239 - #16 )
-INFO  20:52:09,239 - #6 ;
-INFO  20:52:09,239 - #22 b
-INFO  20:52:09,239 - #9 =
-INFO  20:52:09,239 - #19 new
-INFO  20:52:09,239 - #22 Base
-INFO  20:52:09,239 - #6 ;
-INFO  20:52:09,240 - #22 b
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 s
-INFO  20:52:09,240 - #9 =
-INFO  20:52:09,240 - #19 new
-INFO  20:52:09,240 - #22 int
-INFO  20:52:09,240 - #10 [
-INFO  20:52:09,240 - #20 2
-INFO  20:52:09,240 - #11 ]
-INFO  20:52:09,240 - #6 ;
-INFO  20:52:09,240 - #22 tata
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 mama
-INFO  20:52:09,240 - #17 .
-INFO  20:52:09,240 - #22 marinko
-INFO  20:52:09,240 - #15 (
-INFO  20:52:09,241 - #20 0
-INFO  20:52:09,241 - #16 )
-INFO  20:52:09,242 - #6 ;
-INFO  20:52:09,242 - #22 b
-INFO  20:52:09,242 - #17 .
-INFO  20:52:09,242 - #22 marinko
-INFO  20:52:09,242 - #15 (
-INFO  20:52:09,242 - #20 0
-INFO  20:52:09,242 - #16 )
-INFO  20:52:09,242 - #6 ;
-INFO  20:52:09,242 - #4 }
-INFO  20:52:09,243 - #4 }
-INFO  20:52:09,258 - Program(
+INFO  20:03:38,440 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\test_program.mj
+INFO  20:03:38,517 - #2 program
+INFO  20:03:38,517 - #22 p
+INFO  20:03:38,518 - #13 class
+INFO  20:03:38,519 - #22 Base
+INFO  20:03:38,519 - #3 {
+INFO  20:03:38,521 - #22 int
+INFO  20:03:38,521 - #22 s
+INFO  20:03:38,522 - #10 [
+INFO  20:03:38,522 - #11 ]
+INFO  20:03:38,522 - #6 ;
+INFO  20:03:38,522 - #3 {
+INFO  20:03:38,522 - #18 void
+INFO  20:03:38,523 - #22 nevena
+INFO  20:03:38,523 - #15 (
+INFO  20:03:38,525 - #22 int
+INFO  20:03:38,525 - #22 k
+INFO  20:03:38,525 - #16 )
+INFO  20:03:38,526 - #3 {
+INFO  20:03:38,527 - #33 print
+INFO  20:03:38,529 - #15 (
+INFO  20:03:38,529 - #20 0
+INFO  20:03:38,529 - #16 )
+INFO  20:03:38,530 - #6 ;
+INFO  20:03:38,530 - #4 }
+INFO  20:03:38,530 - #22 int
+INFO  20:03:38,530 - #22 marinko
+INFO  20:03:38,530 - #15 (
+INFO  20:03:38,530 - #22 int
+INFO  20:03:38,530 - #22 k
+INFO  20:03:38,530 - #16 )
+INFO  20:03:38,530 - #3 {
+INFO  20:03:38,531 - #33 print
+INFO  20:03:38,531 - #15 (
+INFO  20:03:38,531 - #20 1
+INFO  20:03:38,531 - #16 )
+INFO  20:03:38,531 - #6 ;
+INFO  20:03:38,531 - #31 return
+INFO  20:03:38,531 - #22 s
+INFO  20:03:38,531 - #10 [
+INFO  20:03:38,532 - #22 k
+INFO  20:03:38,532 - #11 ]
+INFO  20:03:38,533 - #6 ;
+INFO  20:03:38,533 - #4 }
+INFO  20:03:38,533 - #4 }
+INFO  20:03:38,534 - #4 }
+INFO  20:03:38,534 - #13 class
+INFO  20:03:38,535 - #22 MAMA
+INFO  20:03:38,535 - #14 extends
+INFO  20:03:38,535 - #22 Base
+INFO  20:03:38,535 - #3 {
+INFO  20:03:38,536 - #22 char
+INFO  20:03:38,536 - #22 p
+INFO  20:03:38,536 - #6 ;
+INFO  20:03:38,536 - #22 int
+INFO  20:03:38,536 - #22 num
+INFO  20:03:38,536 - #6 ;
+INFO  20:03:38,536 - #3 {
+INFO  20:03:38,536 - #18 void
+INFO  20:03:38,536 - #22 nevena
+INFO  20:03:38,536 - #15 (
+INFO  20:03:38,536 - #22 int
+INFO  20:03:38,536 - #22 k
+INFO  20:03:38,537 - #16 )
+INFO  20:03:38,537 - #3 {
+INFO  20:03:38,537 - #33 print
+INFO  20:03:38,537 - #15 (
+INFO  20:03:38,537 - #20 2
+INFO  20:03:38,537 - #16 )
+INFO  20:03:38,537 - #6 ;
+INFO  20:03:38,537 - #22 k
+INFO  20:03:38,537 - #47 ++
+INFO  20:03:38,538 - #6 ;
+INFO  20:03:38,538 - #4 }
+INFO  20:03:38,538 - #18 void
+INFO  20:03:38,539 - #22 jana
+INFO  20:03:38,539 - #15 (
+INFO  20:03:38,539 - #22 char
+INFO  20:03:38,539 - #22 d
+INFO  20:03:38,539 - #16 )
+INFO  20:03:38,539 - #22 Base
+INFO  20:03:38,539 - #22 b
+INFO  20:03:38,539 - #6 ;
+INFO  20:03:38,539 - #3 {
+INFO  20:03:38,540 - #22 p
+INFO  20:03:38,540 - #9 =
+INFO  20:03:38,540 - #22 d
+INFO  20:03:38,541 - #6 ;
+INFO  20:03:38,541 - #22 b
+INFO  20:03:38,541 - #9 =
+INFO  20:03:38,541 - #19 new
+INFO  20:03:38,541 - #22 Base
+INFO  20:03:38,541 - #6 ;
+INFO  20:03:38,541 - #33 print
+INFO  20:03:38,541 - #15 (
+INFO  20:03:38,542 - #20 3
+INFO  20:03:38,542 - #16 )
+INFO  20:03:38,542 - #6 ;
+INFO  20:03:38,542 - #4 }
+INFO  20:03:38,542 - #4 }
+INFO  20:03:38,542 - #4 }
+INFO  20:03:38,542 - #12 record
+INFO  20:03:38,542 - #22 TATA
+INFO  20:03:38,542 - #3 {
+INFO  20:03:38,543 - #22 MAMA
+INFO  20:03:38,543 - #22 mama
+INFO  20:03:38,543 - #6 ;
+INFO  20:03:38,543 - #4 }
+INFO  20:03:38,543 - #22 TATA
+INFO  20:03:38,544 - #22 tata
+INFO  20:03:38,544 - #6 ;
+INFO  20:03:38,545 - #3 {
+INFO  20:03:38,545 - #22 int
+INFO  20:03:38,545 - #22 f
+INFO  20:03:38,545 - #15 (
+INFO  20:03:38,545 - #22 int
+INFO  20:03:38,546 - #22 j
+INFO  20:03:38,546 - #7 ,
+INFO  20:03:38,546 - #22 int
+INFO  20:03:38,546 - #22 k
+INFO  20:03:38,546 - #16 )
+INFO  20:03:38,546 - #22 int
+INFO  20:03:38,546 - #22 l
+INFO  20:03:38,546 - #6 ;
+INFO  20:03:38,546 - #3 {
+INFO  20:03:38,546 - #22 l
+INFO  20:03:38,546 - #9 =
+INFO  20:03:38,547 - #22 j
+INFO  20:03:38,547 - #45 +
+INFO  20:03:38,547 - #22 k
+INFO  20:03:38,548 - #6 ;
+INFO  20:03:38,548 - #31 return
+INFO  20:03:38,548 - #22 l
+INFO  20:03:38,548 - #42 *
+INFO  20:03:38,548 - #22 k
+INFO  20:03:38,549 - #6 ;
+INFO  20:03:38,550 - #4 }
+INFO  20:03:38,550 - #18 void
+INFO  20:03:38,550 - #22 v
+INFO  20:03:38,550 - #15 (
+INFO  20:03:38,550 - #22 TATA
+INFO  20:03:38,550 - #22 a
+INFO  20:03:38,550 - #16 )
+INFO  20:03:38,550 - #3 {
+INFO  20:03:38,550 - #33 print
+INFO  20:03:38,550 - #15 (
+INFO  20:03:38,550 - #22 a
+INFO  20:03:38,550 - #17 .
+INFO  20:03:38,551 - #22 mama
+INFO  20:03:38,551 - #17 .
+INFO  20:03:38,551 - #22 s
+INFO  20:03:38,551 - #10 [
+INFO  20:03:38,551 - #20 0
+INFO  20:03:38,551 - #11 ]
+INFO  20:03:38,551 - #16 )
+INFO  20:03:38,551 - #6 ;
+INFO  20:03:38,551 - #4 }
+INFO  20:03:38,551 - #18 void
+INFO  20:03:38,551 - #22 main
+INFO  20:03:38,551 - #15 (
+INFO  20:03:38,551 - #16 )
+INFO  20:03:38,551 - #22 Base
+INFO  20:03:38,551 - #22 b
+INFO  20:03:38,552 - #6 ;
+INFO  20:03:38,552 - #3 {
+INFO  20:03:38,556 - #22 tata
+INFO  20:03:38,556 - #9 =
+INFO  20:03:38,556 - #19 new
+INFO  20:03:38,557 - #22 TATA
+INFO  20:03:38,557 - #6 ;
+INFO  20:03:38,557 - #22 tata
+INFO  20:03:38,557 - #17 .
+INFO  20:03:38,557 - #22 mama
+INFO  20:03:38,557 - #9 =
+INFO  20:03:38,557 - #19 new
+INFO  20:03:38,557 - #22 MAMA
+INFO  20:03:38,557 - #6 ;
+INFO  20:03:38,557 - #22 tata
+INFO  20:03:38,557 - #17 .
+INFO  20:03:38,557 - #22 mama
+INFO  20:03:38,557 - #17 .
+INFO  20:03:38,557 - #22 s
+INFO  20:03:38,558 - #9 =
+INFO  20:03:38,558 - #19 new
+INFO  20:03:38,558 - #22 int
+INFO  20:03:38,558 - #10 [
+INFO  20:03:38,558 - #20 2
+INFO  20:03:38,558 - #11 ]
+INFO  20:03:38,558 - #6 ;
+INFO  20:03:38,558 - #22 tata
+INFO  20:03:38,558 - #17 .
+INFO  20:03:38,558 - #22 mama
+INFO  20:03:38,558 - #17 .
+INFO  20:03:38,558 - #22 s
+INFO  20:03:38,558 - #10 [
+INFO  20:03:38,558 - #20 0
+INFO  20:03:38,559 - #11 ]
+INFO  20:03:38,559 - #9 =
+INFO  20:03:38,559 - #20 2
+INFO  20:03:38,559 - #6 ;
+INFO  20:03:38,559 - #22 b
+INFO  20:03:38,559 - #9 =
+INFO  20:03:38,559 - #22 tata
+INFO  20:03:38,559 - #17 .
+INFO  20:03:38,559 - #22 mama
+INFO  20:03:38,559 - #6 ;
+INFO  20:03:38,559 - #33 print
+INFO  20:03:38,559 - #15 (
+INFO  20:03:38,559 - #22 b
+INFO  20:03:38,559 - #17 .
+INFO  20:03:38,559 - #22 s
+INFO  20:03:38,559 - #10 [
+INFO  20:03:38,559 - #20 0
+INFO  20:03:38,559 - #11 ]
+INFO  20:03:38,559 - #16 )
+INFO  20:03:38,559 - #6 ;
+INFO  20:03:38,559 - #22 tata
+INFO  20:03:38,559 - #17 .
+INFO  20:03:38,559 - #22 mama
+INFO  20:03:38,559 - #17 .
+INFO  20:03:38,559 - #22 nevena
+INFO  20:03:38,559 - #15 (
+INFO  20:03:38,560 - #20 0
+INFO  20:03:38,560 - #16 )
+INFO  20:03:38,561 - #6 ;
+INFO  20:03:38,561 - #22 b
+INFO  20:03:38,561 - #17 .
+INFO  20:03:38,561 - #22 nevena
+INFO  20:03:38,561 - #15 (
+INFO  20:03:38,561 - #20 0
+INFO  20:03:38,561 - #16 )
+INFO  20:03:38,561 - #6 ;
+INFO  20:03:38,561 - #22 b
+INFO  20:03:38,561 - #9 =
+INFO  20:03:38,561 - #19 new
+INFO  20:03:38,561 - #22 Base
+INFO  20:03:38,561 - #6 ;
+INFO  20:03:38,561 - #22 b
+INFO  20:03:38,561 - #17 .
+INFO  20:03:38,561 - #22 nevena
+INFO  20:03:38,561 - #15 (
+INFO  20:03:38,561 - #20 0
+INFO  20:03:38,561 - #16 )
+INFO  20:03:38,561 - #6 ;
+INFO  20:03:38,561 - #4 }
+INFO  20:03:38,562 - #4 }
+INFO  20:03:38,571 - Program(
   ProgramName(
    p
   ) [ProgramName]
@@ -312,13 +297,9 @@ INFO  20:52:09,258 - Program(
                           StmtPrint(
                             ExprSingle(
                               TermSingle(
-                                FactorDsgn(
-                                  FactorDesignator(
-                                    DesignatorFirst(
-                                     k
-                                    ) [DesignatorFirst]
-                                  ) [FactorDesignator]
-                                ) [FactorDsgn]
+                                FactorNumber(
+                                 0
+                                ) [FactorNumber]
                               ) [TermSingle]
                             ) [ExprSingle]
                           ) [StmtPrint]
@@ -353,98 +334,43 @@ INFO  20:52:09,258 - Program(
                               StmtPrint(
                                 ExprSingle(
                                   TermSingle(
-                                    FactorDsgn(
-                                      FactorDesignator(
-                                        DesignatorFirst(
-                                         k
-                                        ) [DesignatorFirst]
-                                      ) [FactorDesignator]
-                                    ) [FactorDsgn]
+                                    FactorNumber(
+                                     1
+                                    ) [FactorNumber]
                                   ) [TermSingle]
                                 ) [ExprSingle]
                               ) [StmtPrint]
                             ) [StatementSingle]
                           ) [StatementsList]
                           StatementSingle(
-                            StmtIfElse(
-                              IfCond(
-                                IfInit(
-                                ) [IfInit]
-                                CondSingle(
-                                  CondTermSingle(
-                                    CondFactMultipleEq(
-                                      ExprSingle(
-                                        TermSingle(
-                                          FactorDsgn(
-                                            FactorDesignator(
-                                              DesignatorFirst(
-                                               k
-                                              ) [DesignatorFirst]
-                                            ) [FactorDesignator]
-                                          ) [FactorDsgn]
-                                        ) [TermSingle]
-                                      ) [ExprSingle]
-                                      RelopEqu(
-                                      ) [RelopEqu]
-                                      ExprSingle(
-                                        TermSingle(
-                                          FactorNumber(
-                                           0
-                                          ) [FactorNumber]
-                                        ) [TermSingle]
-                                      ) [ExprSingle]
-                                    ) [CondFactMultipleEq]
-                                  ) [CondTermSingle]
-                                ) [CondSingle]
-                              ) [IfCond]
-                              StatementSingle(
-                                StmtReturn(
-                                  ExprSingle(
-                                    TermSingle(
-                                      FactorDsgn(
-                                        FactorDesignator(
-                                          DesignatorAccessArray(
-                                            BaseDsgn(
-                                              DesignatorAccessField(
-                                                BaseDsgn(
-                                                  DesignatorThis(
-                                                  ) [DesignatorThis]
-                                                ) [BaseDsgn]
-                                               s
-                                              ) [DesignatorAccessField]
-                                            ) [BaseDsgn]
-                                            ExprSingle(
-                                              TermSingle(
-                                                FactorDsgn(
-                                                  FactorDesignator(
-                                                    DesignatorFirst(
-                                                     k
-                                                    ) [DesignatorFirst]
-                                                  ) [FactorDesignator]
-                                                ) [FactorDsgn]
-                                              ) [TermSingle]
-                                            ) [ExprSingle]
-                                          ) [DesignatorAccessArray]
-                                        ) [FactorDesignator]
-                                      ) [FactorDsgn]
-                                    ) [TermSingle]
-                                  ) [ExprSingle]
-                                ) [StmtReturn]
-                              ) [StatementSingle]
-                              ElseCond(
-                              ) [ElseCond]
-                              StatementSingle(
-                                StmtReturn(
-                                  ExprSingle(
-                                    TermSingle(
-                                      FactorNumber(
-                                       0
-                                      ) [FactorNumber]
-                                    ) [TermSingle]
-                                  ) [ExprSingle]
-                                ) [StmtReturn]
-                              ) [StatementSingle]
-                            ) [StmtIfElse]
+                            StmtReturn(
+                              ExprSingle(
+                                TermSingle(
+                                  FactorDsgn(
+                                    FactorDesignator(
+                                      DesignatorAccessArray(
+                                        BaseDsgn(
+                                          DesignatorFirst(
+                                           s
+                                          ) [DesignatorFirst]
+                                        ) [BaseDsgn]
+                                        ExprSingle(
+                                          TermSingle(
+                                            FactorDsgn(
+                                              FactorDesignator(
+                                                DesignatorFirst(
+                                                 k
+                                                ) [DesignatorFirst]
+                                              ) [FactorDesignator]
+                                            ) [FactorDsgn]
+                                          ) [TermSingle]
+                                        ) [ExprSingle]
+                                      ) [DesignatorAccessArray]
+                                    ) [FactorDesignator]
+                                  ) [FactorDsgn]
+                                ) [TermSingle]
+                              ) [ExprSingle]
+                            ) [StmtReturn]
                           ) [StatementSingle]
                         ) [StatementsList]
                       ) [MethodDeclPar]
@@ -1072,30 +998,40 @@ INFO  20:52:09,258 - Program(
                   ) [StatementsList]
                   StatementSingle(
                     StmtDesign(
-                      DsgnOpAssign(
+                      DsgnOpCallPars(
                         CallName(
-                          DesignatorFirst(
-                           b
-                          ) [DesignatorFirst]
+                          DesignatorAccessField(
+                            BaseDsgn(
+                              DesignatorAccessField(
+                                BaseDsgn(
+                                  DesignatorFirst(
+                                   tata
+                                  ) [DesignatorFirst]
+                                ) [BaseDsgn]
+                               mama
+                              ) [DesignatorAccessField]
+                            ) [BaseDsgn]
+                           nevena
+                          ) [DesignatorAccessField]
                         ) [CallName]
-                        Assignop(
-                        ) [Assignop]
-                        ExprSingle(
-                          TermSingle(
-                            FactorObject(
-                              Type(
-                               Base
-                              ) [Type]
-                            ) [FactorObject]
-                          ) [TermSingle]
-                        ) [ExprSingle]
-                      ) [DsgnOpAssign]
+                        CopyDsgn(
+                        ) [CopyDsgn]
+                        ActParsSingle(
+                          ExprSingle(
+                            TermSingle(
+                              FactorNumber(
+                               0
+                              ) [FactorNumber]
+                            ) [TermSingle]
+                          ) [ExprSingle]
+                        ) [ActParsSingle]
+                      ) [DsgnOpCallPars]
                     ) [StmtDesign]
                   ) [StatementSingle]
                 ) [StatementsList]
                 StatementSingle(
                   StmtDesign(
-                    DsgnOpAssign(
+                    DsgnOpCallPars(
                       CallName(
                         DesignatorAccessField(
                           BaseDsgn(
@@ -1103,61 +1039,44 @@ INFO  20:52:09,258 - Program(
                              b
                             ) [DesignatorFirst]
                           ) [BaseDsgn]
-                         s
+                         nevena
                         ) [DesignatorAccessField]
                       ) [CallName]
-                      Assignop(
-                      ) [Assignop]
-                      ExprSingle(
-                        TermSingle(
-                          FactorArray(
-                            Type(
-                             int
-                            ) [Type]
-                            ExprSingle(
-                              TermSingle(
-                                FactorNumber(
-                                 2
-                                ) [FactorNumber]
-                              ) [TermSingle]
-                            ) [ExprSingle]
-                          ) [FactorArray]
-                        ) [TermSingle]
-                      ) [ExprSingle]
-                    ) [DsgnOpAssign]
+                      CopyDsgn(
+                      ) [CopyDsgn]
+                      ActParsSingle(
+                        ExprSingle(
+                          TermSingle(
+                            FactorNumber(
+                             0
+                            ) [FactorNumber]
+                          ) [TermSingle]
+                        ) [ExprSingle]
+                      ) [ActParsSingle]
+                    ) [DsgnOpCallPars]
                   ) [StmtDesign]
                 ) [StatementSingle]
               ) [StatementsList]
               StatementSingle(
                 StmtDesign(
-                  DsgnOpCallPars(
+                  DsgnOpAssign(
                     CallName(
-                      DesignatorAccessField(
-                        BaseDsgn(
-                          DesignatorAccessField(
-                            BaseDsgn(
-                              DesignatorFirst(
-                               tata
-                              ) [DesignatorFirst]
-                            ) [BaseDsgn]
-                           mama
-                          ) [DesignatorAccessField]
-                        ) [BaseDsgn]
-                       marinko
-                      ) [DesignatorAccessField]
+                      DesignatorFirst(
+                       b
+                      ) [DesignatorFirst]
                     ) [CallName]
-                    CopyDsgn(
-                    ) [CopyDsgn]
-                    ActParsSingle(
-                      ExprSingle(
-                        TermSingle(
-                          FactorNumber(
-                           0
-                          ) [FactorNumber]
-                        ) [TermSingle]
-                      ) [ExprSingle]
-                    ) [ActParsSingle]
-                  ) [DsgnOpCallPars]
+                    Assignop(
+                    ) [Assignop]
+                    ExprSingle(
+                      TermSingle(
+                        FactorObject(
+                          Type(
+                           Base
+                          ) [Type]
+                        ) [FactorObject]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                  ) [DsgnOpAssign]
                 ) [StmtDesign]
               ) [StatementSingle]
             ) [StatementsList]
@@ -1171,7 +1090,7 @@ INFO  20:52:09,258 - Program(
                          b
                         ) [DesignatorFirst]
                       ) [BaseDsgn]
-                     marinko
+                     nevena
                     ) [DesignatorAccessField]
                   ) [CallName]
                   CopyDsgn(

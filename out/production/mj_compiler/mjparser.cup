@@ -81,11 +81,13 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator, Label;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr, CopyDsgn;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
-nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn, CondOr, IfCond, ElseCond, IfInit, WhileCheck;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn, CondOr, IfCond, ElseCond, IfInit, WhileCheck, InitVTP;
 
 precedence left ELSE;
 
-Program ::= (Program) PROG ProgramName DeclList LBRACE MethodDeclList RBRACE;
+Program ::= (Program) PROG ProgramName DeclList InitVTP LBRACE MethodDeclList RBRACE;
+
+InitVTP ::=(InitVTP);
 
 ProgramName::= (ProgramName) IDENT:name;
 

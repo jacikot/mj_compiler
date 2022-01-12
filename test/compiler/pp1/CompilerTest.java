@@ -85,9 +85,8 @@ public class CompilerTest {
             if(!v.errorDetected&&!p.errorDetected&&v.mainCount>0){
                 File objFile = new File("test/program.obj");
                 if(objFile.exists()) objFile.delete();
-                CodeGenerator generator=new CodeGenerator();
+                CodeGenerator generator=new CodeGenerator(v.nVars);
                 prog.traverseBottomUp(generator);
-                Code.dataSize=v.varDeclCount;
                 Code.mainPc=generator.getMainPC();
                 Code.write(new FileOutputStream(objFile));
                 System.out.println(ANSI_BLUE+"=====================USPESNO========================="+ANSI_RESET);

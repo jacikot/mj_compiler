@@ -1,0 +1,82 @@
+program p
+
+
+
+record MAMA {
+    char p;
+    int s[];
+
+}
+
+record TATA{
+    MAMA mama;
+}
+
+const int jana=10;
+int xjana;
+int calls;
+const char x='s';
+int xyz[];
+TATA tata;
+
+{
+
+    int f(int j, int k)
+        int l; {
+            l=j+k;
+            //l--;
+            //calls--;
+            print(l);
+            return l*k;
+        }
+    void v(TATA a){
+        print(a.mama.s[0]);
+    }
+
+    void main(){
+
+
+        tata= new TATA;
+        tata.mama = new MAMA;
+        tata.mama.s=new int[1];
+
+        tata.mama.s[0]=10;
+
+        read(tata.mama.p);
+
+        print(tata.mama.p);
+        print(tata.mama.s[0]);
+        tata.mama.s[0]++;
+        print(tata.mama.s[0]);
+
+        read(xjana);
+
+        xyz=new int[4];
+
+        xyz[2]=8;
+
+        xjana=(xjana+jana)*2+xyz[2]+tata.mama.s[0];
+
+        xyz[2]++;
+
+        print(xyz[2]);
+
+        print(xjana);
+
+        goto READ;
+
+        xjana=f(xjana,jana);
+
+        print(xjana);
+
+        f(10,10);
+
+        READ: print(calls);
+
+        print(xjana);
+
+        v(tata);
+
+
+    }
+}

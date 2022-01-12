@@ -81,7 +81,7 @@ nonterminal VarDeclGlobal, VarDeclCheck, Xx, VarDeclListNoC, ClassDeclList, Clas
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Cond, CondTerm, CondFact, Designator, Label;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgramName,ConstLit, RecordName, MethodName, Type,Factor, Term, Expr, CopyDsgn;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ClassName, ExtendsDecl, ConstructorName, RetType, MethodDeclChecker;
-nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn;
+nonterminal ConstDeclElem, VarDeclElem, VarDeclElemNoC, LabelDef, BaseDsgn, CondOr, IfCond, ElseCond, IfInit;
 
 precedence left ELSE;
 
@@ -219,13 +219,17 @@ Statement ::= (StatementSingle) SingleStatement:statement
 LabelDef::= (LabelDef) Label:label COLUMN;
 Statements ::= (StatementsBlock) LBRACE StatementList RBRACE;
 
-SingleStatement ::= (StmtIfElse) IF LPAREN Cond RPAREN Statement:ifStmt ELSE Statement:elseStmt
+IfInit ::= (IfInit) IF;
+IfCond::= (IfCond)IfInit LPAREN Cond RPAREN;
+ElseCond ::= (ElseCond) ELSE;
+
+SingleStatement ::= (StmtIfElse) IfCond Statement:ifStmt ElseCond Statement:elseStmt
             |
-            (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt
+            (StmtIfElseError) IfInit LPAREN error RPAREN Statement:ifStmt ElseCond Statement:elseStmt
             |
-            (StmtIf) IF LPAREN Cond RPAREN Statement:ifStmt
+            (StmtIf) IfCond Statement:ifStmt
             |
-            (StmtIfError) IF LPAREN error RPAREN Statement:ifStmt
+            (StmtIfError) IfInit LPAREN error RPAREN Statement:ifStmt
             |
             (StmtDesign) DesignStatement:statement SEMI
             |
@@ -282,10 +286,11 @@ ActPars ::= (ActParsMultiple) ActPars:params COMMA Expr:param
                 |
                 (ActParsSingle) Expr:param
                 ;
-Cond ::= (CondMultiple) Cond:conds OR CondTerm:cond
+Cond ::= (CondMultiple) Cond:conds CondOr CondTerm:cond
         |
         (CondSingle) CondTerm:cond
         ;
+CondOr ::= (CondOr) OR;
 CondTerm ::= (CondTermMultiple) CondTerm:conds AND CondFact:cond
             |
             (CondTermSingle) CondFact:cond

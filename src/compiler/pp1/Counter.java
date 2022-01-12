@@ -1,6 +1,7 @@
 package compiler.pp1;
 
 import compiler.pp1.ast.*;
+import rs.etf.pp1.mj.runtime.Code;
 
 public class Counter extends VisitorAdaptor {
     protected int cnt;
@@ -49,6 +50,28 @@ public class Counter extends VisitorAdaptor {
         public void visit(AddopMinus var1) {
             cnt=4;
         }
+    }
+    public static class RelOperationSolver extends Counter {
+
+        public void visit(RelopGrt var1) {
+            cnt= Code.gt;
+        }
+        public void visit(RelopGre var1) {
+            cnt=Code.ge;
+        }
+        public void visit(RelopLes var1) {
+            cnt=Code.lt;
+        }
+        public void visit(RelopLee var1) {
+            cnt=Code.le;
+        }
+        public void visit(RelopEqu var1) {
+            cnt=Code.eq;
+        }
+        public void visit(RelopNeq var1) {
+            cnt=Code.ne;
+        }
+
     }
 
 

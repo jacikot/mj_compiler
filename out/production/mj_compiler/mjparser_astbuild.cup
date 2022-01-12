@@ -120,6 +120,10 @@ nonterminal VarDeclElem VarDeclElem;
 nonterminal VarDeclElemNoC VarDeclElemNoC;
 nonterminal LabelDef LabelDef;
 nonterminal BaseDsgn BaseDsgn;
+nonterminal CondOr CondOr;
+nonterminal IfCond IfCond;
+nonterminal ElseCond ElseCond;
+nonterminal IfInit IfInit;
 
 precedence left ELSE;
 
@@ -257,13 +261,17 @@ Statement ::= (StatementSingle) SingleStatement:statement {: RESULT=new Statemen
 LabelDef::= (LabelDef) Label:label COLUMN {: RESULT=new LabelDef(label); RESULT.setLine(labelleft); :};
 Statements ::= (StatementsBlock) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementsBlock(S1); RESULT.setLine(S1left); :};
 
-SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new StmtIfElse(C1, ifStmt, elseStmt); RESULT.setLine(C1left); :}
+IfInit ::= (IfInit) IF {: RESULT=new IfInit(); :};
+IfCond::= (IfCond)IfInit:I1 LPAREN Cond:C2 RPAREN {: RESULT=new IfCond(I1, C2); RESULT.setLine(I1left); :};
+ElseCond ::= (ElseCond) ELSE {: RESULT=new ElseCond(); :};
+
+SingleStatement ::= (StmtIfElse) IfCond:I1 Statement:ifStmt ElseCond:E2 Statement:elseStmt {: RESULT=new StmtIfElse(I1, ifStmt, E2, elseStmt); RESULT.setLine(I1left); :}
             |
-            (StmtIfElseError) IF LPAREN error RPAREN Statement:ifStmt ELSE Statement:elseStmt {: RESULT=new StmtIfElseError(ifStmt, elseStmt); RESULT.setLine(ifStmtleft); :}
+            (StmtIfElseError) IfInit:I1 LPAREN error RPAREN Statement:ifStmt ElseCond:E2 Statement:elseStmt {: RESULT=new StmtIfElseError(I1, ifStmt, E2, elseStmt); RESULT.setLine(I1left); :}
             |
-            (StmtIf) IF LPAREN Cond:C1 RPAREN Statement:ifStmt {: RESULT=new StmtIf(C1, ifStmt); RESULT.setLine(C1left); :}
+            (StmtIf) IfCond:I1 Statement:ifStmt {: RESULT=new StmtIf(I1, ifStmt); RESULT.setLine(I1left); :}
             |
-            (StmtIfError) IF LPAREN error RPAREN Statement:ifStmt {: RESULT=new StmtIfError(ifStmt); RESULT.setLine(ifStmtleft); :}
+            (StmtIfError) IfInit:I1 LPAREN error RPAREN Statement:ifStmt {: RESULT=new StmtIfError(I1, ifStmt); RESULT.setLine(I1left); :}
             |
             (StmtDesign) DesignStatement:statement SEMI {: RESULT=new StmtDesign(statement); RESULT.setLine(statementleft); :}
             |
@@ -285,6 +293,7 @@ SingleStatement ::= (StmtIfElse) IF LPAREN Cond:C1 RPAREN Statement:ifStmt ELSE 
             |
             (StmtGoto) GOTO Label:dst SEMI {: RESULT=new StmtGoto(dst); RESULT.setLine(dstleft); :}
             ;
+
 DoStart ::= (DoStart) DO {: RESULT=new DoStart(); :};
 Designator ::= (DesignatorAccessField) BaseDsgn:base DOT IDENT:field {: RESULT=new DesignatorAccessField(base, field); RESULT.setLine(baseleft); :}
               |
@@ -319,10 +328,11 @@ ActPars ::= (ActParsMultiple) ActPars:params COMMA Expr:param {: RESULT=new ActP
                 |
                 (ActParsSingle) Expr:param {: RESULT=new ActParsSingle(param); RESULT.setLine(paramleft); :}
                 ;
-Cond ::= (CondMultiple) Cond:conds OR CondTerm:cond {: RESULT=new CondMultiple(conds, cond); RESULT.setLine(condsleft); :}
+Cond ::= (CondMultiple) Cond:conds CondOr:C1 CondTerm:cond {: RESULT=new CondMultiple(conds, C1, cond); RESULT.setLine(condsleft); :}
         |
         (CondSingle) CondTerm:cond {: RESULT=new CondSingle(cond); RESULT.setLine(condleft); :}
         ;
+CondOr ::= (CondOr) OR {: RESULT=new CondOr(); :};
 CondTerm ::= (CondTermMultiple) CondTerm:conds AND CondFact:cond {: RESULT=new CondTermMultiple(conds, cond); RESULT.setLine(condsleft); :}
             |
             (CondTermSingle) CondFact:cond {: RESULT=new CondTermSingle(cond); RESULT.setLine(condleft); :}

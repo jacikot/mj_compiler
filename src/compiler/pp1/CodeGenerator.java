@@ -81,9 +81,12 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(DsgnOpInc dsgn) {
-        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem || dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem){
             //posto za inc treba i load i store fali nam index i adresa jos jednom
-            dsgn.getCallName().getDesignator().traverseBottomUp(this);
+            Code.put(Code.dup2);
+        }
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
+            Code.put(Code.dup);
         }
         if(dsgn.getCallName().getDesignator().obj.getLevel()==0 ||
                 dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem ||
@@ -104,9 +107,11 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(DsgnOpDec dsgn) {
-        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem || dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
-            //posto za inc treba i load i store fali nam index i adresa jos jednom
-            dsgn.getCallName().getDesignator().traverseBottomUp(this);
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem){
+            Code.put(Code.dup2);
+        }
+        if(dsgn.getCallName().getDesignator().obj.getKind()==Obj.Fld){
+            Code.put(Code.dup);
         }
         if(dsgn.getCallName().getDesignator().obj.getLevel()==0||
                 dsgn.getCallName().getDesignator().obj.getKind()==Obj.Elem ||

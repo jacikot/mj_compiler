@@ -1,16 +1,25 @@
 program p
 
-class Base {
+class X{
+    {
+    void xx(){
+        print(100);
+    }
+    }
+}
+
+class Base extends X{
     int s[];
     {
         void nevena(int k){
-            print(k);
+            print(4);
         }
 
         int marinko(int k){
-            print(k);
+            //print(k);
             if(k==0){
                 print(s[k]);
+                nevena(0);
                 return s[k];
             }
             else
@@ -25,14 +34,18 @@ class MAMA extends Base{
     int num;
 
     {
+        void xx(){
+            print(22);
+        }
         void nevena (int k){
-            print(2);
+            print(5);
             k++;
         }
 
         void jana(char d) Base b;{
             p=d;
             b=new Base;
+            b.nevena(0);
             print(3);
         }
     }
@@ -70,12 +83,17 @@ TATA tata;
         //print(b.s[2]);
         //tata.mama.nevena(0);
         //b.nevena(0);
+        b.marinko(0);
         b=new Base;
         b.s=new int[2];
         //b.nevena(0);
 
         tata.mama.marinko(0);
         b.marinko(0);
+        b.xx();
+        tata.mama.xx();
+        //tata.mama.jana('x');
+        //b.jana('x');
 
     }
 }

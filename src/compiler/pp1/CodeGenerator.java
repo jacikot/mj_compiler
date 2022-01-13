@@ -52,12 +52,15 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(FactorDsgnCallEmpty dsgn) {
         Designator d=dsgn.getFactorDesignator().getDesignator();
-        if(d instanceof DesignatorAccessField){
+        if(d instanceof DesignatorAccessField || implicitThis(d)){
+            d.traverseBottomUp(this);
             //base adresa je na steku, argumenata nema
             Code.put(Code.getfield);
             Code.put2(0);
             Code.put(Code.invokevirtual);
-            String name=((DesignatorAccessField)d).getField();
+            String name=null;
+            if(d instanceof DesignatorAccessField)name=((DesignatorAccessField)d).getField();
+            else name=((DesignatorFirst)d).getDsgnName();
             for(int i=0;i<name.length();i++){
                 Code.put4(name.charAt(i));
             }
@@ -75,13 +78,15 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(FactorDsgnCall dsgn) {
         //svi act params su vec na steku
         Designator d=dsgn.getFactorDesignator().getDesignator();
-        if(d instanceof DesignatorAccessField){
+        if(d instanceof DesignatorAccessField|| implicitThis(d)){
             d.traverseBottomUp(this);
             //base adresa je na steku sad nakon argumenata
             Code.put(Code.getfield);
             Code.put2(0);
             Code.put(Code.invokevirtual);
-            String name=((DesignatorAccessField)d).getField();
+            String name=null;
+            if(d instanceof DesignatorAccessField)name=((DesignatorAccessField)d).getField();
+            else name=((DesignatorFirst)d).getDsgnName();
             for(int i=0;i<name.length();i++){
                 Code.put4(name.charAt(i));
             }
@@ -103,13 +108,15 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(DsgnOpCallPars dsgn) {
         //svi act params su vec na steku
         Designator d=dsgn.getCallName().getDesignator();
-        if(d instanceof DesignatorAccessField){
+        if(d instanceof DesignatorAccessField || implicitThis(d)){
             d.traverseBottomUp(this);
             //base adresa je na steku sad nakon argumenata, ona prethodna je this
             Code.put(Code.getfield);
             Code.put2(0);
             Code.put(Code.invokevirtual);
-            String name=((DesignatorAccessField)d).getField();
+            String name=null;
+            if(d instanceof DesignatorAccessField)name=((DesignatorAccessField)d).getField();
+            else name=((DesignatorFirst)d).getDsgnName();
             for(int i=0;i<name.length();i++){
                 Code.put4(name.charAt(i));
             }
@@ -130,12 +137,15 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(DsgnOpCallEmpty dsgn) {
         //svi act params su vec na steku
         Designator d=dsgn.getCallName().getDesignator();
-        if(d instanceof DesignatorAccessField){
+        if(d instanceof DesignatorAccessField || implicitThis(d)){
+            d.traverseBottomUp(this);
             //base adresa je na steku
             Code.put(Code.getfield);
             Code.put2(0);
             Code.put(Code.invokevirtual);
-            String name=((DesignatorAccessField)d).getField();
+            String name=null;
+            if(d instanceof DesignatorAccessField)name=((DesignatorAccessField)d).getField();
+            else name=((DesignatorFirst)d).getDsgnName();
             for(int i=0;i<name.length();i++){
                 Code.put4(name.charAt(i));
             }
@@ -365,11 +375,19 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(BaseDsgn base){
         Code.load(base.getDesignator().obj);
     }
+
+    private boolean implicitThis(Designator name){
+        if(name instanceof DesignatorFirst){
+            return currentType.getType().getMembers().stream().filter(e->{
+                return e.getName().equals(((DesignatorFirst)name).getDsgnName());
+            }).count()>0;
+        }
+        return false;
+
+    }
     public void visit(DesignatorFirst base){
         if(currentType!=null){ //implicinti this
-            if(currentType.getType().getMembers().stream().filter(e->{
-                return e.getName().equals(base.getDsgnName());
-            }).count()>0){
+            if(implicitThis(base)){
                 Code.put(Code.load_n);
             }
         }
@@ -673,6 +691,7 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     private Obj currentType=null;
+
     @Override
     public void visit(ClassDecl ClassDecl) {
         currentType=null;

@@ -1042,6 +1042,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(ActParsSingle x) {
         cnt=1;
+        if(currentDesignator.size()==0) return;
         Collection<Obj> locals=currentDesignator.get(currentDesignator.size()-1).getLocalSymbols();
         if(locals==null){ cnt=-1; return;}
         if(locals.stream().anyMatch(e->{
@@ -1059,6 +1060,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(ActParsMultiple x) {
         if(cnt==-1) return;
+        if(currentDesignator.size()==0) return;
         Collection<Obj> locals=currentDesignator.get(currentDesignator.size()-1).getLocalSymbols();
         if(locals==null) {cnt=-1; return;}
         Obj o=locals.stream().filter(e->{

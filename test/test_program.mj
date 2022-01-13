@@ -12,7 +12,7 @@ class Base extends X{
     int s[];
     {
         void nevena(int k){
-            print(4);
+            print(k);
         }
 
         int marinko(int k){
@@ -35,11 +35,14 @@ class MAMA extends Base{
 
     {
         void xx(){
+            super();
             print(22);
         }
         void nevena (int k){
             print(5);
             k++;
+            super(k);
+
         }
 
         void jana(char d) Base b;{

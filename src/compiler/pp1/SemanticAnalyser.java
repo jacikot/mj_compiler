@@ -1134,7 +1134,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 if(currentTypeDefinition!=null && currentTypeDefinition.getType().equals(pom.getType())){
                     pom.getType().setMembers(Tab.currentScope().getOuter().getLocals());
                     //ako smo u konstruktoru i zovemo ga iz klase za koju je def - kopiramo tekuci scope da bismo ga nasli
-                    //on mora da je pre definisan
+                    //on mora da je predefinisan
                 }
 
                 //pretraga konstruktora

@@ -309,9 +309,51 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.load(constant);
     }
 
+    private Obj currrentMethod=null;
+
+    @Override
+    public void visit(MethodDecl method) {
+        currrentMethod=null;
+    }
+
+    @Override
+    public void visit(SuperDsgn SuperDsgn) {
+        Code.put(Code.load_n); //this
+    }
+    @Override
+    public void visit(DsgnSuperPars dsgn) {
+        int addr=dsgn.getCopyDsgn().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(addr);
+        if(!dsgn.getCopyDsgn().obj.getType().equals(Tab.noType)){
+            Code.put(Code.pop);
+        }
+    }
+    @Override
+    public void visit(DsgnSuperEmpty dsgn) {
+        int addr=dsgn.getCopyDsgn().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(addr);
+        if(!dsgn.getCopyDsgn().obj.getType().equals(Tab.noType)){
+            Code.put(Code.pop);
+        }
+    }
+    @Override
+    public void visit(FactorDsgnSuper dsgn) {
+        int addr=dsgn.getCopyDsgn().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(addr);
+    }
+    @Override
+    public void visit(FactorDsgnSuperEmpty dsgn) {
+        int addr=dsgn.getCopyDsgn().obj.getAdr()-Code.pc;
+        Code.put(Code.call);
+        Code.put2(addr);
+    }
 
     @Override
     public void visit(MethodName method) {
+        currrentMethod=method.obj;
         method.obj.setAdr(Code.pc);
         if(method.getMethodName().equals("main")){
             mainPC=Code.pc;

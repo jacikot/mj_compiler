@@ -1,0 +1,105 @@
+program p
+
+class X {
+    {
+    X() char xxx; {
+        xxx='x';
+        print(0);
+
+    }
+    void xx(){
+        print(100);
+    }
+    }
+}
+
+class Base extends X{
+    int s[];
+    {
+        Base(){
+            super();
+            print(1);
+        }
+        void nevena(int k){
+            print(k);
+        }
+
+        int marinko(int k){
+            //print(k);
+            if(k==0){
+                print(s[k]);
+                nevena(0);
+                return s[k];
+            }
+            else
+                return 0;
+        }
+    }
+
+}
+
+class MAMA extends Base{
+    char p;
+    int num;
+    int a,b,c;
+
+    {
+        MAMA(){
+            super();
+            num=11;
+            print(2);
+        }
+        void xx(){
+            super();
+            print(22);
+        }
+        void nevena (int k){
+            print(5);
+            k++;
+            super(k);
+
+        }
+
+        void jana(char d) Base b;{
+            p=d;
+            b=new Base;
+            b.nevena(0);
+            print(3);
+        }
+        void postaviStranice(int a, int b, int c) {this.a = a; this.b = b; this.c = c;}
+    }
+
+}
+
+record TATA{
+    MAMA mama;
+}
+
+
+TATA tata;
+
+{
+
+    int f(int j, int k)
+        int l; {
+            l=j+k;
+            return l*k;
+        }
+    void v(TATA a){
+        print(a.mama.s[0]);
+    }
+
+    void main() Base b; Base x[]; {
+
+        tata= new TATA;
+        tata.mama=new MAMA;
+        x=new Base[7];
+
+        tata.mama.postaviStranice(1,2,3);
+        print(tata.mama.num);
+        print(chr(65));
+        print('A');
+        print(len(x));
+
+    }
+}

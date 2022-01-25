@@ -1,13 +1,13 @@
 
 
-package compiler.pp1;
+package  rs.ac.bg.etf.pp1;
 /* import sekcija sve sto nam treba za parser klasu */
 /* od ovoga nastaju klase parser i action */
 import java_cup.runtime.*;
 import org.apache.log4j.*;
 
 //ovo se generise pozivom parsera
-import compiler.pp1.ast.*;
+import rs.ac.bg.etf.pp1.ast.*;
 
 //kod parsera
 parser code {:

@@ -89,12 +89,13 @@ public class SemanticAnalyser extends VisitorAdaptor {
 
     }
 
-    public void report_info(String message, SyntaxNode info) {
+    public void report_info(String message, SyntaxNode info, Obj obj) {
         StringBuilder msg = new StringBuilder();
         int line = (info == null) ? 0: info.getLine();
         if (line != 0)
             msg.append (" na liniji ").append(line).append(": ");
         msg.append(message);
+        if(obj!=null) msg.append("("+MySymbolTableVisitor.objInfo(obj)+")");
 
         System.out.println(msg.toString());
         System.out.flush();
@@ -106,7 +107,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(ProgramName name) {
         name.obj= Tab.insert(Obj.Prog,name.getName(), Tab.noType);
-        report_info("Pronadjen simbol: "+name.getName(),name);
+        report_info("Pronadjen simbol: "+name.getName(),name,name.obj);
         Tab.openScope();
     }
 
@@ -125,7 +126,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }else{
             if(Obj.Type == type.obj.getKind()){
                 currentType=type;
-                report_info("Upotreba simbola: " + type.getTypeName(), type);
+                report_info("Upotreba simbola: " + type.getTypeName(), type, type.obj);
             }else{
                 report_error("Greska: Ime " + type.getTypeName() + " ne predstavlja tip!", type);
                 type.obj = Tab.noObj;
@@ -142,7 +143,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         else{
             if(elem.getConstLit().obj.getType().assignableTo(currentType.obj.getType())){
                 Obj node=Tab.insert(Obj.Con,elem.getVarName(),currentType.obj.getType());
-                report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+                report_info("Pronadjen simbol: "+elem.getVarName(),elem,elem.getConstLit().obj);
                 node.setAdr(elem.getConstLit().obj.getFpPos());
                 constDeclCount++;
             }
@@ -193,8 +194,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            Tab.insert(Obj.Var,elem.getVarName(),arrayType);
-            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            Obj o=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem,o);
             varDeclCountArray++;
         }
     }
@@ -207,8 +208,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
-            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            Obj o=Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem, o);
             varDeclCount++;
         }
     }
@@ -222,9 +223,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             Struct arrayType=new Struct(Struct.Array,currentType.obj.getType());
-            if(methodDecl==null) Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
-            else Tab.insert(Obj.Var,elem.getVarName(),arrayType);
-            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            Obj o;
+            if(methodDecl==null) o=Tab.insert(Obj.Fld,elem.getVarName(),arrayType);
+            else o=Tab.insert(Obj.Var,elem.getVarName(),arrayType);
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem, o);
             varDeclCountArray++;
         }
     }
@@ -237,9 +239,10 @@ public class SemanticAnalyser extends VisitorAdaptor {
             report_error("Simbol: Ime " + elem.getVarName() + " je vec deklarisan!", elem);
         }
         else{
-            if(methodDecl==null) Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
-            else Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
-            report_info("Pronadjen simbol: "+elem.getVarName(),elem);
+            Obj o;
+            if(methodDecl==null) o=Tab.insert(Obj.Fld,elem.getVarName(),currentType.obj.getType());
+            else o=Tab.insert(Obj.Var,elem.getVarName(),currentType.obj.getType());
+            report_info("Pronadjen simbol: "+elem.getVarName(),elem,o);
             varDeclCount++;
         }
     }
@@ -257,7 +260,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         name.obj= Tab.insert(Obj.Type,name.getRecordName(), struct);
         currentTypeDefinition=name.obj;
         name.obj.setFpPos(RECORD_TYPE);
-        report_info("Pronadjen simbol: "+name.getRecordName(),name);
+        report_info("Pronadjen simbol: "+name.getRecordName(),name, name.obj);
         Tab.openScope();
     }
 
@@ -274,7 +277,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         name.obj= Tab.insert(Obj.Type,name.getName(), struct);
         currentTypeDefinition=name.obj;
         name.obj.setFpPos(CLASS_TYPE);
-        report_info("Pronadjen simbol: "+name.getName(),name);
+        report_info("Pronadjen simbol: "+name.getName(),name, name.obj);
         Tab.openScope();
         Tab.insert(Obj.Fld,"__VTP",Tab.noType);
     }
@@ -289,7 +292,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         name.obj= Tab.insert(Obj.Meth,"__"+name.getName(), Tab.noType);
         name.obj.setFpPos(CONSTRUCTOR_TYPE);
-        report_info("Pronadjen simbol: "+name.getName(),name);
+        report_info("Pronadjen simbol: "+name.getName(),name, name.obj);
         Tab.openScope();
         Obj o=Tab.insert(Obj.Var,"this",currentTypeDefinition.getType());
         o.setFpPos(0);
@@ -372,7 +375,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 symbol.setFpPos(METHOD_TYPE);
                 Tab.openScope();
                 paramsCounter=1;
-                report_info("Pronadjen simbol: "+name.getMethodName(),name);
+                report_info("Pronadjen simbol: "+name.getMethodName(),name, name.obj);
                 methodDecl=symbol;
                 overriding=symbol;
                 name.obj=symbol;
@@ -397,7 +400,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 thisElem=o;
             }
             else methodDeclCountGlobal++;
-            report_info("Pronadjen simbol: "+name.getMethodName(),name);
+            report_info("Pronadjen simbol: "+name.getMethodName(),name, name.obj);
             methodDecl=name.obj;
         }
     }
@@ -422,7 +425,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
             arg.setFpPos(paramsCounter++);
-            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars, arg);
 
         }
     }
@@ -446,7 +449,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),arrayType);
             arg.setFpPos(paramsCounter++);
-            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars, arg);
 
         }
     }
@@ -469,7 +472,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
             arg.setFpPos(paramsCounter++);
-            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars, arg);
         }
     }
     @Override
@@ -490,7 +493,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             }
             Obj arg=Tab.insert(Obj.Var,pars.getParName(),currentType.obj.getType());
             arg.setFpPos(paramsCounter++);
-            report_info("Pronadjen simbol: "+pars.getParName(),pars);
+            report_info("Pronadjen simbol: "+pars.getParName(),pars, arg);
 
         }
     }
@@ -580,11 +583,11 @@ public class SemanticAnalyser extends VisitorAdaptor {
         Struct struct=new Struct(Struct.Class);
         label.getLabel().obj=Tab.insert(Obj.Con,label.getLabel().getLabelName(), Tab.noType);
         label.getLabel().obj.setAdr(-1); //zbog provere u generisanju koda
-        report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label);
+        report_info("Pronadjen simbol: "+label.getLabel().getLabelName(),label,label.getLabel().obj);
         if(labelsSearched.containsKey(label.getLabel().getLabelName())){
             for(StmtGoto stmt:labelsSearched.remove(label.getLabel().getLabelName())){
                 stmt.getLabel().obj=label.getLabel().obj;
-                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
+                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt,stmt.getLabel().obj);
             }
         }
     }
@@ -603,7 +606,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         else{
             if(o.getKind()==Obj.Con && o.getType().equals(Tab.noType)){
                 stmt.getLabel().obj=o;
-                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt);
+                report_info("Upotreba simbola: "+stmt.getLabel().getLabelName(),stmt,o);
             }
             else{
                 report_error("Simbol: Ime " + stmt.getLabel().getLabelName() + " se ne moze koristiti kao labela!", stmt);
@@ -817,7 +820,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         }
         else{
             if(dsgn.obj.getKind()!=Obj.Meth)
-                report_info("Upotreba simbola: "+dsgn.getDsgnName(),dsgn);
+                report_info("Upotreba simbola: "+dsgn.getDsgnName(),dsgn,dsgn.obj);
         }
     }
     @Override
@@ -861,7 +864,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
 //            else dsgn.obj=o;
             dsgn.obj=o;
             if(dsgn.obj.getKind()!=Obj.Meth)
-                report_info("Upotreba simbola: "+dsgn.getField(),dsgn);
+                report_info("Upotreba simbola: "+dsgn.getField(),dsgn, dsgn.obj);
         }
     }
     @Override
@@ -901,7 +904,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
     }
@@ -920,7 +923,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 }
             }
             dsgn.obj=dsgn.getCopyDsgn().obj;
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
         else dsgn.obj=Tab.noObj;
@@ -940,7 +943,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 }
             }
             dsgn.obj=dsgn.getCopyDsgn().obj;
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
         else dsgn.obj=Tab.noObj;
@@ -962,7 +965,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -979,7 +982,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -1000,7 +1003,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -1022,7 +1025,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             dsgn.obj=dsgn.getCopyDsgn().obj;
             currentDesignator.remove(currentDesignator.size()-1);
         }
@@ -1049,7 +1052,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn);
+            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             dsgn.obj=dsgn.getCopyDsgn().obj;
             currentDesignator.remove(currentDesignator.size()-1);
         }

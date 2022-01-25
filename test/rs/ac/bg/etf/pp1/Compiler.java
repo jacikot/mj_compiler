@@ -14,7 +14,7 @@ import rs.etf.pp1.symboltable.concepts.Scope;
 import rs.etf.pp1.symboltable.visitors.SymbolTableVisitor;
 
 
-public class CompilerTest {
+public class Compiler {
 
     static {
         DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());

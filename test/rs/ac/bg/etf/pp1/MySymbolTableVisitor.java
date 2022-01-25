@@ -11,6 +11,28 @@ public class MySymbolTableVisitor extends DumpSymbolTableVisitor {
 
     private boolean isType=false;
 
+    public static String objInfo(Obj objToVisit){
+        StringBuilder output=new StringBuilder();
+        switch (objToVisit.getKind()) {
+            case Obj.Con:  output.append("Con "); break;
+            case Obj.Var:  output.append("Var "); break;
+            case Obj.Type: output.append("Type "); break;
+            case Obj.Meth: output.append("Meth "); break;
+            case Obj.Fld:  output.append("Fld "); break;
+            case Obj.Prog: output.append("Prog "); break;
+        }
+        output.append(objToVisit.getName());
+        output.append(": ");
+        MySymbolTableVisitor v=new MySymbolTableVisitor();
+        objToVisit.getType().accept(v);
+        output.append(v.output);
+        output.append(", ");
+        output.append(objToVisit.getAdr());
+        output.append(", ");
+        output.append(objToVisit.getLevel());
+        return output.toString();
+    }
+
     @Override
     public void visitObjNode(Obj objToVisit) {
         //output.append("[");
@@ -61,6 +83,21 @@ public class MySymbolTableVisitor extends DumpSymbolTableVisitor {
 
     }
 
+    private void visitClassNotAsType(Struct structToVisit){
+        Obj scope=new Obj(Obj.Type,"curr_scope",Tab.noType);
+        Tab.chainLocalSymbols(scope);
+        Obj prog=scope.getLocalSymbols().stream().filter(e->{
+            return e.getKind()==Obj.Prog;
+        }).findFirst().orElse(null);
+        if(prog==null) return;
+        for(Obj o:prog.getLocalSymbols()){
+            if(o.getType().equals(structToVisit)){
+                output.append(o.getName());
+                break;
+            }
+        }
+    }
+
 
 
     @Override
@@ -96,18 +133,7 @@ public class MySymbolTableVisitor extends DumpSymbolTableVisitor {
                         break;
                     case Struct.Class:
                         output.append("Class ");
-                        Obj scope=new Obj(Obj.Type,"curr_scope",Tab.noType);
-                        Tab.chainLocalSymbols(scope);
-                        Obj prog=scope.getLocalSymbols().stream().filter(e->{
-                            return e.getKind()==Obj.Prog;
-                        }).findFirst().orElse(null);
-                        if(prog==null) return;
-                        for(Obj o:prog.getLocalSymbols()){
-                            if(o.getType().equals(structToVisit)){
-                                output.append(o.getName());
-                                break;
-                            }
-                        }
+                        visitClassNotAsType(structToVisit);
                         break;
                 }
                 break;
@@ -126,18 +152,7 @@ public class MySymbolTableVisitor extends DumpSymbolTableVisitor {
                 }
                 else{
                     output.append("Class ");
-                    Obj scope=new Obj(Obj.Type,"curr_scope",Tab.noType);
-                    Tab.chainLocalSymbols(scope);
-                    Obj prog=scope.getLocalSymbols().stream().filter(e->{
-                       return e.getKind()==Obj.Prog;
-                    }).findFirst().orElse(null);
-                    if(prog==null) return;
-                    for(Obj o:prog.getLocalSymbols()){
-                        if(o.getType().equals(structToVisit)){
-                            output.append(o.getName());
-                            break;
-                        }
-                    }
+                    visitClassNotAsType(structToVisit);
                 }
 
                 break;

@@ -12,7 +12,11 @@ public class Counter extends VisitorAdaptor {
 
     public static class LocalVarCounter extends Counter {
 
-        public void visit(VarDecl var1) {
+        public void visit(VarDeclMultipleNoC var1) {
+            cnt++;
+
+        }
+        public void visit(VarDeclSingleNoC var1) {
             cnt++;
         }
     }

@@ -380,8 +380,6 @@ public class CodeGenerator extends VisitorAdaptor {
         method.obj.setAdr(Code.pc);
         if(method.getMethodName().equals("main")){
             mainPC=Code.pc;
-            initVTP();
-
         }
 
         Counter.FormParamCounter fpc=new Counter.FormParamCounter();
@@ -394,6 +392,9 @@ public class CodeGenerator extends VisitorAdaptor {
         Code.put(Code.enter);
         Code.put(fpc.getCnt()+((currentType!=null)?1:0));
         Code.put(fpc.getCnt()+lvc.getCnt()+((currentType!=null)?1:0));
+        if(method.getMethodName().equals("main")){
+            initVTP();
+        }
     }
 
     private void ord(){
@@ -516,7 +517,10 @@ public class CodeGenerator extends VisitorAdaptor {
         if(name instanceof DesignatorFirst){
             return currentType!=null && currentType.getType().getMembers().stream().filter(e->{
                 return e.getName().equals(((DesignatorFirst)name).getDsgnName());
-            }).count()>0;
+            }).count()>0 && currrentMethod!=null && currrentMethod.getLocalSymbols().stream().filter(e-> {
+                        return e.getName().equals(((DesignatorFirst) name).getDsgnName());
+                    }
+            ).count()==0;
         }
         return false;
 

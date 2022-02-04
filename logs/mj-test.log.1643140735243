@@ -1,0 +1,448 @@
+INFO  19:55:21,661 - Compiling source file: D:\4.godina\pp\pp_projekat\workspace\mj_compiler\test\syntax.mj
+INFO  19:55:21,757 - #2 program
+INFO  19:55:21,757 - #22 syntaxErrors
+INFO  19:55:21,757 - #22 int
+INFO  19:55:21,758 - #6 ;
+ERROR 19:55:21,759 - 
+Sintaksna greska na liniji 2
+INFO  19:55:21,759 - #22 int
+INFO  19:55:21,759 - #22 a
+INFO  19:55:21,759 - #6 ;
+INFO  19:55:21,760 - #22 int
+INFO  19:55:21,760 - #22 b
+INFO  19:55:21,761 - #22 c
+ERROR 19:55:21,761 - 
+Sintaksna greska na liniji 4
+INFO  19:55:21,761 - #7 ,
+INFO  19:55:21,761 - #22 d
+INFO  19:55:21,761 - #6 ;
+INFO  19:55:21,761 - #22 int
+INFO  19:55:21,761 - #22 c
+INFO  19:55:21,761 - #7 ,
+INFO  19:55:21,761 - #22 cc
+INFO  19:55:21,761 - #6 ;
+INFO  19:55:21,763 - #13 class
+INFO  19:55:21,763 - #22 XY
+INFO  19:55:21,763 - #14 extends
+INFO  19:55:21,764 - #45 +
+ERROR 19:55:21,764 - 
+Sintaksna greska na liniji 6
+INFO  19:55:21,764 - #46 -
+INFO  19:55:21,764 - #3 {
+INFO  19:55:21,764 - #22 int
+INFO  19:55:21,764 - #22 a
+INFO  19:55:21,764 - #7 ,
+INFO  19:55:21,765 - #22 b
+INFO  19:55:21,765 - #22 c
+ERROR 19:55:21,765 - 
+Sintaksna greska na liniji 7
+INFO  19:55:21,765 - #6 ;
+INFO  19:55:21,765 - #22 int
+INFO  19:55:21,765 - #22 aa
+INFO  19:55:21,765 - #6 ;
+INFO  19:55:21,765 - #22 int
+INFO  19:55:21,765 - #22 bb
+INFO  19:55:21,766 - #3 {
+ERROR 19:55:21,766 - 
+Sintaksna greska na liniji 10
+INFO  19:55:21,766 - #22 XY
+INFO  19:55:21,766 - #15 (
+INFO  19:55:21,766 - #16 )
+INFO  19:55:21,767 - #3 {
+INFO  19:55:21,767 - #22 aa
+INFO  19:55:21,768 - #9 =
+INFO  19:55:21,769 - #20 1
+INFO  19:55:21,773 - #6 ;
+INFO  19:55:21,773 - #4 }
+INFO  19:55:21,774 - #4 }
+INFO  19:55:21,775 - #4 }
+INFO  19:55:21,775 - #3 {
+INFO  19:55:21,776 - #22 int
+INFO  19:55:21,776 - #22 f
+INFO  19:55:21,777 - #15 (
+INFO  19:55:21,778 - #22 int
+INFO  19:55:21,778 - #22 z
+INFO  19:55:21,778 - #7 ,
+INFO  19:55:21,778 - #22 int
+INFO  19:55:21,778 - #22 d
+INFO  19:55:21,779 - #22 e
+ERROR 19:55:21,779 - 
+Sintaksna greska na liniji 19
+INFO  19:55:21,779 - #7 ,
+INFO  19:55:21,779 - #22 int
+INFO  19:55:21,779 - #22 x
+INFO  19:55:21,779 - #22 y
+ERROR 19:55:21,779 - 
+Sintaksna greska na liniji 19
+INFO  19:55:21,779 - #16 )
+INFO  19:55:21,779 - #3 {
+INFO  19:55:21,779 - #31 return
+INFO  19:55:21,779 - #22 z
+INFO  19:55:21,779 - #45 +
+INFO  19:55:21,780 - #22 d
+INFO  19:55:21,782 - #6 ;
+INFO  19:55:21,782 - #4 }
+INFO  19:55:21,782 - #18 void
+INFO  19:55:21,783 - #22 main
+INFO  19:55:21,783 - #15 (
+INFO  19:55:21,783 - #16 )
+INFO  19:55:21,784 - #22 int
+INFO  19:55:21,784 - #22 a
+INFO  19:55:21,784 - #6 ;
+INFO  19:55:21,784 - #3 {
+INFO  19:55:21,785 - #22 a
+INFO  19:55:21,785 - #9 =
+INFO  19:55:21,785 - #20 1
+INFO  19:55:21,785 - #45 +
+INFO  19:55:21,785 - #6 ;
+ERROR 19:55:21,785 - 
+Sintaksna greska na liniji 27
+INFO  19:55:21,785 - #24 if
+INFO  19:55:21,785 - #15 (
+INFO  19:55:21,785 - #22 a
+INFO  19:55:21,786 - #38 <
+INFO  19:55:21,786 - #22 b
+INFO  19:55:21,788 - #45 +
+INFO  19:55:21,788 - #16 )
+ERROR 19:55:21,788 - 
+Sintaksna greska na liniji 29
+INFO  19:55:21,788 - #3 {
+INFO  19:55:21,788 - #22 a
+INFO  19:55:21,788 - #9 =
+INFO  19:55:21,788 - #20 1
+INFO  19:55:21,788 - #6 ;
+INFO  19:55:21,788 - #4 }
+INFO  19:55:21,789 - #24 if
+INFO  19:55:21,789 - #15 (
+INFO  19:55:21,789 - #22 a
+INFO  19:55:21,789 - #38 <
+INFO  19:55:21,789 - #22 b
+INFO  19:55:21,789 - #45 +
+INFO  19:55:21,789 - #6 ;
+ERROR 19:55:21,789 - 
+Sintaksna greska na liniji 33
+INFO  19:55:21,789 - #16 )
+INFO  19:55:21,789 - #22 a
+INFO  19:55:21,790 - #9 =
+INFO  19:55:21,790 - #20 1
+INFO  19:55:21,790 - #6 ;
+INFO  19:55:21,790 - #25 else
+INFO  19:55:21,790 - #22 a
+INFO  19:55:21,791 - #9 =
+INFO  19:55:21,791 - #20 2
+INFO  19:55:21,791 - #6 ;
+INFO  19:55:21,791 - #4 }
+INFO  19:55:21,791 - #4 }
+INFO  19:55:21,793 - Program(
+  ProgramName(
+   syntaxErrors
+  ) [ProgramName]
+  DeclListClass(
+    DeclListVar(
+      DeclListVar(
+        DeclListVar(
+          DeclListVar(
+            DeclListEmpty(
+            ) [DeclListEmpty]
+            VarDeclGlobalCorrect(
+              Type(
+               int
+              ) [Type]
+              VarDeclSingle(
+                VarDeclError(
+                ) [VarDeclError]
+              ) [VarDeclSingle]
+            ) [VarDeclGlobalCorrect]
+          ) [DeclListVar]
+          VarDeclGlobalCorrect(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingle(
+              VarDeclElemSingle(
+               a
+              ) [VarDeclElemSingle]
+            ) [VarDeclSingle]
+          ) [VarDeclGlobalCorrect]
+        ) [DeclListVar]
+        VarDeclGlobalCorrect(
+          Type(
+           int
+          ) [Type]
+          VarDeclMultiple(
+            VarDeclSingle(
+              VarDeclError(
+              ) [VarDeclError]
+            ) [VarDeclSingle]
+            VarDeclElemSingle(
+             d
+            ) [VarDeclElemSingle]
+          ) [VarDeclMultiple]
+        ) [VarDeclGlobalCorrect]
+      ) [DeclListVar]
+      VarDeclGlobalCorrect(
+        Type(
+         int
+        ) [Type]
+        VarDeclMultiple(
+          VarDeclSingle(
+            VarDeclElemSingle(
+             c
+            ) [VarDeclElemSingle]
+          ) [VarDeclSingle]
+          VarDeclElemSingle(
+           cc
+          ) [VarDeclElemSingle]
+        ) [VarDeclMultiple]
+      ) [VarDeclGlobalCorrect]
+    ) [DeclListVar]
+    ClassDecl(
+      ClassName(
+       XY
+      ) [ClassName]
+      ExtendsDeclError(
+      ) [ExtendsDeclError]
+      ClassVarDeclsError(
+        ClassVarDecls(
+          VarDeclsCorrect(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingleNoC(
+              VarDeclElemSingleNoC(
+               aa
+              ) [VarDeclElemSingleNoC]
+            ) [VarDeclSingleNoC]
+          ) [VarDeclsCorrect]
+          ClassDeclsMethodsError(
+            InnerMethodBlockAll(
+              ConstructorDecl(
+                ConstructorName(
+                 XY
+                ) [ConstructorName]
+                InnerVarDeclsEmpty(
+                ) [InnerVarDeclsEmpty]
+                StatementsList(
+                  StatementsEmpty(
+                  ) [StatementsEmpty]
+                  StatementSingle(
+                    StmtDesign(
+                      DsgnOpAssign(
+                        CallName(
+                          DesignatorFirst(
+                           aa
+                          ) [DesignatorFirst]
+                        ) [CallName]
+                        Assignop(
+                        ) [Assignop]
+                        ExprSingle(
+                          TermSingle(
+                            FactorNumber(
+                             1
+                            ) [FactorNumber]
+                          ) [TermSingle]
+                        ) [ExprSingle]
+                      ) [DsgnOpAssign]
+                    ) [StmtDesign]
+                  ) [StatementSingle]
+                ) [StatementsList]
+              ) [ConstructorDecl]
+              MethodDeclsEmpty(
+              ) [MethodDeclsEmpty]
+            ) [InnerMethodBlockAll]
+          ) [ClassDeclsMethodsError]
+        ) [ClassVarDecls]
+      ) [ClassVarDeclsError]
+    ) [ClassDecl]
+  ) [DeclListClass]
+  InitVTP(
+  ) [InitVTP]
+  MethodDecls(
+    MethodDeclPar(
+      MethodDeclChecker(
+        RetTypeType(
+          Type(
+           int
+          ) [Type]
+        ) [RetTypeType]
+        MethodName(
+         f
+        ) [MethodName]
+      ) [MethodDeclChecker]
+      FormParsError(
+        FormParsError(
+          FormParsSingle(
+            Type(
+             int
+            ) [Type]
+           z
+          ) [FormParsSingle]
+        ) [FormParsError]
+      ) [FormParsError]
+      InnerVarDeclsEmpty(
+      ) [InnerVarDeclsEmpty]
+      StatementsList(
+        StatementsEmpty(
+        ) [StatementsEmpty]
+        StatementSingle(
+          StmtReturn(
+            ExprMultiple(
+              ExprSingle(
+                TermSingle(
+                  FactorDsgn(
+                    FactorDesignator(
+                      DesignatorFirst(
+                       z
+                      ) [DesignatorFirst]
+                    ) [FactorDesignator]
+                  ) [FactorDsgn]
+                ) [TermSingle]
+              ) [ExprSingle]
+              AddopPlus(
+              ) [AddopPlus]
+              TermSingle(
+                FactorDsgn(
+                  FactorDesignator(
+                    DesignatorFirst(
+                     d
+                    ) [DesignatorFirst]
+                  ) [FactorDesignator]
+                ) [FactorDsgn]
+              ) [TermSingle]
+            ) [ExprMultiple]
+          ) [StmtReturn]
+        ) [StatementSingle]
+      ) [StatementsList]
+    ) [MethodDeclPar]
+    MethodDecls(
+      MethodDeclNoPar(
+        MethodDeclChecker(
+          RetTypeVoid(
+          ) [RetTypeVoid]
+          MethodName(
+           main
+          ) [MethodName]
+        ) [MethodDeclChecker]
+        InnerVarDecls(
+          InnerVarDeclsEmpty(
+          ) [InnerVarDeclsEmpty]
+          VarDecl(
+            Type(
+             int
+            ) [Type]
+            VarDeclSingleNoC(
+              VarDeclElemSingleNoC(
+               a
+              ) [VarDeclElemSingleNoC]
+            ) [VarDeclSingleNoC]
+          ) [VarDecl]
+        ) [InnerVarDecls]
+        StatementsList(
+          StatementsList(
+            StatementsList(
+              StatementsEmpty(
+              ) [StatementsEmpty]
+              StatementSingle(
+                StmtDesign(
+                  DsgnOpAssignError(
+                    CallName(
+                      DesignatorFirst(
+                       a
+                      ) [DesignatorFirst]
+                    ) [CallName]
+                    Assignop(
+                    ) [Assignop]
+                  ) [DsgnOpAssignError]
+                ) [StmtDesign]
+              ) [StatementSingle]
+            ) [StatementsList]
+            StatementSingle(
+              StmtIfError(
+                IfInit(
+                ) [IfInit]
+                StatementMultiple(
+                  StatementsBlock(
+                    StatementsList(
+                      StatementsEmpty(
+                      ) [StatementsEmpty]
+                      StatementSingle(
+                        StmtDesign(
+                          DsgnOpAssign(
+                            CallName(
+                              DesignatorFirst(
+                               a
+                              ) [DesignatorFirst]
+                            ) [CallName]
+                            Assignop(
+                            ) [Assignop]
+                            ExprSingle(
+                              TermSingle(
+                                FactorNumber(
+                                 1
+                                ) [FactorNumber]
+                              ) [TermSingle]
+                            ) [ExprSingle]
+                          ) [DsgnOpAssign]
+                        ) [StmtDesign]
+                      ) [StatementSingle]
+                    ) [StatementsList]
+                  ) [StatementsBlock]
+                ) [StatementMultiple]
+              ) [StmtIfError]
+            ) [StatementSingle]
+          ) [StatementsList]
+          StatementSingle(
+            StmtIfElseError(
+              IfInit(
+              ) [IfInit]
+              StatementSingle(
+                StmtDesign(
+                  DsgnOpAssign(
+                    CallName(
+                      DesignatorFirst(
+                       a
+                      ) [DesignatorFirst]
+                    ) [CallName]
+                    Assignop(
+                    ) [Assignop]
+                    ExprSingle(
+                      TermSingle(
+                        FactorNumber(
+                         1
+                        ) [FactorNumber]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                  ) [DsgnOpAssign]
+                ) [StmtDesign]
+              ) [StatementSingle]
+              ElseCond(
+              ) [ElseCond]
+              StatementSingle(
+                StmtDesign(
+                  DsgnOpAssign(
+                    CallName(
+                      DesignatorFirst(
+                       a
+                      ) [DesignatorFirst]
+                    ) [CallName]
+                    Assignop(
+                    ) [Assignop]
+                    ExprSingle(
+                      TermSingle(
+                        FactorNumber(
+                         2
+                        ) [FactorNumber]
+                      ) [TermSingle]
+                    ) [ExprSingle]
+                  ) [DsgnOpAssign]
+                ) [StmtDesign]
+              ) [StatementSingle]
+            ) [StmtIfElseError]
+          ) [StatementSingle]
+        ) [StatementsList]
+      ) [MethodDeclNoPar]
+      MethodDeclsEmpty(
+      ) [MethodDeclsEmpty]
+    ) [MethodDecls]
+  ) [MethodDecls]
+) [Program]

@@ -1,0 +1,40 @@
+program syntaxErrors
+	int ; // Oporavak od greske za globalne promenljive
+	int a;
+	int b c, d; //Oporavak od greske globalne promenljive - lista
+	int c, cc;
+	class XY extends +- { //Oporavak od greske prosirenja klase
+	    int a,b c; //Oporavak od greske polja unutrasnje klase
+	    int aa;
+	    int bb //Oporavak od greske polja unutrasnje klase - do {
+	    {
+	        XY(){
+	            aa=1;
+	        }
+	    }
+
+	}
+{
+
+	int f(int z, int d e, int x y)  // Oporavak od greske u definiciji formalnih parametara funkcije
+	{
+	 	return z + d;
+	}
+
+	void main()
+	int a;
+	{
+		a = 1 + ; // Oporavak od greske u konstrukciji iskaza dodele
+
+		if (a < b + ) { // Oporavak od greske logickog izraza unutar if konstrukcije
+			a = 1;
+		}
+
+		if (a < b +;) // Oporavak od greske logickog izraza unutar if konstrukcije
+			a = 1;
+		else
+			a = 2;
+
+	}
+}
+

@@ -85,7 +85,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             msg.append (" na liniji ").append(line).append(": ");
         msg.append(message);
 
-        System.out.println(ANSI_RED+msg.toString()+ANSI_RESET);
+        System.err.println(ANSI_RED+msg.toString()+ANSI_RESET);
 
     }
 
@@ -122,7 +122,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
     public void visit(Type type) {
         type.obj = Tab.find(type.getTypeName());
         if(type.obj == Tab.noObj){
-            report_error("Nije pronadjen tip " + type.getTypeName() + " u tabeli simbola! ", null);
+            report_error("Nije pronadjen tip " + type.getTypeName() + " u tabeli simbola! ", type.getParent());
         }else{
             if(Obj.Type == type.obj.getKind()){
                 currentType=type;
@@ -148,7 +148,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 constDeclCount++;
             }
             else{
-                report_error("Greska na liniji "+ elem.getLine()+" : nekompatibilni tipovi pri dodeli vrednosti.", null);
+                report_error("Nekompatibilni tipovi pri dodeli vrednosti.", elem);
             }
         }
 
@@ -636,6 +636,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
         if(b.getType().obj.equals(Tab.noObj)) return;
         if(b.getType().obj.getType().getKind()==Struct.Class){
             b.obj=b.getType().obj;
+            report_info("Upotreba simbola: "+b.obj.getName(),b,b.obj);
         }
         else{
             report_error("Tip " + b.getType().getTypeName() + " nije korisnicki definisan tip!", b);
@@ -651,7 +652,8 @@ public class SemanticAnalyser extends VisitorAdaptor {
         else{
             Struct type=new Struct(Struct.Array,b.getType().obj.getType());
             b.obj=new Obj(Obj.Type,"array",type);
-            b.obj.setFpPos(b.getExpr().obj.getFpPos()); //fppos - velicina niza
+            b.obj.setFpPos(b.getExpr().obj.getFpPos());
+            report_info("Upotreba simbola: "+b.obj.getName(),b,b.obj);
         }
 
 
@@ -885,6 +887,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
             return;
         }
         dsgn.obj=new Obj(Obj.Elem,"_array_elem",dsgn.getBaseDsgn().getDesignator().obj.getType().getElemType());
+        report_info("Upotreba simbola: _array_elem",dsgn,dsgn.obj);
     }
     @Override
     public void visit(FactorDsgn dsgn) {
@@ -943,7 +946,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                 }
             }
             dsgn.obj=dsgn.getCopyDsgn().obj;
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.obj);
+            report_info("Upotreba simbola: super "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
         else dsgn.obj=Tab.noObj;
@@ -982,7 +985,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
+            report_info("Upotreba simbola: super "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -1003,7 +1006,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
+            report_info("Upotreba simbola: super "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             currentDesignator.remove(currentDesignator.size()-1);
         }
 
@@ -1052,7 +1055,7 @@ public class SemanticAnalyser extends VisitorAdaptor {
                     return;
                 }
             }
-            report_info("Upotreba simbola: "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
+            report_info("Upotreba simbola: super "+dsgn.getCopyDsgn().obj.getName(),dsgn,dsgn.getCopyDsgn().obj);
             dsgn.obj=dsgn.getCopyDsgn().obj;
             currentDesignator.remove(currentDesignator.size()-1);
         }
@@ -1194,13 +1197,13 @@ public class SemanticAnalyser extends VisitorAdaptor {
     @Override
     public void visit(StmtBreak x) {
         if(!dowhile){
-            report_error("Nije moguce koriscenje break naredbe van do-while bloka!", x);
+            report_error("Nije moguce koriscenje break naredbe van do-while bloka!", x.getParent());
         }
     }
     @Override
     public void visit(StmtContinue x) {
         if(!dowhile){
-            report_error("Nije moguce koriscenje continue naredbe van do-while bloka!", x);
+            report_error("Nije moguce koriscenje continue naredbe van do-while bloka!", x.getParent());
 
         }
     }

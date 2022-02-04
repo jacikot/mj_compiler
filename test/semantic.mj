@@ -1,0 +1,93 @@
+program semanticError
+	abc a; // Semanticka greska - nije pronadjen tip 'abc' u tabeli simbola!
+	const char cc='A';
+	const int cnst = 'A'; //Semanticka greska - tipovi nisu kompatibilni
+
+	class B{
+
+	}
+
+	class A extends B{
+	    char aa;
+	}
+
+	class C{
+
+	}
+{
+	int fun(int x) {
+		// nema return - Runtime greska
+	}
+
+	int fun2(int x) {
+    	return 'a'; //Semanticka greska - neodgovarajuci tip return
+    }
+
+	void tester()int b; char b; // Semanticka greska - 'b' je vec deklarisano
+        int num; char character; bool boolean;
+        int niz[], niz1[];
+        A aobj; B bobj1, bobj2;
+        {
+            niz=new int[2];
+            niz2=new A[2]; //Sintaksna greska - nekompatibilni tipovi
+            // Semanticka greska - nekompatibilni tipovi za dodelu vrednosti
+            num = 'a';
+            num = true;
+            character = true;
+            boolean = niz[0];
+
+
+
+            // Semanticka greska - vrednost moze da se dodeli samo promenljivoj, elementu niza ili polju objekta
+            cnst = 2;
+
+            // Semanticka greska - tip za inkrement i dekrement moze biti jedino int
+            character++;
+            boolean--;
+
+            //  Semanticka greska - argumenti funkcije nisu odgovarajuci
+            fun(1, 2);
+            fun(true);
+
+            // Semanticka greska - tip mora da bude int
+            character = -'a';
+
+            // Semanticka greska - tip za indeksiranje i alociranje niza moze biti jedino int
+            niz1 = new int['a'];
+            niz1[0]=niz1[true];
+
+            do {
+                num++;
+                break;
+                continue;
+            } while(num < 10);
+
+            break; // Semanticka greska - break iskaz van petlje
+            continue; // Semanticka greska - continue iskaz van petlje
+
+            if (niz < niz1) { // Semanticka greska - relacioni izraz sa referentnim tipovima moze koristiti samo '==' i '!='
+                num = 1;
+            }
+
+            if (num) { // Semanticka greska - uslov nije tipa bool
+                num = 2;
+            }
+
+
+            num = num + 'a'; // Semanticka greska - clanovi izraza nisu kompatibilni
+            num = 'b' * 'a'; // Semanticka greska - clanovi izraza nisu tipa int
+
+
+            bobj1=new B;
+            bobj2=new A;
+            aobj=new C; // Semanticka greska - nekompatibilni tipovi
+
+        }
+
+	// error - mora da postoji void main();
+	// void main(int x);
+	// int main();
+
+	//void main();
+
+}
